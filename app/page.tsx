@@ -1,65 +1,198 @@
 import Image from "next/image";
+import Button from "@/app/src/components/ui/Button";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+    <section className="py-16 space-y-6">
+      <div>
+        <h1 className="text-4xl font-bold">
+          Chloé Simart
+        </h1>
+
+        <p className="text-gray-600 max-w-lg">
+          Une auteure pas comme les autres. Auteure de roman qui touche l&apos;ame.
+        </p>
+
+        <Button>
+          Découvrir
+        </Button>
+        <br />
+        <Button>
+          Lire
+        </Button>
+      </div>
+      <div className="w-full max-w-md">
         <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+          src="/books.jpg"
+          alt="Pile de livres sur une table"
+          width={640}
+          height={960}
+          className="rounded-md object-cover"
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+      </div>
+      <div>
+        <h2>Romans</h2>
+        <h1 className="text-2xl font-semibold">Mes Romans</h1>
+        <h3>Disponibles sur amazon</h3>
+          <div>
+          <Image
+          src="/file.svg"
+          alt="icon"
+          width={40}
+          height={60}
+          className="rounded-md object-cover"
+        />
+          <h2>Les secrets de Clara</h2>
+          <p>Un thriller sombre qui explore les mystheres enfouis au coeur des fmailles </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+        <div>
+          <Image
+          src="/file.svg"
+          alt="icon"
+          width={40}
+          height={60}
+          className="rounded-md object-cover"
+        /> 
+          <h2>Mon éternel combat</h2>
+          <p>L&apos;autobiographie d&apos;une femme qui refuse de se laisser définir par ses limites</p>
+        </div>
+        <div>
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+          src="/file.svg"
+          alt="icon"
+          width={40}
+          height={60}
+          className="rounded-md object-cover"
+        /> 
+          <h2>Mon éternel combat</h2>
+          <p>L&apos;autobiographie d&apos;une femme qui refuse de se laisser définir par ses limites</p>
         </div>
-      </main>
-    </div>
+        <div>
+            <Image
+          src="/file.svg"
+          alt="icon"
+          width={40}
+          height={60}
+          className="rounded-md object-cover"
+        /> 
+          <h2>Nos blessures sous la peau</h2>
+          <p>Une romance ou deux ames blessées apprennent à se reconstruire ensemble</p>
+        </div>
+        <div>
+            <Image
+          src="/file.svg"
+          alt="icon"
+          width={40}
+          height={60}
+          className="rounded-md object-cover"
+        /> 
+          <h2>Nos blessures sous la peau</h2>
+          <p>Une romance ou deux ames blessées apprennent à se reconstruire ensemble</p>
+        </div>
+        <div>
+          <Button href="/id" variant="secondary">
+            Voir
+          </Button >
+          <br />
+          <Button href="/books" variant="secondary">
+            Tous
+          </Button>
+        </div>
+      </div>
+
+      <div>
+        <h2>Auteure</h2>
+        <h1 className="text-2xl font-semibold">Une handi-auteure</h1>
+        <p>Chloé Simart écrit des histoires ou le handicap n&apos;est pas un obstacle mas une part authentique de l&apos;existance. Elle brise les tabous en donnent voix à ceux qu&apos;on oublie souvent.</p>
+        <Button href="/id" variant="secondary">Découvrir</Button>
+        <Button href="/about" variant="secondary">Plus</Button>
+        <div>
+          <div className="w-full max-w-md">
+          <Image
+            src="/file.svg"
+            alt="icon"
+            width={40}
+            height={60}
+            className="rounded-md object-cover"
+          />
+        </div>
+          <h2>Sortie ocrobre</h2>
+          <p>Un nouveau roman sortira bientôt !</p>
+        </div>
+        <div>
+          <Image
+            src="/file.svg"
+            alt="icon"
+            width={40}
+            height={60}
+            className="rounded-md object-cover"
+          />
+          <h2>la loge des silences</h2>
+          <p>un thriller ou chaque silence cache une vérité qui attend d&apos;etre decouverte</p>
+        </div>
+        <div>
+          <Image
+            src="/file.svg"
+            alt="icon"
+            width={40}
+            height={60}
+            className="rounded-md object-cover"
+          />
+          <h2>Extrait exclusif</h2>
+          <p>Parce que survivre n&apos;était que le début de cette histoir qui change tout.</p>
+        </div>
+        <div>
+          <Image
+            src="/file.svg"
+            alt="icon"
+            width={40}
+            height={60}
+            className="rounded-md object-cover"
+          />
+          <h2>En savoir plus</h2>
+          <p>Décourvrez le roman complet et plongez dans ses mystères.</p>
+        </div>
+        <div>
+          <Image
+            src="/file.svg"
+            alt="icon"
+            width={40}
+            height={60}
+            className="rounded-md object-cover"
+          />
+          <h2>Short heading here</h2>
+          <p>Décourvrez le roman complet et plongez dans ses mystères.</p>
+        </div>
+        <div>
+          <Button href="/read" variant="secondary">Lire</Button>
+          <Button href="/books" variant="secondary">Suite</Button>
+        </div>
+        <div className="w-full max-w-md">
+          <Image
+            src="/books.jpg"
+            alt="pile de livres"
+            width={640}
+            height={60}
+            className="rounded-md object-cover"
+          />
+        </div>
+      </div>
+     
+     <div>
+      <h1>Parce que survivre n&apos;était que le début</h1>
+      <p>&quot;Parce que survivre n&apos;était que le début...&quot; -- <br /> Mon éternel combat</p>
+     </div>
+     <div>
+      <h1>Restez informé des nouvelles</h1>
+      <p>Recevez les actualités et les dates de sortie de mes prochains romans.</p>
+     </div>
+     <div>
+      <input type="text" placeholder="Votre email" />
+      <Button variant="primary">S&apos;inscrire</Button>
+      <p>En vous abonnant, vous acceptez notre politique de confidentialité.</p>
+     </div>
+
+
+    </section>
   );
 }

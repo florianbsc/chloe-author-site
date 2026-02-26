@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Menu } from "lucide-react";
-import Button from "@/components/ui/Button";
-
+import Button from "@/app/src/components/ui/Button";
 
 export default function Header() {
   return (
@@ -11,13 +10,20 @@ export default function Header() {
           LOGO
         </Link>
 
-        <nav className="hidden md:flex gap-6 text-sm font-medium">
+        <nav className="hidden md:flex gap-4 items-center">
 
-        <Button>
-        Découvrir 
-        </Button>   
-          <Link href="/">Accueil</Link>
-          <Link href="/about">À propos</Link>
+          <Button href="/about" variant="secondary">
+            À propos
+          </Button>
+
+          <Button href="/news" variant="secondary">
+            Actualités
+          </Button>
+
+
+          <Button href="/books" variant="secondary">
+            Mes Romans
+          </Button>
         </nav>
 
         <button className="md:hidden">
