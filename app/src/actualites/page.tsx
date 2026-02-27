@@ -32,8 +32,6 @@ export default function New() {
         </div>
       </section>
 
-
-
       <section>
 
         <div>
@@ -46,11 +44,7 @@ export default function New() {
           </p>
         </div>
 
-
-
         <div>
-
-        
           <article>
             <div/>
 
@@ -58,11 +52,11 @@ export default function New() {
               <span>
                 Category
               </span>
-              <span>8 min read</span>
+              <span>8 min lecture</span>
             </div>
 
             <h3>
-              Blog title heading will go here
+              Blog titre
             </h3>
 
             <p>
@@ -71,7 +65,7 @@ export default function New() {
             </p>
 
             <Button variant="secondary">
-              Read more →
+              Lire →
             </Button>
           </article>
 

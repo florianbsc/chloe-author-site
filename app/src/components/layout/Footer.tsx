@@ -6,6 +6,8 @@ import {
   Linkedin,
   Youtube,
 } from "lucide-react";
+// import NewsletterForm from "@/app/src/components/ellements/NewsletterForm";
+
 
 export default function Footer() {
   return (
@@ -13,6 +15,8 @@ export default function Footer() {
       <div className="max-w-md mx-auto px-6 py-10 space-y-10 text-sm text-gray-700">
         
         {/* Logo + Newsletter */}
+        {/* <NewsletterForm></NewsletterForm> */}
+
         <div className="space-y-4">
           <h2 className="text-2xl font-semibold">Logo</h2>
 
@@ -43,7 +47,7 @@ export default function Footer() {
           <div className="flex flex-col space-y-2">
             <Link href="/about">À propos</Link>
             <Link href="/books">Mes romans</Link>
-            <Link href="/news">Actualités</Link>
+            <Link href="/actualites">Actualités</Link>
             <Link href="/contact">Contact</Link>
             <Link href="https://amazon.fr">Amazon</Link>
           </div>

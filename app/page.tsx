@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from 'next/link'
 import Button from "@/app/src/components/ui/Button";
 
 export default function Home() {
@@ -90,12 +91,12 @@ export default function Home() {
           <p>Une romance ou deux ames blessées apprennent à se reconstruire ensemble</p>
         </div>
         <div>
-          <Button href="/id" variant="secondary">
-            Voir
+          <Button>
+            <Link href="src/books">Voir</Link>
           </Button >
           <br />
-          <Button href="/books" variant="secondary">
-            Tous
+          <Button>
+            <Link href="src/books">Tous</Link>
           </Button>
         </div>
       </div>
@@ -104,8 +105,12 @@ export default function Home() {
         <h2>Auteure</h2>
         <h1 className="text-2xl font-semibold">Une handi-auteure</h1>
         <p>Chloé Simart écrit des histoires ou le handicap n&apos;est pas un obstacle mas une part authentique de l&apos;existance. Elle brise les tabous en donnent voix à ceux qu&apos;on oublie souvent.</p>
-        <Button href="/id" variant="secondary">Découvrir</Button>
-        <Button href="/about" variant="secondary">Plus</Button>
+        <Button>
+        <Link href="/about/{id}">Découvir </Link>
+        </Button>
+        <Button>
+        <Link href="/about">Plus</Link>
+        </Button>
         <div>
           <div className="w-full max-w-md">
           <Image
@@ -164,8 +169,12 @@ export default function Home() {
           <p>Décourvrez le roman complet et plongez dans ses mystères.</p>
         </div>
         <div>
-          <Button href="/read" variant="secondary">Lire</Button>
-          <Button href="/books" variant="secondary">Suite</Button>
+          <Button>
+            <Link href="/read">Lire</Link>
+          </Button>
+          <Button>
+            <Link href="/books">Suite</Link>
+          </Button>
         </div>
         <div className="w-full max-w-md">
           <Image
