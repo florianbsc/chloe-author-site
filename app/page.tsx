@@ -1,206 +1,157 @@
 import Image from "next/image";
-import Link from 'next/link'
+import Link from "next/link";
 import Button from "@/app/src/components/ui/Button";
 
 export default function Home() {
   return (
-    <section className="py-16 space-y-6">
-      <div>
-        <h1 className="text-4xl font-bold">
+    <section className="bg-background text-foreground py-16 space-y-16">
+
+      {/* HERO */}
+      <div className="space-y-4 max-w-xl">
+        <h1 className="text-h1 font-heading">
           Chloé Simart
         </h1>
 
-        <p className="text-gray-600 max-w-lg">
-          Une auteure pas comme les autres. Auteure de roman qui touche l&apos;ame.
+        <p className="text-md-custom text-neutral-500">
+          Une auteure pas comme les autres. Auteure de roman qui touche l&apos;âme.
         </p>
 
-        <Button>
-          Découvrir
-        </Button>
-        <br />
-        <Button>
-          Lire
-        </Button>
+        <div className="flex gap-4">
+          <Button>Découvrir</Button>
+          <Button>Lire</Button>
+        </div>
       </div>
+
       <div className="w-full max-w-md">
         <Image
           src="/books.jpg"
           alt="Pile de livres sur une table"
           width={640}
           height={960}
-          className="rounded-md object-cover"
+          className="rounded-lg object-cover"
         />
       </div>
-      <div>
-        <h2>Romans</h2>
-        <h1 className="text-2xl font-semibold">Mes Romans</h1>
-        <h3>Disponibles sur amazon</h3>
-          <div>
-          <Image
-          src="/file.svg"
-          alt="icon"
-          width={40}
-          height={60}
-          className="rounded-md object-cover"
-        />
-          <h2>Les secrets de Clara</h2>
-          <p>Un thriller sombre qui explore les mystheres enfouis au coeur des fmailles </p>
+
+
+      {/* ROMANS */}
+      <div className="space-y-8">
+
+        <div className="space-y-2">
+          <h2 className="text-h4 font-heading">Romans</h2>
+          <h3 className="text-h2 font-heading">Mes Romans</h3>
+          <p className="text-neutral-500">Disponibles sur Amazon</p>
         </div>
-        <div>
-          <Image
-          src="/file.svg"
-          alt="icon"
-          width={40}
-          height={60}
-          className="rounded-md object-cover"
-        /> 
-          <h2>Mon éternel combat</h2>
-          <p>L&apos;autobiographie d&apos;une femme qui refuse de se laisser définir par ses limites</p>
+
+        <div className="grid md:grid-cols-2 gap-8">
+
+          <div className="space-y-3">
+            <Image src="/file.svg" alt="icon" width={40} height={60} className="rounded-md" />
+            <h3 className="text-h5 font-heading">Les secrets de Clara</h3>
+            <p className="text-sm-custom text-neutral-500">
+              Un thriller sombre qui explore les mystères enfouis au cœur des familles
+            </p>
+          </div>
+
+          <div className="space-y-3">
+            <Image src="/file.svg" alt="icon" width={40} height={60} className="rounded-md" />
+            <h3 className="text-h5 font-heading">Mon éternel combat</h3>
+            <p className="text-sm-custom text-neutral-500">
+              L&apos;autobiographie d&apos;une femme qui refuse de se laisser définir par ses limites
+            </p>
+          </div>
+
+          <div className="space-y-3">
+            <Image src="/file.svg" alt="icon" width={40} height={60} className="rounded-md" />
+            <h3 className="text-h5 font-heading">Nos blessures sous la peau</h3>
+            <p className="text-sm-custom text-neutral-500">
+              Une romance où deux âmes blessées apprennent à se reconstruire ensemble
+            </p>
+          </div>
+
         </div>
-        <div>
-            <Image
-          src="/file.svg"
-          alt="icon"
-          width={40}
-          height={60}
-          className="rounded-md object-cover"
-        /> 
-          <h2>Mon éternel combat</h2>
-          <p>L&apos;autobiographie d&apos;une femme qui refuse de se laisser définir par ses limites</p>
-        </div>
-        <div>
-            <Image
-          src="/file.svg"
-          alt="icon"
-          width={40}
-          height={60}
-          className="rounded-md object-cover"
-        /> 
-          <h2>Nos blessures sous la peau</h2>
-          <p>Une romance ou deux ames blessées apprennent à se reconstruire ensemble</p>
-        </div>
-        <div>
-            <Image
-          src="/file.svg"
-          alt="icon"
-          width={40}
-          height={60}
-          className="rounded-md object-cover"
-        /> 
-          <h2>Nos blessures sous la peau</h2>
-          <p>Une romance ou deux ames blessées apprennent à se reconstruire ensemble</p>
-        </div>
-        <div>
+
+        <div className="flex gap-4">
           <Button>
-            <Link href="src/books">Voir</Link>
-          </Button >
+            <Link href="/books">Voir</Link>
+          </Button>
+
+          <Button>
+            <Link href="/books">Tous</Link>
+          </Button>
+        </div>
+
+      </div>
+
+
+      {/* AUTEURE */}
+      <div className="space-y-6 max-w-2xl">
+
+        <h2 className="text-h4 font-heading">Auteure</h2>
+
+        <h3 className="text-h2 font-heading">
+          Une handi-auteure
+        </h3>
+
+        <p className="text-md-custom text-neutral-500">
+          Chloé Simart écrit des histoires où le handicap n&apos;est pas un obstacle
+          mais une part authentique de l&apos;existence.
+        </p>
+
+        <div className="flex gap-4">
+          <Button>
+            <Link href="/about">Découvrir</Link>
+          </Button>
+
+          <Button>
+            <Link href="/about">Plus</Link>
+          </Button>
+        </div>
+
+      </div>
+
+
+      {/* NEWS */}
+      <div className="space-y-6 max-w-xl">
+
+        <h2 className="text-h2 font-heading">
+          Restez informé des nouvelles
+        </h2>
+
+        <p className="text-md-custom text-neutral-500">
+          Recevez les actualités et les dates de sortie de mes prochains romans.
+        </p>
+
+        <div className="flex gap-4">
+          <input
+            type="text"
+            placeholder="Votre email"
+            className="border border-border rounded-md px-4 py-2 w-full"
+          />
+
+          <Button variant="primary">
+            S&apos;inscrire
+          </Button>
+        </div>
+
+        <p className="text-xs-custom text-neutral-400">
+          En vous abonnant, vous acceptez notre politique de confidentialité.
+        </p>
+
+      </div>
+
+
+      {/* QUOTE */}
+      <div className="max-w-xl space-y-3">
+        <h2 className="text-h3 font-heading">
+          Parce que survivre n&apos;était que le début
+        </h2>
+
+        <p className="text-md-custom text-neutral-500">
+          &quot;Parce que survivre n&apos;était que le début...&quot;
           <br />
-          <Button>
-            <Link href="src/books">Tous</Link>
-          </Button>
-        </div>
+          — Mon éternel combat
+        </p>
       </div>
-
-      <div>
-        <h2>Auteure</h2>
-        <h1 className="text-2xl font-semibold">Une handi-auteure</h1>
-        <p>Chloé Simart écrit des histoires ou le handicap n&apos;est pas un obstacle mas une part authentique de l&apos;existance. Elle brise les tabous en donnent voix à ceux qu&apos;on oublie souvent.</p>
-        <Button>
-        <Link href="/about/{id}">Découvir </Link>
-        </Button>
-        <Button>
-        <Link href="/about">Plus</Link>
-        </Button>
-        <div>
-          <div className="w-full max-w-md">
-          <Image
-            src="/file.svg"
-            alt="icon"
-            width={40}
-            height={60}
-            className="rounded-md object-cover"
-          />
-        </div>
-          <h2>Sortie ocrobre</h2>
-          <p>Un nouveau roman sortira bientôt !</p>
-        </div>
-        <div>
-          <Image
-            src="/file.svg"
-            alt="icon"
-            width={40}
-            height={60}
-            className="rounded-md object-cover"
-          />
-          <h2>la loge des silences</h2>
-          <p>un thriller ou chaque silence cache une vérité qui attend d&apos;etre decouverte</p>
-        </div>
-        <div>
-          <Image
-            src="/file.svg"
-            alt="icon"
-            width={40}
-            height={60}
-            className="rounded-md object-cover"
-          />
-          <h2>Extrait exclusif</h2>
-          <p>Parce que survivre n&apos;était que le début de cette histoir qui change tout.</p>
-        </div>
-        <div>
-          <Image
-            src="/file.svg"
-            alt="icon"
-            width={40}
-            height={60}
-            className="rounded-md object-cover"
-          />
-          <h2>En savoir plus</h2>
-          <p>Décourvrez le roman complet et plongez dans ses mystères.</p>
-        </div>
-        <div>
-          <Image
-            src="/file.svg"
-            alt="icon"
-            width={40}
-            height={60}
-            className="rounded-md object-cover"
-          />
-          <h2>Short heading here</h2>
-          <p>Décourvrez le roman complet et plongez dans ses mystères.</p>
-        </div>
-        <div>
-          <Button>
-            <Link href="/read">Lire</Link>
-          </Button>
-          <Button>
-            <Link href="/books">Suite</Link>
-          </Button>
-        </div>
-        <div className="w-full max-w-md">
-          <Image
-            src="/books.jpg"
-            alt="pile de livres"
-            width={640}
-            height={60}
-            className="rounded-md object-cover"
-          />
-        </div>
-      </div>
-     
-     <div>
-      <h1>Parce que survivre n&apos;était que le début</h1>
-      <p>&quot;Parce que survivre n&apos;était que le début...&quot; -- <br /> Mon éternel combat</p>
-     </div>
-     <div>
-      <h1>Restez informé des nouvelles</h1>
-      <p>Recevez les actualités et les dates de sortie de mes prochains romans.</p>
-     </div>
-     <div>
-      <input type="text" placeholder="Votre email" />
-      <Button variant="primary">S&apos;inscrire</Button>
-      <p>En vous abonnant, vous acceptez notre politique de confidentialité.</p>
-     </div>
-
 
     </section>
   );
