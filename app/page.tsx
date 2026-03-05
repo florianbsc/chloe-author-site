@@ -4,11 +4,11 @@ import Button from "@/app/src/components/ui/Button";
 
 export default function Home() {
   return (
-    <section className="bg-background text-foreground py-16 space-y-16">
+    <section className="text-foreground py-16 space-y-16">
 
       {/* HERO */}
-      <div className="space-y-4 max-w-xl">
-        <h1 className="text-h1 font-heading">
+      <div className="space-y-4 max-w-xl hero-background">
+        <h1 className="text-h1 ">
           Chloé Simart
         </h1>
 
@@ -17,8 +17,8 @@ export default function Home() {
         </p>
 
         <div className="flex gap-4">
-          <Button>Découvrir</Button>
-          <Button>Lire</Button>
+          <Button variant="primary">Découvrir</Button>
+          <Button variant="secondary">Lire</Button>
         </div>
       </div>
 
@@ -37,8 +37,8 @@ export default function Home() {
       <div className="space-y-8">
 
         <div className="space-y-2">
-          <h2 className="text-h4 font-heading">Romans</h2>
-          <h3 className="text-h2 font-heading">Mes Romans</h3>
+          <h3 className="text-h4 font-heading">Romans</h3>
+          <h1 className="text-h2 font-heading">Mes Romans</h1>
           <p className="text-neutral-500">Disponibles sur Amazon</p>
         </div>
 
