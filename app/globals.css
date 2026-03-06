@@ -10,19 +10,6 @@
 
 @theme {
 
-  /* ---------- Fonts ---------- */
-
-  --font-heading: var(--font-playfair-display);
-  --font-body: var(--font-inter);
-
-
-  /* ---------- Radius ---------- */
-
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-
 
   /* ---------- Typography scale ---------- */
 
@@ -81,18 +68,22 @@
 }
 
 
-
 /* ------------------------------------ */
-/* PRIMITIVE COLORS (BASE PALETTE)                  */
+/* PRIMITIVE COLORS (BASE PALETTE)      */
 /* ------------------------------------ */
 
 :root {
+  /* ---------- Fonts ---------- */
+
+ --playfair-display: 'Playfair Display Variable', serif;
+ --inter: 'Inter Variable', sans-serif;
 
   /* Global radius */
   --radius: 0.625rem;
 
 
   /* ---------- Neutral palette ---------- */
+
 
   --neutral-50: #ffffff;
   --neutral-100: #f5f5f5;
@@ -111,6 +102,7 @@
 
 
   /* ---------- Primary palette (teal) ---------- */
+
 
   --primary-50: #e6f4f1;
   --primary-100: #cde9e4;
@@ -148,6 +140,7 @@
   /* Text */
 
   --text: var(--neutral-900);
+  --blood: var( --text-lg-custom);
 
   /* UI */
 
@@ -160,16 +153,14 @@
   );
 
   --ring: var(--neutral-400);
-
   --input: var(--neutral-200);
 
 }
 
 
 
-
 /* ------------------------------------- */
-/* BASE STYLES                                      */
+/* BASE STYLES                           */
 /* ------------------------------------- */
 
 @layer base {
@@ -186,7 +177,7 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: var(--font-body);
+    font-family: var( --inter);
     line-height: 1.6;
   }
 
@@ -194,43 +185,44 @@
   /* Headings */
 
   h1 {
-    font-family: var(--font-heading);
+    font-family: var(--playfair-display);
     font-size: var(--text-h1);
     line-height: 120%;
+    font-weight: 700;
   }
 
   h2 {
-    font-family: var(--font-heading);
+    font-family: var(--playfair-displayg);
     font-size: var(--text-h2);
     line-height: 120%;
   }
 
   h3 {
-    font-family: var(--font-heading);
+    font-family: var(--playfair-display );
     font-size: var(--text-h3);
     line-height: 120%;
   }
 
   h4 {
-    font-family: var(--font-heading);
+    font-family: var(--playfair-display);
     font-size: var(--text-h4);
     line-height: 120%;
   }
 
   h5 {
-    font-family: var(--font-heading);
+    font-family: var(--playfair-display);
     font-size: var(--text-h5);
     line-height: 120%;
   }
 
   h6 {
-    font-family: var(--font-heading);
+    font-family: var(--playfair-display);
     font-size: var(--text-h6);
     line-height: 150%;
   }
 
   p {
-    font-size: var(--text-base-custom);
+    font-size: var( --inter);
     color: var(--foreground);
     line-height: 1.6;
   }
@@ -246,15 +238,33 @@
 
   h1 { 
     font-size: 2.75rem;
-    line-height: 120%; 
+    line-height: 120%;
+    font-weight: 700;
 }
 
   h2 { font-size: 2rem; }
 
-  h3 { font-size: 1.5rem; }
+  /* h3 { font-size: 1.5rem; } */
+  h3 {
+    font-family: var(--playfair-display );
+    font-size: var(--text-h3);
+    line-height: 120%;
+  }
 
   h4 { font-size: 1.25rem; }
 
   h5 { font-size: 1.125rem; }
+
+  h6 {
+    font-family: var(--inter);
+    font-size: var(--text-h6);
+    line-height: 120%;
+  }
+
+  p {
+    font-size: var( --inter);
+    color: var(--foreground);
+    line-height: 1.6;
+  }
 
 }

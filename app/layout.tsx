@@ -1,22 +1,10 @@
 import type { Metadata } from "next";
-// import { Geist, Geist_Mono } from "next/font/google";
 import Header from "@/app/src/components/layout/Header";
 import Footer from "@/app/src/components/layout/Footer";
-import { Playfair_Display, Inter } from "next/font/google";
+import "@fontsource-variable/playfair-display";
+import "@fontsource-variable/inter";
 
 import "./globals.css";
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-playfair",
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
-  variable: "--font-inter",
-});
 
 export const metadata: Metadata = {
   title: "Chloe Author Site",
@@ -29,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-   <html lang="fr"   className={`${playfair.variable} ${inter.variable}`}>
+   <html lang="fr">
       <body className="font-inter min-h-screen flex flex-col">
         <Header />
         <main className="flex-1 container mx-auto px-4">
