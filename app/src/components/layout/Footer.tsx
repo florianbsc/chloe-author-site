@@ -46,7 +46,7 @@ export default function Footer() {
           <h3 className="font-semibold">Navigation</h3>
           <div className="flex flex-col space-y-2">
             <Link href="/about">À propos</Link>
-            <Link href="/books">Mes romans</Link>
+            <Link href="/romans">Mes romans</Link>
             <Link href="/actualites">Actualités</Link>
             <Link href="/contact">Contact</Link>
             <Link href="https://amazon.fr">Amazon</Link>

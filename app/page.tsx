@@ -22,7 +22,7 @@ export default function Home() {
           <Link href="/about">
             <Button variant="primary">Découvrir</Button>
           </Link>
-          <Link href="/books">
+          <Link href="/romans">
             <Button variant="secondary">Lire</Button>
           </Link>
         </div>
@@ -70,7 +70,7 @@ export default function Home() {
         </div>
 
         <div className="flex gap-4">
-          <Link href="/books">
+          <Link href="/romans">
             <Button variant="primary">Voir</Button>
           </Link>
         </div>

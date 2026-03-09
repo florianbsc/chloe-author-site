@@ -99,7 +99,7 @@ export default function About() {
           </p>
         </div>
         <div>
-          <Link href="/books">
+          <Link href="/romans">
             <Button  variant="third">
               Lire
             </Button>
@@ -113,7 +113,7 @@ export default function About() {
         <h1>Une trajectoire qui parle d&apos;elle-même </h1>
         <p>Chaque nombre représente une lectrice, un lecteur qui à trouvé quelque chose de vrrai dans mes mots.</p>
         <div>
-          <Link href="/books">
+          <Link href="/romans">
             <Button variant="third">
               Découvrir
             </Button>
@@ -300,7 +300,7 @@ export default function About() {
           <h1>Prêt à découvrir mes histoires ?</h1>
           <p>Quatre roman vous attendent, chacun porteur d&apos;une verité differente. Venez les rencontrer sur Amazon.</p>
         </div>
-        <Link href="/books">
+        <Link href="/romans">
           <Button variant="primary">Lire</Button>
         </Link>
         <Link href="/contact">

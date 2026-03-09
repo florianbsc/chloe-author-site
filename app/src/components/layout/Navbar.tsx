@@ -11,7 +11,7 @@ type NavbarProps = {
 const links = [
   { href: "/about", label: "À propos" },
   { href: "/actualites", label: "Actualités" },
-  { href: "/books", label: "Mes Romans" },
+  { href: "/romans", label: "Mes Romans" },
 ];
 
 export default function Navbar({ isMobile = false, onLinkClick }: NavbarProps) {
