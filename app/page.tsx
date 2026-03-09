@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Button from "@/app/src/components/ui/Button";
-import { House, Triangle, Search } from 'lucide-react';
+import { House, PartyPopper, Triangle, Search, Compass, HandFist, Rose } from 'lucide-react';
 
 
 export default function Home() {
@@ -45,24 +45,24 @@ export default function Home() {
 
         <div className="grid md:grid-cols-2 gap-8">
           <div className="space-y-3">
-            <Image src="/file.svg" alt="icon" width={40} height={60} className="rounded-md" />
-            <h3 className="text-h5 font-heading">Les secrets de Clara</h3>
+            <Compass />
+            <h4>Les secrets de Clara</h4>
             <p className="text-sm-custom text-neutral-500">
               Un thriller sombre qui explore les mystères enfouis au cœur des familles
             </p>
           </div>
 
           <div className="space-y-3">
-            <Image src="/file.svg" alt="icon" width={40} height={60} className="rounded-md" />
-            <h3 className="text-h5 font-heading">Mon éternel combat</h3>
+            <HandFist />
+            <h4>Mon éternel combat</h4>
             <p className="text-sm-custom text-neutral-500">
               L&apos;autobiographie d&apos;une femme qui refuse de se laisser définir par ses limites
             </p>
           </div>
 
           <div className="space-y-3">
-            <Image src="/file.svg" alt="icon" width={40} height={60} className="rounded-md" />
-            <h3 className="text-h5 font-heading">Nos blessures sous la peau</h3>
+            <Rose />
+            <h4 className="text-h5 font-heading">Nos blessures sous la peau</h4>
             <p className="text-sm-custom text-neutral-500">
               Une romance où deux âmes blessées apprennent à se reconstruire ensemble
             </p>
@@ -73,9 +73,6 @@ export default function Home() {
           <Link href="/books">
             <Button variant="primary">Voir</Button>
           </Link>
-          <Link href="/books">
-            <Button variant="secondary">Tous</Button>
-          </Link>
         </div>
 
       </div>
@@ -83,7 +80,7 @@ export default function Home() {
 
       {/* AUTEURE */}
       <div className="space-y-6 max-w-2xl">
-        <h3>Auteure</h3>
+        <h5>Auteure</h5>
 
         <h1>Une handi-auteure</h1>
 
@@ -97,10 +94,6 @@ export default function Home() {
           <Link href="/about">
               <Button variant="primary">Découvrir</Button>
           </Link>
-
-          <Link href="/#">
-            <Button variant="secondary">Plus</Button>
-          </Link>
          
         </div>
 
@@ -109,44 +102,42 @@ export default function Home() {
       {/* Liste infos */}
       <div className="space-y-4 max-w-xl bg-green-50">
         <div>
-          <Image src="/globe.svg" alt="icon" width={24} height={24} />
-          <h3>Sortie octobre</h3>
+          <PartyPopper />
+              <h4>Sortie octobre</h4>
 
           <p>Le 29 octobre arrive enfin le moment de la révélation.</p>
         </div>
         <div>
           <House />
-          <h3>La Loge des Silences</h3>
+          <h4>La Loge des Silences</h4>
 
           <p>Un thrille où chaque silence cache une vérité qui attend d&apos;être découverte.</p>
         </div>
         <div>
           <Triangle />
-          <h3>Ectait exclusif</h3>
+          <h4>Ectait exclusif</h4>
           <p>Parce que survivre n&apos;était que le début de cette histroire qui change tout.</p>
 
         </div>
         <div>
           <Search></Search>
-          <h3>En savoir plus</h3>
+          <h4>En savoir plus</h4>
 
           <p>Découvrez le roman complet et plongez dans ses mystères.</p>
         </div>
         <div  className="flex gap-4">
-          <Button variant="secondary">Lire</Button>
-          <Button variant="secondary">Suite</Button>
+            <Link href="/books">
+              <Button variant="secondary">Lire</Button>
+            </Link>
         </div>
         <Image
           src="/books.jpg"
           alt="Pile de livres sur une table"
           width={640}
           height={960}
-          className="rounded-lg object-cover"
         />
       </div>
-      {/* <div>
-        <h1>Parce que survivre n'était que le début </h1>
-      </div> */}
+    
 
       {/* QUOTE */}
       <div className="max-w-xl space-y-3">
@@ -180,11 +171,11 @@ export default function Home() {
           />
 
           <Button variant="primary">
-            S&apos;inscrire
+            S&apos;abonner
           </Button>
         </div>
 
-        <p className="text-xs-custom text-neutral-400">
+        <p >
           En vous abonnant, vous acceptez notre politique de confidentialité.
         </p>
 
