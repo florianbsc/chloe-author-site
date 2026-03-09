@@ -9,9 +9,9 @@ type NavbarProps = {
 };
 
 const links = [
-  { href: "/src/about", label: "À propos" },
-  { href: "/src/actualites", label: "Actualités" },
-  { href: "/src/books", label: "Mes Romans" },
+  { href: "/about", label: "À propos" },
+  { href: "/actualites", label: "Actualités" },
+  { href: "/books", label: "Mes Romans" },
 ];
 
 export default function Navbar({ isMobile = false, onLinkClick }: NavbarProps) {
