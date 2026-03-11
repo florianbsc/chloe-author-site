@@ -1,39 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import Button from "@/app/src/components/ui/Button";
+import HomeHero from "@/app/src/components/organisms/home/HomeHero";
 import { House, PartyPopper, Triangle, Search, Compass, HandFist, Rose } from 'lucide-react';
 
 
 export default function Home() {
   return (
-    <section className="text-foreground py-16 space-y-16 ">
-
-      {/* HERO */}
-      <div className="space-y-4 max-w-xl bg-green-50">
-        <h1>
-          Chloé Simart
-        </h1>
-
-        <p>
-          Une auteure pas comme les autres. Auteure de roman qui touche l&apos;âme.
-        </p>
-
-        <div className="flex gap-4">
-          <Link href="/about">
-            <Button variant="primary">Découvrir</Button>
-          </Link>
-          <Link href="/romans">
-            <Button variant="secondary">Lire</Button>
-          </Link>
-        </div>
-          <Image
-          className="w-full max-w-md"
-          src="/books.jpg"
-          alt="Pile de livres sur une table"
-          width={640}
-          height={960}
-          />
-      </div>
+    <>
+      <HomeHero />
+      <section className="text-foreground py-16 space-y-16 ">
 
       {/* ROMANS */}
       <div className="space-y-8">
@@ -184,6 +160,7 @@ export default function Home() {
 
 
 
-    </section>
+      </section>
+    </>
   );
 }
