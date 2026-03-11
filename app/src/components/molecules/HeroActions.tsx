@@ -1,22 +1,51 @@
 import Button from "@/app/src/components/ui/Button";
+import { cn } from "@/app/src/lib/utils";
 
-export default function HeroActions() {
+type HeroActionsProps = {
+  primaryLabel?: string;
+  primaryHref?: string;
+  primaryVariant?: "primary" | "secondary" | "third";
+  primaryClassName?: string;
+  secondaryLabel?: string;
+  secondaryHref?: string;
+  secondaryVariant?: "primary" | "secondary" | "third";
+  secondaryClassName?: string;
+  className?: string;
+};
+
+export default function HeroActions({
+  primaryLabel = "Découvrir",
+  primaryHref = "/about",
+  primaryVariant = "primary",
+  primaryClassName,
+  secondaryLabel = "Lire",
+  secondaryHref = "/romans",
+  secondaryVariant = "third",
+  secondaryClassName,
+  className,
+}: HeroActionsProps) {
   return (
-    <div className="flex items-start gap-4">
+    <div className={cn("flex items-start gap-4", className)}>
       <Button
-        href="/about"
-        variant="primary"
-        className="rounded-[6px] border border-[#2abab0] bg-[#2abab0] px-3 py-1.5 text-[0.875rem] leading-[1.6] lg:text-[1.125rem]"
+        href={primaryHref}
+        variant={primaryVariant}
+        className={cn(
+          "rounded-[6px] border border-[#2abab0] bg-[#2abab0] px-3 py-1.5 text-[0.875rem] leading-[1.6] lg:text-[1.125rem]",
+          primaryClassName,
+        )}
       >
-        Découvrir
+        {primaryLabel}
       </Button>
 
       <Button
-        href="/romans"
-        variant="third"
-        className="rounded-[6px] border-[rgba(12,12,12,0.15)] px-3 py-1.5 text-[0.875rem] leading-[1.6] hover:bg-[#0c0c0c]/5 lg:text-[1.125rem]"
+        href={secondaryHref}
+        variant={secondaryVariant}
+        className={cn(
+          "rounded-[6px] border-[rgba(12,12,12,0.15)] px-3 py-1.5 text-[0.875rem] leading-[1.6] hover:bg-[#0c0c0c]/5 lg:text-[1.125rem]",
+          secondaryClassName,
+        )}
       >
-        Lire
+        {secondaryLabel}
       </Button>
     </div>
   );

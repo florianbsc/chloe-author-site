@@ -1,112 +1,15 @@
 import Button from "@/app/src/components/ui/Button";
+import AboutHero from "@/app/src/components/organisms/about/AboutHero";
 // import { Import } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { Map, User, NotebookPen, View, Linkedin, Twitter, } from 'lucide-react';
+import { Linkedin, Twitter } from "lucide-react";
 
 
 export default function About() {
   return (
     <div className="flex flex-col">
-
-      <section  className="space-y-4 max-w-xl bg-green-50" >
-        <h4>
-          Auteure
-        </h4>
-
-        <h1>
-          À propos de moi
-        </h1>
-
-        <p>
-          Je suis une auteure française qui écrit des histoires où le handicap n’est pas une limite mais une réalité vivante. 
-          Mes romans mettent en lumière des personnages authentiques, des âmes qui se battent et qui aiment, loin des clichés.
-        </p>
-
-        <div>
-          <Link href="/about">
-            <Button variant="primary">Découvrir </Button>
-          </Link>
-
-          <Link href="/contact"> 
-            <Button variant="secondary">Contact</Button>
-          </Link>
-        </div>
-      </section>
-
-      <section>
-        
-           <Map></Map>
-        
-
-          <h3>
-            Mon parcours
-          </h3>
-
-          <p>
-            J’ai commencé à écrire sans savoir que mes histoires changeraient des vies. 
-            Le handicap m’a enseigné la résilience, et l’écriture m’a donné une voix.
-          </p>
-
-
-
-        <div>
-          <User></User>
-
-          <h3>
-            L’écriture inclusive
-          </h3>
-
-          <p>
-            Je refuse les stéréotypes. Mes personnages vivent, aiment, souffrent avec authenticité, loin des regards pitoyables.
-          </p>
-        </div>
-
-
-        <div>
-          <View></View>
-          <h3 >
-            Une vision différente
-          </h3>
-
-          <p>
-            La romance existe pour tous. Elle n’a pas de limite, pas de forme préétablie, juste des cœurs qui se trouvent.
-          </p>
-        </div>
-
-
-        <div>
-          <NotebookPen></NotebookPen>
-          <h3>
-            Pourquoi j’écris
-          </h3>
-
-          <p>
-            Parce que chaque histoire compte. Parce que le silence tue plus que les mots ne guérissent.
-          </p>
-        </div>
-
-
-        <div>
-          <NotebookPen></NotebookPen>
-
-          <h3>
-            Short heading here
-          </h3>
-
-          <p>
-            Texte descriptif correspondant à cette section.
-          </p>
-        </div>
-        <div>
-          <Link href="/romans">
-            <Button  variant="third">
-              Lire
-            </Button>
-          </Link>
-        </div>
-        <Image src="/books.jpg" alt="About me" width={400} height={300} className=" object-cover mx-auto mt-8" />
-      </section>
+      <AboutHero />
 
       <section>
         <h4>Chiffres</h4>

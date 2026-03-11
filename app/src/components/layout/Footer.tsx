@@ -1,108 +1,181 @@
 import Link from "next/link";
-import {
-  Facebook,
-  Instagram,
-  Twitter,
-  Linkedin,
-  Youtube,
-} from "lucide-react";
-// import NewsletterForm from "@/app/src/components/ellements/NewsletterForm";
+import Image from "next/image";
 
+type NavItem = {
+  label: string;
+  href: string;
+  external?: boolean;
+};
+
+type SocialItem = {
+  label: string;
+  href: string;
+  icon: string;
+};
+
+const NAVIGATION_LINKS: NavItem[] = [
+  { label: "À propos", href: "/about" },
+  { label: "Mes romans", href: "/romans" },
+  { label: "Actualités", href: "/actualites" },
+  { label: "Contact", href: "/contact" },
+  { label: "Amazon", href: "https://amazon.fr", external: true },
+];
+
+const CONTACT_LINKS: NavItem[] = [
+  { label: "Email", href: "/contact" },
+  { label: "Téléphone", href: "/contact" },
+  { label: "Adresse", href: "/contact" },
+  { label: "Formulaire", href: "/contact" },
+  { label: "Partenaires", href: "/contact" },
+];
+
+const SOCIAL_LINKS: SocialItem[] = [
+  { label: "Facebook", href: "#", icon: "/icons/footer/facebook.svg" },
+  { label: "Instagram", href: "#", icon: "/icons/footer/instagram.svg" },
+  { label: "Twitter", href: "#", icon: "/icons/footer/twitter.svg" },
+  { label: "LinkedIn", href: "#", icon: "/icons/footer/linkedin.svg" },
+  { label: "YouTube", href: "#", icon: "/icons/footer/youtube.svg" },
+];
+
+const LEGAL_LINKS: NavItem[] = [
+  { label: "Politique de confidentialité", href: "/privacy" },
+  { label: "Conditions d'utilisation", href: "/terms" },
+  { label: "Paramètres de cookies", href: "/cookies" },
+];
+
+function FooterLinksColumn({
+  title,
+  links,
+}: {
+  title: string;
+  links: NavItem[];
+}) {
+  return (
+    <div className="min-w-0 flex-1 space-y-4">
+      <h3 className="text-[1.125rem] font-semibold leading-[1.6] text-[#0c0c0c]">
+        {title}
+      </h3>
+      <ul>
+        {links.map((link) => (
+          <li key={link.label} className="py-2">
+            {link.external ? (
+              <a
+                href={link.href}
+                target="_blank"
+                rel="noreferrer"
+                className="text-[1rem] leading-[1.6] text-[#0c0c0c]"
+              >
+                {link.label}
+              </a>
+            ) : (
+              <Link href={link.href} className="text-[1rem] leading-[1.6] text-[#0c0c0c]">
+                {link.label}
+              </Link>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-100 mt-16">
-      <div className="max-w-md mx-auto px-6 py-10 space-y-10 text-sm text-gray-700">
-        
-        {/* Logo + Newsletter */}
-        {/* <NewsletterForm></NewsletterForm> */}
-
-        <div className="space-y-4">
-          <h2 className="text-2xl font-semibold">Logo</h2>
-
-          <p className="text-gray-600">
-            Recevez les actualités et dates de sortie de mes romans.
-          </p>
-
-          <div className="space-y-3">
-            <input
-              type="email"
-              placeholder="Votre email"
-              className="w-full border-b border-gray-300 bg-transparent py-2 focus:outline-none focus:border-black"
+    <footer className="bg-[#e9e9ea] px-5 py-16 md:px-8 lg:px-16 lg:py-20">
+      <div className="mx-auto w-full max-w-[1280px] space-y-16 lg:space-y-20">
+        <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:gap-32">
+          <div className="w-full max-w-[500px] space-y-6">
+            <Image
+              src="/brand/logo-wide.svg"
+              alt="Logo Chloé Simart"
+              width={84}
+              height={36}
+              className="h-9 w-[84px]"
             />
 
-            <button className="w-full border border-gray-300 rounded-md py-2 font-medium hover:bg-gray-200 transition">
-              S&apos;abonner
-            </button>
-
-            <p className="text-xs text-gray-500">
-              En vous abonnant, vous acceptez notre politique de confidentialité et consentez à recevoir nos communications.
+            <p className="text-[1.125rem] leading-[1.6] text-[#0c0c0c]">
+              Recevez les actualités et dates de sortie de mes romans.
             </p>
+
+            <div className="space-y-3">
+              <form className="flex w-full flex-col gap-4 sm:flex-row sm:items-start">
+                <div className="flex min-h-px min-w-px flex-1 items-center border-b border-[rgba(12,12,12,0.15)] py-2">
+                  <label htmlFor="footer-newsletter-email" className="sr-only">
+                    Votre email
+                  </label>
+                  <input
+                    id="footer-newsletter-email"
+                    name="email"
+                    type="email"
+                    required
+                    placeholder="Votre email"
+                    className="w-full border-0 bg-transparent text-[1.125rem] leading-[1.6] text-[#0c0c0c] placeholder:text-[#0c0c0c99] outline-none"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="inline-flex items-center justify-center rounded-[6px] border border-[rgba(12,12,12,0.15)] px-3 py-1.5 text-[1.125rem] font-medium leading-[1.6] text-[#0c0c0c] transition hover:bg-black/5"
+                >
+                  S&apos;abonner
+                </button>
+              </form>
+
+              <p className="text-[0.75rem] leading-[1.6] text-[#0c0c0c]">
+                En vous abonnant, vous acceptez notre politique de confidentialité
+                et consentez à recevoir nos communications.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid w-full grid-cols-1 gap-10 md:grid-cols-3">
+            <FooterLinksColumn title="Navigation" links={NAVIGATION_LINKS} />
+            <FooterLinksColumn title="Contact" links={CONTACT_LINKS} />
+
+            <div className="min-w-0 flex-1 space-y-4">
+              <h3 className="text-[1.125rem] font-semibold leading-[1.6] text-[#0c0c0c]">
+                Suivez-moi
+              </h3>
+              <ul>
+                {SOCIAL_LINKS.map((social) => (
+                  <li key={social.label} className="py-2">
+                    <a
+                      href={social.href}
+                      className="inline-flex items-center gap-3 text-[1rem] leading-[1.6] text-[#0c0c0c]"
+                    >
+                      <Image
+                        src={social.icon}
+                        alt=""
+                        width={24}
+                        height={24}
+                        aria-hidden="true"
+                        className="size-6"
+                      />
+                      {social.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
 
-        {/* Navigation */}
-        <div className="space-y-3">
-          <h3 className="font-semibold">Navigation</h3>
-          <div className="flex flex-col space-y-2">
-            <Link href="/about">À propos</Link>
-            <Link href="/romans">Mes romans</Link>
-            <Link href="/actualites">Actualités</Link>
-            <Link href="/contact">Contact</Link>
-            <Link href="https://amazon.fr">Amazon</Link>
-          </div>
-        </div>
+        <div className="space-y-8 border-t border-[rgba(12,12,12,0.15)] pt-8">
+          <div className="flex flex-col gap-4 text-[1rem] leading-[1.6] text-[#0c0c0c] lg:flex-row lg:items-center lg:justify-between">
+            <p>© 2025 Chloé Simart. Tous droits réservés.</p>
 
-        {/* Contact */}
-        <div className="space-y-3">
-          <h3 className="font-semibold">Contact</h3>
-          <div className="flex flex-col space-y-2">
-            <Link href="#">Email</Link>
-            <Link href="#">Téléphone</Link>
-            <Link href="#">Adresse</Link>
-            <Link href="/contact">Formulaire</Link>
-            <Link href="#">Partenaires</Link>
-          </div>
-        </div>
-
-        {/* Réseaux sociaux */}
-        <div className="space-y-3">
-          <h3 className="font-semibold">Suivez-moi</h3>
-          <div className="flex flex-col space-y-3">
-            <div className="flex items-center gap-3">
-              <Facebook size={18} />
-              <span>Facebook</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <Instagram size={18} />
-              <span>Instagram</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <Twitter size={18} />
-              <span>Twitter</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <Linkedin size={18} />
-              <span>LinkedIn</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <Youtube size={18} />
-              <span>YouTube</span>
+            <div className="flex flex-wrap items-center gap-6">
+              {LEGAL_LINKS.map((link) => (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className="text-[1rem] leading-[1.6] text-[#0c0c0c] underline"
+                >
+                  {link.label}
+                </Link>
+              ))}
             </div>
           </div>
-        </div>
-
-        {/* Séparateur */}
-        <div className="border-t border-gray-300 pt-6 space-y-3 text-xs text-gray-600">
-          <div className="flex flex-col space-y-2">
-            <Link href="/privacy">Politique de confidentialité</Link>
-            <Link href="/terms">Conditions d&apos;utilisation</Link>
-            <Link href="/cookies">Paramètres de cookies</Link>
-          </div>
-
-          <p className="pt-4">
-            © 2025 Chloé Simart. Tous droits réservés.
-          </p>
         </div>
       </div>
     </footer>

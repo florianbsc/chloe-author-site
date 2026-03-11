@@ -1,60 +1,161 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
-import Navbar from "@/app/src/components/layout/Navbar";
+import { ChevronDown, Menu, X } from "lucide-react";
+
+const PRIMARY_LINKS = [
+  { href: "/about", label: "À propos" },
+  { href: "/actualites", label: "Actualités" },
+];
+
+const ROMAN_LINKS = [
+  { href: "/romans", label: "Les secrets de Clara" },
+  { href: "/romans", label: "Mon éternel combat" },
+];
 
 export default function Header() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isRomansMenuOpen, setIsRomansMenuOpen] = useState(false);
 
-  function toggleMenu() {
-    setIsOpen((prev) => !prev);
+  function closeMobileMenu() {
+    setIsMobileMenuOpen(false);
   }
 
-  function closeMenu() {
-    setIsOpen(false);
+  function closeAllMenus() {
+    setIsMobileMenuOpen(false);
+    setIsRomansMenuOpen(false);
   }
 
   return (
-    <header className="sticky top-0 z-50 border-b bg-white">
-      <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        
-        {/* Logo */}
-        <Link
-          href="/"
-          className="text-xl font-semibold tracking-tight"
-          onClick={closeMenu}
-        >
-          LOGO
+    <header className="relative z-50 bg-[#e9f8f7]">
+      <div className="mx-auto flex w-full items-center justify-between gap-6 px-5 py-3 md:px-8 lg:px-16">
+        <div className="hidden min-h-px min-w-px flex-1 items-center lg:flex">
+          <nav className="flex items-center gap-8 text-[1.125rem] leading-[1.6] text-[#0c0c0c]">
+            {PRIMARY_LINKS.map((link) => (
+              <Link key={link.href} href={link.href}>
+                {link.label}
+              </Link>
+            ))}
+
+            <div
+              className="relative"
+              onMouseEnter={() => setIsRomansMenuOpen(true)}
+              onMouseLeave={() => setIsRomansMenuOpen(false)}
+            >
+              <button
+                type="button"
+                className="inline-flex items-center gap-1"
+                aria-haspopup="menu"
+                aria-expanded={isRomansMenuOpen}
+                onClick={() => setIsRomansMenuOpen((prev) => !prev)}
+              >
+                Mes romans
+                <ChevronDown
+                  aria-hidden="true"
+                  className={`size-5 transition-transform ${
+                    isRomansMenuOpen ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+
+              {isRomansMenuOpen && (
+                <div
+                  role="menu"
+                  className="absolute left-0 top-full mt-2 w-[222px] rounded-lg border border-[rgba(12,12,12,0.15)] bg-[#e9f8f7] p-6"
+                >
+                  <div className="flex flex-col gap-4 text-[1.125rem] leading-[1.6] text-[#0c0c0c]">
+                    {ROMAN_LINKS.map((roman) => (
+                      <Link
+                        key={roman.label}
+                        href={roman.href}
+                        role="menuitem"
+                        onClick={() => setIsRomansMenuOpen(false)}
+                      >
+                        {roman.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          </nav>
+        </div>
+
+        <Link href="/" className="shrink-0" onClick={closeAllMenus}>
+          <Image
+            src="/brand/logo-wide.svg"
+            alt="Logo Chloé Simart"
+            width={84}
+            height={36}
+            className="h-9 w-[84px]"
+          />
         </Link>
 
-        {/* Desktop Navigation */}
-        <Navbar />
+        <div className="hidden min-h-px min-w-px flex-1 items-center justify-end lg:flex">
+          <Link
+            href="/about"
+            className="inline-flex items-center justify-center rounded-[6px] border border-[#2abab0] bg-[#2abab0] px-2.5 py-1 text-[1.125rem] font-medium leading-[1.6] text-white transition hover:bg-[#239f96]"
+          >
+            Contactez-moi
+          </Link>
+        </div>
 
-        {/* Mobile Toggle */}
-        <button
-          onClick={toggleMenu}
-          className="md:hidden p-2 rounded-md hover:bg-gray-100 transition-colors"
-          aria-expanded={isOpen}
-          aria-controls="mobile-menu"
-          aria-label="Toggle navigation menu"
+        <div className="flex flex-1 justify-end lg:hidden">
+          <button
+            type="button"
+            onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+            className="rounded-md p-2 text-[#0c0c0c] hover:bg-black/5"
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-menu"
+            aria-label="Ouvrir le menu"
+          >
+            {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
+      </div>
+
+      {isMobileMenuOpen && (
+        <div
+          id="mobile-menu"
+          className="border-t border-[rgba(12,12,12,0.15)] bg-[#e9f8f7] px-5 py-4 md:px-8"
         >
-          {isOpen ? <X size={22} /> : <Menu size={22} />}
-        </button>
-      </div>
+          <nav className="flex flex-col gap-4 text-[1.125rem] leading-[1.6] text-[#0c0c0c]">
+            {PRIMARY_LINKS.map((link) => (
+              <Link key={link.href} href={link.href} onClick={closeMobileMenu}>
+                {link.label}
+              </Link>
+            ))}
 
-      {/* Mobile Menu */}
-      <div
-        id="mobile-menu"
-        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          isOpen
-            ? "max-h-96 opacity-100 border-t"
-            : "max-h-0 opacity-0"
-        }`}
-      >
-        <Navbar isMobile onLinkClick={closeMenu} />
-      </div>
+            <div className="space-y-3">
+              <Link href="/romans" onClick={closeMobileMenu}>
+                Mes romans
+              </Link>
+              <div className="pl-4">
+                {ROMAN_LINKS.map((roman) => (
+                  <Link
+                    key={roman.label}
+                    href={roman.href}
+                    onClick={closeMobileMenu}
+                    className="block py-1 text-[1rem]"
+                  >
+                    {roman.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            <Link
+              href="/about"
+              onClick={closeMobileMenu}
+              className="mt-2 inline-flex w-full items-center justify-center rounded-[6px] border border-[#2abab0] bg-[#2abab0] px-3 py-1.5 text-[1rem] font-medium leading-[1.6] text-white"
+            >
+              Contactez-moi
+            </Link>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }
