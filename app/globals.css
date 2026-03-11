@@ -2,269 +2,346 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
+/* ======================================== */
+/* GLOBALS.CSS - SYSTÈME DE DESIGN COMPLET */
+/* ======================================== */
+/*
+ * Ce fichier définit le système de design de l'application :
+ * 1. Imports : Charge Tailwind CSS et ses extensions
+ * 2. Design System Tokens : Variables Tailwind natives
+ * 3. Primitive Colors : Palette de couleurs brute
+ * 4. UI Tokens : Couleurs sémantiques pour l'interface
+ * 5. Base Styles : Styles globaux appliqués à tous les éléments
+ * 6. Responsive : Adaptations mobiles
+ */
+
+/* ---------------------------------------- */
+/* 1. IMPORTS - CHARGEMENT DES DÉPENDANCES */
+/* ---------------------------------------- */
+
+@import "tailwindcss";        /* Charge le framework Tailwind CSS */
+@import "tw-animate-css";     /* Ajoute des animations CSS personnalisées */
+@import "shadcn/tailwind.css"; /* Styles des composants shadcn/ui */
+
 
 
 /* ---------------------------------------- */
-/* DESIGN SYSTEM TOKENS (TAILWIND THEME VARIABLES)  */
+/* 2. DESIGN SYSTEM TOKENS (TAILWIND THEME VARIABLES)  */
 /* ---------------------------------------- */
+/*
+ * Variables natives Tailwind qui peuvent être utilisées directement
+ * dans les classes CSS (ex: text-h1, bg-primary-500)
+ * Ces variables étendent le thème Tailwind par défaut
+ */
 
 @theme {
+  /* ---------- Échelle typographique ---------- */
+  /* Tailles de police pour tous les niveaux de texte */
 
+  /* Display + Headings - Titres principaux */
+  --text-display: 5.25rem;  /* Très grand titre (héro) */
+  --text-h1: 3rem;          /* Titre principal */
+  --text-h2: 2.75rem;       /* Sous-titre */
+  --text-h3: 2rem;          /* Titre de section */
+  --text-h4: 1.5rem;        /* Titre d'article */
+  --text-h5: 1.25rem;       /* Petit titre */
+  --text-h6: 1.125rem;      /* Très petit titre */
 
-  /* ---------- Typography scale ---------- */
+  /* Body text - Texte de corps */
+  --text-lg-custom: 1.625rem;   /* Grand paragraphe */
+  --text-md-custom: 1.25rem;    /* Paragraphe moyen */
+  --text-base-custom: 1.125rem; /* Paragraphe standard */
+  --text-sm-custom: 1rem;       /* Petit texte */
+  --text-xs-custom: 0.75rem;    /* Très petit texte */
 
-  /* Display + Headings */
-  --text-display: 5.25rem;
-  --text-h1: 3rem;
-  --text-h2: 2.75rem;
-  --text-h3: 2rem;
-  --text-h4: 1.5rem;
-  --text-h5: 1.25rem;
-  --text-h6: 1.125rem;
+  /* ---------- Mapping des couleurs Tailwind ---------- */
+  /* Relie les variables CSS aux classes Tailwind */
 
-  /* Body text */
-  --text-lg-custom: 1.625rem;
-  --text-md-custom: 1.25rem;
-  --text-base-custom: 1.125rem;
-  --text-sm-custom: 1rem;
-  --text-xs-custom: 0.75rem;
+  /* Couleurs de base de l'interface */
+  --color-background: var(--background);    /* Fond de page */
+  --color-foreground: var(--foreground);    /* Texte principal */
+  --color-hero: var(--hero-background);     /* Fond de la section hero */
+  --color-border: var(--border);            /* Bordures */
+  --color-ring: var(--ring);                /* Focus rings */
+  --color-input: var(--input);              /* Champs de formulaire */
+  --color-accent: var(--accent);            /* Éléments accentués */
 
-
-  /* ---------- Tailwind color mapping ---------- */
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-hero: var(--hero-background);
-  --color-border: var(--border);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-accent: var(--accent);
-
+  /* Couleur primaire principale */
   --color-primary: var(--primary-500);
 
-  /* Primary palette */
-  --color-primary-50: var(--primary-50);
-  --color-primary-100: var(--primary-100);
-  --color-primary-200: var(--primary-200);
-  --color-primary-300: var(--primary-300);
-  --color-primary-400: var(--primary-400);
-  --color-primary-500: var(--primary-500);
-  --color-primary-600: var(--primary-600);
-  --color-primary-700: var(--primary-700);
-  --color-primary-800: var(--primary-800);
-  --color-primary-900: var(--primary-900);
+  /* Palette primaire complète (teal) */
+  --color-primary-50: var(--primary-50);    /* Très clair */
+  --color-primary-100: var(--primary-100);  /* Clair */
+  --color-primary-200: var(--primary-200);  /* Moyen-clair */
+  --color-primary-300: var(--primary-300);  /* Moyen */
+  --color-primary-400: var(--primary-400);  /* Moyen-foncé */
+  --color-primary-500: var(--primary-500);  /* Principal */
+  --color-primary-600: var(--primary-600);  /* Fonçé */
+  --color-primary-700: var(--primary-700);  /* Très foncé */
+  --color-primary-800: var(--primary-800);  /* Extrêmement foncé */
+  --color-primary-900: var(--primary-900);  /* Noir-vert */
 
-  /* Neutral palette */
-  --color-neutral-50: var(--neutral-50);
-  --color-neutral-100: var(--neutral-100);
-  --color-neutral-200: var(--neutral-200);
-  --color-neutral-300: var(--neutral-300);
-  --color-neutral-400: var(--neutral-400);
-  --color-neutral-500: var(--neutral-500);
-  --color-neutral-600: var(--neutral-600);
-  --color-neutral-700: var(--neutral-700);
-  --color-neutral-800: var(--neutral-800);
-  --color-neutral-900: var(--neutral-900);
+  /* Palette neutre complète (gris) */
+  --color-neutral-50: var(--neutral-50);    /* Blanc */
+  --color-neutral-100: var(--neutral-100);  /* Gris très clair */
+  --color-neutral-200: var(--neutral-200);  /* Gris clair */
+  --color-neutral-300: var(--neutral-300);  /* Gris moyen-clair */
+  --color-neutral-400: var(--neutral-400);  /* Gris moyen */
+  --color-neutral-500: var(--neutral-500);  /* Gris */
+  --color-neutral-600: var(--neutral-600);  /* Gris foncé */
+  --color-neutral-700: var(--neutral-700);  /* Gris très foncé */
+  --color-neutral-800: var(--neutral-800);  /* Gris extrême */
+  --color-neutral-900: var(--neutral-900);  /* Quasi-noir */
 
 }
 
 
 /* ------------------------------------ */
-/* PRIMITIVE COLORS (BASE PALETTE)      */
+/* 3. COULEURS PRIMITIVES (PALETTE DE BASE) */
 /* ------------------------------------ */
+/*
+ * Définition des couleurs brutes (hexadécimales) et polices
+ * Ces variables sont la "source de vérité" du système de couleurs
+ * Elles sont utilisées par les tokens UI dans la section suivante
+ */
 
 :root {
-  /* ---------- Fonts ---------- */
+  /* ---------- Polices ---------- */
+  /* Définition des familles de polices utilisées dans l'application */
 
- --playfair-display: 'Playfair Display Variable', serif;
- --inter: 'Inter Variable', sans-serif;
+  --playfair-display: 'Playfair Display Variable', serif;  /* Police serif pour les titres */
+  --inter: 'Inter Variable', sans-serif;                  /* Police sans-serif pour le corps */
 
-  /* Global radius */
-  --radius: 0.625rem;
+  /* ---------- Rayon global ---------- */
+  /* Rayon de bordure appliqué aux éléments arrondis */
+  --radius: 0.625rem;  /* 10px - arrondi moyen */
 
+  /* ---------- Palette neutre (gris) ---------- */
+  /* Échelle de gris du plus clair au plus foncé */
 
-  /* ---------- Neutral palette ---------- */
+  --neutral-50: #ffffff;   /* Blanc pur */
+  --neutral-100: #f5f5f5;  /* Gris très très clair */
+  --neutral-200: #e5e5e5;  /* Gris très clair */
+  --neutral-300: #d4d4d4;  /* Gris clair */
+  --neutral-400: #a3a3a3;  /* Gris moyen */
 
+  --neutral-500: #737373;  /* Gris standard */
+  --neutral-600: #525252;  /* Gris foncé */
+  --neutral-700: #404040;  /* Gris très foncé */
 
-  --neutral-50: #ffffff;
-  --neutral-100: #f5f5f5;
-  --neutral-200: #e5e5e5;
-  --neutral-300: #d4d4d4;
-  --neutral-400: #a3a3a3;
+  --neutral-800: #262626;  /* Gris extrême */
+  --neutral-900: #171717;  /* Quasi-noir */
+  --neutral-950: #0a0a0a;  /* Très proche du noir */
+  --neutral-1000: #000000; /* Noir absolu */
 
-  --neutral-500: #737373;
-  --neutral-600: #525252;
-  --neutral-700: #404040;
+  /* ---------- Palette primaire (teal/vert d'eau) ---------- */
+  /* Dégradé du vert d'eau clair au vert d'eau foncé */
 
-  --neutral-800: #262626;
-  --neutral-900: #171717;
-  --neutral-950: #0a0a0a;
-  --neutral-1000: #000000;
+  --primary-50: #e6f4f1;   /* Vert d'eau très clair */
+  --primary-100: #cde9e4;  /* Vert d'eau clair */
+  --primary-200: #9bd3c9;  /* Vert d'eau moyen-clair */
+  --primary-300: #67bdb0;  /* Vert d'eau moyen */
+  --primary-400: #35a796;  /* Vert d'eau moyen-foncé */
 
-
-  /* ---------- Primary palette (teal) ---------- */
-
-
-  --primary-50: #e6f4f1;
-  --primary-100: #cde9e4;
-  --primary-200: #9bd3c9;
-  --primary-300: #67bdb0;
-  --primary-400: #35a796;
-
-  --primary-500: #1f8f7f;
-  --primary-600: #187265;
-  --primary-700: #11564c;
-  --primary-800: #0b3a33;
-  --primary-900: #06201c;
+  --primary-500: #1f8f7f;  /* Vert d'eau principal */
+  --primary-600: #187265;  /* Vert d'eau foncé */
+  --primary-700: #11564c;  /* Vert d'eau très foncé */
+  --primary-800: #0b3a33;  /* Vert d'eau extrême */
+  --primary-900: #06201c;  /* Noir-vert */
 
 }
 
 
 
 /* ---------------------------------------- */
-/* COLOR SCHEME 1 (UI TOKENS)                       */
-/* ------------------------------------- */
+/* 4. SCHÉMA DE COULEURS UI (TOKENS SÉMANTIQUES) */
+/* ---------------------------------------- */
+/*
+ * Couleurs sémantiques pour l'interface utilisateur
+ * Ces variables donnent un sens métier aux couleurs primitives
+ * Elles permettent de changer facilement le thème (clair/sombre)
+ * Utilisées par @layer base et les composants
+ */
 
 :root {
+  /* ---------- Couleurs de page ---------- */
+  --background: var(--neutral-50);     /* Fond principal (blanc) */
+  --foreground: var(--neutral-1000);   /* Texte principal (noir) */
 
-  /* Page colors */
+  /* ---------- Section hero ---------- */
+  --hero-background: var(--primary-200);  /* Fond vert d'eau clair */
 
-  --background: var(--neutral-50);
-  --foreground: var(--neutral-1000);
+  /* ---------- Boutons ---------- */
+  --button-primary: var(--primary-500);    /* Bouton principal (vert d'eau) */
+  --button-secondary: var(--neutral-100);  /* Bouton secondaire (gris clair) */
 
-  /* Hero background */
+  /* ---------- Texte ---------- */
+  --text: var(--neutral-900);              /* Texte standard */
+  --blood: var(--text-lg-custom);          /* ? Variable non utilisée ? */
 
-  --hero-background: var(--primary-200);
-  --button-primary: var(--primary-500);
-  --button-secondary: var(--neutral-100);
+  /* ---------- Éléments d'interface ---------- */
+  --accent: var(--neutral-900);            /* Éléments accentués */
 
-  /* Text */
-
-  --text: var(--neutral-900);
-  --blood: var( --text-lg-custom);
-
-  /* UI */
-
-  --accent: var(--neutral-900);
-
+  /* ---------- Bordures ---------- */
   --border: color-mix(
     in srgb,
     var(--neutral-900) 15%,
     transparent
-  );
+  );  /* Bordure semi-transparente (15% d'opacité) */
 
-  --ring: var(--neutral-400);
-  --input: var(--neutral-200);
+  /* ---------- États interactifs ---------- */
+  --ring: var(--neutral-400);     /* Anneau de focus */
+  --input: var(--neutral-200);    /* Fond des champs de formulaire */
 
 }
 
 
 
 /* ------------------------------------- */
-/* BASE STYLES                           */
+/* 5. STYLES DE BASE (RESET + TYPOGRAPHIE) */
 /* ------------------------------------- */
+/*
+ * Styles globaux appliqués à TOUS les éléments HTML
+ * Définit la typographie, les couleurs et le reset de base
+ * Utilise @layer base pour s'assurer que ces styles ont la priorité
+ */
 
 @layer base {
-
-  /* Global element styling */
-
+  /* ---------- Styles globaux pour tous les éléments ---------- */
   * {
     @apply border-border outline-ring/50;
-    
+    /* Applique les couleurs de bordure et d'outline définies dans les tokens UI */
   }
 
-
-  /* Body */
-
+  /* ---------- Corps de la page ---------- */
   body {
-    @apply bg-background text-foreground;
-    font-family: var( --inter);
-    line-height: 1.6;
+    @apply bg-background text-foreground;  /* Couleurs de fond et texte */
+    font-family: var(--inter);             /* Police sans-serif pour le corps */
+    line-height: 1.6;                      /* Interligne confortable */
   }
 
-
-  /* Headings */
+  /* ---------- Titres (h1 à h6) ---------- */
+  /* Tous utilisent Playfair Display pour une apparence élégante */
 
   h1 {
-    font-family: var(--playfair-display);
-    font-size: var(--text-h1);
-    line-height: 120%;
-    font-weight: 700;
+    font-family: var(--playfair-display);  /* Police serif élégante */
+    font-size: var(--text-h1);             /* 3rem */
+    line-height: 120%;                     /* Interligne serré */
+    font-weight: 700;                      /* Gras */
   }
 
   h2 {
-    font-family: var(--playfair-displayg);
-    font-size: var(--text-h2);
+    font-family: var(--playfair-display);  /* Note: faute de frappe "displayg" */
+    font-size: var(--text-h2);             /* 2.75rem */
     line-height: 120%;
   }
 
   h3 {
-    font-family: var(--playfair-display );
-    font-size: var(--text-h3);
+    font-family: var(--playfair-display);
+    font-size: var(--text-h3);             /* 2rem */
     line-height: 120%;
   }
 
   h4 {
     font-family: var(--playfair-display);
-    font-size: var(--text-h4);
+    font-size: var(--text-h4);             /* 1.5rem */
     line-height: 120%;
   }
 
   h5 {
     font-family: var(--playfair-display);
-    font-size: var(--text-h5);
+    font-size: var(--text-h5);             /* 1.25rem */
     line-height: 120%;
   }
 
   h6 {
     font-family: var(--playfair-display);
-    font-size: var(--text-h6);
-    line-height: 150%;
+    font-size: var(--text-h6);             /* 1.125rem */
+    line-height: 150%;                     /* Interligne plus large */
   }
 
+  /* ---------- Paragraphes ---------- */
   p {
-    font-size: var( --inter);
-    color: var(--foreground);
-    line-height: 1.6;
+    font-size: var(--inter);               /* Note: devrait être une taille, pas la police */
+    color: var(--foreground);              /* Couleur de texte principale */
+    line-height: 1.6;                      /* Interligne confortable */
   }
 
 }
 
 
 /* ---------------------------------------- */
-/* RESPONSIVE TYPOGRAPHY (MOBILE)                   */
-/* ------------------------------------- */
+/* 6. TYPOGRAPHIE RESPONSIVE (MOBILE) */
+/* ---------------------------------------- */
+/*
+ * Adaptations des tailles de police pour les écrans mobiles
+ * S'applique quand la largeur de l'écran ≤ 768px (tablettes et mobiles)
+ * Réduit les titres pour une meilleure lisibilité sur petit écran
+ */
 
 @media (max-width: 768px) {
+  /* ---------- Titres réduits pour mobile ---------- */
 
-  h1 { 
-    font-size: 2.75rem;
+  h1 {
+    font-size: 2.75rem;    /* Réduit de 3rem à 2.75rem */
     line-height: 120%;
     font-weight: 700;
-}
+  }
 
-  h2 { font-size: 2rem; }
+  h2 {
+    font-size: 2rem;      /* Réduit de 2.75rem à 2rem */
+  }
 
-  /* h3 { font-size: 1.5rem; } */
+  /* h3 reste inchangé (commenté dans le code original) */
   h3 {
-    font-family: var(--playfair-display );
-    font-size: var(--text-h3);
+    font-family: var(--playfair-display);
+    font-size: var(--text-h3);  /* Garde la taille desktop */
     line-height: 120%;
   }
 
-  h4 { font-size: 1.25rem; }
+  h4 {
+    font-size: 1.25rem;   /* Taille fixe pour mobile */
+  }
 
-  h5 { font-size: 1.125rem; }
+  h5 {
+    font-size: 1.125rem;  /* Taille fixe pour mobile */
+  }
 
   h6 {
-    font-family: var(--inter);
-    font-size: var(--text-h6);
-    line-height: 120%;
+    font-family: var(--inter);    /* Change pour police sans-serif */
+    font-size: var(--text-h6);    /* Garde la variable desktop */
+    line-height: 120%;            /* Interligne réduit */
   }
 
+  /* ---------- Paragraphes ---------- */
   p {
-    font-size: var( --inter);
+    font-size: var(--inter);     /* Note: devrait être une taille, pas la police */
     color: var(--foreground);
     line-height: 1.6;
   }
 
 }
+
+/* ======================================== */
+/* FIN DU SYSTÈME DE DESIGN */
+/* ======================================== */
+/*
+ * ARCHITECTURE DU SYSTÈME :
+ * ========================
+ *
+ * FLUX D'INTERACTIONS (cascade CSS) :
+ * 1. Couleurs primitives (:root) → Source de vérité
+ * 2. Tokens UI (:root) → Noms métier (background, foreground)
+ * 3. Variables @theme → Classes Tailwind (text-h1, bg-primary-500)
+ * 4. @layer base → Styles globaux HTML
+ * 5. Composants → Utilisent les classes Tailwind
+ *
+ * POUR MODIFIER LE THÈME :
+ * - Changer les valeurs hexadécimales dans :root (primitives)
+ * - Les tokens UI et @theme se mettent à jour automatiquement
+ * - Les composants utilisent les classes Tailwind générées
+ *
+ * EXEMPLE AVEC VOTRE BOUTON :
+ * Button.tsx utilise "bg-primary-500" qui vient de --color-primary-500
+ * qui référence --primary-500 (#1f8f7f) défini dans les primitives
+ */
