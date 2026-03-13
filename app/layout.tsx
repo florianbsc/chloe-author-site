@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Header from "@/app/src/components/layout/Header";
-import Footer from "@/app/src/components/layout/Footer";
+import Header from "@/app/src/components/organisms/layout/Header";
+import Footer from "@/app/src/components/organisms/layout/Footer";
 import "@fontsource-variable/playfair-display";
 import "@fontsource-variable/inter";
 

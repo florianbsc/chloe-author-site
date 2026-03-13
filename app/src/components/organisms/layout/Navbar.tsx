@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import Button from "@/app/src/components/ui/Button";
+import Button from "@/app/src/components/atoms/Button";
 
 type NavbarProps = {
   isMobile?: boolean;

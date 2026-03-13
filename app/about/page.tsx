@@ -1,4 +1,4 @@
-import Button from "@/app/src/components/ui/Button";
+import Button from "@/app/src/components/atoms/Button";
 import AboutHero from "@/app/src/components/organisms/about/AboutHero";
 // import { Import } from "lucide-react";
 import Image from "next/image";

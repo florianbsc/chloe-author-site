@@ -1,5 +1,5 @@
 
-import Button from "@/app/src/components/ui/Button";
+import Button from "@/app/src/components/atoms/Button";
 import Image from "next/image";
 import Link from "next/link";
 import { House, ArrowBigRightDash, PartyPopper, Triangle, Search, Compass, HandFist, Rose, VolumeOff } from 'lucide-react';

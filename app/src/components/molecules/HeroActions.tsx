@@ -1,4 +1,4 @@
-import Button from "@/app/src/components/ui/Button";
+import Button from "@/app/src/components/atoms/Button";
 import { cn } from "@/app/src/lib/utils";
 
 type HeroActionsProps = {

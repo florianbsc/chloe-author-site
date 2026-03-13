@@ -7,7 +7,7 @@ import {
   Search,
   Triangle,
 } from "lucide-react";
-import Button from "@/app/src/components/ui/Button";
+import Button from "@/app/src/components/atoms/Button";
 import HeroImagePlaceholder from "@/app/src/components/atoms/HeroImagePlaceholder";
 import AboutFeatureItem from "@/app/src/components/molecules/AboutFeatureItem";
 
