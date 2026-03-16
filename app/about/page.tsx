@@ -237,7 +237,7 @@ export default function About() {
           </div>
 
           <div className="mt-12 flex items-center justify-center gap-4">
-            <Link href="/blogs">
+            <Link href="/articles">
               <Button
                 variant="third"
                 className="rounded-[10px] border border-[rgba(12,12,12,0.2)] px-4 py-2 text-[0.875rem] leading-[1.6] text-[#0c0c0c]"

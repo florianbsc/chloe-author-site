@@ -3,14 +3,14 @@ export const navConfig = {
     { label: "Accueil", href: "/" },
     { label: "À propos", href: "/about" },
     { label: "Actualités", href: "/actualites" },
-    { label: "Blogs", href: "/blogs" },
+    { label: "articles", href: "/articles" },
     { label: "Romans", href: "/romans" },
   ],
   footer: [
     {
       title: "Ressources",
       links: [
-        { label: "Blog", href: "/blogs" },
+        { label: "Articles", href: "/articles" },
         { label: "Livres", href: "/romans" },
       ],
     },

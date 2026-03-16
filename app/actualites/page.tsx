@@ -2,7 +2,7 @@ import Button from "@/app/src/components/atoms/Button";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, ChevronRight } from "lucide-react";
 
-const BLOG_POSTS = [
+const ARTICLES_POSTS = [
   {
     category: "Category",
     readTime: "5 min read",
@@ -78,7 +78,7 @@ export default function New() {
         </div>
 
         <div className="flex snap-x snap-mandatory gap-6 overflow-x-auto pb-2">
-          {BLOG_POSTS.map((post, index) => (
+          {ARTICLES_POSTS.map((post, index) => (
             <article
               key={`${post.title}-${index}`}
               className="min-w-[260px] flex-1 snap-start space-y-4 rounded-2xl border border-[rgba(12,12,12,0.1)] bg-white p-4 shadow-sm sm:min-w-[320px]"
@@ -98,7 +98,7 @@ export default function New() {
               <p className="text-[0.95rem] leading-[1.6]">{post.excerpt}</p>
 
               <Link
-                href="/blogs"
+                href="/articles"
                 className="inline-flex items-center gap-2 text-[0.95rem] font-medium"
               >
                 Read more
@@ -133,7 +133,7 @@ export default function New() {
         </div>
 
         <div className="flex justify-end">
-          <Link href="/blogs">
+          <Link href="/articles">
             <Button
               variant="secondary"
               className="rounded-[10px] border border-[rgba(12,12,12,0.2)] px-4 py-2 text-[0.875rem] leading-[1.6] text-[#0c0c0c]"
