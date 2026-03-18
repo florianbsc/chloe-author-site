@@ -2,53 +2,9 @@
 import Button from "@/app/src/components/atoms/Button";
 import BookCard from "@/app/src/components/molecules/BookCard";
 import HeroImagePlaceholder from "@/app/src/components/atoms/HeroImagePlaceholder";
+import { getRomans } from "@/app/src/lib/romans";
 import Link from "next/link";
 import { Image as ImageIcon } from "lucide-react";
-
-type Roman = {
-  id: string;
-  title: string;
-  description: string;
-  cover: string;
-  href: string;
-};
-
-async function getRomans(): Promise<Roman[]> {
-  return [
-    {
-      id: "les-secrets-de-clara",
-      title: "Les secrets de Clara",
-      description:
-        "Un thriller sombre où les mensonges s'accumulent et où chaque secret cache une blessure plus profonde.",
-      cover: "/books.jpg",
-      href: "/romans/les-secrets-de-clara",
-    },
-    {
-      id: "mon-eternel-combat",
-      title: "Mon éternel combat",
-      description:
-        "Mon autobiographie, écriture brute et sincère de ma vie, de mes luttes et de mes victoires quotidiennes.",
-      cover: "/books.jpg",
-      href: "/romans/mon-eternel-combat",
-    },
-    {
-      id: "nos-blessures-sous-la-peau",
-      title: "Nos blessures sous la peau",
-      description:
-        "Une romance qui explore comment l'amour naît et s'épanouit entre deux âmes marquées par la vie.",
-      cover: "/books.jpg",
-      href: "/romans/nos-blessures-sous-la-peau",
-    },
-    {
-      id: "la-loge-des-silences",
-      title: "La loge des silences",
-      description:
-        "Un thriller captivant où le silence devient complice et où la vérité doit être arrachée à l'obscurité.",
-      cover: "/books.jpg",
-      href: "/romans/la-loge-des-silences",
-    },
-  ];
-}
 
 export default async function Book() {
   const romans = await getRomans();
@@ -115,9 +71,9 @@ export default async function Book() {
             <BookCard
               key={roman.id}
               title={roman.title}
-              description={roman.description}
+              description={roman.shortDescription}
               image={roman.cover}
-              href={roman.href}
+              href={`/romans/${roman.slug}`}
               className="rounded-2xl"
             />
           ))}
