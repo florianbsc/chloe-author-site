@@ -5,6 +5,7 @@ export type Roman = {
   shortDescription: string;
   summary: string;
   cover: string;
+  bestsellerRank?: number;
   tags: string[];
   details: {
     genre: string;
@@ -19,6 +20,16 @@ export type Roman = {
   };
 };
 
+export type RomanReview = {
+  id: string;
+  romanId: string;
+  name: string;
+  role: string;
+  rating?: number;
+  comment: string;
+  date: string;
+};
+
 const ROMANS: Roman[] = [
   {
     id: "les-secrets-de-clara",
@@ -29,6 +40,7 @@ const ROMANS: Roman[] = [
     summary:
       "Dans l'ombre d'une vieille demeure, des secrets enfouis refusent de rester silencieux. Un roman qui explore les zones grises de l'âme humaine.",
     cover: "/books.jpg",
+    bestsellerRank: 2,
     tags: ["Thriller", "Handicap", "Suspense"],
     details: {
       genre: "Thriller psychologique",
@@ -56,6 +68,7 @@ const ROMANS: Roman[] = [
     summary:
       "Un récit intime qui raconte le courage, les doutes et la détermination d'une femme qui refuse d'être définie par ses limites.",
     cover: "/books.jpg",
+    bestsellerRank: 3,
     tags: ["Autobiographie", "Résilience", "Handicap"],
     details: {
       genre: "Autobiographie",
@@ -82,6 +95,7 @@ const ROMANS: Roman[] = [
     summary:
       "Une histoire d'amour qui se construit dans la fragilité et la confiance, loin des clichés romantiques.",
     cover: "/books.jpg",
+    bestsellerRank: 4,
     tags: ["Romance", "Contemporain", "Émotions"],
     details: {
       genre: "Romance",
@@ -108,6 +122,7 @@ const ROMANS: Roman[] = [
     summary:
       "Dans l'ombre d'une vieille demeure, des secrets enfouis refusent de rester silencieux. Un roman qui explore les zones grises de l'âme humaine.",
     cover: "/books.jpg",
+    bestsellerRank: 1,
     tags: ["Thriller", "Handicap", "Suspense"],
     details: {
       genre: "Thriller psychologique",
@@ -128,6 +143,39 @@ const ROMANS: Roman[] = [
   },
 ];
 
+const ROMAN_REVIEWS: RomanReview[] = [
+  {
+    id: "review-1",
+    romanId: "la-loge-des-silences",
+    name: "Marie Leclerc",
+    role: "Lectrice passionnée",
+    rating: 5,
+    comment:
+      "Un roman qui m'a bouleversée, des personnages si vrais qu'on les porte longtemps après la dernière page.",
+    date: "2024-10-12",
+  },
+  {
+    id: "review-2",
+    romanId: "la-loge-des-silences",
+    name: "Thomas Beaumont",
+    role: "Critique littéraire",
+    rating: 5,
+    comment:
+      "Chloé écrit comme on respire, avec une naturel qui désarme. Ses histoires restent gravées.",
+    date: "2024-11-03",
+  },
+  {
+    id: "review-3",
+    romanId: "la-loge-des-silences",
+    name: "Sophie Arnaud",
+    role: "Lectrice fidèle",
+    rating: 4,
+    comment:
+      "J'ai trouvé dans ces pages une compréhension que je cherchais depuis longtemps. Merci.",
+    date: "2024-11-18",
+  },
+];
+
 export async function getRomans(): Promise<Roman[]> {
   return ROMANS;
 }
@@ -138,4 +186,23 @@ export async function getRomanBySlug(slug: string): Promise<Roman | null> {
 
 export async function getRomanSlugs(): Promise<string[]> {
   return ROMANS.map((roman) => roman.slug);
+}
+
+export async function getReviewsByRomanId(
+  romanId: string,
+): Promise<RomanReview[]> {
+  return ROMAN_REVIEWS.filter((review) => review.romanId === romanId);
+}
+
+export async function getTopRomans(
+  excludeId: string,
+  limit = 3,
+): Promise<Roman[]> {
+  const ranked = [...ROMANS].sort((a, b) => {
+    const aRank = a.bestsellerRank ?? Number.MAX_SAFE_INTEGER;
+    const bRank = b.bestsellerRank ?? Number.MAX_SAFE_INTEGER;
+    return aRank - bRank;
+  });
+
+  return ranked.filter((roman) => roman.id !== excludeId).slice(0, limit);
 }

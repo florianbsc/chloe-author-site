@@ -1,7 +1,13 @@
 import Button from "@/app/src/components/atoms/Button";
+import BookCard from "@/app/src/components/molecules/BookCard";
 import HeroImagePlaceholder from "@/app/src/components/atoms/HeroImagePlaceholder";
-import { getRomanBySlug } from "@/app/src/lib/romans";
-import { Link } from "lucide-react";
+import {
+  getReviewsByRomanId,
+  getRomanBySlug,
+  getTopRomans,
+} from "@/app/src/lib/romans";
+import { Image as ImageIcon, Star } from "lucide-react";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
 type RomanPageProps = {
@@ -20,6 +26,8 @@ export default async function RomanPage({ params }: RomanPageProps) {
   if (!roman) {
     notFound();
   }
+  const reviews = await getReviewsByRomanId(roman.id);
+  const topRomans = await getTopRomans(roman.id, 3);
 
   return (
     <div className="flex flex-col gap-16 pb-16">
@@ -115,6 +123,119 @@ export default async function RomanPage({ params }: RomanPageProps) {
             </Button>
           </Link>
         </div>
+      </section>
+
+      <section className="mx-auto w-full max-w-[720px] px-5 text-center text-[#0c0c0c]">
+        <p className="text-[0.875rem] font-semibold uppercase tracking-[0.2em]">
+          Essence
+        </p>
+        <h2 className="mt-4 text-[2.5rem] font-bold leading-[1.1] tracking-[0.01em] sm:text-[3.5rem]">
+          Pourquoi ce roman vous
+          <br />
+          touchera
+        </h2>
+        <p className="mt-4 text-[1rem] leading-[1.7] sm:text-[1.125rem]">
+          Chloé Simart crée des mondes où le handicap n&apos;est jamais une limite
+          narrative, mais une richesse narrative.
+        </p>
+
+        {topRomans.length === 0 ? (
+          <div className="mt-10 rounded-2xl border border-[rgba(12,12,12,0.1)] bg-white px-6 py-10 text-left">
+            <h3 className="text-[1.25rem] font-semibold">
+              Aucun autre roman disponible
+            </h3>
+            <p className="mt-2 text-[0.95rem] leading-[1.6]">
+              Revenez bientôt pour découvrir de nouvelles lectures.
+            </p>
+          </div>
+        ) : (
+          <div className="mt-12 space-y-12 text-left">
+            {topRomans.map((item) => (
+              <div key={item.id} className="space-y-6">
+                <div className="h-[220px] overflow-hidden rounded-2xl bg-[#dedede]">
+                  <HeroImagePlaceholder />
+                </div>
+                <h3 className="text-[1.75rem] font-semibold leading-[1.25]">
+                  {item.title}
+                </h3>
+                <p className="text-[1rem] leading-[1.7]">
+                  {item.shortDescription}
+                </p>
+                <Link href={`/romans/${item.slug}`}>
+                  <Button
+                    variant="secondary"
+                    className="rounded-[12px] border border-[rgba(12,12,12,0.25)] px-5 py-2 text-[0.95rem] leading-[1.6] text-[#0c0c0c]"
+                  >
+                    Découvrir
+                  </Button>
+                </Link>
+              </div>
+            ))}
+            {topRomans.length < 3 &&
+              Array.from({ length: 3 - topRomans.length }).map((_, index) => (
+                <div
+                  key={`roman-placeholder-${index}`}
+                  className="space-y-4 rounded-2xl border border-dashed border-[rgba(12,12,12,0.15)] p-6 text-center"
+                >
+                  <p className="text-[0.95rem]">
+                    Un nouveau roman arrive bientôt.
+                  </p>
+                </div>
+              ))}
+          </div>
+        )}
+      </section>
+
+      <section className="mx-auto w-full max-w-[720px] px-5 text-center text-[#0c0c0c]">
+        <h2 className="text-[2.5rem] font-bold leading-[1.1] tracking-[0.01em] sm:text-[3.5rem]">
+          Avis de lecteurs
+        </h2>
+        <p className="mt-4 text-[1rem] leading-[1.7] sm:text-[1.125rem]">
+          Ce que disent ceux qui ont lu
+        </p>
+
+        {reviews.length === 0 ? (
+          <div className="mt-10 rounded-2xl border border-[rgba(12,12,12,0.1)] bg-white px-6 py-10 text-left">
+            <h3 className="text-[1.25rem] font-semibold">
+              Aucun avis pour le moment
+            </h3>
+            <p className="mt-2 text-[0.95rem] leading-[1.6]">
+              Soyez le premier à partager votre ressenti sur ce roman.
+            </p>
+            <p className="mt-4 text-[0.85rem] text-[#0c0c0c]">
+              Un formulaire d&apos;avis pourra être ajouté ici prochainement.
+            </p>
+          </div>
+        ) : (
+          <div className="mt-12 space-y-12 text-[#0c0c0c]">
+            {reviews.map((review) => (
+              <div key={review.id} className="space-y-6">
+                <div className="text-[1.125rem] font-semibold">Webflow</div>
+                <p className="text-[1.35rem] font-semibold leading-[1.4]">
+                  &laquo; {review.comment} &raquo;
+                </p>
+                <div className="mx-auto flex h-[64px] w-[64px] items-center justify-center rounded-full bg-[#d7d7d7] text-[#b5b5b5]">
+                  <ImageIcon className="size-5" aria-hidden="true" />
+                </div>
+                <div className="space-y-1">
+                  <p className="text-[1.05rem] font-semibold">{review.name}</p>
+                  <p className="text-[0.95rem]">{review.role}</p>
+                </div>
+                <div className="flex items-center justify-center gap-3 text-[0.85rem] text-[#0c0c0c]">
+                  <span>
+                    {new Date(review.date).toLocaleDateString("fr-FR")}
+                  </span>
+                  {review.rating && (
+                    <span className="inline-flex items-center gap-1">
+                      <Star className="size-4" aria-hidden="true" />
+                      {review.rating}/5
+                    </span>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </section>
     </div>
   );
