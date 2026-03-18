@@ -33,7 +33,7 @@ const ARTICLES_POSTS = [
   },
 ];
 
-export default function New() {
+export default function Actualite() {
   return (
     <div className="flex flex-col gap-16 pb-16 lg:gap-24">
       <section className="mx-auto w-full max-w-[720px] space-y-6 px-5 pt-10 text-[#0c0c0c] lg:pt-16">

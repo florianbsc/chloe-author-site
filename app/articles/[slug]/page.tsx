@@ -1,0 +1,286 @@
+import Button from "@/app/src/components/atoms/Button";
+import HeroImagePlaceholder from "@/app/src/components/atoms/HeroImagePlaceholder";
+import Link from "next/link";
+import {
+  Facebook,
+  Image as ImageIcon,
+  Link2,
+  Linkedin,
+  X,
+} from "lucide-react";
+
+type ArticlePageProps = {
+  params: {
+    slug: string;
+  };
+};
+
+export default function ArticlePage({ params }: ArticlePageProps) {
+  return (
+    <div className="mx-auto w-full max-w-[720px] px-5 py-12 text-[#0c0c0c] sm:py-16">
+      <section className="space-y-6">
+        <h2 className="text-[2rem] font-semibold leading-[1.2]">
+          Introduction
+        </h2>
+
+        <div className="space-y-4 text-[1rem] leading-[1.7]">
+          <p>
+            Mi tincidunt elit, id quisque ligula ac diam, amet. Vel etiam
+            suspendisse morbi eleifend faucibus eget vestibulum felis. Dictum
+            quis montes, sit sit. Tellus aliquam enim urna, etiam. Mauris
+            posuere vulputate arcu amet, vitae nisi, tellus tincidunt. At
+            feugiat sapien varius id.
+          </p>
+          <p>
+            Eget quis mi enim, leo lacinia pharetra, semper. Eget in volutpat
+            mollis at volutpat lectus velit, sed auctor. Porttitor fames arcu
+            quis fusce augue enim. Quis at habitant amet, at. Suscipit tristique
+            risus, at donec. In turpis vel et quam imperdiet. Ipsum molestie
+            aliquet sodales id est ac volutpat.
+          </p>
+        </div>
+
+        <div className="space-y-3">
+          <div className="h-[220px] overflow-hidden rounded-2xl bg-[#dedede]">
+            <HeroImagePlaceholder />
+          </div>
+          <p className="text-[0.75rem] leading-[1.6] text-[#0c0c0c]">
+            Image caption goes here
+          </p>
+        </div>
+
+        <div className="space-y-4 text-[1rem] leading-[1.7]">
+          <h3 className="text-[1.25rem] font-semibold leading-[1.4]">
+            Dolor enim eu tortor urna sed duis nulla. Aliquam vestibulum, nulla
+            odio nisl vitae. In aliquet pellentesque aenean hac vestibulum
+            turpis mi bibendum diam. Tempor integer aliquam in vitae malesuada
+            fringilla.
+          </h3>
+          <p>
+            Elit nisl in eleifend sed nisi. Pulvinar at orci, proin imperdiet
+            commodo consectetur varius risus. Sed condimentum enim dignissim
+            adipiscing faucibus consequat, urna. Viverra purus et erat auctor
+            aliquam. Risus, volutpat vulputate posuere purus sit congue
+            convallis aliquet. Arcu id augue ut feugiat donec porttitor neque.
+            Mauris, neque ultrices eu vestibulum, bibendum quam lorem id.
+            Dolor lacus, eget nunc lectus in tellus, pharetra, porttitor.
+          </p>
+        </div>
+
+        <blockquote className="border-l border-[rgba(12,12,12,0.2)] pl-6 text-[1.1rem] italic leading-[1.7] text-[#0c0c0c]">
+          &quot;Ipsum sit mattis nulla quam nulla. Gravida id gravida ac enim
+          mauris id. Non pellentesque congue eget consectetur turpis. Sapien,
+          dictum molestie sem tempor. Diam elit, orci, tincidunt aenean
+          tempus.&quot;
+        </blockquote>
+
+        <div className="space-y-4 text-[1rem] leading-[1.7]">
+          <p>
+            Tristique odio senectus nam posuere ornare leo metus, ultrices.
+            Blandit duis ultricies vulputate morbi feugiat cras placerat elit.
+            Aliquam tellus lorem sed ac. Montes, sed mattis pellentesque
+            suscipit accumsan. Cursus viverra aenean magna, risus elementum
+            faucibus molestie pellentesque. Arcu ultricies sed mauris
+            vestibulum.
+          </p>
+        </div>
+      </section>
+
+      <section className="mt-12 space-y-6">
+        <h2 className="text-[2rem] font-semibold leading-[1.2]">
+          Conclusion
+        </h2>
+
+        <div className="space-y-4 text-[1rem] leading-[1.7]">
+          <p>
+            Morbi sed imperdiet in ipsum, adipiscing elit dui lectus. Tellus id
+            scelerisque est ultricies ultricies. Duis est sit sed leo nisl,
+            blandit elit sagittis. Quisque tristique consequat quam sed. Nisl at
+            scelerisque amet nulla purus habitasse.
+          </p>
+          <p>
+            Nunc sed faucibus bibendum feugiat sed interdum. Ipsum egestas
+            condimentum mi massa. In tincidunt pharetra consectetur sed duis
+            facilisis metus. Etiam egestas in nec sed et. Quis lobortis at sit
+            dictum eget nibh tortor commodo cursus.
+          </p>
+          <p>
+            Odio felis sagittis, morbi feugiat tortor vitae feugiat fusce
+            aliquet. Nam elementum urna nisi aliquet erat dolor enim. Ornare id
+            morbi eget ipsum. Aliquam senectus neque ut id eget consectetur
+            diam. Donec posuere pharetra odio consequat scelerisque et, nunc
+            tortor. Nulla adipiscing erat a erat. Condimentum lorem posuere
+            gravida enim posuere cursus diam.
+          </p>
+        </div>
+
+        <div className="space-y-4">
+          <p className="text-[0.875rem] font-semibold uppercase tracking-[0.2em]">
+            Partager cet article
+          </p>
+          <div className="flex items-center gap-3">
+            <button
+              type="button"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#d7efe9] text-[#0c0c0c]"
+              aria-label="Copier le lien"
+            >
+              <Link2 className="size-4" />
+            </button>
+            <button
+              type="button"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#d7efe9] text-[#0c0c0c]"
+              aria-label="Partager sur LinkedIn"
+            >
+              <Linkedin className="size-4" />
+            </button>
+            <button
+              type="button"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#d7efe9] text-[#0c0c0c]"
+              aria-label="Partager sur X"
+            >
+              <X className="size-4" />
+            </button>
+            <button
+              type="button"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#d7efe9] text-[#0c0c0c]"
+              aria-label="Partager sur Facebook"
+            >
+              <Facebook className="size-4" />
+            </button>
+          </div>
+
+          <div className="flex flex-wrap gap-2 pt-2">
+            {["Thriller", "Handicap", "Sortie", "Roman"].map((tag) => (
+              <span
+                key={tag}
+                className="rounded-full border border-[rgba(12,12,12,0.2)] px-3 py-1 text-[0.75rem]"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div className="flex items-center gap-3 border-t border-[rgba(12,12,12,0.1)] pt-6">
+          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#d7d7d7] text-[#b5b5b5]">
+            <ImageIcon className="size-4" aria-hidden="true" />
+          </div>
+          <div className="space-y-1">
+            <p className="text-[0.95rem] font-semibold">Chloé Simart</p>
+            <p className="text-[0.85rem] text-[#0c0c0c]">Auteure de romans</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="mt-16 space-y-6 text-center">
+        <h2 className="text-[2.5rem] font-bold leading-[1.1] tracking-[0.01em]">
+          Avis de lecteurs
+        </h2>
+        <p className="text-[1rem] leading-[1.7] text-[#0c0c0c]">
+          Ce que les lecteurs en pensent
+        </p>
+
+        <div className="mt-10 space-y-12 text-[#0c0c0c]">
+          <div className="space-y-6">
+            <div className="text-[1.125rem] font-semibold">Webflow</div>
+            <p className="text-[1.35rem] font-semibold leading-[1.4]">
+              &laquo; Un roman qui m&apos;a bouleversée du début à la fin. &raquo;
+            </p>
+            <div className="mx-auto flex h-[64px] w-[64px] items-center justify-center rounded-full bg-[#d7d7d7] text-[#b5b5b5]">
+              <ImageIcon className="size-5" aria-hidden="true" />
+            </div>
+            <div className="space-y-1">
+              <p className="text-[1.05rem] font-semibold">Marie Dupont</p>
+              <p className="text-[0.95rem]">Lectrice passionnée</p>
+            </div>
+          </div>
+
+          <div className="space-y-6">
+            <div className="text-[1.125rem] font-semibold">Webflow</div>
+            <p className="text-[1.35rem] font-semibold leading-[1.4]">
+              &laquo; Chloé écrit avec une sincérité rare et profonde. &raquo;
+            </p>
+            <div className="mx-auto flex h-[64px] w-[64px] items-center justify-center rounded-full bg-[#d7d7d7] text-[#b5b5b5]">
+              <ImageIcon className="size-5" aria-hidden="true" />
+            </div>
+            <div className="space-y-1">
+              <p className="text-[1.05rem] font-semibold">Thomas Bernard</p>
+              <p className="text-[0.95rem]">Lecteur engagé</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="mt-16 rounded-3xl bg-[#e9f8f7] px-5 py-12 text-center text-[#0c0c0c] sm:px-8">
+        <h2 className="text-[2.5rem] font-bold leading-[1.1] tracking-[0.01em] sm:text-[3.5rem]">
+          Poursuivez la lecture
+          <br />
+          Explorez mes univers
+        </h2>
+        <p className="mt-4 text-[1rem] leading-[1.7] sm:text-[1.125rem]">
+          Découvrez mes autres romans et plongez dans des histoires qui
+          transforment.
+        </p>
+        <div className="mt-8 flex flex-wrap justify-center gap-3">
+          <Link href="/romans">
+            <Button
+              variant="primary"
+              className="rounded-[10px] border border-[#2abab0] bg-[#2abab0] px-5 py-2 text-[0.875rem] leading-[1.6] text-white hover:bg-[#239f96]"
+            >
+              Lire
+            </Button>
+          </Link>
+          <Link href="#newsletter">
+            <Button
+              variant="secondary"
+              className="rounded-[10px] border border-[rgba(12,12,12,0.2)] px-5 py-2 text-[0.875rem] leading-[1.6] text-[#0c0c0c]"
+            >
+              S&apos;abonner
+            </Button>
+          </Link>
+        </div>
+      </section>
+
+      <section
+        id="newsletter"
+        className="mt-16 text-center text-[#0c0c0c]"
+      >
+        <h2 className="text-[2.5rem] font-bold leading-[1.1] tracking-[0.01em] sm:text-[3.5rem]">
+          Restez connecté
+          <br />À l&apos;actualité
+        </h2>
+        <p className="mt-4 text-[1rem] leading-[1.7] sm:text-[1.125rem]">
+          Recevez les dates de sortie et les nouvelles directement dans votre
+          boîte.
+        </p>
+
+        <form className="mt-8 space-y-4">
+          <div className="border-b border-[rgba(12,12,12,0.2)] py-2 text-left">
+            <label htmlFor="article-newsletter-email" className="sr-only">
+              Votre email
+            </label>
+            <input
+              id="article-newsletter-email"
+              name="email"
+              type="email"
+              required
+              placeholder="Votre email"
+              className="w-full border-0 bg-transparent text-[1rem] leading-[1.6] text-[#0c0c0c] placeholder:text-[#0c0c0c99] outline-none"
+            />
+          </div>
+          <Button
+            variant="primary"
+            className="w-full rounded-[10px] border border-[#2abab0] bg-[#2abab0] px-4 py-2 text-[0.875rem] leading-[1.6] text-white hover:bg-[#239f96]"
+          >
+            S&apos;abonner
+          </Button>
+        </form>
+
+        <p className="mt-4 text-[0.8rem] leading-[1.6] text-[#0c0c0c]">
+          Nous respectons votre vie privée. Désinscription possible à tout
+          moment.
+        </p>
+      </section>
+    </div>
+  );
+}
