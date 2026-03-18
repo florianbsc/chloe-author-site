@@ -91,6 +91,39 @@ export default async function Book() {
         </div>
       </section>
 
+      <section
+        id="catalogue"
+        className="mx-auto w-full max-w-[1200px] space-y-10 px-5 text-[#0c0c0c]"
+      >
+        <div className="space-y-4">
+          <p className="text-[0.875rem] font-semibold uppercase tracking-[0.2em]">
+            Catalogue
+          </p>
+          <h2 className="text-[2.25rem] font-bold leading-[1.2] sm:text-[3rem]">
+            Tous mes romans en un seul endroit
+          </h2>
+          <p className="text-[1rem] leading-[1.7] sm:text-[1.125rem]">
+            Chaque roman que j&apos;écris porte en lui une part de vérité, une
+            exploration de l&apos;âme humaine face aux défis qui la façonnent.
+            Retrouvez ici l&apos;intégralité de mes oeuvres, classées par genre
+            pour vous guider dans votre découverte.
+          </p>
+        </div>
+
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          {romans.map((roman) => (
+            <BookCard
+              key={roman.id}
+              title={roman.title}
+              description={roman.description}
+              image={roman.cover}
+              href={roman.href}
+              className="rounded-2xl"
+            />
+          ))}
+        </div>
+      </section>
+
       <section className="mx-auto w-full max-w-[720px] px-5 text-center text-[#0c0c0c]">
         <p className="text-[0.875rem] font-semibold uppercase tracking-[0.2em]">
           Essence
@@ -222,39 +255,6 @@ export default async function Book() {
               <p className="text-[0.95rem]">Lectrice assidue</p>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section
-        id="catalogue"
-        className="mx-auto w-full max-w-[1200px] space-y-10 px-5 text-[#0c0c0c]"
-      >
-        <div className="space-y-4">
-          <p className="text-[0.875rem] font-semibold uppercase tracking-[0.2em]">
-            Catalogue
-          </p>
-          <h2 className="text-[2.25rem] font-bold leading-[1.2] sm:text-[3rem]">
-            Tous mes romans en un seul endroit
-          </h2>
-          <p className="text-[1rem] leading-[1.7] sm:text-[1.125rem]">
-            Chaque roman que j&apos;écris porte en lui une part de vérité, une
-            exploration de l&apos;âme humaine face aux défis qui la façonnent.
-            Retrouvez ici l&apos;intégralité de mes oeuvres, classées par genre
-            pour vous guider dans votre découverte.
-          </p>
-        </div>
-
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {romans.map((roman) => (
-            <BookCard
-              key={roman.id}
-              title={roman.title}
-              description={roman.description}
-              image={roman.cover}
-              href={roman.href}
-              className="rounded-2xl"
-            />
-          ))}
         </div>
       </section>
     </div>
