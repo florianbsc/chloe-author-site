@@ -3,7 +3,7 @@ import { cn } from "@/app/src/lib/utils";
 
 type ButtonProps = {
   children: React.ReactNode;
-  variant?: "primary" | "secondary" | "third";
+  variant?: "primary" | "secondary" | "third" | "cta" | "ghost" | "link";
   size?: "sm" | "md" | "lg" | "icon";
   href?: string;
   onClick?: () => void;
@@ -28,14 +28,25 @@ export default function Button({
     icon: "h-10 w-10 p-0 text-sm2-custom",
   };
 
+  const linkSizes = {
+    sm: "text-sm2-custom",
+    md: "text-sm-custom",
+    lg: "text-base-custom",
+    icon: "text-sm2-custom",
+  };
+
   const variants = {
     primary: "bg-brand text-white border border-brand hover:bg-brand-hover",
     secondary:
       "bg-surface-strong text-ink border border-border-strong hover:bg-surface-strong/80",
     third: "bg-transparent text-ink border border-border-medium hover:bg-ink/5",
+    cta: "bg-brand text-white border border-brand-strong shadow-sm hover:bg-brand-hover",
+    ghost: "bg-transparent text-ink border border-border-subtle hover:bg-ink/5",
+    link: "bg-transparent text-ink border border-transparent px-0 py-0 underline underline-offset-4 hover:text-ink/70",
   };
 
-  const styles = cn(base, sizes[size], variants[variant], className || "");
+  const sizeStyles = variant === "link" ? linkSizes[size] : sizes[size];
+  const styles = cn(base, sizeStyles, variants[variant], className || "");
 
   if (href) {
     return (
