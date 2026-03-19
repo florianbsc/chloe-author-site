@@ -1,5 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
+import Button from "@/app/src/components/atoms/Button";
+import Input from "@/app/src/components/atoms/Input";
 
 type NavItem = {
   label: string;
@@ -99,26 +101,24 @@ export default function Footer() {
 
             <div className="space-y-3">
               <form className="flex w-full flex-col gap-4 sm:flex-row sm:items-start">
-                <div className="flex min-h-px min-w-px flex-1 items-center border-b border-border-soft py-2">
+                <div className="flex min-h-px min-w-px flex-1 items-center py-2">
                   <label htmlFor="footer-newsletter-email" className="sr-only">
                     Votre email
                   </label>
-                  <input
+                  <Input
                     id="footer-newsletter-email"
                     name="email"
                     type="email"
                     required
                     placeholder="Votre email"
-                    className="w-full border-0 bg-transparent text-base-custom leading-[1.6] text-ink placeholder:text-ink/60 outline-none"
+                    variant="underline"
+                    size="md"
                   />
                 </div>
 
-                <button
-                  type="submit"
-                  className="inline-flex items-center justify-center rounded-[6px] border border-border-soft px-3 py-1.5 text-base-custom font-medium leading-[1.6] text-ink transition hover:bg-black/5"
-                >
+                <Button type="submit" variant="secondary" size="sm">
                   S&apos;abonner
-                </button>
+                </Button>
               </form>
 
               <p className="text-xs-custom leading-[1.6] text-ink">

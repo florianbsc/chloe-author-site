@@ -8,7 +8,8 @@ export default function RomansActions() {
       <Button
         href="/romans"
         variant="third"
-        className="rounded-[6px] border-border-soft px-3 py-1.5 text-sm2-custom leading-[1.6] md:text-base-custom"
+        size="sm"
+        className="md:text-base-custom"
       >
         Voir
       </Button>

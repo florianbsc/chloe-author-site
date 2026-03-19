@@ -107,18 +107,12 @@ export default async function RomanPage({ params }: RomanPageProps) {
 
         <div className="flex flex-wrap gap-3 pt-2">
           <a href={roman.availability.url} target="_blank" rel="noreferrer">
-            <Button
-              variant="primary"
-              className="rounded-[12px] border border-brand bg-brand px-5 py-2 text-sm3-custom leading-[1.6] text-white hover:bg-brand-hover"
-            >
+            <Button variant="primary" size="lg">
               {roman.availability.label}
             </Button>
           </a>
           <Link href="/romans">
-            <Button
-              variant="secondary"
-              className="rounded-[12px] border border-border-strong px-5 py-2 text-sm3-custom leading-[1.6] text-ink"
-            >
+            <Button variant="secondary" size="lg">
               Voir tous les romans
             </Button>
           </Link>
@@ -162,10 +156,7 @@ export default async function RomanPage({ params }: RomanPageProps) {
                   {item.shortDescription}
                 </p>
                 <Link href={`/romans/${item.slug}`}>
-                  <Button
-                    variant="secondary"
-                    className="rounded-[12px] border border-border-strong px-5 py-2 text-sm3-custom leading-[1.6] text-ink"
-                  >
+                  <Button variant="secondary" size="md">
                     Découvrir
                   </Button>
                 </Link>

@@ -102,10 +102,7 @@ export default function About() {
               ))}
 
               <div className="flex items-center gap-4 pt-2">
-                <Button
-                  variant="third"
-                  className="rounded-[10px] border border-border-medium px-4 py-2 text-sm2-custom leading-[1.6] text-ink"
-                >
+                <Button variant="third" size="md">
                   Lire
                 </Button>
 
@@ -238,10 +235,7 @@ export default function About() {
 
           <div className="mt-12 flex items-center justify-center gap-4">
             <Link href="/articles">
-              <Button
-                variant="third"
-                className="rounded-[10px] border border-border-medium px-4 py-2 text-sm2-custom leading-[1.6] text-ink"
-              >
+              <Button variant="third" size="md">
                 Explorer
               </Button>
             </Link>
@@ -279,10 +273,7 @@ export default function About() {
               romans.
             </p>
             <Link href="/about">
-              <Button
-                variant="third"
-                className="mt-4 rounded-[10px] border border-border-medium px-4 py-2 text-sm2-custom leading-[1.6]"
-              >
+              <Button variant="third" size="md" className="mt-4">
                 Lire plus
               </Button>
             </Link>

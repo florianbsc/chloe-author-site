@@ -1,4 +1,5 @@
 import Button from "@/app/src/components/atoms/Button";
+import Input from "@/app/src/components/atoms/Input";
 
 interface NewsletterFormProps {
   onSubmit?: (email: string) => void;
@@ -20,15 +21,17 @@ export default function NewsletterForm({
 
   return (
     <form onSubmit={handleSubmit} className={`space-y-2 max-w-md ${className}`}>
-      <input
+      <Input
         type="email"
         name="email"
         required
         placeholder={placeholder}
-        className="w-full border px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-600"
+        size="md"
       />
       <button type="submit" className="w-full">
-        <Button variant="primary">S&apos;inscrire</Button>
+        <Button variant="primary" size="md">
+          S&apos;inscrire
+        </Button>
       </button>
       <p className="text-xs text-gray-500">
         En vous abonnant, vous acceptez notre politique de confidentialité.

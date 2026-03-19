@@ -4,6 +4,7 @@ import { cn } from "@/app/src/lib/utils";
 type ButtonProps = {
   children: React.ReactNode;
   variant?: "primary" | "secondary" | "third";
+  size?: "sm" | "md" | "lg" | "icon";
   href?: string;
   onClick?: () => void;
   className?: string;
@@ -12,21 +13,29 @@ type ButtonProps = {
 export default function Button({
   children,
   variant = "primary",
+  size = "md",
   href,
   onClick,
   className,
 }: ButtonProps) {
   const base =
-    "flex gap-4 inline-flex items-center justify-center px-4 py-2 rounded-xl font-medium transition duration-200";
+    "inline-flex items-center justify-center gap-2 rounded-[var(--radius)] font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40 disabled:pointer-events-none disabled:opacity-50";
 
+  const sizes = {
+    sm: "px-3 py-1.5 text-sm2-custom",
+    md: "px-4 py-2 text-sm-custom",
+    lg: "px-5 py-2.5 text-base-custom",
+    icon: "h-10 w-10 p-0 text-sm2-custom",
+  };
 
   const variants = {
-  primary: "bg-primary-500 text-white hover:bg-primary-600",
-  secondary: "bg-neutral-100 text-neutral-900 border border-neutral-300 hover:bg-neutral-200",
-  third: "bg-transparent text-black border border-gray-300 hover:bg-gray-100" ,
-};
+    primary: "bg-brand text-white border border-brand hover:bg-brand-hover",
+    secondary:
+      "bg-surface-strong text-ink border border-border-strong hover:bg-surface-strong/80",
+    third: "bg-transparent text-ink border border-border-medium hover:bg-ink/5",
+  };
 
-  const styles = cn(base, variants[variant], className || "");
+  const styles = cn(base, sizes[size], variants[variant], className || "");
 
   if (href) {
     return (

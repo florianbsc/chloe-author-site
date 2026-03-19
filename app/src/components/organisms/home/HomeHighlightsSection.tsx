@@ -91,7 +91,7 @@ export default function HomeHighlightsSection() {
               <Button
                 href="/romans"
                 variant="third"
-                className="rounded-[6px] border-border-soft px-3 py-1.5 text-base-custom leading-[1.6]"
+                size="sm"
               >
                 Lire
               </Button>

@@ -29,8 +29,9 @@ export default function HeroActions({
       <Button
         href={primaryHref}
         variant={primaryVariant}
+        size="sm"
         className={cn(
-          "rounded-[6px] border border-brand bg-brand px-3 py-1.5 text-sm2-custom leading-[1.6] lg:text-base-custom",
+          "lg:text-base-custom",
           primaryClassName,
         )}
       >
@@ -40,8 +41,9 @@ export default function HeroActions({
       <Button
         href={secondaryHref}
         variant={secondaryVariant}
+        size="sm"
         className={cn(
-          "rounded-[6px] border-border-soft px-3 py-1.5 text-sm2-custom leading-[1.6] hover:bg-ink/5 lg:text-base-custom",
+          "lg:text-base-custom",
           secondaryClassName,
         )}
       >

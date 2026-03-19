@@ -28,18 +28,12 @@ export default async function Book() {
           </p>
           <div className="flex flex-wrap gap-3">
             <Link href="#catalogue">
-              <Button
-                variant="primary"
-                className="rounded-[12px] border border-brand bg-brand px-5 py-2 text-sm3-custom leading-[1.6] text-white hover:bg-brand-hover"
-              >
+              <Button variant="primary" size="lg">
                 Découvrir
               </Button>
             </Link>
             <a href="https://www.amazon.fr" target="_blank" rel="noreferrer">
-              <Button
-                variant="secondary"
-                className="rounded-[12px] border border-border-strong px-5 py-2 text-sm3-custom leading-[1.6] text-ink"
-              >
+              <Button variant="secondary" size="lg">
                 Amazon
               </Button>
             </a>
@@ -138,10 +132,7 @@ export default async function Book() {
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
           <a href="https://www.amazon.fr" target="_blank" rel="noreferrer">
-            <Button
-              variant="secondary"
-              className="rounded-[12px] border border-border-strong px-5 py-2 text-sm3-custom leading-[1.6] text-ink"
-            >
+            <Button variant="secondary" size="lg">
               Amazon
             </Button>
           </a>

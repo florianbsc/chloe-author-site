@@ -1,4 +1,5 @@
 import Button from "@/app/src/components/atoms/Button";
+import Input from "@/app/src/components/atoms/Input";
 import HeroImagePlaceholder from "@/app/src/components/atoms/HeroImagePlaceholder";
 import Link from "next/link";
 import {
@@ -223,18 +224,12 @@ export default function ArticlePage({ params }: ArticlePageProps) {
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <Link href="/romans">
-            <Button
-              variant="primary"
-              className="rounded-[10px] border border-brand bg-brand px-5 py-2 text-sm2-custom leading-[1.6] text-white hover:bg-brand-hover"
-            >
+            <Button variant="primary" size="md">
               Lire
             </Button>
           </Link>
           <Link href="#newsletter">
-            <Button
-              variant="secondary"
-              className="rounded-[10px] border border-border-medium px-5 py-2 text-sm2-custom leading-[1.6] text-ink"
-            >
+            <Button variant="secondary" size="md">
               S&apos;abonner
             </Button>
           </Link>
@@ -255,23 +250,21 @@ export default function ArticlePage({ params }: ArticlePageProps) {
         </p>
 
         <form className="mt-8 space-y-4">
-          <div className="border-b border-border-medium py-2 text-left">
+          <div className="py-2 text-left">
             <label htmlFor="article-newsletter-email" className="sr-only">
               Votre email
             </label>
-            <input
+            <Input
               id="article-newsletter-email"
               name="email"
               type="email"
               required
               placeholder="Votre email"
-              className="w-full border-0 bg-transparent text-sm-custom leading-[1.6] text-ink placeholder:text-ink/60 outline-none"
+              variant="underline"
+              size="md"
             />
           </div>
-          <Button
-            variant="primary"
-            className="w-full rounded-[10px] border border-brand bg-brand px-4 py-2 text-sm2-custom leading-[1.6] text-white hover:bg-brand-hover"
-          >
+          <Button variant="primary" size="md" className="w-full">
             S&apos;abonner
           </Button>
         </form>
