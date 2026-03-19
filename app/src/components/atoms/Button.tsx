@@ -6,6 +6,8 @@ type ButtonProps = {
   variant?: "primary" | "secondary" | "third" | "cta" | "ghost" | "link";
   size?: "sm" | "md" | "lg" | "icon";
   href?: string;
+  type?: "button" | "submit" | "reset";
+  disabled?: boolean;
   onClick?: () => void;
   className?: string;
 };
@@ -15,24 +17,26 @@ export default function Button({
   variant = "primary",
   size = "md",
   href,
+  type = "button",
+  disabled = false,
   onClick,
   className,
 }: ButtonProps) {
   const base =
-    "inline-flex items-center justify-center gap-2 rounded-[var(--radius)] font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40 disabled:pointer-events-none disabled:opacity-50";
+    "inline-flex items-center justify-center gap-2 radius-md font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40 disabled:pointer-events-none disabled:opacity-50";
 
   const sizes = {
-    sm: "px-3 py-1.5 text-sm2-custom",
-    md: "px-4 py-2 text-sm-custom",
-    lg: "px-5 py-2.5 text-base-custom",
-    icon: "h-10 w-10 p-0 text-sm2-custom",
+    sm: "px-3 py-1.5 text-body-sm",
+    md: "px-4 py-2 text-body",
+    lg: "px-5 py-2.5 text-body-lg",
+    icon: "h-10 w-10 p-0 text-body-sm",
   };
 
   const linkSizes = {
-    sm: "text-sm2-custom",
-    md: "text-sm-custom",
-    lg: "text-base-custom",
-    icon: "text-sm2-custom",
+    sm: "text-body-sm",
+    md: "text-body",
+    lg: "text-body-lg",
+    icon: "text-body-sm",
   };
 
   const variants = {
@@ -57,7 +61,12 @@ export default function Button({
   }
 
   return (
-    <button onClick={onClick} className={styles}>
+    <button
+      type={type}
+      onClick={onClick}
+      disabled={disabled}
+      className={styles}
+    >
       {children}
     </button>
   );

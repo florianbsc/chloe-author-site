@@ -1,52 +1,32 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@import "shadcn/tailwind.css";
-
-
 
 /* ---------------------------------------- */
-/* 2. DESIGN SYSTEM TOKENS (TAILWIND THEME VARIABLES)  */
+/* 1. DESIGN SYSTEM TOKENS (TAILWIND v4) */
 /* ---------------------------------------- */
-/*
- * Variables natives Tailwind qui peuvent être utilisées directement
- * dans les classes CSS (ex: text-h1, bg-primary-500)
- * Ces variables étendent le thème Tailwind par défaut
- */
-
 @theme {
-  /* ---------- Échelle typographique ---------- */
-  /* Tailles de police pour tous les niveaux de texte */
+  /* Typography */
+  --text-display: 5.25rem;
+  --text-h1: 3rem;
+  --text-h2: 2.75rem;
+  --text-h3: 2rem;
+  --text-h4: 1.5rem;
+  --text-h5: 1.25rem;
+  --text-h6: 1.125rem;
 
-  /* Display + Headings - Titres principaux */
-  --text-display: 5.25rem;  /* Très grand titre (héro) */
-  --text-h1: 3rem;          /* Titre principal */
-  --text-h2: 2.75rem;       /* Sous-titre */
-  --text-h3: 2rem;          /* Titre de section */
-  --text-h4: 1.5rem;        /* Titre d'article */
-  --text-h5: 1.25rem;       /* Petit titre */
-  --text-h6: 1.125rem;      /* Très petit titre */
+  --text-lead: 1.35rem;
+  --text-body-lg: 1.125rem;
+  --text-body: 1rem;
+  --text-body-sm: 0.875rem;
+  --text-caption: 0.75rem;
+  --text-2xl-custom: 1.75rem;
+  --text-3xl-custom: 2.25rem;
+  --text-4xl-custom: 2.5rem;
+  --text-5xl-custom: 3.5rem;
+  --text-6xl-custom: 3.75rem;
+  --text-7xl-custom: 4rem;
+  --text-8xl-custom: 4.25rem;
 
-  /* Body text - Texte de corps */
-  --text-lg-custom: 1.625rem;    /* Grand paragraphe */
-  --text-md-custom: 1.25rem;     /* Paragraphe moyen */
-  --text-base-custom: 1.125rem;  /* Paragraphe standard */
-  --text-sm-custom: 1rem;        /* Texte standard */
-  --text-sm2-custom: 0.875rem;   /* Texte UI compact */
-  --text-sm3-custom: 0.95rem;    /* Texte UI intermédiaire */
-  --text-md2-custom: 1.05rem;    /* Texte intermédiaire */
-  --text-xl-custom: 1.35rem;     /* Texte accentué */
-  --text-2xl-custom: 1.75rem;    /* Petit titre */
-  --text-3xl-custom: 2.25rem;    /* Titre section large */
-  --text-4xl-custom: 2.5rem;     /* Titre section XL */
-  --text-5xl-custom: 3.5rem;     /* Titre héro mobile */
-  --text-6xl-custom: 3.75rem;    /* Titre héro tablette */
-  --text-7xl-custom: 4rem;       /* Titre héro large */
-  --text-8xl-custom: 4.25rem;    /* Titre héro XL */
-  --text-xs-custom: 0.75rem;     /* Très petit texte */
-  --text-xs2-custom: 0.85rem;    /* Légendes */
-  --text-xxs-custom: 0.8rem;     /* Micro texte */
-
-  /* ---------- Line-heights & letter-spacing ---------- */
   --leading-tight: 1.1;
   --leading-title: 1.2;
   --leading-subtitle: 1.3;
@@ -55,20 +35,11 @@
   --tracking-title: 0.01em;
   --tracking-eyebrow: 0.2em;
 
-  /* ---------- Mapping des couleurs Tailwind ---------- */
-  /* Relie les variables CSS aux classes Tailwind */
-
-  /* Couleurs de base de l'interface */
-  --color-background: var(--background);    /* Fond de page */
-  --color-foreground: var(--foreground);    /* Texte principal */
-  --color-hero: var(--hero-background);     /* Fond de la section hero */
-  --color-border: var(--border);            /* Bordures */
-  --color-border-subtle: var(--border-subtle);
-  --color-border-medium: var(--border-medium);
-  --color-border-strong: var(--border-strong);
-  --color-ring: var(--ring);                /* Focus rings */
-  --color-input: var(--input);              /* Champs de formulaire */
-  --color-accent: var(--accent);            /* Éléments accentués */
+  /* Colors */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
   --color-surface: var(--surface);
   --color-surface-muted: var(--surface-muted);
   --color-surface-strong: var(--surface-strong);
@@ -78,251 +49,155 @@
   --color-surface-placeholder-strong: var(--surface-placeholder-strong);
   --color-surface-placeholder-soft: var(--surface-placeholder-soft);
   --color-surface-placeholder-inner: var(--surface-placeholder-inner);
-  --color-muted: var(--muted);
-  --color-ink: var(--ink);
-  --color-icon-placeholder: var(--icon-placeholder);
-  --color-icon-placeholder-soft: var(--icon-placeholder-soft);
-  --color-dot-muted: var(--dot-muted);
+  --color-border: var(--border);
+  --color-border-subtle: var(--border-subtle);
+  --color-border-medium: var(--border-medium);
+  --color-border-strong: var(--border-strong);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
   --color-brand: var(--brand);
   --color-brand-hover: var(--brand-hover);
   --color-brand-strong: var(--brand-strong);
   --color-brand-soft: var(--brand-soft);
-
-  /* Couleur primaire principale */
-  --color-primary: var(--primary-500);
-
-  /* Palette primaire complète (teal) */
-  --color-primary-50: var(--primary-50);    /* Très clair */
-  --color-primary-100: var(--primary-100);  /* Clair */
-  --color-primary-200: var(--primary-200);  /* Moyen-clair */
-  --color-primary-300: var(--primary-300);  /* Moyen */
-  --color-primary-400: var(--primary-400);  /* Moyen-foncé */
-  --color-primary-500: var(--primary-500);  /* Principal */
-  --color-primary-600: var(--primary-600);  /* Fonçé */
-  --color-primary-700: var(--primary-700);  /* Très foncé */
-  --color-primary-800: var(--primary-800);  /* Extrêmement foncé */
-  --color-primary-900: var(--primary-900);  /* Noir-vert */
-
-  /* Palette neutre complète (gris) */
-  --color-neutral-50: var(--neutral-50);    /* Blanc */
-  --color-neutral-100: var(--neutral-100);  /* Gris très clair */
-  --color-neutral-200: var(--neutral-200);  /* Gris clair */
-  --color-neutral-300: var(--neutral-300);  /* Gris moyen-clair */
-  --color-neutral-400: var(--neutral-400);  /* Gris moyen */
-  --color-neutral-500: var(--neutral-500);  /* Gris */
-  --color-neutral-600: var(--neutral-600);  /* Gris foncé */
-  --color-neutral-700: var(--neutral-700);  /* Gris très foncé */
-  --color-neutral-800: var(--neutral-800);  /* Gris extrême */
-  --color-neutral-900: var(--neutral-900);  /* Quasi-noir */
-  --color-neutral-950: var(--neutral-950);
-
+  --color-icon-placeholder: var(--icon-placeholder);
+  --color-icon-placeholder-soft: var(--icon-placeholder-soft);
+  --color-dot-muted: var(--dot-muted);
 }
 
-
-/* ------------------------------------ */
-/* 3. COULEURS PRIMITIVES (PALETTE DE BASE) */
-/* ------------------------------------ */
-/*
- * Définition des couleurs brutes (hexadécimales) et polices
- * Ces variables sont la "source de vérité" du système de couleurs
- * Elles sont utilisées par les tokens UI dans la section suivante
- */
-
-:root {
-  /* ---------- Polices ---------- */
-  /* Définition des familles de polices utilisées dans l'application */
-
-  --playfair-display: 'Playfair Display Variable', serif;  /* Police serif pour les titres */
-  --inter: 'Inter Variable', sans-serif;                  /* Police sans-serif pour le corps */
-
-  /* ---------- Rayon global ---------- */
-  /* Rayon de bordure appliqué aux éléments arrondis */
-  --radius: 0.625rem;  /* 10px - arrondi moyen */
-
-  /* ---------- Palette neutre (gris) ---------- */
-  /* Échelle de gris du plus clair au plus foncé */
-
-  --neutral-50: #ffffff;   /* Blanc pur */
-  --neutral-100: #f5f5f5;  /* Gris très très clair */
-  --neutral-200: #e5e5e5;  /* Gris très clair */
-  --neutral-300: #d4d4d4;  /* Gris clair */
-  --neutral-400: #a3a3a3;  /* Gris moyen */
-
-  --neutral-500: #737373;  /* Gris standard */
-  --neutral-600: #525252;  /* Gris foncé */
-  --neutral-700: #404040;  /* Gris très foncé */
-
-  --neutral-800: #262626;  /* Gris extrême */
-  --neutral-900: #171717;  /* Quasi-noir */
-  --neutral-950: #0a0a0a;  /* Très proche du noir */
-  --neutral-1000: #000000; /* Noir absolu */
-
-  /* ---------- Palette primaire (teal/vert d'eau) ---------- */
-  /* Dégradé du vert d'eau clair au vert d'eau foncé */
-
-  --primary-50: #e6f4f1;   /* Vert d'eau très clair */
-  --primary-100: #cde9e4;  /* Vert d'eau clair */
-  --primary-200: #9bd3c9;  /* Vert d'eau moyen-clair */
-  --primary-300: #67bdb0;  /* Vert d'eau moyen */
-  --primary-400: #35a796;  /* Vert d'eau moyen-foncé */
-
-  --primary-500: #1f8f7f;  /* Vert d'eau principal */
-  --primary-600: #187265;  /* Vert d'eau foncé */
-  --primary-700: #11564c;  /* Vert d'eau très foncé */
-  --primary-800: #0b3a33;  /* Vert d'eau extrême */
-  --primary-900: #06201c;  /* Noir-vert */
-
-}
-
-
-
 /* ---------------------------------------- */
-/* 4. SCHÉMA DE COULEURS UI (TOKENS SÉMANTIQUES) */
+/* 2. PRIMITIVES + SEMANTICS */
 /* ---------------------------------------- */
-/*
- * Couleurs sémantiques pour l'interface utilisateur
- * Ces variables donnent un sens métier aux couleurs primitives
- * Elles permettent de changer facilement le thème (clair/sombre)
- * Utilisées par @layer base et les composants
- */
-
 :root {
-  /* ---------- Couleurs de page ---------- */
-  --background: var(--neutral-50);     /* Fond principal (blanc) */
-  --foreground: var(--ink);            /* Texte principal (noir doux) */
-  --surface: var(--neutral-50);
-  --surface-muted: var(--primary-50);
-  --surface-strong: var(--neutral-100);
-  --surface-mint: #e9f8f7;
-  --surface-ash: #e9e9ea;
-  --surface-placeholder: #dedede;
-  --surface-placeholder-strong: #d7d7d7;
-  --surface-placeholder-soft: #cbcbcd;
-  --surface-placeholder-inner: #b8b8ba;
-  --dot-muted: #cfd6d5;
-  --brand: #2abab0;
-  --brand-hover: #239f96;
-  --brand-strong: #25a89f;
-  --brand-soft: #d7efe9;
-  --icon-placeholder: #b5b5b5;
-  --icon-placeholder-soft: #d7d7d9;
-  --ink: #0c0c0c;
+  /* Fonts */
+  --font-heading: "Playfair Display Variable", serif;
+  --font-body: "Inter Variable", sans-serif;
+
+  /* Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 1rem;
+
+  /* Neutrals */
+  --neutral-50: #ffffff;
+  --neutral-100: #f5f5f5;
+  --neutral-150: #e9e9ea;
+  --neutral-200: #e5e5e5;
+  --neutral-300: #d4d4d4;
+  --neutral-400: #a3a3a3;
+  --neutral-500: #737373;
+  --neutral-600: #525252;
+  --neutral-700: #404040;
+  --neutral-800: #262626;
+  --neutral-900: #171717;
+  --neutral-950: #0c0c0c;
+  --neutral-1000: #000000;
+
+  /* Brand */
+  --brand-50: #e9f8f7;
+  --brand-100: #d7efe9;
+  --brand-400: #2abab0;
+  --brand-500: #25a89f;
+  --brand-600: #239f96;
+  --brand-700: #1f8f7f;
+
+  /* Semantic colors */
+  --background: var(--neutral-50);
+  --ink: var(--neutral-950);
+  --foreground: var(--ink);
   --muted: var(--neutral-600);
 
-  /* ---------- Section hero ---------- */
-  --hero-background: var(--primary-200);  /* Fond vert d'eau clair */
+  --surface: var(--neutral-50);
+  --surface-muted: var(--brand-50);
+  --surface-strong: var(--neutral-100);
+  --surface-mint: var(--brand-50);
+  --surface-ash: var(--neutral-150);
+  --surface-placeholder: var(--neutral-200);
+  --surface-placeholder-strong: var(--neutral-300);
+  --surface-placeholder-soft: var(--neutral-300);
+  --surface-placeholder-inner: var(--neutral-400);
+  --dot-muted: var(--neutral-200);
 
-  /* ---------- Boutons ---------- */
-  --button-primary: var(--primary-500);    /* Bouton principal (vert d'eau) */
-  --button-secondary: var(--neutral-100);  /* Bouton secondaire (gris clair) */
+  --brand: var(--brand-400);
+  --brand-hover: var(--brand-600);
+  --brand-strong: var(--brand-500);
+  --brand-soft: var(--brand-100);
 
-  /* ---------- Texte ---------- */
-  --text: var(--neutral-900);              /* Texte standard */
+  --icon-placeholder: var(--neutral-400);
+  --icon-placeholder-soft: var(--neutral-300);
 
-  /* ---------- Éléments d'interface ---------- */
-  --accent: var(--neutral-900);            /* Éléments accentués */
+  --border-subtle: color-mix(in srgb, var(--ink) 10%, transparent);
+  --border: color-mix(in srgb, var(--ink) 15%, transparent);
+  --border-medium: color-mix(in srgb, var(--ink) 20%, transparent);
+  --border-strong: color-mix(in srgb, var(--ink) 25%, transparent);
 
-  /* ---------- Bordures ---------- */
-  --border-subtle: color-mix(
-    in srgb,
-    var(--ink) 10%,
-    transparent
-  );
-  --border: color-mix(
-    in srgb,
-    var(--ink) 15%,
-    transparent
-  );  /* Bordure semi-transparente (15% d'opacité) */
-  --border-medium: color-mix(
-    in srgb,
-    var(--ink) 20%,
-    transparent
-  );
-  --border-strong: color-mix(
-    in srgb,
-    var(--ink) 25%,
-    transparent
-  );
+  --ring: var(--neutral-400);
+  --input: var(--neutral-200);
 
-  /* ---------- États interactifs ---------- */
-  --ring: var(--neutral-400);     /* Anneau de focus */
-  --input: var(--neutral-200);    /* Fond des champs de formulaire */
-
+  /* Mobile headings */
+  --text-h1-mobile: 2.75rem;
+  --text-h2-mobile: 2rem;
+  --text-h4-mobile: 1.25rem;
+  --text-h5-mobile: 1.125rem;
+  --text-h6-mobile: 1rem;
 }
 
-
-
-/* ------------------------------------- */
-/* 5. STYLES DE BASE (RESET + TYPOGRAPHIE) */
-/* ------------------------------------- */
-/*
- * Styles globaux appliqués à TOUS les éléments HTML
- * Définit la typographie, les couleurs et le reset de base
- * Utilise @layer base pour s'assurer que ces styles ont la priorité
- */
-
+/* ---------------------------------------- */
+/* 3. BASE STYLES */
+/* ---------------------------------------- */
 @layer base {
-  /* ---------- Styles globaux pour tous les éléments ---------- */
   * {
     @apply border-border outline-ring/50;
-    /* Applique les couleurs de bordure et d'outline définies dans les tokens UI */
   }
 
-  /* ---------- Corps de la page ---------- */
   body {
-    @apply bg-background text-foreground;  /* Couleurs de fond et texte */
-    font-family: var(--inter);             /* Police sans-serif pour le corps */
-    line-height: 1.6;                      /* Interligne confortable */
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+    line-height: var(--leading-body);
   }
 
-  /* ---------- Titres (h1 à h6) ---------- */
-  /* Tous utilisent Playfair Display pour une apparence élégante */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    line-height: var(--leading-title);
+  }
 
   h1 {
-    font-family: var(--playfair-display);  /* Police serif élégante */
-    font-size: var(--text-h1);             /* 3rem */
-    line-height: 120%;                     /* Interligne serré */
-    font-weight: 700;                      /* Gras */
+    font-size: var(--text-h1);
+    font-weight: 700;
   }
 
   h2 {
-    font-family: var(--playfair-display);  /* Note: faute de frappe "displayg" */
-    font-size: var(--text-h2);             /* 2.75rem */
-    line-height: 120%;
+    font-size: var(--text-h2);
   }
 
   h3 {
-    font-family: var(--playfair-display);
-    font-size: var(--text-h3);             /* 2rem */
-    line-height: 120%;
+    font-size: var(--text-h3);
   }
 
   h4 {
-    font-family: var(--playfair-display);
-    font-size: var(--text-h4);             /* 1.5rem */
-    line-height: 120%;
+    font-size: var(--text-h4);
   }
 
   h5 {
-    font-family: var(--playfair-display);
-    font-size: var(--text-h5);             /* 1.25rem */
-    line-height: 120%;
+    font-size: var(--text-h5);
   }
 
   h6 {
-    font-family: var(--playfair-display);
-    font-size: var(--text-h6);             /* 1.125rem */
-    line-height: 150%;                     /* Interligne plus large */
+    font-size: var(--text-h6);
+    line-height: var(--leading-subtitle);
   }
 
-  /* ---------- Paragraphes ---------- */
   p {
-    font-family: var(--inter);
-    font-size: var(--text-sm-custom);
-    color: var(--foreground);              /* Couleur de texte principale */
-    line-height: 1.6;                      /* Interligne confortable */
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    color: var(--foreground);
+    line-height: var(--leading-body);
   }
-
 }
 
 @layer utilities {
@@ -355,7 +230,19 @@
   }
 
   .eyebrow {
-    @apply text-sm2-custom font-semibold uppercase tracking-eyebrow text-ink;
+    @apply text-body-sm font-semibold uppercase tracking-eyebrow text-ink;
+  }
+
+  .font-heading {
+    font-family: var(--font-heading);
+  }
+
+  .font-body {
+    font-family: var(--font-body);
+  }
+
+  .stack-xs {
+    @apply space-y-2;
   }
 
   .stack-sm {
@@ -370,89 +257,68 @@
     @apply space-y-12;
   }
 
-  .stack-xs {
-    @apply space-y-2;
-  }
-
   .stack-xl {
     @apply space-y-8;
   }
+
+  .radius-sm {
+    @apply rounded-[var(--radius-sm)];
+  }
+
+  .radius-md {
+    @apply rounded-[var(--radius-md)];
+  }
+
+  .radius-lg {
+    @apply rounded-[var(--radius-lg)];
+  }
+
+  .icon-stroke {
+    stroke-width: 1.5;
+  }
+
+  .icon-stroke-lg {
+    stroke-width: 1.75;
+  }
+
+  .hero-media {
+    @apply h-[420px] md:h-[560px] lg:h-[720px];
+  }
+
+  .hero-media-alt {
+    @apply h-[420px] md:h-[520px] lg:min-h-[680px];
+  }
+
+  .hero-split {
+    @apply lg:min-h-[720px];
+  }
+
+  .hero-panel {
+    @apply h-[721px] min-h-[720px];
+  }
 }
 
-
 /* ---------------------------------------- */
-/* 6. TYPOGRAPHIE RESPONSIVE (MOBILE) */
+/* 4. RESPONSIVE TYPOGRAPHY */
 /* ---------------------------------------- */
-/*
- * Adaptations des tailles de police pour les écrans mobiles
- * S'applique quand la largeur de l'écran ≤ 768px (tablettes et mobiles)
- * Réduit les titres pour une meilleure lisibilité sur petit écran
- */
-
 @media (max-width: 768px) {
-  /* ---------- Titres réduits pour mobile ---------- */
-
   h1 {
-    font-size: 2.75rem;    /* Réduit de 3rem à 2.75rem */
-    line-height: 120%;
-    font-weight: 700;
+    font-size: var(--text-h1-mobile);
   }
 
   h2 {
-    font-size: 2rem;      /* Réduit de 2.75rem à 2rem */
-  }
-
-  /* h3 reste inchangé (commenté dans le code original) */
-  h3 {
-    font-family: var(--playfair-display);
-    font-size: var(--text-h3);  /* Garde la taille desktop */
-    line-height: 120%;
+    font-size: var(--text-h2-mobile);
   }
 
   h4 {
-    font-size: 1.25rem;   /* Taille fixe pour mobile */
+    font-size: var(--text-h4-mobile);
   }
 
   h5 {
-    font-size: 1.125rem;  /* Taille fixe pour mobile */
+    font-size: var(--text-h5-mobile);
   }
 
   h6 {
-    font-family: var(--inter);    /* Change pour police sans-serif */
-    font-size: var(--text-h6);    /* Garde la variable desktop */
-    line-height: 120%;            /* Interligne réduit */
+    font-size: var(--text-h6-mobile);
   }
-
-  /* ---------- Paragraphes ---------- */
-  p {
-    font-family: var(--inter);
-    font-size: var(--text-sm-custom);
-    color: var(--foreground);
-    line-height: 1.6;
-  }
-
 }
-
-/* ======================================== */
-/* FIN DU SYSTÈME DE DESIGN */
-/* ======================================== */
-/*
- * ARCHITECTURE DU SYSTÈME :
- * ========================
- *
- * FLUX D'INTERACTIONS (cascade CSS) :
- * 1. Couleurs primitives (:root) → Source de vérité
- * 2. Tokens UI (:root) → Noms métier (background, foreground)
- * 3. Variables @theme → Classes Tailwind (text-h1, bg-primary-500)
- * 4. @layer base → Styles globaux HTML
- * 5. Composants → Utilisent les classes Tailwind
- *
- * POUR MODIFIER LE THÈME :
- * - Changer les valeurs hexadécimales dans :root (primitives)
- * - Les tokens UI et @theme se mettent à jour automatiquement
- * - Les composants utilisent les classes Tailwind générées
- *
- * EXEMPLE AVEC VOTRE BOUTON :
- * Button.tsx utilise "bg-primary-500" qui vient de --color-primary-500
- * qui référence --primary-500 (#1f8f7f) défini dans les primitives
- */

@@ -15,14 +15,13 @@ export default function Input({
     "w-full text-ink placeholder:text-ink/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40";
 
   const sizes = {
-    sm: "px-3 py-2 text-sm2-custom",
-    md: "px-4 py-2 text-sm-custom",
-    lg: "px-4 py-3 text-base-custom",
+    sm: "px-3 py-2 text-body-sm",
+    md: "px-4 py-2 text-body",
+    lg: "px-4 py-3 text-body-lg",
   };
 
   const variants = {
-    default:
-      "rounded-[var(--radius)] border border-border-medium bg-surface",
+    default: "radius-md border border-border-medium bg-surface",
     underline:
       "rounded-none border-0 border-b border-border-medium bg-transparent px-0",
   };
