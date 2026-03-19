@@ -94,11 +94,11 @@ export default function Article() {
         </div>
       </section>
 
-      <section className="section-wrap-sm space-y-6 text-ink">
+      <section className="section-wrap-sm stack-md text-ink">
         <h2 className="text-h3 font-semibold leading-title">
           Articles récents
         </h2>
-        <div className="space-y-4">
+        <div className="stack-sm">
           {ARTICLES.map((article) => (
             <Link
               key={article.slug}

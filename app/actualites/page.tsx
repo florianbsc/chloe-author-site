@@ -37,7 +37,7 @@ const ARTICLES_POSTS = [
 export default function Actualite() {
   return (
     <div className="flex flex-col gap-16 pb-16 lg:gap-24">
-      <section className="section-wrap-sm space-y-6 pt-10 text-ink lg:pt-16">
+      <section className="section-wrap-sm stack-md pt-10 text-ink lg:pt-16">
         <p className="eyebrow">
           Actualités
         </p>
@@ -60,7 +60,7 @@ export default function Actualite() {
       </section>
 
       <section className="section-wrap-md space-y-8 text-ink">
-        <div className="space-y-4">
+        <div className="stack-sm">
           <p className="eyebrow">
             Blog
           </p>
@@ -76,7 +76,7 @@ export default function Actualite() {
           {ARTICLES_POSTS.map((post, index) => (
             <article
               key={`${post.title}-${index}`}
-              className="min-w-[260px] flex-1 snap-start space-y-4 rounded-2xl border border-border-subtle bg-white p-4 shadow-sm sm:min-w-[320px]"
+              className="min-w-[260px] flex-1 snap-start stack-sm rounded-2xl border border-border-subtle bg-white p-4 shadow-sm sm:min-w-[320px]"
             >
               <div className="h-[180px] rounded-xl bg-surface-placeholder" />
 
@@ -141,7 +141,7 @@ export default function Actualite() {
           directement dans votre boîte mail.
         </p>
 
-        <form className="mt-8 space-y-4">
+        <form className="mt-8 stack-sm">
           <div className="py-2">
             <label htmlFor="newsletter-email" className="sr-only">
               Votre email

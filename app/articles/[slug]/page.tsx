@@ -19,12 +19,12 @@ type ArticlePageProps = {
 export default function ArticlePage({ params }: ArticlePageProps) {
   return (
     <div className="section-wrap-sm section-pad-md text-ink">
-      <section className="space-y-6">
+      <section className="stack-md">
         <h2 className="text-h3 font-semibold leading-title">
           Introduction
         </h2>
 
-        <div className="space-y-4 text-sm-custom leading-body-lg">
+        <div className="stack-sm text-sm-custom leading-body-lg">
           <p>
             Mi tincidunt elit, id quisque ligula ac diam, amet. Vel etiam
             suspendisse morbi eleifend faucibus eget vestibulum felis. Dictum
@@ -50,7 +50,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
           </p>
         </div>
 
-        <div className="space-y-4 text-sm-custom leading-body-lg">
+        <div className="stack-sm text-sm-custom leading-body-lg">
           <h3 className="text-h5 font-semibold leading-title">
             Dolor enim eu tortor urna sed duis nulla. Aliquam vestibulum, nulla
             odio nisl vitae. In aliquet pellentesque aenean hac vestibulum
@@ -75,7 +75,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
           tempus.&quot;
         </blockquote>
 
-        <div className="space-y-4 text-sm-custom leading-body-lg">
+        <div className="stack-sm text-sm-custom leading-body-lg">
           <p>
             Tristique odio senectus nam posuere ornare leo metus, ultrices.
             Blandit duis ultricies vulputate morbi feugiat cras placerat elit.
@@ -87,12 +87,12 @@ export default function ArticlePage({ params }: ArticlePageProps) {
         </div>
       </section>
 
-      <section className="mt-12 space-y-6">
+      <section className="mt-12 stack-md">
         <h2 className="text-h3 font-semibold leading-title">
           Conclusion
         </h2>
 
-        <div className="space-y-4 text-sm-custom leading-body-lg">
+        <div className="stack-sm text-sm-custom leading-body-lg">
           <p>
             Morbi sed imperdiet in ipsum, adipiscing elit dui lectus. Tellus id
             scelerisque est ultricies ultricies. Duis est sit sed leo nisl,
@@ -115,7 +115,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
           </p>
         </div>
 
-        <div className="space-y-4">
+        <div className="stack-sm">
           <p className="eyebrow">
             Partager cet article
           </p>
@@ -173,7 +173,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
         </div>
       </section>
 
-      <section className="mt-16 space-y-6 text-center">
+      <section className="mt-16 stack-md text-center">
         <h2 className="text-4xl-custom font-bold leading-tight tracking-title">
           Avis de lecteurs
         </h2>
@@ -181,8 +181,8 @@ export default function ArticlePage({ params }: ArticlePageProps) {
           Ce que les lecteurs en pensent
         </p>
 
-        <div className="mt-10 space-y-12 text-ink">
-          <div className="space-y-6">
+        <div className="mt-10 stack-lg text-ink">
+          <div className="stack-md">
             <div className="text-base-custom font-semibold">Webflow</div>
             <p className="text-xl-custom font-semibold leading-title">
               &laquo; Un roman qui m&apos;a bouleversée du début à la fin. &raquo;
@@ -196,7 +196,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
             </div>
           </div>
 
-          <div className="space-y-6">
+          <div className="stack-md">
             <div className="text-base-custom font-semibold">Webflow</div>
             <p className="text-xl-custom font-semibold leading-title">
               &laquo; Chloé écrit avec une sincérité rare et profonde. &raquo;
@@ -249,7 +249,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
           boîte.
         </p>
 
-        <form className="mt-8 space-y-4">
+        <form className="mt-8 stack-sm">
           <div className="py-2 text-left">
             <label htmlFor="article-newsletter-email" className="sr-only">
               Votre email

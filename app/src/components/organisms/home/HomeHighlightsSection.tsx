@@ -63,7 +63,7 @@ export default function HomeHighlightsSection() {
           </div>
 
           <div className="w-full space-y-8 lg:flex-1">
-            <div className="space-y-6 py-2">
+            <div className="stack-md py-2">
               <div className="grid grid-cols-1 gap-x-6 gap-y-8 md:grid-cols-2">
                 {PRIMARY_FEATURES.map((feature) => (
                   <AboutFeatureItem

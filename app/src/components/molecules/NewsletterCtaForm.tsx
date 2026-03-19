@@ -3,7 +3,7 @@ import Input from "@/app/src/components/atoms/Input";
 
 export default function NewsletterCtaForm() {
   return (
-    <div className="w-full max-w-[513px] space-y-4">
+    <div className="w-full max-w-[513px] stack-sm">
       <form className="flex w-full items-start gap-4">
         <div className="flex min-h-px min-w-px flex-1 items-center py-2">
           <label htmlFor="newsletter-email" className="sr-only">

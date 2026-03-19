@@ -15,7 +15,7 @@ export default function RomansFeatureCard({
     <article className="mx-auto flex w-full max-w-[280px] flex-col items-center gap-6 text-center text-ink">
       <Icon aria-hidden="true" className="size-12 stroke-[1.75]" />
 
-      <div className="space-y-4">
+      <div className="stack-sm">
         <h3 className="text-2xl-custom font-bold leading-title tracking-title md:text-h3">
           {title}
         </h3>

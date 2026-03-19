@@ -85,7 +85,7 @@ export default function About() {
       <section className="section-bleed bg-white">
         <div className="section-wrap-xl py-16 lg:py-24">
           <div className="flex flex-col gap-12 lg:flex-row lg:gap-16">
-            <div className="flex-1 space-y-10 text-ink">
+          <div className="flex-1 space-y-10 text-ink">
               {ABOUT_FEATURES.map((feature, index) => (
                 <div
                   key={`${feature.title}-${index}`}
@@ -171,8 +171,8 @@ export default function About() {
             crois que les histoires vraies changent les lecteurs.
           </p>
 
-          <div className="mt-12 space-y-12 text-left sm:mt-16">
-            <div className="space-y-6">
+          <div className="mt-12 stack-lg text-left sm:mt-16">
+            <div className="stack-md">
               <div className="h-[220px] overflow-hidden rounded-2xl bg-surface-placeholder">
                    <Image
                   src="/books.png"
@@ -192,7 +192,7 @@ export default function About() {
               </p>
             </div>
 
-            <div className="space-y-6">
+            <div className="stack-md">
               <div className="h-[220px] overflow-hidden rounded-2xl bg-surface-placeholder">
                    <Image
                   src="/books.png"
@@ -212,7 +212,7 @@ export default function About() {
               </p>
             </div>
 
-            <div className="space-y-6">
+            <div className="stack-md">
               <div className="h-[220px] overflow-hidden rounded-2xl bg-surface-placeholder">
                 <Image
                   src="/books.png"
@@ -260,7 +260,7 @@ export default function About() {
       </section>
       <section className="section-bleed bg-white">
         <div className="section-wrap-sm section-pad-lg">
-          <div className="space-y-4 text-ink">
+          <div className="stack-sm text-ink">
             <p className="eyebrow">
               Auteure
             </p>
@@ -279,14 +279,14 @@ export default function About() {
             </Link>
           </div>
 
-          <div className="mt-12 space-y-12">
+          <div className="mt-12 stack-lg">
             {AUTHOR_CARDS.map((author, index) => (
-              <div key={`${author.name}-${index}`} className="space-y-4">
+              <div key={`${author.name}-${index}`} className="stack-sm">
                 <div className="flex h-[96px] w-[96px] items-center justify-center rounded-full bg-surface-placeholder text-icon-placeholder">
                   <Globe className="size-8" aria-hidden="true" />
                 </div>
 
-                <div className="space-y-2">
+                <div className="stack-sm">
                   <h3 className="text-h4 font-semibold leading-subtitle text-ink">
                     {author.name}
                   </h3>
@@ -318,8 +318,8 @@ export default function About() {
             Leurs mots me portent
           </p>
 
-          <div className="mt-12 space-y-12 text-ink">
-            <div className="space-y-6">
+          <div className="mt-12 stack-lg text-ink">
+            <div className="stack-md">
               <div className="text-base-custom font-semibold">Webflow</div>
               <p className="text-h4 font-semibold leading-title">
                 &quot;Enfin une auteure qui comprend ce que c&apos;est de vivre avec
@@ -334,7 +334,7 @@ export default function About() {
               </div>
             </div>
 
-            <div className="space-y-6">
+            <div className="stack-md">
               <div className="text-base-custom font-semibold">Webflow</div>
               <p className="text-h4 font-semibold leading-title">
                 &quot;Les secrets de Clara m&apos;a fait pleurer et rire. C&apos;est
@@ -349,7 +349,7 @@ export default function About() {
               </div>
             </div>
 
-            <div className="space-y-6">
+            <div className="stack-md">
               <div className="text-base-custom font-semibold">Webflow</div>
               <p className="text-h4 font-semibold leading-title">
                 &quot;Chloé écrit comme elle respire. Ses histoires deviennent les

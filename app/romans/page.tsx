@@ -12,7 +12,7 @@ export default async function Book() {
   return (
     <div className="flex flex-col gap-16 pb-16">
       <section className="section-bleed bg-surface-mint">
-        <div className="section-wrap-sm section-pad-md space-y-6 text-ink">
+        <div className="section-wrap-sm section-pad-md stack-md text-ink">
           <p className="eyebrow">
             Romans
           </p>
@@ -42,7 +42,7 @@ export default async function Book() {
       </section>
 
       <section id="catalogue" className="section-wrap-lg space-y-10 text-ink">
-        <div className="space-y-4">
+        <div className="stack-sm">
           <p className="eyebrow">
             Catalogue
           </p>
@@ -86,8 +86,8 @@ export default async function Book() {
           avec un handicap.
         </p>
 
-        <div className="mt-12 space-y-12 text-left">
-          <div className="space-y-6">
+        <div className="mt-12 stack-lg text-left">
+          <div className="stack-md">
             <div className="h-[220px] overflow-hidden rounded-2xl bg-surface-placeholder">
               <HeroImagePlaceholder />
             </div>
@@ -100,7 +100,7 @@ export default async function Book() {
             </p>
           </div>
 
-          <div className="space-y-6">
+          <div className="stack-md">
             <div className="h-[220px] overflow-hidden rounded-2xl bg-surface-placeholder">
               <HeroImagePlaceholder />
             </div>
@@ -113,7 +113,7 @@ export default async function Book() {
             </p>
           </div>
 
-          <div className="space-y-6">
+          <div className="stack-md">
             <div className="h-[220px] overflow-hidden rounded-2xl bg-surface-placeholder">
               <HeroImagePlaceholder />
             </div>
@@ -154,8 +154,8 @@ export default async function Book() {
           Des voix qui résonnent avec authenticité
         </p>
 
-        <div className="mt-12 space-y-12 text-ink">
-          <div className="space-y-6">
+        <div className="mt-12 stack-lg text-ink">
+          <div className="stack-md">
             <div className="text-base-custom font-semibold">Webflow</div>
             <p className="text-xl-custom font-semibold leading-title">
               &laquo; Ces romans m&apos;ont permis de me voir enfin représentée dans
@@ -170,7 +170,7 @@ export default async function Book() {
             </div>
           </div>
 
-          <div className="space-y-6">
+          <div className="stack-md">
             <div className="text-base-custom font-semibold">Webflow</div>
             <p className="text-xl-custom font-semibold leading-title">
               &laquo; Chloé écrit avec une force brute qui traverse les pages et
@@ -185,7 +185,7 @@ export default async function Book() {
             </div>
           </div>
 
-          <div className="space-y-6">
+          <div className="stack-md">
             <div className="text-base-custom font-semibold">Webflow</div>
             <p className="text-xl-custom font-semibold leading-title">
               &laquo; Un roman qui ne vous lâche pas. L&apos;humanité crue et sans

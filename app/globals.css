@@ -357,6 +357,18 @@
   .eyebrow {
     @apply text-sm2-custom font-semibold uppercase tracking-eyebrow text-ink;
   }
+
+  .stack-sm {
+    @apply space-y-4;
+  }
+
+  .stack-md {
+    @apply space-y-6;
+  }
+
+  .stack-lg {
+    @apply space-y-12;
+  }
 }
 
 

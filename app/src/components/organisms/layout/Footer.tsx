@@ -53,7 +53,7 @@ function FooterLinksColumn({
   links: NavItem[];
 }) {
   return (
-    <div className="min-w-0 flex-1 space-y-4">
+    <div className="min-w-0 flex-1 stack-sm">
       <h3 className="text-base-custom font-semibold leading-body text-ink">
         {title}
       </h3>
@@ -86,7 +86,7 @@ export default function Footer() {
     <footer className="bg-surface-ash py-16 lg:py-20">
       <div className="section-wrap-xl space-y-16 lg:space-y-20">
         <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:gap-32">
-          <div className="w-full max-w-[500px] space-y-6">
+          <div className="w-full max-w-[500px] stack-md">
             <Image
               src="/brand/logo-wide.svg"
               alt="Logo Chloé Simart"
@@ -132,7 +132,7 @@ export default function Footer() {
             <FooterLinksColumn title="Navigation" links={NAVIGATION_LINKS} />
             <FooterLinksColumn title="Contact" links={CONTACT_LINKS} />
 
-            <div className="min-w-0 flex-1 space-y-4">
+            <div className="min-w-0 flex-1 stack-sm">
               <h3 className="text-base-custom font-semibold leading-body text-ink">
                 Suivez-moi
               </h3>

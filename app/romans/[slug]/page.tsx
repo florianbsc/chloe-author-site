@@ -32,7 +32,7 @@ export default async function RomanPage({ params }: RomanPageProps) {
   return (
     <div className="flex flex-col gap-16 pb-16">
       <section className="section-bleed bg-surface-mint">
-        <div className="section-wrap-sm section-pad-md space-y-6 text-ink">
+        <div className="section-wrap-sm section-pad-md stack-md text-ink">
           <h1 className="text-h2 font-bold leading-tight tracking-title sm:text-7xl-custom">
             {roman.title}
           </h1>
@@ -59,7 +59,7 @@ export default async function RomanPage({ params }: RomanPageProps) {
       </section>
 
       <section className="section-wrap-sm space-y-8 text-ink">
-        <div className="space-y-3">
+        <div className="stack-sm">
           <h2 className="text-3xl-custom font-bold leading-tight tracking-title sm:text-h1">
             L&apos;histoire qui vous attend
           </h2>
@@ -143,9 +143,9 @@ export default async function RomanPage({ params }: RomanPageProps) {
             </p>
           </div>
         ) : (
-          <div className="mt-12 space-y-12 text-left">
+          <div className="mt-12 stack-lg text-left">
             {topRomans.map((item) => (
-              <div key={item.id} className="space-y-6">
+              <div key={item.id} className="stack-md">
                 <div className="h-[220px] overflow-hidden rounded-2xl bg-surface-placeholder">
                   <HeroImagePlaceholder />
                 </div>
@@ -166,7 +166,7 @@ export default async function RomanPage({ params }: RomanPageProps) {
               Array.from({ length: 3 - topRomans.length }).map((_, index) => (
                 <div
                   key={`roman-placeholder-${index}`}
-                  className="space-y-4 rounded-2xl border border-dashed border-border-soft p-6 text-center"
+                  className="stack-sm rounded-2xl border border-dashed border-border-soft p-6 text-center"
                 >
                   <p className="text-sm3-custom">
                     Un nouveau roman arrive bientôt.
@@ -198,9 +198,9 @@ export default async function RomanPage({ params }: RomanPageProps) {
             </p>
           </div>
         ) : (
-          <div className="mt-12 space-y-12 text-ink">
+          <div className="mt-12 stack-lg text-ink">
             {reviews.map((review) => (
-              <div key={review.id} className="space-y-6">
+              <div key={review.id} className="stack-md">
                 <div className="text-base-custom font-semibold">Webflow</div>
                 <p className="text-xl-custom font-semibold leading-title">
                   &laquo; {review.comment} &raquo;

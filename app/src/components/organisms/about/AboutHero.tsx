@@ -8,7 +8,7 @@ export default function AboutHero() {
     >
       <div className="section-wrap-xl py-16 lg:py-28">
         <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-20">
-          <div className="flex-1 space-y-4 text-ink">
+          <div className="flex-1 stack-sm text-ink">
             <p className="text-base font-semibold leading-subtitle">Auteure</p>
             <h1
               id="about-hero-title"
