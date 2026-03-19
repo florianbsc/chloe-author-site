@@ -54,7 +54,7 @@ function FooterLinksColumn({
 }) {
   return (
     <div className="min-w-0 flex-1 stack-sm">
-      <h3 className="text-base-custom font-semibold leading-body text-ink">
+      <h3 className="text-body-lg font-semibold leading-body text-ink">
         {title}
       </h3>
       <ul>
@@ -65,12 +65,12 @@ function FooterLinksColumn({
                 href={link.href}
                 target="_blank"
                 rel="noreferrer"
-                className="text-sm-custom leading-body text-ink"
+                className="text-body leading-body text-ink"
               >
                 {link.label}
               </a>
             ) : (
-              <Link href={link.href} className="text-sm-custom leading-body text-ink">
+              <Link href={link.href} className="text-body leading-body text-ink">
                 {link.label}
               </Link>
             )}
@@ -86,16 +86,16 @@ export default function Footer() {
     <footer className="bg-surface-ash py-16 lg:py-20">
       <div className="section-wrap-xl space-y-16 lg:space-y-20">
         <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:gap-32">
-          <div className="w-full max-w-[500px] stack-md">
+          <div className="w-full max-w-lg stack-md">
             <Image
               src="/brand/logo-wide.svg"
               alt="Logo Chloé Simart"
               width={84}
               height={36}
-              className="h-9 w-[84px]"
+              className="h-9 w-20"
             />
 
-            <p className="text-base-custom leading-body text-ink">
+            <p className="text-body-lg leading-body text-ink">
               Recevez les actualités et dates de sortie de mes romans.
             </p>
 
@@ -121,7 +121,7 @@ export default function Footer() {
                 </Button>
               </form>
 
-              <p className="text-xs-custom leading-body text-ink">
+              <p className="text-caption leading-body text-ink">
                 En vous abonnant, vous acceptez notre politique de confidentialité
                 et consentez à recevoir nos communications.
               </p>
@@ -133,7 +133,7 @@ export default function Footer() {
             <FooterLinksColumn title="Contact" links={CONTACT_LINKS} />
 
             <div className="min-w-0 flex-1 stack-sm">
-              <h3 className="text-base-custom font-semibold leading-body text-ink">
+              <h3 className="text-body-lg font-semibold leading-body text-ink">
                 Suivez-moi
               </h3>
               <ul>
@@ -141,7 +141,7 @@ export default function Footer() {
                   <li key={social.label} className="py-2">
                     <a
                       href={social.href}
-                      className="inline-flex items-center gap-3 text-sm-custom leading-body text-ink"
+                      className="inline-flex items-center gap-3 text-body leading-body text-ink"
                     >
                       <Image
                         src={social.icon}
@@ -160,8 +160,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="stack-xl border-t border-border-soft pt-8">
-          <div className="flex flex-col gap-4 text-sm-custom leading-body text-ink lg:flex-row lg:items-center lg:justify-between">
+        <div className="stack-xl border-t border-border-subtle pt-8">
+          <div className="flex flex-col gap-4 text-body leading-body text-ink lg:flex-row lg:items-center lg:justify-between">
             <p>© 2025 Chloé Simart. Tous droits réservés.</p>
 
             <div className="flex flex-wrap items-center gap-6">
@@ -169,7 +169,7 @@ export default function Footer() {
                 <Link
                   key={link.label}
                   href={link.href}
-                  className="text-sm-custom leading-body text-ink underline"
+                  className="text-body leading-body text-ink underline"
                 >
                   {link.label}
                 </Link>

@@ -38,14 +38,14 @@ export default function HomeRomansSection() {
   return (
     <section className="section-bleed bg-surface-ash">
       <div className="section-wrap-xl flex flex-col items-center gap-16 py-16 lg:gap-20 lg:py-28">
-        <div className="flex w-full max-w-[768px] flex-col items-center gap-4 text-center text-ink">
-          <p className="text-base font-semibold leading-subtitle">Romans</p>
+        <div className="flex w-full max-w-3xl flex-col items-center gap-4 text-center text-ink">
+          <p className="text-body font-semibold leading-subtitle">Romans</p>
 
           <div className="flex w-full flex-col items-center gap-6">
             <h2 className="text-4xl-custom font-bold leading-title tracking-title lg:text-6xl-custom">
               Mes romans
             </h2>
-            <p className="text-sm-custom leading-body lg:text-h5">
+            <p className="text-body leading-body lg:text-h5">
               Disponibles sur Amazon
             </p>
           </div>

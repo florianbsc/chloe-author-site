@@ -33,7 +33,7 @@ export default function Header() {
     <header className="relative z-50 bg-surface-mint">
       <div className="mx-auto flex w-full items-center justify-between gap-6 px-5 py-3 md:px-8 lg:px-16">
         <div className="hidden min-h-px min-w-px flex-1 items-center lg:flex">
-          <nav className="flex items-center gap-8 text-base-custom leading-body text-ink">
+          <nav className="flex items-center gap-8 text-body-lg leading-body text-ink">
             {PRIMARY_LINKS.map((link) => (
               <Link key={link.href} href={link.href}>
                 {link.label}
@@ -64,9 +64,9 @@ export default function Header() {
               {isRomansMenuOpen && (
                 <div
                   role="menu"
-                  className="absolute left-0 top-full mt-2 w-[222px] rounded-lg border border-border-soft bg-surface-mint p-6"
+                  className="absolute left-0 top-full mt-2 w-56 rounded-lg border border-border-subtle bg-surface-mint p-6"
                 >
-                  <div className="flex flex-col gap-4 text-base-custom leading-body text-ink">
+                  <div className="flex flex-col gap-4 text-body-lg leading-body text-ink">
                     {ROMAN_LINKS.map((roman) => (
                       <Link
                         key={roman.label}
@@ -90,7 +90,7 @@ export default function Header() {
             alt="Logo Chloé Simart"
             width={84}
             height={36}
-            className="h-9 w-[84px]"
+            className="h-9 w-20"
           />
         </Link>
 
@@ -104,7 +104,7 @@ export default function Header() {
           <button
             type="button"
             onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-            className="rounded-md p-2 text-ink hover:bg-black/5"
+            className="rounded-md p-2 text-ink hover:bg-ink/5"
             aria-expanded={isMobileMenuOpen}
             aria-controls="mobile-menu"
             aria-label="Ouvrir le menu"
@@ -117,9 +117,9 @@ export default function Header() {
       {isMobileMenuOpen && (
         <div
           id="mobile-menu"
-          className="border-t border-border-soft bg-surface-mint px-5 py-4 md:px-8"
+          className="border-t border-border-subtle bg-surface-mint px-5 py-4 md:px-8"
         >
-          <nav className="flex flex-col gap-4 text-base-custom leading-body text-ink">
+          <nav className="flex flex-col gap-4 text-body-lg leading-body text-ink">
             {PRIMARY_LINKS.map((link) => (
               <Link key={link.href} href={link.href} onClick={closeMobileMenu}>
                 {link.label}
@@ -136,7 +136,7 @@ export default function Header() {
                     key={roman.label}
                     href={roman.href}
                     onClick={closeMobileMenu}
-                    className="block py-1 text-sm-custom"
+                    className="block py-1 text-body"
                   >
                     {roman.label}
                   </Link>

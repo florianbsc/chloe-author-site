@@ -23,7 +23,7 @@ export default function Navbar({ isMobile = false, onLinkClick }: NavbarProps) {
             key={link.href}
             href={link.href}
             onClick={onLinkClick}
-            className="hover:text-gray-600 transition-colors"
+            className="hover:text-ink/70 transition-colors"
           >
             {link.label}
           </Link>

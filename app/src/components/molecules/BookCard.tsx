@@ -16,21 +16,21 @@ const sizeConfig = {
     width: 40,
     height: 60,
     imageClass: "rounded-md",
-    textSize: "text-sm",
+    textSize: "text-body-sm",
     titleClass: "font-semibold",
   },
   medium: {
     width: 120,
     height: 180,
     imageClass: "rounded-lg",
-    textSize: "text-base",
+    textSize: "text-body",
     titleClass: "font-heading text-h5",
   },
   large: {
     width: 240,
     height: 360,
     imageClass: "rounded-lg",
-    textSize: "text-sm-custom",
+    textSize: "text-body",
     titleClass: "font-heading text-h5",
   },
 };
@@ -57,23 +57,23 @@ export default function BookCard({
       />
       <div>
         <h2 className={config.titleClass}>{title}</h2>
-        <p className={`${config.textSize} text-neutral-500`}>{description}</p>
+        <p className={`${config.textSize} text-muted`}>{description}</p>
       </div>
     </div>
   ) : (
-    <div className={`space-y-3 ${className}`}>
-      <Image
-        src={image}
-        alt={title}
-        width={config.width}
-        height={config.height}
-        className={`rounded-lg object-cover w-full`}
-      />
-      <div>
-        <h3 className={config.titleClass}>{title}</h3>
-        <p className={`${config.textSize} text-neutral-500`}>{description}</p>
+      <div className={`stack-sm ${className}`}>
+        <Image
+          src={image}
+          alt={title}
+          width={config.width}
+          height={config.height}
+          className={`rounded-lg object-cover w-full`}
+        />
+        <div>
+          <h3 className={config.titleClass}>{title}</h3>
+          <p className={`${config.textSize} text-muted`}>{description}</p>
+        </div>
       </div>
-    </div>
   );
 
   if (href) {

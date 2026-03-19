@@ -57,7 +57,7 @@ export default function HomeHighlightsSection() {
       <div className="section-wrap-xl py-16 lg:py-28">
         <div className="flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-20">
           <div className="w-full lg:flex-1">
-            <div className="h-[420px] md:h-[560px] lg:h-[720px]">
+            <div className="hero-media">
               <HeroImagePlaceholder />
             </div>
           </div>
@@ -98,7 +98,7 @@ export default function HomeHighlightsSection() {
 
               <Link
                 href="/romans"
-                className="inline-flex items-center gap-2 text-base-custom font-medium leading-body text-ink"
+                className="inline-flex items-center gap-2 text-body-lg font-medium leading-body text-ink"
               >
                 Suite
                 <ChevronRight aria-hidden="true" className="size-5" />

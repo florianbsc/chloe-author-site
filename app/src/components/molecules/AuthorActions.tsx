@@ -7,7 +7,7 @@ export default function AuthorActions() {
         href="/about"
         variant="primary"
         size="sm"
-        className="md:text-base-custom"
+        className="md:text-body-lg"
       >
         Découvrir
       </Button>
@@ -16,7 +16,7 @@ export default function AuthorActions() {
         href="/about"
         variant="third"
         size="sm"
-        className="md:text-base-custom"
+        className="md:text-body-lg"
       >
         Plus
       </Button>

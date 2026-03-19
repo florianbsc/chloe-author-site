@@ -12,15 +12,15 @@ export default function RomansFeatureCard({
   icon: Icon,
 }: RomansFeatureCardProps) {
   return (
-    <article className="mx-auto flex w-full max-w-[280px] flex-col items-center gap-6 text-center text-ink">
-      <Icon aria-hidden="true" className="size-12 stroke-[1.75]" />
+    <article className="mx-auto flex w-full max-w-xs flex-col items-center gap-6 text-center text-ink">
+      <Icon aria-hidden="true" className="size-12 icon-stroke-lg" />
 
       <div className="stack-sm">
         <h3 className="text-2xl-custom font-bold leading-title tracking-title md:text-h3">
           {title}
         </h3>
 
-        <p className="text-sm-custom leading-body md:text-base-custom">
+        <p className="text-body leading-body md:text-body-lg">
           {description}
         </p>
       </div>

@@ -28,12 +28,10 @@ export default function NewsletterForm({
         placeholder={placeholder}
         size="md"
       />
-      <button type="submit" className="w-full">
-        <Button variant="primary" size="md">
-          S&apos;inscrire
-        </Button>
-      </button>
-      <p className="text-xs text-gray-500">
+      <Button type="submit" variant="primary" size="md" className="w-full">
+        S&apos;inscrire
+      </Button>
+      <p className="text-caption text-muted">
         En vous abonnant, vous acceptez notre politique de confidentialité.
       </p>
     </form>

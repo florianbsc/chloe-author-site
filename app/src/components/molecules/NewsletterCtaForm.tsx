@@ -3,7 +3,7 @@ import Input from "@/app/src/components/atoms/Input";
 
 export default function NewsletterCtaForm() {
   return (
-    <div className="w-full max-w-[513px] stack-sm">
+    <div className="w-full max-w-lg stack-sm">
       <form className="flex w-full items-start gap-4">
         <div className="flex min-h-px min-w-px flex-1 items-center py-2">
           <label htmlFor="newsletter-email" className="sr-only">
@@ -21,6 +21,7 @@ export default function NewsletterCtaForm() {
         </div>
 
         <Button
+          type="submit"
           variant="primary"
           size="sm"
         >
@@ -28,7 +29,7 @@ export default function NewsletterCtaForm() {
         </Button>
       </form>
 
-      <p className="w-full text-center text-xs-custom leading-body text-ink">
+      <p className="w-full text-center text-caption leading-body text-ink">
         En vous abonnant, vous acceptez notre politique de confidentialité.
       </p>
     </div>

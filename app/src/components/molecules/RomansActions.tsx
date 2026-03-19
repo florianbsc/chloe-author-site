@@ -9,14 +9,14 @@ export default function RomansActions() {
         href="/romans"
         variant="third"
         size="sm"
-        className="md:text-base-custom"
+        className="md:text-body-lg"
       >
         Voir
       </Button>
 
       <Link
         href="/romans"
-        className="inline-flex items-center gap-2 text-sm2-custom font-medium leading-body text-ink md:text-base-custom"
+        className="inline-flex items-center gap-2 text-body-sm font-medium leading-body text-ink md:text-body-lg"
       >
         Tous
         <ChevronRight aria-hidden="true" className="size-5" />

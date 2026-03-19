@@ -13,13 +13,13 @@ export default function AboutFeatureItem({
 }: AboutFeatureItemProps) {
   return (
     <article className="flex flex-col items-start gap-4 text-ink">
-      <Icon aria-hidden="true" className="size-12 stroke-[1.75]" />
+      <Icon aria-hidden="true" className="size-12 icon-stroke-lg" />
 
       <h3 className="text-h3 font-bold leading-title tracking-title">
         {title}
       </h3>
 
-      <p className="text-base-custom leading-body">{description}</p>
+      <p className="text-body-lg leading-body">{description}</p>
     </article>
   );
 }

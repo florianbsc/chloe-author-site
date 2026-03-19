@@ -4,11 +4,11 @@ import { cn } from "@/app/src/lib/utils";
 type HeroActionsProps = {
   primaryLabel?: string;
   primaryHref?: string;
-  primaryVariant?: "primary" | "secondary" | "third";
+  primaryVariant?: "primary" | "secondary" | "third" | "cta" | "ghost" | "link";
   primaryClassName?: string;
   secondaryLabel?: string;
   secondaryHref?: string;
-  secondaryVariant?: "primary" | "secondary" | "third";
+  secondaryVariant?: "primary" | "secondary" | "third" | "cta" | "ghost" | "link";
   secondaryClassName?: string;
   className?: string;
 };
@@ -31,7 +31,7 @@ export default function HeroActions({
         variant={primaryVariant}
         size="sm"
         className={cn(
-          "lg:text-base-custom",
+          "lg:text-body-lg",
           primaryClassName,
         )}
       >
@@ -43,7 +43,7 @@ export default function HeroActions({
         variant={secondaryVariant}
         size="sm"
         className={cn(
-          "lg:text-base-custom",
+          "lg:text-body-lg",
           secondaryClassName,
         )}
       >

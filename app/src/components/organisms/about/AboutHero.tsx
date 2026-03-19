@@ -9,7 +9,7 @@ export default function AboutHero() {
       <div className="section-wrap-xl py-16 lg:py-28">
         <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-20">
           <div className="flex-1 stack-sm text-ink">
-            <p className="text-base font-semibold leading-subtitle">Auteure</p>
+            <p className="text-body font-semibold leading-subtitle">Auteure</p>
             <h1
               id="about-hero-title"
               className="text-h1 leading-tight tracking-title sm:text-8xl-custom lg:text-display"
@@ -19,7 +19,7 @@ export default function AboutHero() {
           </div>
 
           <div className="flex-1 stack-xl text-ink">
-            <p className="text-base-custom leading-body lg:text-h5">
+            <p className="text-body-lg leading-body lg:text-h5">
               Je suis une auteure française qui écrit des histoires où le
               handicap n&apos;est pas une limite mais une réalité vivante. Mes
               romans mettent en lumière des personnages authentiques, des âmes
@@ -33,7 +33,7 @@ export default function AboutHero() {
               secondaryLabel="Contact"
               secondaryHref="/contact"
               secondaryVariant="third"
-              secondaryClassName="border-border-soft bg-transparent text-ink hover:bg-ink/5"
+              secondaryClassName="border-border-subtle bg-transparent text-ink hover:bg-ink/5"
             />
           </div>
         </div>
