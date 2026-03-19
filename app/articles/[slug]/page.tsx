@@ -20,11 +20,11 @@ export default function ArticlePage({ params }: ArticlePageProps) {
   return (
     <div className="mx-auto w-full max-w-[720px] px-5 py-12 text-ink sm:py-16">
       <section className="space-y-6">
-        <h2 className="text-h3 font-semibold leading-[1.2]">
+        <h2 className="text-h3 font-semibold leading-title">
           Introduction
         </h2>
 
-        <div className="space-y-4 text-sm-custom leading-[1.7]">
+        <div className="space-y-4 text-sm-custom leading-body-lg">
           <p>
             Mi tincidunt elit, id quisque ligula ac diam, amet. Vel etiam
             suspendisse morbi eleifend faucibus eget vestibulum felis. Dictum
@@ -45,13 +45,13 @@ export default function ArticlePage({ params }: ArticlePageProps) {
           <div className="h-[220px] overflow-hidden rounded-2xl bg-surface-placeholder">
             <HeroImagePlaceholder />
           </div>
-          <p className="text-xs-custom leading-[1.6] text-ink">
+          <p className="text-xs-custom leading-body text-ink">
             Image caption goes here
           </p>
         </div>
 
-        <div className="space-y-4 text-sm-custom leading-[1.7]">
-          <h3 className="text-h5 font-semibold leading-[1.4]">
+        <div className="space-y-4 text-sm-custom leading-body-lg">
+          <h3 className="text-h5 font-semibold leading-title">
             Dolor enim eu tortor urna sed duis nulla. Aliquam vestibulum, nulla
             odio nisl vitae. In aliquet pellentesque aenean hac vestibulum
             turpis mi bibendum diam. Tempor integer aliquam in vitae malesuada
@@ -68,14 +68,14 @@ export default function ArticlePage({ params }: ArticlePageProps) {
           </p>
         </div>
 
-        <blockquote className="border-l border-border-medium pl-6 text-base-custom italic leading-[1.7] text-ink">
+        <blockquote className="border-l border-border-medium pl-6 text-base-custom italic leading-body-lg text-ink">
           &quot;Ipsum sit mattis nulla quam nulla. Gravida id gravida ac enim
           mauris id. Non pellentesque congue eget consectetur turpis. Sapien,
           dictum molestie sem tempor. Diam elit, orci, tincidunt aenean
           tempus.&quot;
         </blockquote>
 
-        <div className="space-y-4 text-sm-custom leading-[1.7]">
+        <div className="space-y-4 text-sm-custom leading-body-lg">
           <p>
             Tristique odio senectus nam posuere ornare leo metus, ultrices.
             Blandit duis ultricies vulputate morbi feugiat cras placerat elit.
@@ -88,11 +88,11 @@ export default function ArticlePage({ params }: ArticlePageProps) {
       </section>
 
       <section className="mt-12 space-y-6">
-        <h2 className="text-h3 font-semibold leading-[1.2]">
+        <h2 className="text-h3 font-semibold leading-title">
           Conclusion
         </h2>
 
-        <div className="space-y-4 text-sm-custom leading-[1.7]">
+        <div className="space-y-4 text-sm-custom leading-body-lg">
           <p>
             Morbi sed imperdiet in ipsum, adipiscing elit dui lectus. Tellus id
             scelerisque est ultricies ultricies. Duis est sit sed leo nisl,
@@ -116,7 +116,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
         </div>
 
         <div className="space-y-4">
-          <p className="text-sm2-custom font-semibold uppercase tracking-[0.2em]">
+          <p className="text-sm2-custom font-semibold uppercase tracking-eyebrow">
             Partager cet article
           </p>
           <div className="flex items-center gap-3">
@@ -174,17 +174,17 @@ export default function ArticlePage({ params }: ArticlePageProps) {
       </section>
 
       <section className="mt-16 space-y-6 text-center">
-        <h2 className="text-4xl-custom font-bold leading-[1.1] tracking-[0.01em]">
+        <h2 className="text-4xl-custom font-bold leading-tight tracking-title">
           Avis de lecteurs
         </h2>
-        <p className="text-sm-custom leading-[1.7] text-ink">
+        <p className="text-sm-custom leading-body-lg text-ink">
           Ce que les lecteurs en pensent
         </p>
 
         <div className="mt-10 space-y-12 text-ink">
           <div className="space-y-6">
             <div className="text-base-custom font-semibold">Webflow</div>
-            <p className="text-xl-custom font-semibold leading-[1.4]">
+            <p className="text-xl-custom font-semibold leading-title">
               &laquo; Un roman qui m&apos;a bouleversée du début à la fin. &raquo;
             </p>
             <div className="mx-auto flex h-[64px] w-[64px] items-center justify-center rounded-full bg-surface-placeholder-strong text-icon-placeholder">
@@ -198,7 +198,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
 
           <div className="space-y-6">
             <div className="text-base-custom font-semibold">Webflow</div>
-            <p className="text-xl-custom font-semibold leading-[1.4]">
+            <p className="text-xl-custom font-semibold leading-title">
               &laquo; Chloé écrit avec une sincérité rare et profonde. &raquo;
             </p>
             <div className="mx-auto flex h-[64px] w-[64px] items-center justify-center rounded-full bg-surface-placeholder-strong text-icon-placeholder">
@@ -213,12 +213,12 @@ export default function ArticlePage({ params }: ArticlePageProps) {
       </section>
 
       <section className="mt-16 rounded-3xl bg-surface-mint px-5 py-12 text-center text-ink sm:px-8">
-        <h2 className="text-4xl-custom font-bold leading-[1.1] tracking-[0.01em] sm:text-5xl-custom">
+        <h2 className="text-4xl-custom font-bold leading-tight tracking-title sm:text-5xl-custom">
           Poursuivez la lecture
           <br />
           Explorez mes univers
         </h2>
-        <p className="mt-4 text-sm-custom leading-[1.7] sm:text-base-custom">
+        <p className="mt-4 text-sm-custom leading-body-lg sm:text-base-custom">
           Découvrez mes autres romans et plongez dans des histoires qui
           transforment.
         </p>
@@ -240,11 +240,11 @@ export default function ArticlePage({ params }: ArticlePageProps) {
         id="newsletter"
         className="mt-16 text-center text-ink"
       >
-        <h2 className="text-4xl-custom font-bold leading-[1.1] tracking-[0.01em] sm:text-5xl-custom">
+        <h2 className="text-4xl-custom font-bold leading-tight tracking-title sm:text-5xl-custom">
           Restez connecté
           <br />À l&apos;actualité
         </h2>
-        <p className="mt-4 text-sm-custom leading-[1.7] sm:text-base-custom">
+        <p className="mt-4 text-sm-custom leading-body-lg sm:text-base-custom">
           Recevez les dates de sortie et les nouvelles directement dans votre
           boîte.
         </p>
@@ -269,7 +269,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
           </Button>
         </form>
 
-        <p className="mt-4 text-xxs-custom leading-[1.6] text-ink">
+        <p className="mt-4 text-xxs-custom leading-body text-ink">
           Nous respectons votre vie privée. Désinscription possible à tout
           moment.
         </p>

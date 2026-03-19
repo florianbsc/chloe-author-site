@@ -98,7 +98,7 @@ export default function HomeHighlightsSection() {
 
               <Link
                 href="/romans"
-                className="inline-flex items-center gap-2 text-base-custom font-medium leading-[1.6] text-ink"
+                className="inline-flex items-center gap-2 text-base-custom font-medium leading-body text-ink"
               >
                 Suite
                 <ChevronRight aria-hidden="true" className="size-5" />

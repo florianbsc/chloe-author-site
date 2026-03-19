@@ -13,11 +13,11 @@ export default function HomeHero() {
             <div className="space-y-5 text-ink lg:space-y-6">
               <h1
                 id="home-hero-title"
-                className="text-h1 font-bold leading-[1.1] tracking-[0.01em] lg:text-display"
+                className="text-h1 font-bold leading-tight tracking-title lg:text-display"
               >
                 Chloé Simart
               </h1>
-              <p className="text-sm2-custom leading-[1.6] lg:text-h5">
+              <p className="text-sm2-custom leading-body lg:text-h5">
                 Une auteure pas comme les autres. Auteure de romans qui touchent
                 l&apos;âme.
               </p>

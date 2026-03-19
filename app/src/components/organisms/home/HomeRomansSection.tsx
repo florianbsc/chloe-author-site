@@ -39,13 +39,13 @@ export default function HomeRomansSection() {
     <section className="relative left-1/2 right-1/2 -mx-[50vw] w-screen bg-surface-ash px-5 py-16 md:px-8 lg:px-16 lg:py-28">
       <div className="mx-auto flex w-full max-w-[1280px] flex-col items-center gap-16 lg:gap-20">
         <div className="flex w-full max-w-[768px] flex-col items-center gap-4 text-center text-ink">
-          <p className="text-base font-semibold leading-[1.5]">Romans</p>
+          <p className="text-base font-semibold leading-subtitle">Romans</p>
 
           <div className="flex w-full flex-col items-center gap-6">
-            <h2 className="text-4xl-custom font-bold leading-[1.2] tracking-[0.01em] lg:text-6xl-custom">
+            <h2 className="text-4xl-custom font-bold leading-title tracking-title lg:text-6xl-custom">
               Mes romans
             </h2>
-            <p className="text-sm-custom leading-[1.6] lg:text-h5">
+            <p className="text-sm-custom leading-body lg:text-h5">
               Disponibles sur Amazon
             </p>
           </div>

@@ -6,14 +6,14 @@ export default function HomeAuthorSection() {
       <div className="mx-auto w-full max-w-[1280px]">
         <div className="flex w-full flex-col gap-12 text-ink lg:flex-row lg:gap-20">
           <div className="flex flex-1 flex-col gap-4">
-            <p className="text-base font-semibold leading-[1.5]">Auteure</p>
-            <h2 className="text-h1 font-bold leading-[1.1] tracking-[0.01em] lg:text-display">
+            <p className="text-base font-semibold leading-subtitle">Auteure</p>
+            <h2 className="text-h1 font-bold leading-tight tracking-title lg:text-display">
               Une handi-auteure
             </h2>
           </div>
 
           <div className="flex flex-1 flex-col gap-8">
-            <p className="text-sm2-custom leading-[1.6] lg:text-h5">
+            <p className="text-sm2-custom leading-body lg:text-h5">
               Chloé Simart écrit des histoires où le handicap n&apos;est pas un
               obstacle mais une part authentique de l&apos;existence. Elle brise
               les tabous en donnant voix à ceux qu&apos;on oublie souvent.

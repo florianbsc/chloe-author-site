@@ -28,7 +28,7 @@ export default function NewsletterCtaForm() {
         </Button>
       </form>
 
-      <p className="w-full text-center text-xs-custom leading-[1.6] text-ink">
+      <p className="w-full text-center text-xs-custom leading-body text-ink">
         En vous abonnant, vous acceptez notre politique de confidentialité.
       </p>
     </div>

@@ -38,13 +38,13 @@ export default function Actualite() {
   return (
     <div className="flex flex-col gap-16 pb-16 lg:gap-24">
       <section className="mx-auto w-full max-w-[720px] space-y-6 px-5 pt-10 text-ink lg:pt-16">
-        <p className="text-sm2-custom font-semibold uppercase tracking-[0.2em]">
+        <p className="text-sm2-custom font-semibold uppercase tracking-eyebrow">
           Actualités
         </p>
-        <h1 className="text-h2 font-bold leading-[1.1] tracking-[0.01em] sm:text-6xl-custom">
+        <h1 className="text-h2 font-bold leading-tight tracking-title sm:text-6xl-custom">
           Les dernières nouvelles
         </h1>
-        <p className="text-sm-custom leading-[1.7] sm:text-base-custom">
+        <p className="text-sm-custom leading-body-lg sm:text-base-custom">
           Suivez l&apos;évolution de mes projets et découvrez les dates de sortie
           de mes prochains romans. Chaque histoire porte en elle une part de
           vérité qui mérite d&apos;être partagée.
@@ -61,13 +61,13 @@ export default function Actualite() {
 
       <section className="mx-auto w-full max-w-[960px] space-y-8 px-5 text-ink">
         <div className="space-y-4">
-          <p className="text-sm2-custom font-semibold uppercase tracking-[0.2em]">
+          <p className="text-sm2-custom font-semibold uppercase tracking-eyebrow">
             Blog
           </p>
-          <h2 className="text-3xl-custom font-bold leading-[1.1] tracking-[0.01em] sm:text-h1">
+          <h2 className="text-3xl-custom font-bold leading-tight tracking-title sm:text-h1">
             Short heading goes here
           </h2>
-          <p className="text-sm-custom leading-[1.7] sm:text-base-custom">
+          <p className="text-sm-custom leading-body-lg sm:text-base-custom">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </p>
         </div>
@@ -87,10 +87,10 @@ export default function Actualite() {
                 <span className="text-sm2-custom">{post.readTime}</span>
               </div>
 
-              <h3 className="text-h5 font-semibold leading-[1.4]">
+              <h3 className="text-h5 font-semibold leading-title">
                 {post.title}
               </h3>
-              <p className="text-sm3-custom leading-[1.6]">{post.excerpt}</p>
+              <p className="text-sm3-custom leading-body">{post.excerpt}</p>
 
               <Link
                 href="/articles"
@@ -131,12 +131,12 @@ export default function Actualite() {
       </section>
 
       <section className="mx-auto w-full max-w-[720px] px-5 text-center text-ink">
-        <h2 className="text-4xl-custom font-bold leading-[1.1] tracking-[0.01em] sm:text-5xl-custom">
+        <h2 className="text-4xl-custom font-bold leading-tight tracking-title sm:text-5xl-custom">
           Ne manquez rien
           <br />
           Restez informé(e)
         </h2>
-        <p className="mt-4 text-sm-custom leading-[1.7] sm:text-base-custom">
+        <p className="mt-4 text-sm-custom leading-body-lg sm:text-base-custom">
           Recevez les actualités et les dates de sortie de mes prochains romans
           directement dans votre boîte mail.
         </p>
@@ -161,7 +161,7 @@ export default function Actualite() {
           </Button>
         </form>
 
-        <p className="mt-4 text-xs-custom leading-[1.6] text-ink">
+        <p className="mt-4 text-xs-custom leading-body text-ink">
           En vous abonnant, vous acceptez nos conditions d&apos;utilisation et
           politique de confidentialité.
         </p>

@@ -16,7 +16,7 @@ export default function RomansActions() {
 
       <Link
         href="/romans"
-        className="inline-flex items-center gap-2 text-sm2-custom font-medium leading-[1.6] text-ink md:text-base-custom"
+        className="inline-flex items-center gap-2 text-sm2-custom font-medium leading-body text-ink md:text-base-custom"
       >
         Tous
         <ChevronRight aria-hidden="true" className="size-5" />

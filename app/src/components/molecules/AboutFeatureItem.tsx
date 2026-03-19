@@ -15,11 +15,11 @@ export default function AboutFeatureItem({
     <article className="flex flex-col items-start gap-4 text-ink">
       <Icon aria-hidden="true" className="size-12 stroke-[1.75]" />
 
-      <h3 className="text-h3 font-bold leading-[1.2] tracking-[0.01em]">
+      <h3 className="text-h3 font-bold leading-title tracking-title">
         {title}
       </h3>
 
-      <p className="text-base-custom leading-[1.6]">{description}</p>
+      <p className="text-base-custom leading-body">{description}</p>
     </article>
   );
 }

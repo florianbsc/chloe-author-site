@@ -33,7 +33,7 @@ export default async function RomanPage({ params }: RomanPageProps) {
     <div className="flex flex-col gap-16 pb-16">
       <section className="relative left-1/2 right-1/2 -mx-[50vw] w-screen bg-surface-mint">
         <div className="mx-auto w-full max-w-[720px] space-y-6 px-5 py-12 text-ink sm:py-16">
-          <h1 className="text-h2 font-bold leading-[1.1] tracking-[0.01em] sm:text-7xl-custom">
+          <h1 className="text-h2 font-bold leading-tight tracking-title sm:text-7xl-custom">
             {roman.title}
           </h1>
 
@@ -48,7 +48,7 @@ export default async function RomanPage({ params }: RomanPageProps) {
             ))}
           </div>
 
-          <p className="text-sm-custom leading-[1.7] sm:text-base-custom">
+          <p className="text-sm-custom leading-body-lg sm:text-base-custom">
             {roman.summary}
           </p>
 
@@ -60,19 +60,19 @@ export default async function RomanPage({ params }: RomanPageProps) {
 
       <section className="mx-auto w-full max-w-[720px] space-y-8 px-5 text-ink">
         <div className="space-y-3">
-          <h2 className="text-3xl-custom font-bold leading-[1.1] tracking-[0.01em] sm:text-h1">
+          <h2 className="text-3xl-custom font-bold leading-tight tracking-title sm:text-h1">
             L&apos;histoire qui vous attend
           </h2>
         </div>
 
-        <div className="space-y-5 text-sm-custom leading-[1.7] sm:text-base-custom">
+        <div className="space-y-5 text-sm-custom leading-body-lg sm:text-base-custom">
           {roman.story.map((paragraph, index) => (
             <p key={`${roman.slug}-story-${index}`}>{paragraph}</p>
           ))}
         </div>
 
         <div className="rounded-2xl border border-border-subtle bg-white p-6">
-          <h3 className="text-h5 font-semibold leading-[1.4]">
+          <h3 className="text-h5 font-semibold leading-title">
             Informations complémentaires
           </h3>
           <dl className="mt-4 space-y-3 text-sm3-custom">
@@ -120,15 +120,15 @@ export default async function RomanPage({ params }: RomanPageProps) {
       </section>
 
       <section className="mx-auto w-full max-w-[720px] px-5 text-center text-ink">
-        <p className="text-sm2-custom font-semibold uppercase tracking-[0.2em]">
+        <p className="text-sm2-custom font-semibold uppercase tracking-eyebrow">
           Essence
         </p>
-        <h2 className="mt-4 text-4xl-custom font-bold leading-[1.1] tracking-[0.01em] sm:text-5xl-custom">
+        <h2 className="mt-4 text-4xl-custom font-bold leading-tight tracking-title sm:text-5xl-custom">
           Pourquoi ce roman vous
           <br />
           touchera
         </h2>
-        <p className="mt-4 text-sm-custom leading-[1.7] sm:text-base-custom">
+        <p className="mt-4 text-sm-custom leading-body-lg sm:text-base-custom">
           Chloé Simart crée des mondes où le handicap n&apos;est jamais une limite
           narrative, mais une richesse narrative.
         </p>
@@ -138,7 +138,7 @@ export default async function RomanPage({ params }: RomanPageProps) {
             <h3 className="text-h5 font-semibold">
               Aucun autre roman disponible
             </h3>
-            <p className="mt-2 text-sm3-custom leading-[1.6]">
+            <p className="mt-2 text-sm3-custom leading-body">
               Revenez bientôt pour découvrir de nouvelles lectures.
             </p>
           </div>
@@ -149,10 +149,10 @@ export default async function RomanPage({ params }: RomanPageProps) {
                 <div className="h-[220px] overflow-hidden rounded-2xl bg-surface-placeholder">
                   <HeroImagePlaceholder />
                 </div>
-                <h3 className="text-2xl-custom font-semibold leading-[1.25]">
+                <h3 className="text-2xl-custom font-semibold leading-subtitle">
                   {item.title}
                 </h3>
-                <p className="text-sm-custom leading-[1.7]">
+                <p className="text-sm-custom leading-body-lg">
                   {item.shortDescription}
                 </p>
                 <Link href={`/romans/${item.slug}`}>
@@ -178,10 +178,10 @@ export default async function RomanPage({ params }: RomanPageProps) {
       </section>
 
       <section className="mx-auto w-full max-w-[720px] px-5 text-center text-ink">
-        <h2 className="text-4xl-custom font-bold leading-[1.1] tracking-[0.01em] sm:text-5xl-custom">
+        <h2 className="text-4xl-custom font-bold leading-tight tracking-title sm:text-5xl-custom">
           Avis de lecteurs
         </h2>
-        <p className="mt-4 text-sm-custom leading-[1.7] sm:text-base-custom">
+        <p className="mt-4 text-sm-custom leading-body-lg sm:text-base-custom">
           Ce que disent ceux qui ont lu
         </p>
 
@@ -190,7 +190,7 @@ export default async function RomanPage({ params }: RomanPageProps) {
             <h3 className="text-h5 font-semibold">
               Aucun avis pour le moment
             </h3>
-            <p className="mt-2 text-sm3-custom leading-[1.6]">
+            <p className="mt-2 text-sm3-custom leading-body">
               Soyez le premier à partager votre ressenti sur ce roman.
             </p>
             <p className="mt-4 text-xs2-custom text-ink">
@@ -202,7 +202,7 @@ export default async function RomanPage({ params }: RomanPageProps) {
             {reviews.map((review) => (
               <div key={review.id} className="space-y-6">
                 <div className="text-base-custom font-semibold">Webflow</div>
-                <p className="text-xl-custom font-semibold leading-[1.4]">
+                <p className="text-xl-custom font-semibold leading-title">
                   &laquo; {review.comment} &raquo;
                 </p>
                 <div className="mx-auto flex h-[64px] w-[64px] items-center justify-center rounded-full bg-surface-placeholder-strong text-icon-placeholder">
