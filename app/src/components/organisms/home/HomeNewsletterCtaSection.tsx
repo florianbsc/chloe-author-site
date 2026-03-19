@@ -2,10 +2,10 @@ import NewsletterCtaForm from "@/app/src/components/molecules/NewsletterCtaForm"
 
 export default function HomeNewsletterCtaSection() {
   return (
-    <section className="relative left-1/2 right-1/2 -mx-[50vw] w-screen bg-[#e9e9ea] px-5 py-16 md:px-8 lg:px-16 lg:py-28">
+    <section className="relative left-1/2 right-1/2 -mx-[50vw] w-screen bg-surface-ash px-5 py-16 md:px-8 lg:px-16 lg:py-28">
       <div className="mx-auto w-full max-w-[1280px]">
         <div className="mx-auto flex w-full max-w-[768px] flex-col items-center gap-8">
-          <div className="w-full space-y-6 text-center text-[#0c0c0c]">
+          <div className="w-full space-y-6 text-center text-ink">
             <h2 className="text-[3rem] font-bold leading-[1.1] tracking-[0.01em] lg:text-[5.25rem]">
               <span className="block">Restez informé</span>
               <span className="block">Des nouvelles</span>

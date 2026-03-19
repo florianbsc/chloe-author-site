@@ -4,11 +4,11 @@ export default function AboutHero() {
   return (
     <section
       aria-labelledby="about-hero-title"
-      className="relative left-1/2 right-1/2 -mx-[50vw] w-screen bg-[#e9f8f7]"
+      className="relative left-1/2 right-1/2 -mx-[50vw] w-screen bg-surface-mint"
     >
       <div className="mx-auto w-full max-w-[1280px] px-5 py-16 lg:px-16 lg:py-28">
         <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-20">
-          <div className="flex-1 space-y-4 text-[#0c0c0c]">
+          <div className="flex-1 space-y-4 text-ink">
             <p className="text-base font-semibold leading-[1.5]">Auteure</p>
             <h1
               id="about-hero-title"
@@ -18,7 +18,7 @@ export default function AboutHero() {
             </h1>
           </div>
 
-          <div className="flex-1 space-y-8 text-[#0c0c0c]">
+          <div className="flex-1 space-y-8 text-ink">
             <p className="text-[1.125rem] leading-[1.6] lg:text-[1.25rem]">
               Je suis une auteure française qui écrit des histoires où le
               handicap n&apos;est pas une limite mais une réalité vivante. Mes
@@ -29,11 +29,11 @@ export default function AboutHero() {
               primaryLabel="Découvrir"
               primaryHref="/about"
               primaryVariant="primary"
-              primaryClassName="border-[#2abab0] bg-[#2abab0] text-white hover:border-[#25a89f] hover:bg-[#25a89f]"
+              primaryClassName="border-brand bg-brand text-white hover:border-brand-strong hover:bg-brand-strong"
               secondaryLabel="Contact"
               secondaryHref="/contact"
               secondaryVariant="third"
-              secondaryClassName="border-[rgba(12,12,12,0.15)] bg-transparent text-[#0c0c0c] hover:bg-[#0c0c0c]/5"
+              secondaryClassName="border-border-soft bg-transparent text-ink hover:bg-ink/5"
             />
           </div>
         </div>

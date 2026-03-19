@@ -52,7 +52,7 @@ function FooterLinksColumn({
 }) {
   return (
     <div className="min-w-0 flex-1 space-y-4">
-      <h3 className="text-[1.125rem] font-semibold leading-[1.6] text-[#0c0c0c]">
+      <h3 className="text-[1.125rem] font-semibold leading-[1.6] text-ink">
         {title}
       </h3>
       <ul>
@@ -63,12 +63,12 @@ function FooterLinksColumn({
                 href={link.href}
                 target="_blank"
                 rel="noreferrer"
-                className="text-[1rem] leading-[1.6] text-[#0c0c0c]"
+                className="text-[1rem] leading-[1.6] text-ink"
               >
                 {link.label}
               </a>
             ) : (
-              <Link href={link.href} className="text-[1rem] leading-[1.6] text-[#0c0c0c]">
+              <Link href={link.href} className="text-[1rem] leading-[1.6] text-ink">
                 {link.label}
               </Link>
             )}
@@ -81,7 +81,7 @@ function FooterLinksColumn({
 
 export default function Footer() {
   return (
-    <footer className="bg-[#e9e9ea] px-5 py-16 md:px-8 lg:px-16 lg:py-20">
+    <footer className="bg-surface-ash px-5 py-16 md:px-8 lg:px-16 lg:py-20">
       <div className="mx-auto w-full max-w-[1280px] space-y-16 lg:space-y-20">
         <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:gap-32">
           <div className="w-full max-w-[500px] space-y-6">
@@ -93,13 +93,13 @@ export default function Footer() {
               className="h-9 w-[84px]"
             />
 
-            <p className="text-[1.125rem] leading-[1.6] text-[#0c0c0c]">
+            <p className="text-[1.125rem] leading-[1.6] text-ink">
               Recevez les actualités et dates de sortie de mes romans.
             </p>
 
             <div className="space-y-3">
               <form className="flex w-full flex-col gap-4 sm:flex-row sm:items-start">
-                <div className="flex min-h-px min-w-px flex-1 items-center border-b border-[rgba(12,12,12,0.15)] py-2">
+                <div className="flex min-h-px min-w-px flex-1 items-center border-b border-border-soft py-2">
                   <label htmlFor="footer-newsletter-email" className="sr-only">
                     Votre email
                   </label>
@@ -109,19 +109,19 @@ export default function Footer() {
                     type="email"
                     required
                     placeholder="Votre email"
-                    className="w-full border-0 bg-transparent text-[1.125rem] leading-[1.6] text-[#0c0c0c] placeholder:text-[#0c0c0c99] outline-none"
+                    className="w-full border-0 bg-transparent text-[1.125rem] leading-[1.6] text-ink placeholder:text-ink/60 outline-none"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="inline-flex items-center justify-center rounded-[6px] border border-[rgba(12,12,12,0.15)] px-3 py-1.5 text-[1.125rem] font-medium leading-[1.6] text-[#0c0c0c] transition hover:bg-black/5"
+                  className="inline-flex items-center justify-center rounded-[6px] border border-border-soft px-3 py-1.5 text-[1.125rem] font-medium leading-[1.6] text-ink transition hover:bg-black/5"
                 >
                   S&apos;abonner
                 </button>
               </form>
 
-              <p className="text-[0.75rem] leading-[1.6] text-[#0c0c0c]">
+              <p className="text-[0.75rem] leading-[1.6] text-ink">
                 En vous abonnant, vous acceptez notre politique de confidentialité
                 et consentez à recevoir nos communications.
               </p>
@@ -133,7 +133,7 @@ export default function Footer() {
             <FooterLinksColumn title="Contact" links={CONTACT_LINKS} />
 
             <div className="min-w-0 flex-1 space-y-4">
-              <h3 className="text-[1.125rem] font-semibold leading-[1.6] text-[#0c0c0c]">
+              <h3 className="text-[1.125rem] font-semibold leading-[1.6] text-ink">
                 Suivez-moi
               </h3>
               <ul>
@@ -141,7 +141,7 @@ export default function Footer() {
                   <li key={social.label} className="py-2">
                     <a
                       href={social.href}
-                      className="inline-flex items-center gap-3 text-[1rem] leading-[1.6] text-[#0c0c0c]"
+                      className="inline-flex items-center gap-3 text-[1rem] leading-[1.6] text-ink"
                     >
                       <Image
                         src={social.icon}
@@ -160,8 +160,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="space-y-8 border-t border-[rgba(12,12,12,0.15)] pt-8">
-          <div className="flex flex-col gap-4 text-[1rem] leading-[1.6] text-[#0c0c0c] lg:flex-row lg:items-center lg:justify-between">
+        <div className="space-y-8 border-t border-border-soft pt-8">
+          <div className="flex flex-col gap-4 text-[1rem] leading-[1.6] text-ink lg:flex-row lg:items-center lg:justify-between">
             <p>© 2025 Chloé Simart. Tous droits réservés.</p>
 
             <div className="flex flex-wrap items-center gap-6">
@@ -169,7 +169,7 @@ export default function Footer() {
                 <Link
                   key={link.label}
                   href={link.href}
-                  className="text-[1rem] leading-[1.6] text-[#0c0c0c] underline"
+                  className="text-[1rem] leading-[1.6] text-ink underline"
                 >
                   {link.label}
                 </Link>

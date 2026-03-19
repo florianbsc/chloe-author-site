@@ -12,7 +12,7 @@ export default function RomansFeatureCard({
   icon: Icon,
 }: RomansFeatureCardProps) {
   return (
-    <article className="mx-auto flex w-full max-w-[280px] flex-col items-center gap-6 text-center text-[#0c0c0c]">
+    <article className="mx-auto flex w-full max-w-[280px] flex-col items-center gap-6 text-center text-ink">
       <Icon aria-hidden="true" className="size-12 stroke-[1.75]" />
 
       <div className="space-y-4">

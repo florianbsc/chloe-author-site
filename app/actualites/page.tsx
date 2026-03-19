@@ -36,7 +36,7 @@ const ARTICLES_POSTS = [
 export default function Actualite() {
   return (
     <div className="flex flex-col gap-16 pb-16 lg:gap-24">
-      <section className="mx-auto w-full max-w-[720px] space-y-6 px-5 pt-10 text-[#0c0c0c] lg:pt-16">
+      <section className="mx-auto w-full max-w-[720px] space-y-6 px-5 pt-10 text-ink lg:pt-16">
         <p className="text-[0.875rem] font-semibold uppercase tracking-[0.2em]">
           Actualités
         </p>
@@ -51,20 +51,20 @@ export default function Actualite() {
         <div className="flex flex-wrap gap-3">
           <Button
             variant="primary"
-            className="rounded-[10px] border border-[#2abab0] bg-[#2abab0] px-4 py-2 text-[0.875rem] leading-[1.6] text-white hover:bg-[#239f96]"
+            className="rounded-[10px] border border-brand bg-brand px-4 py-2 text-[0.875rem] leading-[1.6] text-white hover:bg-brand-hover"
           >
             Découvrir
           </Button>
           <Button
             variant="secondary"
-            className="rounded-[10px] border border-[rgba(12,12,12,0.2)] px-4 py-2 text-[0.875rem] leading-[1.6] text-[#0c0c0c]"
+            className="rounded-[10px] border border-border-medium px-4 py-2 text-[0.875rem] leading-[1.6] text-ink"
           >
             Retour
           </Button>
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-[960px] space-y-8 px-5 text-[#0c0c0c]">
+      <section className="mx-auto w-full max-w-[960px] space-y-8 px-5 text-ink">
         <div className="space-y-4">
           <p className="text-[0.875rem] font-semibold uppercase tracking-[0.2em]">
             Blog
@@ -81,12 +81,12 @@ export default function Actualite() {
           {ARTICLES_POSTS.map((post, index) => (
             <article
               key={`${post.title}-${index}`}
-              className="min-w-[260px] flex-1 snap-start space-y-4 rounded-2xl border border-[rgba(12,12,12,0.1)] bg-white p-4 shadow-sm sm:min-w-[320px]"
+              className="min-w-[260px] flex-1 snap-start space-y-4 rounded-2xl border border-border-subtle bg-white p-4 shadow-sm sm:min-w-[320px]"
             >
-              <div className="h-[180px] rounded-xl bg-[#dedede]" />
+              <div className="h-[180px] rounded-xl bg-surface-placeholder" />
 
-              <div className="flex items-center gap-3 text-[0.875rem] text-[#0c0c0c]">
-                <span className="rounded-full border border-[rgba(12,12,12,0.2)] px-3 py-1">
+              <div className="flex items-center gap-3 text-[0.875rem] text-ink">
+                <span className="rounded-full border border-border-medium px-3 py-1">
                   {post.category}
                 </span>
                 <span className="text-[0.875rem]">{post.readTime}</span>
@@ -110,22 +110,22 @@ export default function Actualite() {
 
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-[#0c0c0c]" />
-            <span className="h-2 w-2 rounded-full bg-[#cfd6d5]" />
-            <span className="h-2 w-2 rounded-full bg-[#cfd6d5]" />
-            <span className="h-2 w-2 rounded-full bg-[#cfd6d5]" />
+            <span className="h-2 w-2 rounded-full bg-ink" />
+            <span className="h-2 w-2 rounded-full bg-dot-muted" />
+            <span className="h-2 w-2 rounded-full bg-dot-muted" />
+            <span className="h-2 w-2 rounded-full bg-dot-muted" />
           </div>
 
           <div className="flex items-center gap-3">
             <Button
               variant="secondary"
-              className="h-10 w-10 rounded-[10px] border border-[rgba(12,12,12,0.2)] p-0"
+              className="h-10 w-10 rounded-[10px] border border-border-medium p-0"
             >
               <ArrowLeft className="size-5" aria-hidden="true" />
             </Button>
             <Button
               variant="secondary"
-              className="h-10 w-10 rounded-[10px] border border-[rgba(12,12,12,0.2)] p-0"
+              className="h-10 w-10 rounded-[10px] border border-border-medium p-0"
             >
               <ArrowRight className="size-5" aria-hidden="true" />
             </Button>
@@ -136,7 +136,7 @@ export default function Actualite() {
           <Link href="/articles">
             <Button
               variant="secondary"
-              className="rounded-[10px] border border-[rgba(12,12,12,0.2)] px-4 py-2 text-[0.875rem] leading-[1.6] text-[#0c0c0c]"
+              className="rounded-[10px] border border-border-medium px-4 py-2 text-[0.875rem] leading-[1.6] text-ink"
             >
               View all
             </Button>
@@ -144,7 +144,7 @@ export default function Actualite() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-[720px] px-5 text-center text-[#0c0c0c]">
+      <section className="mx-auto w-full max-w-[720px] px-5 text-center text-ink">
         <h2 className="text-[2.5rem] font-bold leading-[1.1] tracking-[0.01em] sm:text-[3.5rem]">
           Ne manquez rien
           <br />
@@ -156,7 +156,7 @@ export default function Actualite() {
         </p>
 
         <form className="mt-8 space-y-4">
-          <div className="border-b border-[rgba(12,12,12,0.2)] py-2">
+          <div className="border-b border-border-medium py-2">
             <label htmlFor="newsletter-email" className="sr-only">
               Votre email
             </label>
@@ -166,18 +166,18 @@ export default function Actualite() {
               type="email"
               required
               placeholder="Votre email"
-              className="w-full border-0 bg-transparent text-[1rem] leading-[1.6] text-[#0c0c0c] placeholder:text-[#0c0c0c99] outline-none"
+              className="w-full border-0 bg-transparent text-[1rem] leading-[1.6] text-ink placeholder:text-ink/60 outline-none"
             />
           </div>
           <Button
             variant="primary"
-            className="w-full rounded-[10px] border border-[#2abab0] bg-[#2abab0] px-4 py-2 text-[0.875rem] leading-[1.6] text-white hover:bg-[#239f96]"
+            className="w-full rounded-[10px] border border-brand bg-brand px-4 py-2 text-[0.875rem] leading-[1.6] text-white hover:bg-brand-hover"
           >
             S&apos;abonner
           </Button>
         </form>
 
-        <p className="mt-4 text-[0.75rem] leading-[1.6] text-[#0c0c0c]">
+        <p className="mt-4 text-[0.75rem] leading-[1.6] text-ink">
           En vous abonnant, vous acceptez nos conditions d&apos;utilisation et
           politique de confidentialité.
         </p>

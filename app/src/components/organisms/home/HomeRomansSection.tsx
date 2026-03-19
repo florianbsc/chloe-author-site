@@ -36,9 +36,9 @@ const ROMANS = [
 
 export default function HomeRomansSection() {
   return (
-    <section className="relative left-1/2 right-1/2 -mx-[50vw] w-screen bg-[#e9e9ea] px-5 py-16 md:px-8 lg:px-16 lg:py-28">
+    <section className="relative left-1/2 right-1/2 -mx-[50vw] w-screen bg-surface-ash px-5 py-16 md:px-8 lg:px-16 lg:py-28">
       <div className="mx-auto flex w-full max-w-[1280px] flex-col items-center gap-16 lg:gap-20">
-        <div className="flex w-full max-w-[768px] flex-col items-center gap-4 text-center text-[#0c0c0c]">
+        <div className="flex w-full max-w-[768px] flex-col items-center gap-4 text-center text-ink">
           <p className="text-base font-semibold leading-[1.5]">Romans</p>
 
           <div className="flex w-full flex-col items-center gap-6">

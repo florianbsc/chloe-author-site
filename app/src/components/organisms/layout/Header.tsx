@@ -29,10 +29,10 @@ export default function Header() {
   }
 
   return (
-    <header className="relative z-50 bg-[#e9f8f7]">
+    <header className="relative z-50 bg-surface-mint">
       <div className="mx-auto flex w-full items-center justify-between gap-6 px-5 py-3 md:px-8 lg:px-16">
         <div className="hidden min-h-px min-w-px flex-1 items-center lg:flex">
-          <nav className="flex items-center gap-8 text-[1.125rem] leading-[1.6] text-[#0c0c0c]">
+          <nav className="flex items-center gap-8 text-[1.125rem] leading-[1.6] text-ink">
             {PRIMARY_LINKS.map((link) => (
               <Link key={link.href} href={link.href}>
                 {link.label}
@@ -63,9 +63,9 @@ export default function Header() {
               {isRomansMenuOpen && (
                 <div
                   role="menu"
-                  className="absolute left-0 top-full mt-2 w-[222px] rounded-lg border border-[rgba(12,12,12,0.15)] bg-[#e9f8f7] p-6"
+                  className="absolute left-0 top-full mt-2 w-[222px] rounded-lg border border-border-soft bg-surface-mint p-6"
                 >
-                  <div className="flex flex-col gap-4 text-[1.125rem] leading-[1.6] text-[#0c0c0c]">
+                  <div className="flex flex-col gap-4 text-[1.125rem] leading-[1.6] text-ink">
                     {ROMAN_LINKS.map((roman) => (
                       <Link
                         key={roman.label}
@@ -96,7 +96,7 @@ export default function Header() {
         <div className="hidden min-h-px min-w-px flex-1 items-center justify-end lg:flex">
           <Link
             href="/about"
-            className="inline-flex items-center justify-center rounded-[6px] border border-[#2abab0] bg-[#2abab0] px-2.5 py-1 text-[1.125rem] font-medium leading-[1.6] text-white transition hover:bg-[#239f96]"
+            className="inline-flex items-center justify-center rounded-[6px] border border-brand bg-brand px-2.5 py-1 text-[1.125rem] font-medium leading-[1.6] text-white transition hover:bg-brand-hover"
           >
             Contactez-moi
           </Link>
@@ -106,7 +106,7 @@ export default function Header() {
           <button
             type="button"
             onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-            className="rounded-md p-2 text-[#0c0c0c] hover:bg-black/5"
+            className="rounded-md p-2 text-ink hover:bg-black/5"
             aria-expanded={isMobileMenuOpen}
             aria-controls="mobile-menu"
             aria-label="Ouvrir le menu"
@@ -119,9 +119,9 @@ export default function Header() {
       {isMobileMenuOpen && (
         <div
           id="mobile-menu"
-          className="border-t border-[rgba(12,12,12,0.15)] bg-[#e9f8f7] px-5 py-4 md:px-8"
+          className="border-t border-border-soft bg-surface-mint px-5 py-4 md:px-8"
         >
-          <nav className="flex flex-col gap-4 text-[1.125rem] leading-[1.6] text-[#0c0c0c]">
+          <nav className="flex flex-col gap-4 text-[1.125rem] leading-[1.6] text-ink">
             {PRIMARY_LINKS.map((link) => (
               <Link key={link.href} href={link.href} onClick={closeMobileMenu}>
                 {link.label}
@@ -149,7 +149,7 @@ export default function Header() {
             <Link
               href="/about"
               onClick={closeMobileMenu}
-              className="mt-2 inline-flex w-full items-center justify-center rounded-[6px] border border-[#2abab0] bg-[#2abab0] px-3 py-1.5 text-[1rem] font-medium leading-[1.6] text-white"
+              className="mt-2 inline-flex w-full items-center justify-center rounded-[6px] border border-brand bg-brand px-3 py-1.5 text-[1rem] font-medium leading-[1.6] text-white"
             >
               Contactez-moi
             </Link>

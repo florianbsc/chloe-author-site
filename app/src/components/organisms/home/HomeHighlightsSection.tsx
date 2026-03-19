@@ -53,7 +53,7 @@ const SECONDARY_FEATURES = [
 
 export default function HomeHighlightsSection() {
   return (
-    <section className="relative left-1/2 right-1/2 -mx-[50vw] w-screen bg-[#e9f8f7]">
+    <section className="relative left-1/2 right-1/2 -mx-[50vw] w-screen bg-surface-mint">
       <div className="mx-auto w-full max-w-[1280px] px-5 py-16 lg:px-16 lg:py-28">
         <div className="flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-20">
           <div className="w-full lg:flex-1">
@@ -91,14 +91,14 @@ export default function HomeHighlightsSection() {
               <Button
                 href="/romans"
                 variant="third"
-                className="rounded-[6px] border-[rgba(12,12,12,0.15)] px-3 py-1.5 text-[1.125rem] leading-[1.6]"
+                className="rounded-[6px] border-border-soft px-3 py-1.5 text-[1.125rem] leading-[1.6]"
               >
                 Lire
               </Button>
 
               <Link
                 href="/romans"
-                className="inline-flex items-center gap-2 text-[1.125rem] font-medium leading-[1.6] text-[#0c0c0c]"
+                className="inline-flex items-center gap-2 text-[1.125rem] font-medium leading-[1.6] text-ink"
               >
                 Suite
                 <ChevronRight aria-hidden="true" className="size-5" />

@@ -11,8 +11,8 @@ export default async function Book() {
 
   return (
     <div className="flex flex-col gap-16 pb-16">
-      <section className="relative left-1/2 right-1/2 -mx-[50vw] w-screen bg-[#e9f8f7]">
-        <div className="mx-auto w-full max-w-[720px] space-y-6 px-5 py-12 text-[#0c0c0c] sm:py-16">
+      <section className="relative left-1/2 right-1/2 -mx-[50vw] w-screen bg-surface-mint">
+        <div className="mx-auto w-full max-w-[720px] space-y-6 px-5 py-12 text-ink sm:py-16">
           <p className="text-[0.875rem] font-semibold uppercase tracking-[0.2em]">
             Romans
           </p>
@@ -30,7 +30,7 @@ export default async function Book() {
             <Link href="#catalogue">
               <Button
                 variant="primary"
-                className="rounded-[12px] border border-[#2abab0] bg-[#2abab0] px-5 py-2 text-[0.95rem] leading-[1.6] text-white hover:bg-[#239f96]"
+                className="rounded-[12px] border border-brand bg-brand px-5 py-2 text-[0.95rem] leading-[1.6] text-white hover:bg-brand-hover"
               >
                 Découvrir
               </Button>
@@ -38,7 +38,7 @@ export default async function Book() {
             <a href="https://www.amazon.fr" target="_blank" rel="noreferrer">
               <Button
                 variant="secondary"
-                className="rounded-[12px] border border-[rgba(12,12,12,0.25)] px-5 py-2 text-[0.95rem] leading-[1.6] text-[#0c0c0c]"
+                className="rounded-[12px] border border-border-strong px-5 py-2 text-[0.95rem] leading-[1.6] text-ink"
               >
                 Amazon
               </Button>
@@ -49,7 +49,7 @@ export default async function Book() {
 
       <section
         id="catalogue"
-        className="mx-auto w-full max-w-[1200px] space-y-10 px-5 text-[#0c0c0c]"
+        className="mx-auto w-full max-w-[1200px] space-y-10 px-5 text-ink"
       >
         <div className="space-y-4">
           <p className="text-[0.875rem] font-semibold uppercase tracking-[0.2em]">
@@ -80,7 +80,7 @@ export default async function Book() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-[720px] px-5 text-center text-[#0c0c0c]">
+      <section className="mx-auto w-full max-w-[720px] px-5 text-center text-ink">
         <p className="text-[0.875rem] font-semibold uppercase tracking-[0.2em]">
           Essence
         </p>
@@ -97,7 +97,7 @@ export default async function Book() {
 
         <div className="mt-12 space-y-12 text-left">
           <div className="space-y-6">
-            <div className="h-[220px] overflow-hidden rounded-2xl bg-[#dedede]">
+            <div className="h-[220px] overflow-hidden rounded-2xl bg-surface-placeholder">
               <HeroImagePlaceholder />
             </div>
             <h3 className="text-[1.75rem] font-semibold leading-[1.25]">
@@ -110,7 +110,7 @@ export default async function Book() {
           </div>
 
           <div className="space-y-6">
-            <div className="h-[220px] overflow-hidden rounded-2xl bg-[#dedede]">
+            <div className="h-[220px] overflow-hidden rounded-2xl bg-surface-placeholder">
               <HeroImagePlaceholder />
             </div>
             <h3 className="text-[1.75rem] font-semibold leading-[1.25]">
@@ -123,7 +123,7 @@ export default async function Book() {
           </div>
 
           <div className="space-y-6">
-            <div className="h-[220px] overflow-hidden rounded-2xl bg-[#dedede]">
+            <div className="h-[220px] overflow-hidden rounded-2xl bg-surface-placeholder">
               <HeroImagePlaceholder />
             </div>
             <h3 className="text-[1.75rem] font-semibold leading-[1.25]">
@@ -140,13 +140,13 @@ export default async function Book() {
           <a href="https://www.amazon.fr" target="_blank" rel="noreferrer">
             <Button
               variant="secondary"
-              className="rounded-[12px] border border-[rgba(12,12,12,0.25)] px-5 py-2 text-[0.95rem] leading-[1.6] text-[#0c0c0c]"
+              className="rounded-[12px] border border-border-strong px-5 py-2 text-[0.95rem] leading-[1.6] text-ink"
             >
               Amazon
             </Button>
           </a>
           <Link href="#catalogue" className="inline-flex items-center gap-2">
-            <span className="text-[0.95rem] font-medium leading-[1.6] text-[#0c0c0c]">
+            <span className="text-[0.95rem] font-medium leading-[1.6] text-ink">
               Lire
             </span>
             <span aria-hidden="true" className="text-[1.1rem]">
@@ -156,7 +156,7 @@ export default async function Book() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-[720px] px-5 text-center text-[#0c0c0c]">
+      <section className="mx-auto w-full max-w-[720px] px-5 text-center text-ink">
         <h2 className="text-[2.5rem] font-bold leading-[1.1] tracking-[0.01em] sm:text-[3.5rem]">
           Ce qu&apos;en disent
           <br />
@@ -166,14 +166,14 @@ export default async function Book() {
           Des voix qui résonnent avec authenticité
         </p>
 
-        <div className="mt-12 space-y-12 text-[#0c0c0c]">
+        <div className="mt-12 space-y-12 text-ink">
           <div className="space-y-6">
             <div className="text-[1.125rem] font-semibold">Webflow</div>
             <p className="text-[1.35rem] font-semibold leading-[1.4]">
               &laquo; Ces romans m&apos;ont permis de me voir enfin représentée dans
               une histoire vraie. &raquo;
             </p>
-            <div className="mx-auto flex h-[64px] w-[64px] items-center justify-center rounded-full bg-[#d7d7d7] text-[#b5b5b5]">
+            <div className="mx-auto flex h-[64px] w-[64px] items-center justify-center rounded-full bg-surface-placeholder-strong text-icon-placeholder">
               <ImageIcon className="size-5" aria-hidden="true" />
             </div>
             <div className="space-y-1">
@@ -188,7 +188,7 @@ export default async function Book() {
               &laquo; Chloé écrit avec une force brute qui traverse les pages et
               s&apos;installe en vous. &raquo;
             </p>
-            <div className="mx-auto flex h-[64px] w-[64px] items-center justify-center rounded-full bg-[#d7d7d7] text-[#b5b5b5]">
+            <div className="mx-auto flex h-[64px] w-[64px] items-center justify-center rounded-full bg-surface-placeholder-strong text-icon-placeholder">
               <ImageIcon className="size-5" aria-hidden="true" />
             </div>
             <div className="space-y-1">
@@ -203,7 +203,7 @@ export default async function Book() {
               &laquo; Un roman qui ne vous lâche pas. L&apos;humanité crue et sans
               détour qu&apos;on attendait. &raquo;
             </p>
-            <div className="mx-auto flex h-[64px] w-[64px] items-center justify-center rounded-full bg-[#d7d7d7] text-[#b5b5b5]">
+            <div className="mx-auto flex h-[64px] w-[64px] items-center justify-center rounded-full bg-surface-placeholder-strong text-icon-placeholder">
               <ImageIcon className="size-5" aria-hidden="true" />
             </div>
             <div className="space-y-1">

@@ -30,7 +30,7 @@ export default function HeroActions({
         href={primaryHref}
         variant={primaryVariant}
         className={cn(
-          "rounded-[6px] border border-[#2abab0] bg-[#2abab0] px-3 py-1.5 text-[0.875rem] leading-[1.6] lg:text-[1.125rem]",
+          "rounded-[6px] border border-brand bg-brand px-3 py-1.5 text-[0.875rem] leading-[1.6] lg:text-[1.125rem]",
           primaryClassName,
         )}
       >
@@ -41,7 +41,7 @@ export default function HeroActions({
         href={secondaryHref}
         variant={secondaryVariant}
         className={cn(
-          "rounded-[6px] border-[rgba(12,12,12,0.15)] px-3 py-1.5 text-[0.875rem] leading-[1.6] hover:bg-[#0c0c0c]/5 lg:text-[1.125rem]",
+          "rounded-[6px] border-border-soft px-3 py-1.5 text-[0.875rem] leading-[1.6] hover:bg-ink/5 lg:text-[1.125rem]",
           secondaryClassName,
         )}
       >

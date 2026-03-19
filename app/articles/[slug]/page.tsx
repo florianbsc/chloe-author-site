@@ -17,7 +17,7 @@ type ArticlePageProps = {
 
 export default function ArticlePage({ params }: ArticlePageProps) {
   return (
-    <div className="mx-auto w-full max-w-[720px] px-5 py-12 text-[#0c0c0c] sm:py-16">
+    <div className="mx-auto w-full max-w-[720px] px-5 py-12 text-ink sm:py-16">
       <section className="space-y-6">
         <h2 className="text-[2rem] font-semibold leading-[1.2]">
           Introduction
@@ -41,10 +41,10 @@ export default function ArticlePage({ params }: ArticlePageProps) {
         </div>
 
         <div className="space-y-3">
-          <div className="h-[220px] overflow-hidden rounded-2xl bg-[#dedede]">
+          <div className="h-[220px] overflow-hidden rounded-2xl bg-surface-placeholder">
             <HeroImagePlaceholder />
           </div>
-          <p className="text-[0.75rem] leading-[1.6] text-[#0c0c0c]">
+          <p className="text-[0.75rem] leading-[1.6] text-ink">
             Image caption goes here
           </p>
         </div>
@@ -67,7 +67,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
           </p>
         </div>
 
-        <blockquote className="border-l border-[rgba(12,12,12,0.2)] pl-6 text-[1.1rem] italic leading-[1.7] text-[#0c0c0c]">
+        <blockquote className="border-l border-border-medium pl-6 text-[1.1rem] italic leading-[1.7] text-ink">
           &quot;Ipsum sit mattis nulla quam nulla. Gravida id gravida ac enim
           mauris id. Non pellentesque congue eget consectetur turpis. Sapien,
           dictum molestie sem tempor. Diam elit, orci, tincidunt aenean
@@ -121,28 +121,28 @@ export default function ArticlePage({ params }: ArticlePageProps) {
           <div className="flex items-center gap-3">
             <button
               type="button"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#d7efe9] text-[#0c0c0c]"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-soft text-ink"
               aria-label="Copier le lien"
             >
               <Link2 className="size-4" />
             </button>
             <button
               type="button"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#d7efe9] text-[#0c0c0c]"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-soft text-ink"
               aria-label="Partager sur LinkedIn"
             >
               <Linkedin className="size-4" />
             </button>
             <button
               type="button"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#d7efe9] text-[#0c0c0c]"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-soft text-ink"
               aria-label="Partager sur X"
             >
               <X className="size-4" />
             </button>
             <button
               type="button"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#d7efe9] text-[#0c0c0c]"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-soft text-ink"
               aria-label="Partager sur Facebook"
             >
               <Facebook className="size-4" />
@@ -153,7 +153,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
             {["Thriller", "Handicap", "Sortie", "Roman"].map((tag) => (
               <span
                 key={tag}
-                className="rounded-full border border-[rgba(12,12,12,0.2)] px-3 py-1 text-[0.75rem]"
+                className="rounded-full border border-border-medium px-3 py-1 text-[0.75rem]"
               >
                 {tag}
               </span>
@@ -161,13 +161,13 @@ export default function ArticlePage({ params }: ArticlePageProps) {
           </div>
         </div>
 
-        <div className="flex items-center gap-3 border-t border-[rgba(12,12,12,0.1)] pt-6">
-          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#d7d7d7] text-[#b5b5b5]">
+        <div className="flex items-center gap-3 border-t border-border-subtle pt-6">
+          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-surface-placeholder-strong text-icon-placeholder">
             <ImageIcon className="size-4" aria-hidden="true" />
           </div>
           <div className="space-y-1">
             <p className="text-[0.95rem] font-semibold">Chloé Simart</p>
-            <p className="text-[0.85rem] text-[#0c0c0c]">Auteure de romans</p>
+            <p className="text-[0.85rem] text-ink">Auteure de romans</p>
           </div>
         </div>
       </section>
@@ -176,17 +176,17 @@ export default function ArticlePage({ params }: ArticlePageProps) {
         <h2 className="text-[2.5rem] font-bold leading-[1.1] tracking-[0.01em]">
           Avis de lecteurs
         </h2>
-        <p className="text-[1rem] leading-[1.7] text-[#0c0c0c]">
+        <p className="text-[1rem] leading-[1.7] text-ink">
           Ce que les lecteurs en pensent
         </p>
 
-        <div className="mt-10 space-y-12 text-[#0c0c0c]">
+        <div className="mt-10 space-y-12 text-ink">
           <div className="space-y-6">
             <div className="text-[1.125rem] font-semibold">Webflow</div>
             <p className="text-[1.35rem] font-semibold leading-[1.4]">
               &laquo; Un roman qui m&apos;a bouleversée du début à la fin. &raquo;
             </p>
-            <div className="mx-auto flex h-[64px] w-[64px] items-center justify-center rounded-full bg-[#d7d7d7] text-[#b5b5b5]">
+            <div className="mx-auto flex h-[64px] w-[64px] items-center justify-center rounded-full bg-surface-placeholder-strong text-icon-placeholder">
               <ImageIcon className="size-5" aria-hidden="true" />
             </div>
             <div className="space-y-1">
@@ -200,7 +200,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
             <p className="text-[1.35rem] font-semibold leading-[1.4]">
               &laquo; Chloé écrit avec une sincérité rare et profonde. &raquo;
             </p>
-            <div className="mx-auto flex h-[64px] w-[64px] items-center justify-center rounded-full bg-[#d7d7d7] text-[#b5b5b5]">
+            <div className="mx-auto flex h-[64px] w-[64px] items-center justify-center rounded-full bg-surface-placeholder-strong text-icon-placeholder">
               <ImageIcon className="size-5" aria-hidden="true" />
             </div>
             <div className="space-y-1">
@@ -211,7 +211,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
         </div>
       </section>
 
-      <section className="mt-16 rounded-3xl bg-[#e9f8f7] px-5 py-12 text-center text-[#0c0c0c] sm:px-8">
+      <section className="mt-16 rounded-3xl bg-surface-mint px-5 py-12 text-center text-ink sm:px-8">
         <h2 className="text-[2.5rem] font-bold leading-[1.1] tracking-[0.01em] sm:text-[3.5rem]">
           Poursuivez la lecture
           <br />
@@ -225,7 +225,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
           <Link href="/romans">
             <Button
               variant="primary"
-              className="rounded-[10px] border border-[#2abab0] bg-[#2abab0] px-5 py-2 text-[0.875rem] leading-[1.6] text-white hover:bg-[#239f96]"
+              className="rounded-[10px] border border-brand bg-brand px-5 py-2 text-[0.875rem] leading-[1.6] text-white hover:bg-brand-hover"
             >
               Lire
             </Button>
@@ -233,7 +233,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
           <Link href="#newsletter">
             <Button
               variant="secondary"
-              className="rounded-[10px] border border-[rgba(12,12,12,0.2)] px-5 py-2 text-[0.875rem] leading-[1.6] text-[#0c0c0c]"
+              className="rounded-[10px] border border-border-medium px-5 py-2 text-[0.875rem] leading-[1.6] text-ink"
             >
               S&apos;abonner
             </Button>
@@ -243,7 +243,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
 
       <section
         id="newsletter"
-        className="mt-16 text-center text-[#0c0c0c]"
+        className="mt-16 text-center text-ink"
       >
         <h2 className="text-[2.5rem] font-bold leading-[1.1] tracking-[0.01em] sm:text-[3.5rem]">
           Restez connecté
@@ -255,7 +255,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
         </p>
 
         <form className="mt-8 space-y-4">
-          <div className="border-b border-[rgba(12,12,12,0.2)] py-2 text-left">
+          <div className="border-b border-border-medium py-2 text-left">
             <label htmlFor="article-newsletter-email" className="sr-only">
               Votre email
             </label>
@@ -265,18 +265,18 @@ export default function ArticlePage({ params }: ArticlePageProps) {
               type="email"
               required
               placeholder="Votre email"
-              className="w-full border-0 bg-transparent text-[1rem] leading-[1.6] text-[#0c0c0c] placeholder:text-[#0c0c0c99] outline-none"
+              className="w-full border-0 bg-transparent text-[1rem] leading-[1.6] text-ink placeholder:text-ink/60 outline-none"
             />
           </div>
           <Button
             variant="primary"
-            className="w-full rounded-[10px] border border-[#2abab0] bg-[#2abab0] px-4 py-2 text-[0.875rem] leading-[1.6] text-white hover:bg-[#239f96]"
+            className="w-full rounded-[10px] border border-brand bg-brand px-4 py-2 text-[0.875rem] leading-[1.6] text-white hover:bg-brand-hover"
           >
             S&apos;abonner
           </Button>
         </form>
 
-        <p className="mt-4 text-[0.8rem] leading-[1.6] text-[#0c0c0c]">
+        <p className="mt-4 text-[0.8rem] leading-[1.6] text-ink">
           Nous respectons votre vie privée. Désinscription possible à tout
           moment.
         </p>

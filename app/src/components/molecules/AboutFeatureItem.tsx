@@ -12,7 +12,7 @@ export default function AboutFeatureItem({
   icon: Icon,
 }: AboutFeatureItemProps) {
   return (
-    <article className="flex flex-col items-start gap-4 text-[#0c0c0c]">
+    <article className="flex flex-col items-start gap-4 text-ink">
       <Icon aria-hidden="true" className="size-12 stroke-[1.75]" />
 
       <h3 className="text-[2rem] font-bold leading-[1.2] tracking-[0.01em]">

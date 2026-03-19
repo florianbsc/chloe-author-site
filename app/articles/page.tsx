@@ -33,8 +33,8 @@ const ARTICLES = [
 export default function Article() {
   return (
     <div className="flex flex-col gap-16 pb-16">
-      <section className="relative left-1/2 right-1/2 -mx-[50vw] w-screen bg-[#e9f8f7]">
-        <div className="mx-auto w-full max-w-[720px] px-5 py-12 text-[#0c0c0c] sm:py-16">
+      <section className="relative left-1/2 right-1/2 -mx-[50vw] w-screen bg-surface-mint">
+        <div className="mx-auto w-full max-w-[720px] px-5 py-12 text-ink sm:py-16">
           <p className="text-[0.875rem] uppercase tracking-[0.2em]">
             Actualités <span className="mx-2">›</span> Articles
           </p>
@@ -44,14 +44,14 @@ export default function Article() {
           </h1>
 
           <div className="mt-6 flex items-center gap-4">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#d7d7d7] text-[#b5b5b5]">
+            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-surface-placeholder-strong text-icon-placeholder">
               <span className="sr-only">Photo de l&aops;autrice</span>
               <ImageIcon className="size-5" aria-hidden="true" />
             </div>
 
             <div className="space-y-1">
               <p className="text-[1rem] font-semibold">Chloé Simart</p>
-              <p className="text-[0.875rem] text-[#0c0c0c]">
+              <p className="text-[0.875rem] text-ink">
                 29 octobre 2024 <span className="mx-2">•</span> 4 min
               </p>
             </div>
@@ -60,41 +60,41 @@ export default function Article() {
           <div className="mt-6 flex items-center gap-3">
             <button
               type="button"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#d7efe9] text-[#0c0c0c]"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-soft text-ink"
               aria-label="Copier le lien"
             >
               <Link2 className="size-4" />
             </button>
             <button
               type="button"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#d7efe9] text-[#0c0c0c]"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-soft text-ink"
               aria-label="Partager sur LinkedIn"
             >
               <Linkedin className="size-4" />
             </button>
             <button
               type="button"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#d7efe9] text-[#0c0c0c]"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-soft text-ink"
               aria-label="Partager sur X"
             >
               <X className="size-4" />
             </button>
             <button
               type="button"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#d7efe9] text-[#0c0c0c]"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-soft text-ink"
               aria-label="Partager sur Facebook"
             >
               <Facebook className="size-4" />
             </button>
           </div>
 
-          <div className="mt-8 h-[220px] overflow-hidden rounded-2xl bg-[#dedede]">
+          <div className="mt-8 h-[220px] overflow-hidden rounded-2xl bg-surface-placeholder">
             <HeroImagePlaceholder />
           </div>
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-[720px] space-y-6 px-5 text-[#0c0c0c]">
+      <section className="mx-auto w-full max-w-[720px] space-y-6 px-5 text-ink">
         <h2 className="text-[2rem] font-semibold leading-[1.2]">
           Articles récents
         </h2>
@@ -103,9 +103,9 @@ export default function Article() {
             <Link
               key={article.slug}
               href={`/articles/${article.slug}`}
-              className="block rounded-2xl border border-[rgba(12,12,12,0.1)] bg-white p-5 transition hover:shadow-sm"
+              className="block rounded-2xl border border-border-subtle bg-white p-5 transition hover:shadow-sm"
             >
-              <div className="flex items-center justify-between text-[0.875rem] text-[#0c0c0c]">
+              <div className="flex items-center justify-between text-[0.875rem] text-ink">
                 <span>{article.date}</span>
                 <span>{article.readTime}</span>
               </div>

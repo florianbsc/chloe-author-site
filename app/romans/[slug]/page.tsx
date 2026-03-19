@@ -31,8 +31,8 @@ export default async function RomanPage({ params }: RomanPageProps) {
 
   return (
     <div className="flex flex-col gap-16 pb-16">
-      <section className="relative left-1/2 right-1/2 -mx-[50vw] w-screen bg-[#e9f8f7]">
-        <div className="mx-auto w-full max-w-[720px] space-y-6 px-5 py-12 text-[#0c0c0c] sm:py-16">
+      <section className="relative left-1/2 right-1/2 -mx-[50vw] w-screen bg-surface-mint">
+        <div className="mx-auto w-full max-w-[720px] space-y-6 px-5 py-12 text-ink sm:py-16">
           <h1 className="text-[2.75rem] font-bold leading-[1.1] tracking-[0.01em] sm:text-[4rem]">
             {roman.title}
           </h1>
@@ -41,7 +41,7 @@ export default async function RomanPage({ params }: RomanPageProps) {
             {roman.tags.map((tag) => (
               <span
                 key={tag}
-                className="rounded-[10px] border border-[rgba(12,12,12,0.2)] bg-white px-4 py-1 text-[0.875rem] font-medium"
+                className="rounded-[10px] border border-border-medium bg-white px-4 py-1 text-[0.875rem] font-medium"
               >
                 {tag}
               </span>
@@ -52,13 +52,13 @@ export default async function RomanPage({ params }: RomanPageProps) {
             {roman.summary}
           </p>
 
-          <div className="h-[240px] overflow-hidden rounded-2xl bg-[#dedede]">
+          <div className="h-[240px] overflow-hidden rounded-2xl bg-surface-placeholder">
             <HeroImagePlaceholder />
           </div>
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-[720px] space-y-8 px-5 text-[#0c0c0c]">
+      <section className="mx-auto w-full max-w-[720px] space-y-8 px-5 text-ink">
         <div className="space-y-3">
           <h2 className="text-[2.25rem] font-bold leading-[1.1] tracking-[0.01em] sm:text-[3rem]">
             L&apos;histoire qui vous attend
@@ -71,33 +71,33 @@ export default async function RomanPage({ params }: RomanPageProps) {
           ))}
         </div>
 
-        <div className="rounded-2xl border border-[rgba(12,12,12,0.1)] bg-white p-6">
+        <div className="rounded-2xl border border-border-subtle bg-white p-6">
           <h3 className="text-[1.25rem] font-semibold leading-[1.4]">
             Informations complémentaires
           </h3>
           <dl className="mt-4 space-y-3 text-[0.95rem]">
             <div className="flex items-center justify-between">
-              <dt className="text-[#0c0c0c]">Genre</dt>
-              <dd className="font-medium text-[#0c0c0c]">
+              <dt className="text-ink">Genre</dt>
+              <dd className="font-medium text-ink">
                 {roman.details.genre}
               </dd>
             </div>
             <div className="flex items-center justify-between">
-              <dt className="text-[#0c0c0c]">Nombre de pages</dt>
-              <dd className="font-medium text-[#0c0c0c]">
+              <dt className="text-ink">Nombre de pages</dt>
+              <dd className="font-medium text-ink">
                 {roman.details.pages}
               </dd>
             </div>
             <div className="flex items-center justify-between">
-              <dt className="text-[#0c0c0c]">Année</dt>
-              <dd className="font-medium text-[#0c0c0c]">
+              <dt className="text-ink">Année</dt>
+              <dd className="font-medium text-ink">
                 {roman.details.year}
               </dd>
             </div>
             {roman.details.isbn && (
               <div className="flex items-center justify-between">
-                <dt className="text-[#0c0c0c]">ISBN</dt>
-                <dd className="font-medium text-[#0c0c0c]">
+                <dt className="text-ink">ISBN</dt>
+                <dd className="font-medium text-ink">
                   {roman.details.isbn}
                 </dd>
               </div>
@@ -109,7 +109,7 @@ export default async function RomanPage({ params }: RomanPageProps) {
           <a href={roman.availability.url} target="_blank" rel="noreferrer">
             <Button
               variant="primary"
-              className="rounded-[12px] border border-[#2abab0] bg-[#2abab0] px-5 py-2 text-[0.95rem] leading-[1.6] text-white hover:bg-[#239f96]"
+              className="rounded-[12px] border border-brand bg-brand px-5 py-2 text-[0.95rem] leading-[1.6] text-white hover:bg-brand-hover"
             >
               {roman.availability.label}
             </Button>
@@ -117,7 +117,7 @@ export default async function RomanPage({ params }: RomanPageProps) {
           <Link href="/romans">
             <Button
               variant="secondary"
-              className="rounded-[12px] border border-[rgba(12,12,12,0.25)] px-5 py-2 text-[0.95rem] leading-[1.6] text-[#0c0c0c]"
+              className="rounded-[12px] border border-border-strong px-5 py-2 text-[0.95rem] leading-[1.6] text-ink"
             >
               Voir tous les romans
             </Button>
@@ -125,7 +125,7 @@ export default async function RomanPage({ params }: RomanPageProps) {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-[720px] px-5 text-center text-[#0c0c0c]">
+      <section className="mx-auto w-full max-w-[720px] px-5 text-center text-ink">
         <p className="text-[0.875rem] font-semibold uppercase tracking-[0.2em]">
           Essence
         </p>
@@ -140,7 +140,7 @@ export default async function RomanPage({ params }: RomanPageProps) {
         </p>
 
         {topRomans.length === 0 ? (
-          <div className="mt-10 rounded-2xl border border-[rgba(12,12,12,0.1)] bg-white px-6 py-10 text-left">
+          <div className="mt-10 rounded-2xl border border-border-subtle bg-white px-6 py-10 text-left">
             <h3 className="text-[1.25rem] font-semibold">
               Aucun autre roman disponible
             </h3>
@@ -152,7 +152,7 @@ export default async function RomanPage({ params }: RomanPageProps) {
           <div className="mt-12 space-y-12 text-left">
             {topRomans.map((item) => (
               <div key={item.id} className="space-y-6">
-                <div className="h-[220px] overflow-hidden rounded-2xl bg-[#dedede]">
+                <div className="h-[220px] overflow-hidden rounded-2xl bg-surface-placeholder">
                   <HeroImagePlaceholder />
                 </div>
                 <h3 className="text-[1.75rem] font-semibold leading-[1.25]">
@@ -164,7 +164,7 @@ export default async function RomanPage({ params }: RomanPageProps) {
                 <Link href={`/romans/${item.slug}`}>
                   <Button
                     variant="secondary"
-                    className="rounded-[12px] border border-[rgba(12,12,12,0.25)] px-5 py-2 text-[0.95rem] leading-[1.6] text-[#0c0c0c]"
+                    className="rounded-[12px] border border-border-strong px-5 py-2 text-[0.95rem] leading-[1.6] text-ink"
                   >
                     Découvrir
                   </Button>
@@ -175,7 +175,7 @@ export default async function RomanPage({ params }: RomanPageProps) {
               Array.from({ length: 3 - topRomans.length }).map((_, index) => (
                 <div
                   key={`roman-placeholder-${index}`}
-                  className="space-y-4 rounded-2xl border border-dashed border-[rgba(12,12,12,0.15)] p-6 text-center"
+                  className="space-y-4 rounded-2xl border border-dashed border-border-soft p-6 text-center"
                 >
                   <p className="text-[0.95rem]">
                     Un nouveau roman arrive bientôt.
@@ -186,7 +186,7 @@ export default async function RomanPage({ params }: RomanPageProps) {
         )}
       </section>
 
-      <section className="mx-auto w-full max-w-[720px] px-5 text-center text-[#0c0c0c]">
+      <section className="mx-auto w-full max-w-[720px] px-5 text-center text-ink">
         <h2 className="text-[2.5rem] font-bold leading-[1.1] tracking-[0.01em] sm:text-[3.5rem]">
           Avis de lecteurs
         </h2>
@@ -195,33 +195,33 @@ export default async function RomanPage({ params }: RomanPageProps) {
         </p>
 
         {reviews.length === 0 ? (
-          <div className="mt-10 rounded-2xl border border-[rgba(12,12,12,0.1)] bg-white px-6 py-10 text-left">
+          <div className="mt-10 rounded-2xl border border-border-subtle bg-white px-6 py-10 text-left">
             <h3 className="text-[1.25rem] font-semibold">
               Aucun avis pour le moment
             </h3>
             <p className="mt-2 text-[0.95rem] leading-[1.6]">
               Soyez le premier à partager votre ressenti sur ce roman.
             </p>
-            <p className="mt-4 text-[0.85rem] text-[#0c0c0c]">
+            <p className="mt-4 text-[0.85rem] text-ink">
               Un formulaire d&apos;avis pourra être ajouté ici prochainement.
             </p>
           </div>
         ) : (
-          <div className="mt-12 space-y-12 text-[#0c0c0c]">
+          <div className="mt-12 space-y-12 text-ink">
             {reviews.map((review) => (
               <div key={review.id} className="space-y-6">
                 <div className="text-[1.125rem] font-semibold">Webflow</div>
                 <p className="text-[1.35rem] font-semibold leading-[1.4]">
                   &laquo; {review.comment} &raquo;
                 </p>
-                <div className="mx-auto flex h-[64px] w-[64px] items-center justify-center rounded-full bg-[#d7d7d7] text-[#b5b5b5]">
+                <div className="mx-auto flex h-[64px] w-[64px] items-center justify-center rounded-full bg-surface-placeholder-strong text-icon-placeholder">
                   <ImageIcon className="size-5" aria-hidden="true" />
                 </div>
                 <div className="space-y-1">
                   <p className="text-[1.05rem] font-semibold">{review.name}</p>
                   <p className="text-[0.95rem]">{review.role}</p>
                 </div>
-                <div className="flex items-center justify-center gap-3 text-[0.85rem] text-[#0c0c0c]">
+                <div className="flex items-center justify-center gap-3 text-[0.85rem] text-ink">
                   <span>
                     {new Date(review.date).toLocaleDateString("fr-FR")}
                   </span>

@@ -6,7 +6,7 @@ export default function AuthorActions() {
       <Button
         href="/about"
         variant="primary"
-        className="rounded-[6px] border border-[#2abab0] bg-[#2abab0] px-3 py-1.5 text-[0.875rem] leading-[1.6] md:text-[1.125rem]"
+        className="rounded-[6px] border border-brand bg-brand px-3 py-1.5 text-[0.875rem] leading-[1.6] md:text-[1.125rem]"
       >
         Découvrir
       </Button>
@@ -14,7 +14,7 @@ export default function AuthorActions() {
       <Button
         href="/about"
         variant="third"
-        className="rounded-[6px] border-[rgba(12,12,12,0.15)] px-3 py-1.5 text-[0.875rem] leading-[1.6] hover:bg-[#0c0c0c]/5 md:text-[1.125rem]"
+        className="rounded-[6px] border-border-soft px-3 py-1.5 text-[0.875rem] leading-[1.6] hover:bg-ink/5 md:text-[1.125rem]"
       >
         Plus
       </Button>
