@@ -52,7 +52,7 @@ function FooterLinksColumn({
 }) {
   return (
     <div className="min-w-0 flex-1 space-y-4">
-      <h3 className="text-[1.125rem] font-semibold leading-[1.6] text-ink">
+      <h3 className="text-base-custom font-semibold leading-[1.6] text-ink">
         {title}
       </h3>
       <ul>
@@ -63,12 +63,12 @@ function FooterLinksColumn({
                 href={link.href}
                 target="_blank"
                 rel="noreferrer"
-                className="text-[1rem] leading-[1.6] text-ink"
+                className="text-sm-custom leading-[1.6] text-ink"
               >
                 {link.label}
               </a>
             ) : (
-              <Link href={link.href} className="text-[1rem] leading-[1.6] text-ink">
+              <Link href={link.href} className="text-sm-custom leading-[1.6] text-ink">
                 {link.label}
               </Link>
             )}
@@ -93,7 +93,7 @@ export default function Footer() {
               className="h-9 w-[84px]"
             />
 
-            <p className="text-[1.125rem] leading-[1.6] text-ink">
+            <p className="text-base-custom leading-[1.6] text-ink">
               Recevez les actualités et dates de sortie de mes romans.
             </p>
 
@@ -109,19 +109,19 @@ export default function Footer() {
                     type="email"
                     required
                     placeholder="Votre email"
-                    className="w-full border-0 bg-transparent text-[1.125rem] leading-[1.6] text-ink placeholder:text-ink/60 outline-none"
+                    className="w-full border-0 bg-transparent text-base-custom leading-[1.6] text-ink placeholder:text-ink/60 outline-none"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="inline-flex items-center justify-center rounded-[6px] border border-border-soft px-3 py-1.5 text-[1.125rem] font-medium leading-[1.6] text-ink transition hover:bg-black/5"
+                  className="inline-flex items-center justify-center rounded-[6px] border border-border-soft px-3 py-1.5 text-base-custom font-medium leading-[1.6] text-ink transition hover:bg-black/5"
                 >
                   S&apos;abonner
                 </button>
               </form>
 
-              <p className="text-[0.75rem] leading-[1.6] text-ink">
+              <p className="text-xs-custom leading-[1.6] text-ink">
                 En vous abonnant, vous acceptez notre politique de confidentialité
                 et consentez à recevoir nos communications.
               </p>
@@ -133,7 +133,7 @@ export default function Footer() {
             <FooterLinksColumn title="Contact" links={CONTACT_LINKS} />
 
             <div className="min-w-0 flex-1 space-y-4">
-              <h3 className="text-[1.125rem] font-semibold leading-[1.6] text-ink">
+              <h3 className="text-base-custom font-semibold leading-[1.6] text-ink">
                 Suivez-moi
               </h3>
               <ul>
@@ -141,7 +141,7 @@ export default function Footer() {
                   <li key={social.label} className="py-2">
                     <a
                       href={social.href}
-                      className="inline-flex items-center gap-3 text-[1rem] leading-[1.6] text-ink"
+                      className="inline-flex items-center gap-3 text-sm-custom leading-[1.6] text-ink"
                     >
                       <Image
                         src={social.icon}
@@ -161,7 +161,7 @@ export default function Footer() {
         </div>
 
         <div className="space-y-8 border-t border-border-soft pt-8">
-          <div className="flex flex-col gap-4 text-[1rem] leading-[1.6] text-ink lg:flex-row lg:items-center lg:justify-between">
+          <div className="flex flex-col gap-4 text-sm-custom leading-[1.6] text-ink lg:flex-row lg:items-center lg:justify-between">
             <p>© 2025 Chloé Simart. Tous droits réservés.</p>
 
             <div className="flex flex-wrap items-center gap-6">
@@ -169,7 +169,7 @@ export default function Footer() {
                 <Link
                   key={link.label}
                   href={link.href}
-                  className="text-[1rem] leading-[1.6] text-ink underline"
+                  className="text-sm-custom leading-[1.6] text-ink underline"
                 >
                   {link.label}
                 </Link>

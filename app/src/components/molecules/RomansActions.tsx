@@ -8,14 +8,14 @@ export default function RomansActions() {
       <Button
         href="/romans"
         variant="third"
-        className="rounded-[6px] border-border-soft px-3 py-1.5 text-[0.875rem] leading-[1.6] md:text-[1.125rem]"
+        className="rounded-[6px] border-border-soft px-3 py-1.5 text-sm2-custom leading-[1.6] md:text-base-custom"
       >
         Voir
       </Button>
 
       <Link
         href="/romans"
-        className="inline-flex items-center gap-2 text-[0.875rem] font-medium leading-[1.6] text-ink md:text-[1.125rem]"
+        className="inline-flex items-center gap-2 text-sm2-custom font-medium leading-[1.6] text-ink md:text-base-custom"
       >
         Tous
         <ChevronRight aria-hidden="true" className="size-5" />

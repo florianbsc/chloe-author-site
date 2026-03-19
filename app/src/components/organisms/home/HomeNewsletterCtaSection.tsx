@@ -6,12 +6,12 @@ export default function HomeNewsletterCtaSection() {
       <div className="mx-auto w-full max-w-[1280px]">
         <div className="mx-auto flex w-full max-w-[768px] flex-col items-center gap-8">
           <div className="w-full space-y-6 text-center text-ink">
-            <h2 className="text-[3rem] font-bold leading-[1.1] tracking-[0.01em] lg:text-[5.25rem]">
+            <h2 className="text-h1 font-bold leading-[1.1] tracking-[0.01em] lg:text-display">
               <span className="block">Restez informé</span>
               <span className="block">Des nouvelles</span>
             </h2>
 
-            <p className="text-[0.875rem] leading-[1.6] lg:text-[1.25rem]">
+            <p className="text-sm2-custom leading-[1.6] lg:text-h5">
               Recevez les actualités et les dates de sortie de mes prochains
               romans.
             </p>

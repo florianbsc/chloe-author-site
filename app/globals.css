@@ -27,11 +27,24 @@
   --text-h6: 1.125rem;      /* Très petit titre */
 
   /* Body text - Texte de corps */
-  --text-lg-custom: 1.625rem;   /* Grand paragraphe */
-  --text-md-custom: 1.25rem;    /* Paragraphe moyen */
-  --text-base-custom: 1.125rem; /* Paragraphe standard */
-  --text-sm-custom: 1rem;       /* Petit texte */
-  --text-xs-custom: 0.75rem;    /* Très petit texte */
+  --text-lg-custom: 1.625rem;    /* Grand paragraphe */
+  --text-md-custom: 1.25rem;     /* Paragraphe moyen */
+  --text-base-custom: 1.125rem;  /* Paragraphe standard */
+  --text-sm-custom: 1rem;        /* Texte standard */
+  --text-sm2-custom: 0.875rem;   /* Texte UI compact */
+  --text-sm3-custom: 0.95rem;    /* Texte UI intermédiaire */
+  --text-md2-custom: 1.05rem;    /* Texte intermédiaire */
+  --text-xl-custom: 1.35rem;     /* Texte accentué */
+  --text-2xl-custom: 1.75rem;    /* Petit titre */
+  --text-3xl-custom: 2.25rem;    /* Titre section large */
+  --text-4xl-custom: 2.5rem;     /* Titre section XL */
+  --text-5xl-custom: 3.5rem;     /* Titre héro mobile */
+  --text-6xl-custom: 3.75rem;    /* Titre héro tablette */
+  --text-7xl-custom: 4rem;       /* Titre héro large */
+  --text-8xl-custom: 4.25rem;    /* Titre héro XL */
+  --text-xs-custom: 0.75rem;     /* Très petit texte */
+  --text-xs2-custom: 0.85rem;    /* Légendes */
+  --text-xxs-custom: 0.8rem;     /* Micro texte */
 
   /* ---------- Mapping des couleurs Tailwind ---------- */
   /* Relie les variables CSS aux classes Tailwind */

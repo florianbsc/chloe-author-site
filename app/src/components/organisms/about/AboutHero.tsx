@@ -12,14 +12,14 @@ export default function AboutHero() {
             <p className="text-base font-semibold leading-[1.5]">Auteure</p>
             <h1
               id="about-hero-title"
-              className="text-[3.25rem] leading-[1.1] tracking-[0.01em] sm:text-[4.25rem] lg:text-[5.25rem]"
+              className="text-h1 leading-[1.1] tracking-[0.01em] sm:text-8xl-custom lg:text-display"
             >
               À propos de moi
             </h1>
           </div>
 
           <div className="flex-1 space-y-8 text-ink">
-            <p className="text-[1.125rem] leading-[1.6] lg:text-[1.25rem]">
+            <p className="text-base-custom leading-[1.6] lg:text-h5">
               Je suis une auteure française qui écrit des histoires où le
               handicap n&apos;est pas une limite mais une réalité vivante. Mes
               romans mettent en lumière des personnages authentiques, des âmes

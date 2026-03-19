@@ -91,14 +91,14 @@ export default function HomeHighlightsSection() {
               <Button
                 href="/romans"
                 variant="third"
-                className="rounded-[6px] border-border-soft px-3 py-1.5 text-[1.125rem] leading-[1.6]"
+                className="rounded-[6px] border-border-soft px-3 py-1.5 text-base-custom leading-[1.6]"
               >
                 Lire
               </Button>
 
               <Link
                 href="/romans"
-                className="inline-flex items-center gap-2 text-[1.125rem] font-medium leading-[1.6] text-ink"
+                className="inline-flex items-center gap-2 text-base-custom font-medium leading-[1.6] text-ink"
               >
                 Suite
                 <ChevronRight aria-hidden="true" className="size-5" />

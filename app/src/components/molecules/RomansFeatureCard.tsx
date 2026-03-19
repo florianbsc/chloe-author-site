@@ -16,11 +16,11 @@ export default function RomansFeatureCard({
       <Icon aria-hidden="true" className="size-12 stroke-[1.75]" />
 
       <div className="space-y-4">
-        <h3 className="text-[1.75rem] font-bold leading-[1.2] tracking-[0.01em] md:text-[2rem]">
+        <h3 className="text-2xl-custom font-bold leading-[1.2] tracking-[0.01em] md:text-h3">
           {title}
         </h3>
 
-        <p className="text-[1rem] leading-[1.6] md:text-[1.125rem]">
+        <p className="text-sm-custom leading-[1.6] md:text-base-custom">
           {description}
         </p>
       </div>

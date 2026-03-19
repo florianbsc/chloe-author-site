@@ -35,11 +35,11 @@ export default function Article() {
     <div className="flex flex-col gap-16 pb-16">
       <section className="relative left-1/2 right-1/2 -mx-[50vw] w-screen bg-surface-mint">
         <div className="mx-auto w-full max-w-[720px] px-5 py-12 text-ink sm:py-16">
-          <p className="text-[0.875rem] uppercase tracking-[0.2em]">
+          <p className="text-sm2-custom uppercase tracking-[0.2em]">
             Actualités <span className="mx-2">›</span> Articles
           </p>
 
-          <h1 className="mt-4 text-[2.75rem] font-bold leading-[1.1] tracking-[0.01em] sm:text-[3.75rem]">
+          <h1 className="mt-4 text-h2 font-bold leading-[1.1] tracking-[0.01em] sm:text-6xl-custom">
             La Loge des Silences sort enfin au monde
           </h1>
 
@@ -50,8 +50,8 @@ export default function Article() {
             </div>
 
             <div className="space-y-1">
-              <p className="text-[1rem] font-semibold">Chloé Simart</p>
-              <p className="text-[0.875rem] text-ink">
+              <p className="text-sm-custom font-semibold">Chloé Simart</p>
+              <p className="text-sm2-custom text-ink">
                 29 octobre 2024 <span className="mx-2">•</span> 4 min
               </p>
             </div>
@@ -95,7 +95,7 @@ export default function Article() {
       </section>
 
       <section className="mx-auto w-full max-w-[720px] space-y-6 px-5 text-ink">
-        <h2 className="text-[2rem] font-semibold leading-[1.2]">
+        <h2 className="text-h3 font-semibold leading-[1.2]">
           Articles récents
         </h2>
         <div className="space-y-4">
@@ -105,14 +105,14 @@ export default function Article() {
               href={`/articles/${article.slug}`}
               className="block rounded-2xl border border-border-subtle bg-white p-5 transition hover:shadow-sm"
             >
-              <div className="flex items-center justify-between text-[0.875rem] text-ink">
+              <div className="flex items-center justify-between text-sm2-custom text-ink">
                 <span>{article.date}</span>
                 <span>{article.readTime}</span>
               </div>
-              <h3 className="mt-3 text-[1.25rem] font-semibold leading-[1.4]">
+              <h3 className="mt-3 text-h5 font-semibold leading-[1.4]">
                 {article.title}
               </h3>
-              <p className="mt-2 text-[0.95rem] leading-[1.6]">
+              <p className="mt-2 text-sm3-custom leading-[1.6]">
                 {article.excerpt}
               </p>
             </Link>

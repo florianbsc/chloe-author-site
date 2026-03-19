@@ -13,13 +13,13 @@ export default async function Book() {
     <div className="flex flex-col gap-16 pb-16">
       <section className="relative left-1/2 right-1/2 -mx-[50vw] w-screen bg-surface-mint">
         <div className="mx-auto w-full max-w-[720px] space-y-6 px-5 py-12 text-ink sm:py-16">
-          <p className="text-[0.875rem] font-semibold uppercase tracking-[0.2em]">
+          <p className="text-sm2-custom font-semibold uppercase tracking-[0.2em]">
             Romans
           </p>
-          <h1 className="text-[2.75rem] font-bold leading-[1.1] tracking-[0.01em] sm:text-[4rem]">
+          <h1 className="text-h2 font-bold leading-[1.1] tracking-[0.01em] sm:text-7xl-custom">
             Mes romans
           </h1>
-          <p className="text-[1rem] leading-[1.7] sm:text-[1.125rem]">
+          <p className="text-sm-custom leading-[1.7] sm:text-base-custom">
             Chaque histoire que j&apos;écris naît d&apos;une conviction simple : les
             personnages en situation de handicap méritent des récits qui les
             célèbrent, les questionnent, les transforment. Mes romans traversent
@@ -30,7 +30,7 @@ export default async function Book() {
             <Link href="#catalogue">
               <Button
                 variant="primary"
-                className="rounded-[12px] border border-brand bg-brand px-5 py-2 text-[0.95rem] leading-[1.6] text-white hover:bg-brand-hover"
+                className="rounded-[12px] border border-brand bg-brand px-5 py-2 text-sm3-custom leading-[1.6] text-white hover:bg-brand-hover"
               >
                 Découvrir
               </Button>
@@ -38,7 +38,7 @@ export default async function Book() {
             <a href="https://www.amazon.fr" target="_blank" rel="noreferrer">
               <Button
                 variant="secondary"
-                className="rounded-[12px] border border-border-strong px-5 py-2 text-[0.95rem] leading-[1.6] text-ink"
+                className="rounded-[12px] border border-border-strong px-5 py-2 text-sm3-custom leading-[1.6] text-ink"
               >
                 Amazon
               </Button>
@@ -52,13 +52,13 @@ export default async function Book() {
         className="mx-auto w-full max-w-[1200px] space-y-10 px-5 text-ink"
       >
         <div className="space-y-4">
-          <p className="text-[0.875rem] font-semibold uppercase tracking-[0.2em]">
+          <p className="text-sm2-custom font-semibold uppercase tracking-[0.2em]">
             Catalogue
           </p>
-          <h2 className="text-[2.25rem] font-bold leading-[1.2] sm:text-[3rem]">
+          <h2 className="text-3xl-custom font-bold leading-[1.2] sm:text-h1">
             Tous mes romans en un seul endroit
           </h2>
-          <p className="text-[1rem] leading-[1.7] sm:text-[1.125rem]">
+          <p className="text-sm-custom leading-[1.7] sm:text-base-custom">
             Chaque roman que j&apos;écris porte en lui une part de vérité, une
             exploration de l&apos;âme humaine face aux défis qui la façonnent.
             Retrouvez ici l&apos;intégralité de mes oeuvres, classées par genre
@@ -81,15 +81,15 @@ export default async function Book() {
       </section>
 
       <section className="mx-auto w-full max-w-[720px] px-5 text-center text-ink">
-        <p className="text-[0.875rem] font-semibold uppercase tracking-[0.2em]">
+        <p className="text-sm2-custom font-semibold uppercase tracking-[0.2em]">
           Essence
         </p>
-        <h2 className="mt-4 text-[2.5rem] font-bold leading-[1.1] tracking-[0.01em] sm:text-[3.5rem]">
+        <h2 className="mt-4 text-4xl-custom font-bold leading-[1.1] tracking-[0.01em] sm:text-5xl-custom">
           Ce qui rend mes romans
           <br />
           différents
         </h2>
-        <p className="mt-4 text-[1rem] leading-[1.7] sm:text-[1.125rem]">
+        <p className="mt-4 text-sm-custom leading-[1.7] sm:text-base-custom">
           Mes histoires refusent les clichés et les regards apitoyés. Elles
           célèbrent la complexité, la force et la beauté de ceux qui vivent
           avec un handicap.
@@ -100,10 +100,10 @@ export default async function Book() {
             <div className="h-[220px] overflow-hidden rounded-2xl bg-surface-placeholder">
               <HeroImagePlaceholder />
             </div>
-            <h3 className="text-[1.75rem] font-semibold leading-[1.25]">
+            <h3 className="text-2xl-custom font-semibold leading-[1.25]">
               Représentation authentique et sans compromis
             </h3>
-            <p className="text-[1rem] leading-[1.7]">
+            <p className="text-sm-custom leading-[1.7]">
               Des personnages en situation de handicap au coeur du récit, pas
               en marge de l&apos;histoire.
             </p>
@@ -113,10 +113,10 @@ export default async function Book() {
             <div className="h-[220px] overflow-hidden rounded-2xl bg-surface-placeholder">
               <HeroImagePlaceholder />
             </div>
-            <h3 className="text-[1.75rem] font-semibold leading-[1.25]">
+            <h3 className="text-2xl-custom font-semibold leading-[1.25]">
               Émotions brutes et vérité littéraire
             </h3>
-            <p className="text-[1rem] leading-[1.7]">
+            <p className="text-sm-custom leading-[1.7]">
               Chaque page respire l&apos;authenticité, loin des sentimentalisme
               facile et des narratifs convenus.
             </p>
@@ -126,10 +126,10 @@ export default async function Book() {
             <div className="h-[220px] overflow-hidden rounded-2xl bg-surface-placeholder">
               <HeroImagePlaceholder />
             </div>
-            <h3 className="text-[1.75rem] font-semibold leading-[1.25]">
+            <h3 className="text-2xl-custom font-semibold leading-[1.25]">
               Récits qui transforment et inspirent
             </h3>
-            <p className="text-[1rem] leading-[1.7]">
+            <p className="text-sm-custom leading-[1.7]">
               Mes romans invitent à la réflexion, au questionnement et à la
               découverte de soi.
             </p>
@@ -140,16 +140,16 @@ export default async function Book() {
           <a href="https://www.amazon.fr" target="_blank" rel="noreferrer">
             <Button
               variant="secondary"
-              className="rounded-[12px] border border-border-strong px-5 py-2 text-[0.95rem] leading-[1.6] text-ink"
+              className="rounded-[12px] border border-border-strong px-5 py-2 text-sm3-custom leading-[1.6] text-ink"
             >
               Amazon
             </Button>
           </a>
           <Link href="#catalogue" className="inline-flex items-center gap-2">
-            <span className="text-[0.95rem] font-medium leading-[1.6] text-ink">
+            <span className="text-sm3-custom font-medium leading-[1.6] text-ink">
               Lire
             </span>
-            <span aria-hidden="true" className="text-[1.1rem]">
+            <span aria-hidden="true" className="text-base-custom">
               →
             </span>
           </Link>
@@ -157,19 +157,19 @@ export default async function Book() {
       </section>
 
       <section className="mx-auto w-full max-w-[720px] px-5 text-center text-ink">
-        <h2 className="text-[2.5rem] font-bold leading-[1.1] tracking-[0.01em] sm:text-[3.5rem]">
+        <h2 className="text-4xl-custom font-bold leading-[1.1] tracking-[0.01em] sm:text-5xl-custom">
           Ce qu&apos;en disent
           <br />
           les lecteurs
         </h2>
-        <p className="mt-4 text-[1rem] leading-[1.7] sm:text-[1.125rem]">
+        <p className="mt-4 text-sm-custom leading-[1.7] sm:text-base-custom">
           Des voix qui résonnent avec authenticité
         </p>
 
         <div className="mt-12 space-y-12 text-ink">
           <div className="space-y-6">
-            <div className="text-[1.125rem] font-semibold">Webflow</div>
-            <p className="text-[1.35rem] font-semibold leading-[1.4]">
+            <div className="text-base-custom font-semibold">Webflow</div>
+            <p className="text-xl-custom font-semibold leading-[1.4]">
               &laquo; Ces romans m&apos;ont permis de me voir enfin représentée dans
               une histoire vraie. &raquo;
             </p>
@@ -177,14 +177,14 @@ export default async function Book() {
               <ImageIcon className="size-5" aria-hidden="true" />
             </div>
             <div className="space-y-1">
-              <p className="text-[1.05rem] font-semibold">Marie Dupont</p>
-              <p className="text-[0.95rem]">Lectrice passionnée</p>
+              <p className="text-md2-custom font-semibold">Marie Dupont</p>
+              <p className="text-sm3-custom">Lectrice passionnée</p>
             </div>
           </div>
 
           <div className="space-y-6">
-            <div className="text-[1.125rem] font-semibold">Webflow</div>
-            <p className="text-[1.35rem] font-semibold leading-[1.4]">
+            <div className="text-base-custom font-semibold">Webflow</div>
+            <p className="text-xl-custom font-semibold leading-[1.4]">
               &laquo; Chloé écrit avec une force brute qui traverse les pages et
               s&apos;installe en vous. &raquo;
             </p>
@@ -192,14 +192,14 @@ export default async function Book() {
               <ImageIcon className="size-5" aria-hidden="true" />
             </div>
             <div className="space-y-1">
-              <p className="text-[1.05rem] font-semibold">Thomas Mercier</p>
-              <p className="text-[0.95rem]">Critique littéraire</p>
+              <p className="text-md2-custom font-semibold">Thomas Mercier</p>
+              <p className="text-sm3-custom">Critique littéraire</p>
             </div>
           </div>
 
           <div className="space-y-6">
-            <div className="text-[1.125rem] font-semibold">Webflow</div>
-            <p className="text-[1.35rem] font-semibold leading-[1.4]">
+            <div className="text-base-custom font-semibold">Webflow</div>
+            <p className="text-xl-custom font-semibold leading-[1.4]">
               &laquo; Un roman qui ne vous lâche pas. L&apos;humanité crue et sans
               détour qu&apos;on attendait. &raquo;
             </p>
@@ -207,8 +207,8 @@ export default async function Book() {
               <ImageIcon className="size-5" aria-hidden="true" />
             </div>
             <div className="space-y-1">
-              <p className="text-[1.05rem] font-semibold">Sophie Bernard</p>
-              <p className="text-[0.95rem]">Lectrice assidue</p>
+              <p className="text-md2-custom font-semibold">Sophie Bernard</p>
+              <p className="text-sm3-custom">Lectrice assidue</p>
             </div>
           </div>
         </div>

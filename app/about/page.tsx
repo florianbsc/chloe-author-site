@@ -92,10 +92,10 @@ export default function About() {
                   className="space-y-3"
                 >
                   <feature.icon aria-hidden="true" className="size-8 stroke-[1.5]" />
-                  <h3 className="text-[1.5rem] font-semibold leading-[1.3]">
+                  <h3 className="text-h4 font-semibold leading-[1.3]">
                     {feature.title}
                   </h3>
-                  <p className="text-[1rem] leading-[1.6]">
+                  <p className="text-sm-custom leading-[1.6]">
                     {feature.description}
                   </p>
                 </div>
@@ -104,7 +104,7 @@ export default function About() {
               <div className="flex items-center gap-4 pt-2">
                 <Button
                   variant="third"
-                  className="rounded-[10px] border border-border-medium px-4 py-2 text-[0.875rem] leading-[1.6] text-ink"
+                  className="rounded-[10px] border border-border-medium px-4 py-2 text-sm2-custom leading-[1.6] text-ink"
                 >
                   Lire
                 </Button>
@@ -163,13 +163,13 @@ export default function About() {
 
       <section className="relative left-1/2 right-1/2 -mx-[50vw] w-screen bg-surface-mint">
         <div className="mx-auto w-full max-w-[720px] px-5 py-16 text-center lg:py-24">
-          <p className="text-[0.875rem] font-semibold uppercase tracking-[0.2em] text-ink">
+          <p className="text-sm2-custom font-semibold uppercase tracking-[0.2em] text-ink">
             Valeurs
           </p>
-          <h2 className="mt-4 text-[2.75rem] font-bold leading-[1.1] tracking-[0.01em] text-ink sm:text-[3.5rem]">
+          <h2 className="mt-4 text-h2 font-bold leading-[1.1] tracking-[0.01em] text-ink sm:text-5xl-custom">
             Ce qui guide mon écriture
           </h2>
-          <p className="mt-4 text-[1rem] leading-[1.7] text-ink sm:text-[1.125rem]">
+          <p className="mt-4 text-sm-custom leading-[1.7] text-ink sm:text-base-custom">
             Chaque roman que j&apos;écris porte en lui une conviction profonde. Je
             crois que les histoires vraies changent les lecteurs.
           </p>
@@ -186,10 +186,10 @@ export default function About() {
                 />
                 {/* <HeroImagePlaceholder /> */}
               </div>
-              <h3 className="text-[1.75rem] font-semibold leading-[1.25] text-ink">
+              <h3 className="text-2xl-custom font-semibold leading-[1.25] text-ink">
                 Engagement pour la diversité
               </h3>
-              <p className="text-[1rem] leading-[1.7] text-ink">
+              <p className="text-sm-custom leading-[1.7] text-ink">
                 Les personnages en situation de handicap méritent des histoires
                 qui les honorent.
               </p>
@@ -206,10 +206,10 @@ export default function About() {
                 />
                 {/* <HeroImagePlaceholder /> */}
               </div>
-              <h3 className="text-[1.75rem] font-semibold leading-[1.25] text-ink">
+              <h3 className="text-2xl-custom font-semibold leading-[1.25] text-ink">
                 Histoires authentiques
               </h3>
-              <p className="text-[1rem] leading-[1.7] text-ink">
+              <p className="text-sm-custom leading-[1.7] text-ink">
                 Pas de clichés, pas de pitié, juste la beauté brute de la vie
                 réelle.
               </p>
@@ -226,10 +226,10 @@ export default function About() {
                 />
                 {/* <HeroImagePlaceholder /> */}
               </div>
-              <h3 className="text-[1.75rem] font-semibold leading-[1.25] text-ink">
+              <h3 className="text-2xl-custom font-semibold leading-[1.25] text-ink">
                 Communauté bienveillante
               </h3>
-              <p className="text-[1rem] leading-[1.7] text-ink">
+              <p className="text-sm-custom leading-[1.7] text-ink">
                 Mes lecteurs forment une famille où chacun se sent compris et
                 entendu.
               </p>
@@ -240,7 +240,7 @@ export default function About() {
             <Link href="/articles">
               <Button
                 variant="third"
-                className="rounded-[10px] border border-border-medium px-4 py-2 text-[0.875rem] leading-[1.6] text-ink"
+                className="rounded-[10px] border border-border-medium px-4 py-2 text-sm2-custom leading-[1.6] text-ink"
               >
                 Explorer
               </Button>
@@ -267,13 +267,13 @@ export default function About() {
       <section className="relative left-1/2 right-1/2 -mx-[50vw] w-screen bg-white">
         <div className="mx-auto w-full max-w-[720px] px-5 py-16 lg:py-24">
           <div className="space-y-4 text-ink">
-            <p className="text-[0.875rem] font-semibold uppercase tracking-[0.2em]">
+            <p className="text-sm2-custom font-semibold uppercase tracking-[0.2em]">
               Auteure
             </p>
-            <h2 className="text-[2.75rem] font-bold leading-[1.1] tracking-[0.01em] sm:text-[3.75rem]">
+            <h2 className="text-h2 font-bold leading-[1.1] tracking-[0.01em] sm:text-6xl-custom">
               Chloé Simart
             </h2>
-            <p className="text-[1rem] leading-[1.7] sm:text-[1.125rem]">
+            <p className="text-sm-custom leading-[1.7] sm:text-base-custom">
               Écrivaine française passionnée par les histoires qui dérangent et
               qui guérissent. Depuis huit ans, je transforme mes expériences en
               romans.
@@ -281,7 +281,7 @@ export default function About() {
             <Link href="/about">
               <Button
                 variant="third"
-                className="mt-4 rounded-[10px] border border-border-medium px-4 py-2 text-[0.875rem] leading-[1.6]"
+                className="mt-4 rounded-[10px] border border-border-medium px-4 py-2 text-sm2-custom leading-[1.6]"
               >
                 Lire plus
               </Button>
@@ -296,15 +296,15 @@ export default function About() {
                 </div>
 
                 <div className="space-y-2">
-                  <h3 className="text-[1.5rem] font-semibold leading-[1.3] text-ink">
+                  <h3 className="text-h4 font-semibold leading-[1.3] text-ink">
                     {author.name}
                   </h3>
-                  <p className="text-[1rem] leading-[1.6] text-ink">
+                  <p className="text-sm-custom leading-[1.6] text-ink">
                     {author.role}
                   </p>
                 </div>
 
-                <p className="text-[1rem] leading-[1.7] text-ink">
+                <p className="text-sm-custom leading-[1.7] text-ink">
                   {author.quote}
                 </p>
 
@@ -320,17 +320,17 @@ export default function About() {
       </section>
       <section className="relative left-1/2 right-1/2 -mx-[50vw] w-screen bg-surface-mint">
         <div className="mx-auto w-full max-w-[720px] px-5 py-16 text-center lg:py-24">
-          <h2 className="text-[2.75rem] font-bold leading-[1.1] tracking-[0.01em] text-ink sm:text-[3.75rem]">
+          <h2 className="text-h2 font-bold leading-[1.1] tracking-[0.01em] text-ink sm:text-6xl-custom">
             Lecteurs parlent
           </h2>
-          <p className="mt-4 text-[1rem] leading-[1.7] text-ink sm:text-[1.125rem]">
+          <p className="mt-4 text-sm-custom leading-[1.7] text-ink sm:text-base-custom">
             Leurs mots me portent
           </p>
 
           <div className="mt-12 space-y-12 text-ink">
             <div className="space-y-6">
-              <div className="text-[1.125rem] font-semibold">Webflow</div>
-              <p className="text-[1.5rem] font-semibold leading-[1.4]">
+              <div className="text-base-custom font-semibold">Webflow</div>
+              <p className="text-h4 font-semibold leading-[1.4]">
                 &quot;Enfin une auteure qui comprend ce que c&apos;est de vivre avec
                 le handicap sans le transformer en tragédie.&quot;
               </p>
@@ -338,14 +338,14 @@ export default function About() {
                 <Globe className="size-6" aria-hidden="true" />
               </div>
               <div className="space-y-1">
-                <p className="text-[1.125rem] font-semibold">Marie Dupont</p>
-                <p className="text-[1rem]">Lectrice, Lyon</p>
+                <p className="text-base-custom font-semibold">Marie Dupont</p>
+                <p className="text-sm-custom">Lectrice, Lyon</p>
               </div>
             </div>
 
             <div className="space-y-6">
-              <div className="text-[1.125rem] font-semibold">Webflow</div>
-              <p className="text-[1.5rem] font-semibold leading-[1.4]">
+              <div className="text-base-custom font-semibold">Webflow</div>
+              <p className="text-h4 font-semibold leading-[1.4]">
                 &quot;Les secrets de Clara m&apos;a fait pleurer et rire. C&apos;est
                 rare de trouver une telle honnêteté dans la fiction.&quot;
               </p>
@@ -353,14 +353,14 @@ export default function About() {
                 <Globe className="size-6" aria-hidden="true" />
               </div>
               <div className="space-y-1">
-                <p className="text-[1.125rem] font-semibold">Thomas Bernard</p>
-                <p className="text-[1rem]">Lecteur, Paris</p>
+                <p className="text-base-custom font-semibold">Thomas Bernard</p>
+                <p className="text-sm-custom">Lecteur, Paris</p>
               </div>
             </div>
 
             <div className="space-y-6">
-              <div className="text-[1.125rem] font-semibold">Webflow</div>
-              <p className="text-[1.5rem] font-semibold leading-[1.4]">
+              <div className="text-base-custom font-semibold">Webflow</div>
+              <p className="text-h4 font-semibold leading-[1.4]">
                 &quot;Chloé écrit comme elle respire. Ses histoires deviennent les
                 nôtres, et on ne s&apos;en remet jamais.&quot;
               </p>
@@ -368,8 +368,8 @@ export default function About() {
                 <Globe className="size-6" aria-hidden="true" />
               </div>
               <div className="space-y-1">
-                <p className="text-[1.125rem] font-semibold">Isabelle Moreau</p>
-                <p className="text-[1rem]">Lectrice, Marseille</p>
+                <p className="text-base-custom font-semibold">Isabelle Moreau</p>
+                <p className="text-sm-custom">Lectrice, Marseille</p>
               </div>
             </div>
           </div>

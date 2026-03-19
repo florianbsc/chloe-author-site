@@ -42,10 +42,10 @@ export default function HomeRomansSection() {
           <p className="text-base font-semibold leading-[1.5]">Romans</p>
 
           <div className="flex w-full flex-col items-center gap-6">
-            <h2 className="text-[2.5rem] font-bold leading-[1.2] tracking-[0.01em] lg:text-[3.75rem]">
+            <h2 className="text-4xl-custom font-bold leading-[1.2] tracking-[0.01em] lg:text-6xl-custom">
               Mes romans
             </h2>
-            <p className="text-[1rem] leading-[1.6] lg:text-[1.25rem]">
+            <p className="text-sm-custom leading-[1.6] lg:text-h5">
               Disponibles sur Amazon
             </p>
           </div>

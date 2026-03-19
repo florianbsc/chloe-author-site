@@ -19,11 +19,11 @@ export default function ArticlePage({ params }: ArticlePageProps) {
   return (
     <div className="mx-auto w-full max-w-[720px] px-5 py-12 text-ink sm:py-16">
       <section className="space-y-6">
-        <h2 className="text-[2rem] font-semibold leading-[1.2]">
+        <h2 className="text-h3 font-semibold leading-[1.2]">
           Introduction
         </h2>
 
-        <div className="space-y-4 text-[1rem] leading-[1.7]">
+        <div className="space-y-4 text-sm-custom leading-[1.7]">
           <p>
             Mi tincidunt elit, id quisque ligula ac diam, amet. Vel etiam
             suspendisse morbi eleifend faucibus eget vestibulum felis. Dictum
@@ -44,13 +44,13 @@ export default function ArticlePage({ params }: ArticlePageProps) {
           <div className="h-[220px] overflow-hidden rounded-2xl bg-surface-placeholder">
             <HeroImagePlaceholder />
           </div>
-          <p className="text-[0.75rem] leading-[1.6] text-ink">
+          <p className="text-xs-custom leading-[1.6] text-ink">
             Image caption goes here
           </p>
         </div>
 
-        <div className="space-y-4 text-[1rem] leading-[1.7]">
-          <h3 className="text-[1.25rem] font-semibold leading-[1.4]">
+        <div className="space-y-4 text-sm-custom leading-[1.7]">
+          <h3 className="text-h5 font-semibold leading-[1.4]">
             Dolor enim eu tortor urna sed duis nulla. Aliquam vestibulum, nulla
             odio nisl vitae. In aliquet pellentesque aenean hac vestibulum
             turpis mi bibendum diam. Tempor integer aliquam in vitae malesuada
@@ -67,14 +67,14 @@ export default function ArticlePage({ params }: ArticlePageProps) {
           </p>
         </div>
 
-        <blockquote className="border-l border-border-medium pl-6 text-[1.1rem] italic leading-[1.7] text-ink">
+        <blockquote className="border-l border-border-medium pl-6 text-base-custom italic leading-[1.7] text-ink">
           &quot;Ipsum sit mattis nulla quam nulla. Gravida id gravida ac enim
           mauris id. Non pellentesque congue eget consectetur turpis. Sapien,
           dictum molestie sem tempor. Diam elit, orci, tincidunt aenean
           tempus.&quot;
         </blockquote>
 
-        <div className="space-y-4 text-[1rem] leading-[1.7]">
+        <div className="space-y-4 text-sm-custom leading-[1.7]">
           <p>
             Tristique odio senectus nam posuere ornare leo metus, ultrices.
             Blandit duis ultricies vulputate morbi feugiat cras placerat elit.
@@ -87,11 +87,11 @@ export default function ArticlePage({ params }: ArticlePageProps) {
       </section>
 
       <section className="mt-12 space-y-6">
-        <h2 className="text-[2rem] font-semibold leading-[1.2]">
+        <h2 className="text-h3 font-semibold leading-[1.2]">
           Conclusion
         </h2>
 
-        <div className="space-y-4 text-[1rem] leading-[1.7]">
+        <div className="space-y-4 text-sm-custom leading-[1.7]">
           <p>
             Morbi sed imperdiet in ipsum, adipiscing elit dui lectus. Tellus id
             scelerisque est ultricies ultricies. Duis est sit sed leo nisl,
@@ -115,7 +115,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
         </div>
 
         <div className="space-y-4">
-          <p className="text-[0.875rem] font-semibold uppercase tracking-[0.2em]">
+          <p className="text-sm2-custom font-semibold uppercase tracking-[0.2em]">
             Partager cet article
           </p>
           <div className="flex items-center gap-3">
@@ -153,7 +153,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
             {["Thriller", "Handicap", "Sortie", "Roman"].map((tag) => (
               <span
                 key={tag}
-                className="rounded-full border border-border-medium px-3 py-1 text-[0.75rem]"
+                className="rounded-full border border-border-medium px-3 py-1 text-xs-custom"
               >
                 {tag}
               </span>
@@ -166,58 +166,58 @@ export default function ArticlePage({ params }: ArticlePageProps) {
             <ImageIcon className="size-4" aria-hidden="true" />
           </div>
           <div className="space-y-1">
-            <p className="text-[0.95rem] font-semibold">Chloé Simart</p>
-            <p className="text-[0.85rem] text-ink">Auteure de romans</p>
+            <p className="text-sm3-custom font-semibold">Chloé Simart</p>
+            <p className="text-xs2-custom text-ink">Auteure de romans</p>
           </div>
         </div>
       </section>
 
       <section className="mt-16 space-y-6 text-center">
-        <h2 className="text-[2.5rem] font-bold leading-[1.1] tracking-[0.01em]">
+        <h2 className="text-4xl-custom font-bold leading-[1.1] tracking-[0.01em]">
           Avis de lecteurs
         </h2>
-        <p className="text-[1rem] leading-[1.7] text-ink">
+        <p className="text-sm-custom leading-[1.7] text-ink">
           Ce que les lecteurs en pensent
         </p>
 
         <div className="mt-10 space-y-12 text-ink">
           <div className="space-y-6">
-            <div className="text-[1.125rem] font-semibold">Webflow</div>
-            <p className="text-[1.35rem] font-semibold leading-[1.4]">
+            <div className="text-base-custom font-semibold">Webflow</div>
+            <p className="text-xl-custom font-semibold leading-[1.4]">
               &laquo; Un roman qui m&apos;a bouleversée du début à la fin. &raquo;
             </p>
             <div className="mx-auto flex h-[64px] w-[64px] items-center justify-center rounded-full bg-surface-placeholder-strong text-icon-placeholder">
               <ImageIcon className="size-5" aria-hidden="true" />
             </div>
             <div className="space-y-1">
-              <p className="text-[1.05rem] font-semibold">Marie Dupont</p>
-              <p className="text-[0.95rem]">Lectrice passionnée</p>
+              <p className="text-md2-custom font-semibold">Marie Dupont</p>
+              <p className="text-sm3-custom">Lectrice passionnée</p>
             </div>
           </div>
 
           <div className="space-y-6">
-            <div className="text-[1.125rem] font-semibold">Webflow</div>
-            <p className="text-[1.35rem] font-semibold leading-[1.4]">
+            <div className="text-base-custom font-semibold">Webflow</div>
+            <p className="text-xl-custom font-semibold leading-[1.4]">
               &laquo; Chloé écrit avec une sincérité rare et profonde. &raquo;
             </p>
             <div className="mx-auto flex h-[64px] w-[64px] items-center justify-center rounded-full bg-surface-placeholder-strong text-icon-placeholder">
               <ImageIcon className="size-5" aria-hidden="true" />
             </div>
             <div className="space-y-1">
-              <p className="text-[1.05rem] font-semibold">Thomas Bernard</p>
-              <p className="text-[0.95rem]">Lecteur engagé</p>
+              <p className="text-md2-custom font-semibold">Thomas Bernard</p>
+              <p className="text-sm3-custom">Lecteur engagé</p>
             </div>
           </div>
         </div>
       </section>
 
       <section className="mt-16 rounded-3xl bg-surface-mint px-5 py-12 text-center text-ink sm:px-8">
-        <h2 className="text-[2.5rem] font-bold leading-[1.1] tracking-[0.01em] sm:text-[3.5rem]">
+        <h2 className="text-4xl-custom font-bold leading-[1.1] tracking-[0.01em] sm:text-5xl-custom">
           Poursuivez la lecture
           <br />
           Explorez mes univers
         </h2>
-        <p className="mt-4 text-[1rem] leading-[1.7] sm:text-[1.125rem]">
+        <p className="mt-4 text-sm-custom leading-[1.7] sm:text-base-custom">
           Découvrez mes autres romans et plongez dans des histoires qui
           transforment.
         </p>
@@ -225,7 +225,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
           <Link href="/romans">
             <Button
               variant="primary"
-              className="rounded-[10px] border border-brand bg-brand px-5 py-2 text-[0.875rem] leading-[1.6] text-white hover:bg-brand-hover"
+              className="rounded-[10px] border border-brand bg-brand px-5 py-2 text-sm2-custom leading-[1.6] text-white hover:bg-brand-hover"
             >
               Lire
             </Button>
@@ -233,7 +233,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
           <Link href="#newsletter">
             <Button
               variant="secondary"
-              className="rounded-[10px] border border-border-medium px-5 py-2 text-[0.875rem] leading-[1.6] text-ink"
+              className="rounded-[10px] border border-border-medium px-5 py-2 text-sm2-custom leading-[1.6] text-ink"
             >
               S&apos;abonner
             </Button>
@@ -245,11 +245,11 @@ export default function ArticlePage({ params }: ArticlePageProps) {
         id="newsletter"
         className="mt-16 text-center text-ink"
       >
-        <h2 className="text-[2.5rem] font-bold leading-[1.1] tracking-[0.01em] sm:text-[3.5rem]">
+        <h2 className="text-4xl-custom font-bold leading-[1.1] tracking-[0.01em] sm:text-5xl-custom">
           Restez connecté
           <br />À l&apos;actualité
         </h2>
-        <p className="mt-4 text-[1rem] leading-[1.7] sm:text-[1.125rem]">
+        <p className="mt-4 text-sm-custom leading-[1.7] sm:text-base-custom">
           Recevez les dates de sortie et les nouvelles directement dans votre
           boîte.
         </p>
@@ -265,18 +265,18 @@ export default function ArticlePage({ params }: ArticlePageProps) {
               type="email"
               required
               placeholder="Votre email"
-              className="w-full border-0 bg-transparent text-[1rem] leading-[1.6] text-ink placeholder:text-ink/60 outline-none"
+              className="w-full border-0 bg-transparent text-sm-custom leading-[1.6] text-ink placeholder:text-ink/60 outline-none"
             />
           </div>
           <Button
             variant="primary"
-            className="w-full rounded-[10px] border border-brand bg-brand px-4 py-2 text-[0.875rem] leading-[1.6] text-white hover:bg-brand-hover"
+            className="w-full rounded-[10px] border border-brand bg-brand px-4 py-2 text-sm2-custom leading-[1.6] text-white hover:bg-brand-hover"
           >
             S&apos;abonner
           </Button>
         </form>
 
-        <p className="mt-4 text-[0.8rem] leading-[1.6] text-ink">
+        <p className="mt-4 text-xxs-custom leading-[1.6] text-ink">
           Nous respectons votre vie privée. Désinscription possible à tout
           moment.
         </p>
