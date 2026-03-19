@@ -18,7 +18,7 @@ type ArticlePageProps = {
 
 export default function ArticlePage({ params }: ArticlePageProps) {
   return (
-    <div className="mx-auto w-full max-w-[720px] px-5 py-12 text-ink sm:py-16">
+    <div className="section-wrap-sm section-pad-md text-ink">
       <section className="space-y-6">
         <h2 className="text-h3 font-semibold leading-title">
           Introduction

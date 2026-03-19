@@ -37,7 +37,7 @@ const ARTICLES_POSTS = [
 export default function Actualite() {
   return (
     <div className="flex flex-col gap-16 pb-16 lg:gap-24">
-      <section className="mx-auto w-full max-w-[720px] space-y-6 px-5 pt-10 text-ink lg:pt-16">
+      <section className="section-wrap-sm space-y-6 pt-10 text-ink lg:pt-16">
         <p className="text-sm2-custom font-semibold uppercase tracking-eyebrow">
           Actualités
         </p>
@@ -59,7 +59,7 @@ export default function Actualite() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-[960px] space-y-8 px-5 text-ink">
+      <section className="section-wrap-md space-y-8 text-ink">
         <div className="space-y-4">
           <p className="text-sm2-custom font-semibold uppercase tracking-eyebrow">
             Blog
@@ -130,7 +130,7 @@ export default function Actualite() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-[720px] px-5 text-center text-ink">
+      <section className="section-wrap-sm text-center text-ink">
         <h2 className="text-4xl-custom font-bold leading-tight tracking-title sm:text-5xl-custom">
           Ne manquez rien
           <br />

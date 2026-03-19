@@ -53,8 +53,8 @@ const SECONDARY_FEATURES = [
 
 export default function HomeHighlightsSection() {
   return (
-    <section className="relative left-1/2 right-1/2 -mx-[50vw] w-screen bg-surface-mint">
-      <div className="mx-auto w-full max-w-[1280px] px-5 py-16 lg:px-16 lg:py-28">
+    <section className="section-bleed bg-surface-mint">
+      <div className="section-wrap-xl py-16 lg:py-28">
         <div className="flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-20">
           <div className="w-full lg:flex-1">
             <div className="h-[420px] md:h-[560px] lg:h-[720px]">

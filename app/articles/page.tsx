@@ -33,8 +33,8 @@ const ARTICLES = [
 export default function Article() {
   return (
     <div className="flex flex-col gap-16 pb-16">
-      <section className="relative left-1/2 right-1/2 -mx-[50vw] w-screen bg-surface-mint">
-        <div className="mx-auto w-full max-w-[720px] px-5 py-12 text-ink sm:py-16">
+      <section className="section-bleed bg-surface-mint">
+        <div className="section-wrap-sm section-pad-md text-ink">
           <p className="text-sm2-custom uppercase tracking-eyebrow">
             Actualités <span className="mx-2">›</span> Articles
           </p>
@@ -94,7 +94,7 @@ export default function Article() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-[720px] space-y-6 px-5 text-ink">
+      <section className="section-wrap-sm space-y-6 text-ink">
         <h2 className="text-h3 font-semibold leading-title">
           Articles récents
         </h2>

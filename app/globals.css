@@ -325,6 +325,36 @@
 
 }
 
+@layer utilities {
+  .section-bleed {
+    @apply relative left-1/2 right-1/2 -mx-[50vw] w-screen;
+  }
+
+  .section-wrap-sm {
+    @apply mx-auto w-full max-w-[720px] px-5;
+  }
+
+  .section-wrap-md {
+    @apply mx-auto w-full max-w-[960px] px-5;
+  }
+
+  .section-wrap-lg {
+    @apply mx-auto w-full max-w-[1200px] px-5;
+  }
+
+  .section-wrap-xl {
+    @apply mx-auto w-full max-w-[1280px] px-5 lg:px-16;
+  }
+
+  .section-pad-md {
+    @apply py-12 sm:py-16;
+  }
+
+  .section-pad-lg {
+    @apply py-16 lg:py-24;
+  }
+}
+
 
 /* ---------------------------------------- */
 /* 6. TYPOGRAPHIE RESPONSIVE (MOBILE) */

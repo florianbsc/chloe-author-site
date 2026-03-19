@@ -1,7 +1,7 @@
 export default function HomeQuoteSection() {
   return (
-    <section className="relative left-1/2 right-1/2 -mx-[50vw] w-screen bg-surface-ash px-5 py-16 md:px-8 lg:px-16 lg:py-28">
-      <div className="mx-auto w-full max-w-[1280px]">
+    <section className="section-bleed bg-surface-ash">
+      <div className="section-wrap-xl py-16 lg:py-28">
         <div className="mx-auto flex w-full max-w-[768px] flex-col items-center gap-6 text-center text-ink">
           <h2 className="w-full text-h1 font-bold leading-tight tracking-title lg:text-display">
             Parce que survivre n&apos;était que le début

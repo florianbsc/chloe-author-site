@@ -83,8 +83,8 @@ function FooterLinksColumn({
 
 export default function Footer() {
   return (
-    <footer className="bg-surface-ash px-5 py-16 md:px-8 lg:px-16 lg:py-20">
-      <div className="mx-auto w-full max-w-[1280px] space-y-16 lg:space-y-20">
+    <footer className="bg-surface-ash py-16 lg:py-20">
+      <div className="section-wrap-xl space-y-16 lg:space-y-20">
         <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:gap-32">
           <div className="w-full max-w-[500px] space-y-6">
             <Image

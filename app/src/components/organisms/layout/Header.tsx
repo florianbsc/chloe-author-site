@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronDown, Menu, X } from "lucide-react";
+import Button from "@/app/src/components/atoms/Button";
 
 const PRIMARY_LINKS = [
   { href: "/about", label: "À propos" },
@@ -94,12 +95,9 @@ export default function Header() {
         </Link>
 
         <div className="hidden min-h-px min-w-px flex-1 items-center justify-end lg:flex">
-          <Link
-            href="/about"
-            className="inline-flex items-center justify-center rounded-[6px] border border-brand bg-brand px-2.5 py-1 text-base-custom font-medium leading-body text-white transition hover:bg-brand-hover"
-          >
+          <Button href="/about" variant="primary" size="sm">
             Contactez-moi
-          </Link>
+          </Button>
         </div>
 
         <div className="flex flex-1 justify-end lg:hidden">
@@ -149,9 +147,11 @@ export default function Header() {
             <Link
               href="/about"
               onClick={closeMobileMenu}
-              className="mt-2 inline-flex w-full items-center justify-center rounded-[6px] border border-brand bg-brand px-3 py-1.5 text-sm-custom font-medium leading-body text-white"
+              className="mt-2 inline-flex w-full justify-center"
             >
-              Contactez-moi
+              <Button variant="primary" size="sm" className="w-full">
+                Contactez-moi
+              </Button>
             </Link>
           </nav>
         </div>

@@ -5,7 +5,7 @@ export default function HomeHero() {
   return (
     <section
       aria-labelledby="home-hero-title"
-      className="relative left-1/2 right-1/2 -mx-[50vw] w-screen bg-surface-mint"
+      className="section-bleed bg-surface-mint"
     >
       <div className="flex w-full flex-col lg:min-h-[720px] lg:flex-row">
         <div className="w-full px-5 py-16 lg:flex lg:min-h-[720px] lg:flex-1 lg:items-center lg:py-0 lg:pl-16 lg:pr-20">

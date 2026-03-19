@@ -4,9 +4,9 @@ export default function AboutHero() {
   return (
     <section
       aria-labelledby="about-hero-title"
-      className="relative left-1/2 right-1/2 -mx-[50vw] w-screen bg-surface-mint"
+      className="section-bleed bg-surface-mint"
     >
-      <div className="mx-auto w-full max-w-[1280px] px-5 py-16 lg:px-16 lg:py-28">
+      <div className="section-wrap-xl py-16 lg:py-28">
         <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-20">
           <div className="flex-1 space-y-4 text-ink">
             <p className="text-base font-semibold leading-subtitle">Auteure</p>

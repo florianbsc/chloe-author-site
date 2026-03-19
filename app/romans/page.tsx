@@ -11,8 +11,8 @@ export default async function Book() {
 
   return (
     <div className="flex flex-col gap-16 pb-16">
-      <section className="relative left-1/2 right-1/2 -mx-[50vw] w-screen bg-surface-mint">
-        <div className="mx-auto w-full max-w-[720px] space-y-6 px-5 py-12 text-ink sm:py-16">
+      <section className="section-bleed bg-surface-mint">
+        <div className="section-wrap-sm section-pad-md space-y-6 text-ink">
           <p className="text-sm2-custom font-semibold uppercase tracking-eyebrow">
             Romans
           </p>
@@ -41,10 +41,7 @@ export default async function Book() {
         </div>
       </section>
 
-      <section
-        id="catalogue"
-        className="mx-auto w-full max-w-[1200px] space-y-10 px-5 text-ink"
-      >
+      <section id="catalogue" className="section-wrap-lg space-y-10 text-ink">
         <div className="space-y-4">
           <p className="text-sm2-custom font-semibold uppercase tracking-eyebrow">
             Catalogue
@@ -74,7 +71,7 @@ export default async function Book() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-[720px] px-5 text-center text-ink">
+      <section className="section-wrap-sm text-center text-ink">
         <p className="text-sm2-custom font-semibold uppercase tracking-eyebrow">
           Essence
         </p>
@@ -147,7 +144,7 @@ export default async function Book() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-[720px] px-5 text-center text-ink">
+      <section className="section-wrap-sm text-center text-ink">
         <h2 className="text-4xl-custom font-bold leading-tight tracking-title sm:text-5xl-custom">
           Ce qu&apos;en disent
           <br />

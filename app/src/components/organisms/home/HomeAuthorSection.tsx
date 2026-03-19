@@ -2,8 +2,8 @@ import AuthorActions from "@/app/src/components/molecules/AuthorActions";
 
 export default function HomeAuthorSection() {
   return (
-    <section className="relative left-1/2 right-1/2 -mx-[50vw] w-screen bg-surface-ash px-5 py-16 md:px-8 lg:px-16 lg:py-28">
-      <div className="mx-auto w-full max-w-[1280px]">
+    <section className="section-bleed bg-surface-ash">
+      <div className="section-wrap-xl py-16 lg:py-28">
         <div className="flex w-full flex-col gap-12 text-ink lg:flex-row lg:gap-20">
           <div className="flex flex-1 flex-col gap-4">
             <p className="text-base font-semibold leading-subtitle">Auteure</p>

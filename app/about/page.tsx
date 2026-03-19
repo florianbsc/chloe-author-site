@@ -82,8 +82,8 @@ export default function About() {
     <div className="flex flex-col">
       <AboutHero />
 
-      <section className="relative left-1/2 right-1/2 -mx-[50vw] w-screen bg-white">
-        <div className="mx-auto w-full max-w-[1280px] px-5 py-16 lg:px-16 lg:py-24">
+      <section className="section-bleed bg-white">
+        <div className="section-wrap-xl py-16 lg:py-24">
           <div className="flex flex-col gap-12 lg:flex-row lg:gap-16">
             <div className="flex-1 space-y-10 text-ink">
               {ABOUT_FEATURES.map((feature, index) => (
@@ -158,8 +158,8 @@ export default function About() {
         </div>
       </section>
 
-      <section className="relative left-1/2 right-1/2 -mx-[50vw] w-screen bg-surface-mint">
-        <div className="mx-auto w-full max-w-[720px] px-5 py-16 text-center lg:py-24">
+      <section className="section-bleed bg-surface-mint">
+        <div className="section-wrap-sm section-pad-lg text-center">
           <p className="text-sm2-custom font-semibold uppercase tracking-eyebrow text-ink">
             Valeurs
           </p>
@@ -258,8 +258,8 @@ export default function About() {
           </div>
         </div>
       </section>
-      <section className="relative left-1/2 right-1/2 -mx-[50vw] w-screen bg-white">
-        <div className="mx-auto w-full max-w-[720px] px-5 py-16 lg:py-24">
+      <section className="section-bleed bg-white">
+        <div className="section-wrap-sm section-pad-lg">
           <div className="space-y-4 text-ink">
             <p className="text-sm2-custom font-semibold uppercase tracking-eyebrow">
               Auteure
@@ -309,8 +309,8 @@ export default function About() {
           </div>
         </div>
       </section>
-      <section className="relative left-1/2 right-1/2 -mx-[50vw] w-screen bg-surface-mint">
-        <div className="mx-auto w-full max-w-[720px] px-5 py-16 text-center lg:py-24">
+      <section className="section-bleed bg-surface-mint">
+        <div className="section-wrap-sm section-pad-lg text-center">
           <h2 className="text-h2 font-bold leading-tight tracking-title text-ink sm:text-6xl-custom">
             Lecteurs parlent
           </h2>

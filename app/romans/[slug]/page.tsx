@@ -31,8 +31,8 @@ export default async function RomanPage({ params }: RomanPageProps) {
 
   return (
     <div className="flex flex-col gap-16 pb-16">
-      <section className="relative left-1/2 right-1/2 -mx-[50vw] w-screen bg-surface-mint">
-        <div className="mx-auto w-full max-w-[720px] space-y-6 px-5 py-12 text-ink sm:py-16">
+      <section className="section-bleed bg-surface-mint">
+        <div className="section-wrap-sm section-pad-md space-y-6 text-ink">
           <h1 className="text-h2 font-bold leading-tight tracking-title sm:text-7xl-custom">
             {roman.title}
           </h1>
@@ -58,7 +58,7 @@ export default async function RomanPage({ params }: RomanPageProps) {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-[720px] space-y-8 px-5 text-ink">
+      <section className="section-wrap-sm space-y-8 text-ink">
         <div className="space-y-3">
           <h2 className="text-3xl-custom font-bold leading-tight tracking-title sm:text-h1">
             L&apos;histoire qui vous attend
@@ -119,7 +119,7 @@ export default async function RomanPage({ params }: RomanPageProps) {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-[720px] px-5 text-center text-ink">
+      <section className="section-wrap-sm text-center text-ink">
         <p className="text-sm2-custom font-semibold uppercase tracking-eyebrow">
           Essence
         </p>
@@ -177,7 +177,7 @@ export default async function RomanPage({ params }: RomanPageProps) {
         )}
       </section>
 
-      <section className="mx-auto w-full max-w-[720px] px-5 text-center text-ink">
+      <section className="section-wrap-sm text-center text-ink">
         <h2 className="text-4xl-custom font-bold leading-tight tracking-title sm:text-5xl-custom">
           Avis de lecteurs
         </h2>
