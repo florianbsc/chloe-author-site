@@ -50,8 +50,8 @@ export default function Article() {
             </div>
 
             <div className="space-y-1">
-              <p className="text-sm-custom font-semibold">Chloé Simart</p>
-              <p className="text-sm2-custom text-ink">
+              <p className="text-body font-semibold">Chloé Simart</p>
+              <p className="text-body-sm text-ink">
                 29 octobre 2024 <span className="mx-2">•</span> 4 min
               </p>
             </div>
@@ -88,7 +88,7 @@ export default function Article() {
             </button>
           </div>
 
-          <div className="mt-8 h-[220px] overflow-hidden rounded-2xl bg-surface-placeholder">
+          <div className="mt-8 h-56 overflow-hidden rounded-2xl bg-surface-placeholder">
             <HeroImagePlaceholder />
           </div>
         </div>
@@ -103,16 +103,16 @@ export default function Article() {
             <Link
               key={article.slug}
               href={`/articles/${article.slug}`}
-              className="block rounded-2xl border border-border-subtle bg-white p-5 transition hover:shadow-sm"
+              className="block rounded-2xl border border-border-subtle bg-surface p-5 transition hover:shadow-sm"
             >
-              <div className="flex items-center justify-between text-sm2-custom text-ink">
+              <div className="flex items-center justify-between text-body-sm text-ink">
                 <span>{article.date}</span>
                 <span>{article.readTime}</span>
               </div>
               <h3 className="mt-3 text-h5 font-semibold leading-title">
                 {article.title}
               </h3>
-              <p className="mt-2 text-sm3-custom leading-body">
+              <p className="mt-2 text-body leading-body">
                 {article.excerpt}
               </p>
             </Link>

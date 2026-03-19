@@ -1,6 +1,7 @@
 import Button from "@/app/src/components/atoms/Button";
 import HeroImagePlaceholder from "@/app/src/components/atoms/HeroImagePlaceholder";
 import AboutHero from "@/app/src/components/organisms/about/AboutHero";
+import ReviewCard from "@/app/src/components/molecules/ReviewCard";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -82,20 +83,20 @@ export default function About() {
     <div className="flex flex-col">
       <AboutHero />
 
-      <section className="section-bleed bg-white">
+      <section className="section-bleed bg-surface">
         <div className="section-wrap-xl py-16 lg:py-24">
           <div className="flex flex-col gap-12 lg:flex-row lg:gap-16">
-          <div className="flex-1 space-y-10 text-ink">
+            <div className="flex-1 stack-lg text-ink">
               {ABOUT_FEATURES.map((feature, index) => (
                 <div
                   key={`${feature.title}-${index}`}
-                  className="space-y-3"
+                  className="stack-sm"
                 >
-                  <feature.icon aria-hidden="true" className="size-8 stroke-[1.5]" />
+                  <feature.icon aria-hidden="true" className="size-8 icon-stroke" />
                   <h3 className="text-h4 font-semibold leading-subtitle">
                     {feature.title}
                   </h3>
-                  <p className="text-sm-custom leading-body">
+                  <p className="text-body leading-body">
                     {feature.description}
                   </p>
                 </div>
@@ -125,7 +126,7 @@ export default function About() {
             </div>
 
             <div className="flex-1">
-              <div className="h-[420px] md:h-[520px] lg:min-h-[680px]">
+              <div className="hero-media-alt">
                 <HeroImagePlaceholder />
               </div>
             </div>
@@ -166,14 +167,14 @@ export default function About() {
           <h2 className="mt-4 text-h2 font-bold leading-tight tracking-title text-ink sm:text-5xl-custom">
             Ce qui guide mon écriture
           </h2>
-          <p className="mt-4 text-sm-custom leading-body-lg text-ink sm:text-base-custom">
+          <p className="mt-4 text-body leading-body-lg text-ink sm:text-body-lg">
             Chaque roman que j&apos;écris porte en lui une conviction profonde. Je
             crois que les histoires vraies changent les lecteurs.
           </p>
 
           <div className="mt-12 stack-lg text-left sm:mt-16">
             <div className="stack-md">
-              <div className="h-[220px] overflow-hidden rounded-2xl bg-surface-placeholder">
+              <div className="h-56 overflow-hidden rounded-2xl bg-surface-placeholder">
                    <Image
                   src="/books.png"
                   alt="Photo illustrative"
@@ -186,14 +187,14 @@ export default function About() {
               <h3 className="text-2xl-custom font-semibold leading-subtitle text-ink">
                 Engagement pour la diversité
               </h3>
-              <p className="text-sm-custom leading-body-lg text-ink">
+              <p className="text-body leading-body-lg text-ink">
                 Les personnages en situation de handicap méritent des histoires
                 qui les honorent.
               </p>
             </div>
 
             <div className="stack-md">
-              <div className="h-[220px] overflow-hidden rounded-2xl bg-surface-placeholder">
+              <div className="h-56 overflow-hidden rounded-2xl bg-surface-placeholder">
                    <Image
                   src="/books.png"
                   alt="Photo illustrative"
@@ -206,14 +207,14 @@ export default function About() {
               <h3 className="text-2xl-custom font-semibold leading-subtitle text-ink">
                 Histoires authentiques
               </h3>
-              <p className="text-sm-custom leading-body-lg text-ink">
+              <p className="text-body leading-body-lg text-ink">
                 Pas de clichés, pas de pitié, juste la beauté brute de la vie
                 réelle.
               </p>
             </div>
 
             <div className="stack-md">
-              <div className="h-[220px] overflow-hidden rounded-2xl bg-surface-placeholder">
+              <div className="h-56 overflow-hidden rounded-2xl bg-surface-placeholder">
                 <Image
                   src="/books.png"
                   alt="Photo illustrative"
@@ -226,7 +227,7 @@ export default function About() {
               <h3 className="text-2xl-custom font-semibold leading-subtitle text-ink">
                 Communauté bienveillante
               </h3>
-              <p className="text-sm-custom leading-body-lg text-ink">
+              <p className="text-body leading-body-lg text-ink">
                 Mes lecteurs forment une famille où chacun se sent compris et
                 entendu.
               </p>
@@ -258,7 +259,7 @@ export default function About() {
           </div>
         </div>
       </section>
-      <section className="section-bleed bg-white">
+      <section className="section-bleed bg-surface">
         <div className="section-wrap-sm section-pad-lg">
           <div className="stack-sm text-ink">
             <p className="eyebrow">
@@ -267,7 +268,7 @@ export default function About() {
             <h2 className="text-h2 font-bold leading-tight tracking-title sm:text-6xl-custom">
               Chloé Simart
             </h2>
-            <p className="text-sm-custom leading-body-lg sm:text-base-custom">
+            <p className="text-body leading-body-lg sm:text-body-lg">
               Écrivaine française passionnée par les histoires qui dérangent et
               qui guérissent. Depuis huit ans, je transforme mes expériences en
               romans.
@@ -282,7 +283,7 @@ export default function About() {
           <div className="mt-12 stack-lg">
             {AUTHOR_CARDS.map((author, index) => (
               <div key={`${author.name}-${index}`} className="stack-sm">
-                <div className="flex h-[96px] w-[96px] items-center justify-center rounded-full bg-surface-placeholder text-icon-placeholder">
+                <div className="flex h-24 w-24 items-center justify-center rounded-full bg-surface-placeholder text-icon-placeholder">
                   <Globe className="size-8" aria-hidden="true" />
                 </div>
 
@@ -290,12 +291,12 @@ export default function About() {
                   <h3 className="text-h4 font-semibold leading-subtitle text-ink">
                     {author.name}
                   </h3>
-                  <p className="text-sm-custom leading-body text-ink">
+                  <p className="text-body leading-body text-ink">
                     {author.role}
                   </p>
                 </div>
 
-                <p className="text-sm-custom leading-body-lg text-ink">
+                <p className="text-body leading-body-lg text-ink">
                   {author.quote}
                 </p>
 
@@ -314,55 +315,29 @@ export default function About() {
           <h2 className="text-h2 font-bold leading-tight tracking-title text-ink sm:text-6xl-custom">
             Lecteurs parlent
           </h2>
-          <p className="mt-4 text-sm-custom leading-body-lg text-ink sm:text-base-custom">
+          <p className="mt-4 text-body leading-body-lg text-ink sm:text-body-lg">
             Leurs mots me portent
           </p>
 
           <div className="mt-12 stack-lg text-ink">
-            <div className="stack-md">
-              <div className="text-base-custom font-semibold">Webflow</div>
-              <p className="text-h4 font-semibold leading-title">
-                &quot;Enfin une auteure qui comprend ce que c&apos;est de vivre avec
-                le handicap sans le transformer en tragédie.&quot;
-              </p>
-              <div className="mx-auto flex h-[64px] w-[64px] items-center justify-center rounded-full bg-surface-placeholder-strong text-icon-placeholder">
-                <Globe className="size-6" aria-hidden="true" />
-              </div>
-              <div className="space-y-1">
-                <p className="text-base-custom font-semibold">Marie Dupont</p>
-                <p className="text-sm-custom">Lectrice, Lyon</p>
-              </div>
-            </div>
-
-            <div className="stack-md">
-              <div className="text-base-custom font-semibold">Webflow</div>
-              <p className="text-h4 font-semibold leading-title">
-                &quot;Les secrets de Clara m&apos;a fait pleurer et rire. C&apos;est
-                rare de trouver une telle honnêteté dans la fiction.&quot;
-              </p>
-              <div className="mx-auto flex h-[64px] w-[64px] items-center justify-center rounded-full bg-surface-placeholder-strong text-icon-placeholder">
-                <Globe className="size-6" aria-hidden="true" />
-              </div>
-              <div className="space-y-1">
-                <p className="text-base-custom font-semibold">Thomas Bernard</p>
-                <p className="text-sm-custom">Lecteur, Paris</p>
-              </div>
-            </div>
-
-            <div className="stack-md">
-              <div className="text-base-custom font-semibold">Webflow</div>
-              <p className="text-h4 font-semibold leading-title">
-                &quot;Chloé écrit comme elle respire. Ses histoires deviennent les
-                nôtres, et on ne s&apos;en remet jamais.&quot;
-              </p>
-              <div className="mx-auto flex h-[64px] w-[64px] items-center justify-center rounded-full bg-surface-placeholder-strong text-icon-placeholder">
-                <Globe className="size-6" aria-hidden="true" />
-              </div>
-              <div className="space-y-1">
-                <p className="text-base-custom font-semibold">Isabelle Moreau</p>
-                <p className="text-sm-custom">Lectrice, Marseille</p>
-              </div>
-            </div>
+            <ReviewCard
+              logo="Webflow"
+              quote="Enfin une auteure qui comprend ce que c'est de vivre avec le handicap sans le transformer en tragédie."
+              name="Marie Dupont"
+              role="Lectrice, Lyon"
+            />
+            <ReviewCard
+              logo="Webflow"
+              quote="Les secrets de Clara m'a fait pleurer et rire. C'est rare de trouver une telle honnêteté dans la fiction."
+              name="Thomas Bernard"
+              role="Lecteur, Paris"
+            />
+            <ReviewCard
+              logo="Webflow"
+              quote="Chloé écrit comme elle respire. Ses histoires deviennent les nôtres, et on ne s'en remet jamais."
+              name="Isabelle Moreau"
+              role="Lectrice, Marseille"
+            />
           </div>
         </div>
       </section>

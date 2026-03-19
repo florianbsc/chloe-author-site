@@ -1,4 +1,5 @@
 import Button from "@/app/src/components/atoms/Button";
+import Badge from "@/app/src/components/atoms/Badge";
 import Input from "@/app/src/components/atoms/Input";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, ChevronRight } from "lucide-react";
@@ -44,7 +45,7 @@ export default function Actualite() {
         <h1 className="text-h2 font-bold leading-tight tracking-title sm:text-6xl-custom">
           Les dernières nouvelles
         </h1>
-        <p className="text-sm-custom leading-body-lg sm:text-base-custom">
+        <p className="text-body leading-body-lg sm:text-body-lg">
           Suivez l&apos;évolution de mes projets et découvrez les dates de sortie
           de mes prochains romans. Chaque histoire porte en elle une part de
           vérité qui mérite d&apos;être partagée.
@@ -67,7 +68,7 @@ export default function Actualite() {
           <h2 className="text-3xl-custom font-bold leading-tight tracking-title sm:text-h1">
             Short heading goes here
           </h2>
-          <p className="text-sm-custom leading-body-lg sm:text-base-custom">
+          <p className="text-body leading-body-lg sm:text-body-lg">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </p>
         </div>
@@ -76,25 +77,25 @@ export default function Actualite() {
           {ARTICLES_POSTS.map((post, index) => (
             <article
               key={`${post.title}-${index}`}
-              className="min-w-[260px] flex-1 snap-start stack-sm rounded-2xl border border-border-subtle bg-white p-4 shadow-sm sm:min-w-[320px]"
+              className="min-w-64 flex-1 snap-start stack-sm rounded-2xl border border-border-subtle bg-surface p-4 shadow-sm sm:min-w-80"
             >
-              <div className="h-[180px] rounded-xl bg-surface-placeholder" />
+              <div className="h-44 rounded-xl bg-surface-placeholder" />
 
-              <div className="flex items-center gap-3 text-sm2-custom text-ink">
-                <span className="rounded-full border border-border-medium px-3 py-1">
+              <div className="flex items-center gap-3 text-body-sm text-ink">
+                <Badge variant="outline" size="sm">
                   {post.category}
-                </span>
-                <span className="text-sm2-custom">{post.readTime}</span>
+                </Badge>
+                <span className="text-body-sm">{post.readTime}</span>
               </div>
 
               <h3 className="text-h5 font-semibold leading-title">
                 {post.title}
               </h3>
-              <p className="text-sm3-custom leading-body">{post.excerpt}</p>
+              <p className="text-body leading-body">{post.excerpt}</p>
 
               <Link
                 href="/articles"
-                className="inline-flex items-center gap-2 text-sm3-custom font-medium"
+                className="inline-flex items-center gap-2 text-body font-medium"
               >
                 Read more
                 <ChevronRight className="size-4" aria-hidden="true" />
@@ -136,7 +137,7 @@ export default function Actualite() {
           <br />
           Restez informé(e)
         </h2>
-        <p className="mt-4 text-sm-custom leading-body-lg sm:text-base-custom">
+        <p className="mt-4 text-body leading-body-lg sm:text-body-lg">
           Recevez les actualités et les dates de sortie de mes prochains romans
           directement dans votre boîte mail.
         </p>
@@ -156,12 +157,12 @@ export default function Actualite() {
               size="md"
             />
           </div>
-          <Button variant="primary" size="md" className="w-full">
+          <Button type="submit" variant="primary" size="md" className="w-full">
             S&apos;abonner
           </Button>
         </form>
 
-        <p className="mt-4 text-xs-custom leading-body text-ink">
+        <p className="mt-4 text-caption leading-body text-ink">
           En vous abonnant, vous acceptez nos conditions d&apos;utilisation et
           politique de confidentialité.
         </p>

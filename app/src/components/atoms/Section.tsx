@@ -12,11 +12,11 @@ export default function Section({
   className = "",
 }: Props) {
   return (
-    <section className={`py-20 space-y-10 ${className}`}>
+    <section className={`py-20 stack-lg ${className}`}>
       {(title || subtitle) && (
         <div className="stack-xs max-w-xl">
           {subtitle && (
-            <p className="text-sm-custom text-neutral-500">{subtitle}</p>
+            <p className="text-body text-muted">{subtitle}</p>
           )}
 
           {title && <h2 className="text-h2 font-heading">{title}</h2>}

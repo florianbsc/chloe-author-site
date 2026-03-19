@@ -2,9 +2,9 @@
 import Button from "@/app/src/components/atoms/Button";
 import BookCard from "@/app/src/components/molecules/BookCard";
 import HeroImagePlaceholder from "@/app/src/components/atoms/HeroImagePlaceholder";
+import ReviewCard from "@/app/src/components/molecules/ReviewCard";
 import { getRomans } from "@/app/src/lib/romans";
 import Link from "next/link";
-import { Image as ImageIcon } from "lucide-react";
 
 export default async function Book() {
   const romans = await getRomans();
@@ -19,7 +19,7 @@ export default async function Book() {
           <h1 className="text-h2 font-bold leading-tight tracking-title sm:text-7xl-custom">
             Mes romans
           </h1>
-          <p className="text-sm-custom leading-body-lg sm:text-base-custom">
+          <p className="text-body leading-body-lg sm:text-body-lg">
             Chaque histoire que j&apos;écris naît d&apos;une conviction simple : les
             personnages en situation de handicap méritent des récits qui les
             célèbrent, les questionnent, les transforment. Mes romans traversent
@@ -41,7 +41,7 @@ export default async function Book() {
         </div>
       </section>
 
-      <section id="catalogue" className="section-wrap-lg space-y-10 text-ink">
+      <section id="catalogue" className="section-wrap-lg stack-lg text-ink">
         <div className="stack-sm">
           <p className="eyebrow">
             Catalogue
@@ -49,7 +49,7 @@ export default async function Book() {
           <h2 className="text-3xl-custom font-bold leading-title sm:text-h1">
             Tous mes romans en un seul endroit
           </h2>
-          <p className="text-sm-custom leading-body-lg sm:text-base-custom">
+          <p className="text-body leading-body-lg sm:text-body-lg">
             Chaque roman que j&apos;écris porte en lui une part de vérité, une
             exploration de l&apos;âme humaine face aux défis qui la façonnent.
             Retrouvez ici l&apos;intégralité de mes oeuvres, classées par genre
@@ -80,7 +80,7 @@ export default async function Book() {
           <br />
           différents
         </h2>
-        <p className="mt-4 text-sm-custom leading-body-lg sm:text-base-custom">
+        <p className="mt-4 text-body leading-body-lg sm:text-body-lg">
           Mes histoires refusent les clichés et les regards apitoyés. Elles
           célèbrent la complexité, la force et la beauté de ceux qui vivent
           avec un handicap.
@@ -88,39 +88,39 @@ export default async function Book() {
 
         <div className="mt-12 stack-lg text-left">
           <div className="stack-md">
-            <div className="h-[220px] overflow-hidden rounded-2xl bg-surface-placeholder">
+            <div className="h-56 overflow-hidden rounded-2xl bg-surface-placeholder">
               <HeroImagePlaceholder />
             </div>
             <h3 className="text-2xl-custom font-semibold leading-subtitle">
               Représentation authentique et sans compromis
             </h3>
-            <p className="text-sm-custom leading-body-lg">
+            <p className="text-body leading-body-lg">
               Des personnages en situation de handicap au coeur du récit, pas
               en marge de l&apos;histoire.
             </p>
           </div>
 
           <div className="stack-md">
-            <div className="h-[220px] overflow-hidden rounded-2xl bg-surface-placeholder">
+            <div className="h-56 overflow-hidden rounded-2xl bg-surface-placeholder">
               <HeroImagePlaceholder />
             </div>
             <h3 className="text-2xl-custom font-semibold leading-subtitle">
               Émotions brutes et vérité littéraire
             </h3>
-            <p className="text-sm-custom leading-body-lg">
+            <p className="text-body leading-body-lg">
               Chaque page respire l&apos;authenticité, loin des sentimentalisme
               facile et des narratifs convenus.
             </p>
           </div>
 
           <div className="stack-md">
-            <div className="h-[220px] overflow-hidden rounded-2xl bg-surface-placeholder">
+            <div className="h-56 overflow-hidden rounded-2xl bg-surface-placeholder">
               <HeroImagePlaceholder />
             </div>
             <h3 className="text-2xl-custom font-semibold leading-subtitle">
               Récits qui transforment et inspirent
             </h3>
-            <p className="text-sm-custom leading-body-lg">
+            <p className="text-body leading-body-lg">
               Mes romans invitent à la réflexion, au questionnement et à la
               découverte de soi.
             </p>
@@ -134,10 +134,10 @@ export default async function Book() {
             </Button>
           </a>
           <Link href="#catalogue" className="inline-flex items-center gap-2">
-            <span className="text-sm3-custom font-medium leading-body text-ink">
+            <span className="text-body font-medium leading-body text-ink">
               Lire
             </span>
-            <span aria-hidden="true" className="text-base-custom">
+            <span aria-hidden="true" className="text-body-lg">
               →
             </span>
           </Link>
@@ -150,55 +150,29 @@ export default async function Book() {
           <br />
           les lecteurs
         </h2>
-        <p className="mt-4 text-sm-custom leading-body-lg sm:text-base-custom">
+        <p className="mt-4 text-body leading-body-lg sm:text-body-lg">
           Des voix qui résonnent avec authenticité
         </p>
 
         <div className="mt-12 stack-lg text-ink">
-          <div className="stack-md">
-            <div className="text-base-custom font-semibold">Webflow</div>
-            <p className="text-xl-custom font-semibold leading-title">
-              &laquo; Ces romans m&apos;ont permis de me voir enfin représentée dans
-              une histoire vraie. &raquo;
-            </p>
-            <div className="mx-auto flex h-[64px] w-[64px] items-center justify-center rounded-full bg-surface-placeholder-strong text-icon-placeholder">
-              <ImageIcon className="size-5" aria-hidden="true" />
-            </div>
-            <div className="space-y-1">
-              <p className="text-md2-custom font-semibold">Marie Dupont</p>
-              <p className="text-sm3-custom">Lectrice passionnée</p>
-            </div>
-          </div>
-
-          <div className="stack-md">
-            <div className="text-base-custom font-semibold">Webflow</div>
-            <p className="text-xl-custom font-semibold leading-title">
-              &laquo; Chloé écrit avec une force brute qui traverse les pages et
-              s&apos;installe en vous. &raquo;
-            </p>
-            <div className="mx-auto flex h-[64px] w-[64px] items-center justify-center rounded-full bg-surface-placeholder-strong text-icon-placeholder">
-              <ImageIcon className="size-5" aria-hidden="true" />
-            </div>
-            <div className="space-y-1">
-              <p className="text-md2-custom font-semibold">Thomas Mercier</p>
-              <p className="text-sm3-custom">Critique littéraire</p>
-            </div>
-          </div>
-
-          <div className="stack-md">
-            <div className="text-base-custom font-semibold">Webflow</div>
-            <p className="text-xl-custom font-semibold leading-title">
-              &laquo; Un roman qui ne vous lâche pas. L&apos;humanité crue et sans
-              détour qu&apos;on attendait. &raquo;
-            </p>
-            <div className="mx-auto flex h-[64px] w-[64px] items-center justify-center rounded-full bg-surface-placeholder-strong text-icon-placeholder">
-              <ImageIcon className="size-5" aria-hidden="true" />
-            </div>
-            <div className="space-y-1">
-              <p className="text-md2-custom font-semibold">Sophie Bernard</p>
-              <p className="text-sm3-custom">Lectrice assidue</p>
-            </div>
-          </div>
+          <ReviewCard
+            logo="Webflow"
+            quote="Ces romans m'ont permis de me voir enfin représentée dans une histoire vraie."
+            name="Marie Dupont"
+            role="Lectrice passionnée"
+          />
+          <ReviewCard
+            logo="Webflow"
+            quote="Chloé écrit avec une force brute qui traverse les pages et s'installe en vous."
+            name="Thomas Mercier"
+            role="Critique littéraire"
+          />
+          <ReviewCard
+            logo="Webflow"
+            quote="Un roman qui ne vous lâche pas. L'humanité crue et sans détour qu'on attendait."
+            name="Sophie Bernard"
+            role="Lectrice assidue"
+          />
         </div>
       </section>
     </div>

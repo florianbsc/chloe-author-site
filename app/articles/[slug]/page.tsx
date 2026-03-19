@@ -1,6 +1,8 @@
 import Button from "@/app/src/components/atoms/Button";
+import Badge from "@/app/src/components/atoms/Badge";
 import Input from "@/app/src/components/atoms/Input";
 import HeroImagePlaceholder from "@/app/src/components/atoms/HeroImagePlaceholder";
+import ReviewCard from "@/app/src/components/molecules/ReviewCard";
 import Link from "next/link";
 import {
   Facebook,
@@ -24,7 +26,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
           Introduction
         </h2>
 
-        <div className="stack-sm text-sm-custom leading-body-lg">
+        <div className="stack-sm text-body leading-body-lg">
           <p>
             Mi tincidunt elit, id quisque ligula ac diam, amet. Vel etiam
             suspendisse morbi eleifend faucibus eget vestibulum felis. Dictum
@@ -41,16 +43,16 @@ export default function ArticlePage({ params }: ArticlePageProps) {
           </p>
         </div>
 
-        <div className="space-y-3">
-          <div className="h-[220px] overflow-hidden rounded-2xl bg-surface-placeholder">
+        <div className="stack-sm">
+          <div className="h-56 overflow-hidden rounded-2xl bg-surface-placeholder">
             <HeroImagePlaceholder />
           </div>
-          <p className="text-xs-custom leading-body text-ink">
+          <p className="text-caption leading-body text-ink">
             Image caption goes here
           </p>
         </div>
 
-        <div className="stack-sm text-sm-custom leading-body-lg">
+        <div className="stack-sm text-body leading-body-lg">
           <h3 className="text-h5 font-semibold leading-title">
             Dolor enim eu tortor urna sed duis nulla. Aliquam vestibulum, nulla
             odio nisl vitae. In aliquet pellentesque aenean hac vestibulum
@@ -68,14 +70,14 @@ export default function ArticlePage({ params }: ArticlePageProps) {
           </p>
         </div>
 
-        <blockquote className="border-l border-border-medium pl-6 text-base-custom italic leading-body-lg text-ink">
+        <blockquote className="border-l border-border-medium pl-6 text-body-lg italic leading-body-lg text-ink">
           &quot;Ipsum sit mattis nulla quam nulla. Gravida id gravida ac enim
           mauris id. Non pellentesque congue eget consectetur turpis. Sapien,
           dictum molestie sem tempor. Diam elit, orci, tincidunt aenean
           tempus.&quot;
         </blockquote>
 
-        <div className="stack-sm text-sm-custom leading-body-lg">
+        <div className="stack-sm text-body leading-body-lg">
           <p>
             Tristique odio senectus nam posuere ornare leo metus, ultrices.
             Blandit duis ultricies vulputate morbi feugiat cras placerat elit.
@@ -92,7 +94,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
           Conclusion
         </h2>
 
-        <div className="stack-sm text-sm-custom leading-body-lg">
+        <div className="stack-sm text-body leading-body-lg">
           <p>
             Morbi sed imperdiet in ipsum, adipiscing elit dui lectus. Tellus id
             scelerisque est ultricies ultricies. Duis est sit sed leo nisl,
@@ -152,12 +154,9 @@ export default function ArticlePage({ params }: ArticlePageProps) {
 
           <div className="flex flex-wrap gap-2 pt-2">
             {["Thriller", "Handicap", "Sortie", "Roman"].map((tag) => (
-              <span
-                key={tag}
-                className="rounded-full border border-border-medium px-3 py-1 text-xs-custom"
-              >
+              <Badge key={tag} variant="outline" size="sm">
                 {tag}
-              </span>
+              </Badge>
             ))}
           </div>
         </div>
@@ -166,9 +165,9 @@ export default function ArticlePage({ params }: ArticlePageProps) {
           <div className="flex h-10 w-10 items-center justify-center rounded-full bg-surface-placeholder-strong text-icon-placeholder">
             <ImageIcon className="size-4" aria-hidden="true" />
           </div>
-          <div className="space-y-1">
-            <p className="text-sm3-custom font-semibold">Chloé Simart</p>
-            <p className="text-xs2-custom text-ink">Auteure de romans</p>
+          <div className="stack-xs">
+            <p className="text-body font-semibold">Chloé Simart</p>
+            <p className="text-body-sm text-ink">Auteure de romans</p>
           </div>
         </div>
       </section>
@@ -177,38 +176,23 @@ export default function ArticlePage({ params }: ArticlePageProps) {
         <h2 className="text-4xl-custom font-bold leading-tight tracking-title">
           Avis de lecteurs
         </h2>
-        <p className="text-sm-custom leading-body-lg text-ink">
+        <p className="text-body leading-body-lg text-ink">
           Ce que les lecteurs en pensent
         </p>
 
         <div className="mt-10 stack-lg text-ink">
-          <div className="stack-md">
-            <div className="text-base-custom font-semibold">Webflow</div>
-            <p className="text-xl-custom font-semibold leading-title">
-              &laquo; Un roman qui m&apos;a bouleversée du début à la fin. &raquo;
-            </p>
-            <div className="mx-auto flex h-[64px] w-[64px] items-center justify-center rounded-full bg-surface-placeholder-strong text-icon-placeholder">
-              <ImageIcon className="size-5" aria-hidden="true" />
-            </div>
-            <div className="space-y-1">
-              <p className="text-md2-custom font-semibold">Marie Dupont</p>
-              <p className="text-sm3-custom">Lectrice passionnée</p>
-            </div>
-          </div>
-
-          <div className="stack-md">
-            <div className="text-base-custom font-semibold">Webflow</div>
-            <p className="text-xl-custom font-semibold leading-title">
-              &laquo; Chloé écrit avec une sincérité rare et profonde. &raquo;
-            </p>
-            <div className="mx-auto flex h-[64px] w-[64px] items-center justify-center rounded-full bg-surface-placeholder-strong text-icon-placeholder">
-              <ImageIcon className="size-5" aria-hidden="true" />
-            </div>
-            <div className="space-y-1">
-              <p className="text-md2-custom font-semibold">Thomas Bernard</p>
-              <p className="text-sm3-custom">Lecteur engagé</p>
-            </div>
-          </div>
+          <ReviewCard
+            logo="Webflow"
+            quote="Un roman qui m'a bouleversée du début à la fin."
+            name="Marie Dupont"
+            role="Lectrice passionnée"
+          />
+          <ReviewCard
+            logo="Webflow"
+            quote="Chloé écrit avec une sincérité rare et profonde."
+            name="Thomas Bernard"
+            role="Lecteur engagé"
+          />
         </div>
       </section>
 
@@ -218,7 +202,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
           <br />
           Explorez mes univers
         </h2>
-        <p className="mt-4 text-sm-custom leading-body-lg sm:text-base-custom">
+        <p className="mt-4 text-body leading-body-lg sm:text-body-lg">
           Découvrez mes autres romans et plongez dans des histoires qui
           transforment.
         </p>
@@ -244,7 +228,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
           Restez connecté
           <br />À l&apos;actualité
         </h2>
-        <p className="mt-4 text-sm-custom leading-body-lg sm:text-base-custom">
+        <p className="mt-4 text-body leading-body-lg sm:text-body-lg">
           Recevez les dates de sortie et les nouvelles directement dans votre
           boîte.
         </p>
@@ -264,12 +248,12 @@ export default function ArticlePage({ params }: ArticlePageProps) {
               size="md"
             />
           </div>
-          <Button variant="primary" size="md" className="w-full">
+          <Button type="submit" variant="primary" size="md" className="w-full">
             S&apos;abonner
           </Button>
         </form>
 
-        <p className="mt-4 text-xxs-custom leading-body text-ink">
+        <p className="mt-4 text-caption leading-body text-ink">
           Nous respectons votre vie privée. Désinscription possible à tout
           moment.
         </p>

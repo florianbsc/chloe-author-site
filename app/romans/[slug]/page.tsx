@@ -1,12 +1,12 @@
 import Button from "@/app/src/components/atoms/Button";
-import BookCard from "@/app/src/components/molecules/BookCard";
+import Badge from "@/app/src/components/atoms/Badge";
 import HeroImagePlaceholder from "@/app/src/components/atoms/HeroImagePlaceholder";
+import ReviewCard from "@/app/src/components/molecules/ReviewCard";
 import {
   getReviewsByRomanId,
   getRomanBySlug,
   getTopRomans,
 } from "@/app/src/lib/romans";
-import { Image as ImageIcon, Star } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -39,20 +39,17 @@ export default async function RomanPage({ params }: RomanPageProps) {
 
           <div className="flex flex-wrap gap-3">
             {roman.tags.map((tag) => (
-              <span
-                key={tag}
-                className="rounded-[10px] border border-border-medium bg-white px-4 py-1 text-sm2-custom font-medium"
-              >
+              <Badge key={tag} variant="outline" size="md">
                 {tag}
-              </span>
+              </Badge>
             ))}
           </div>
 
-          <p className="text-sm-custom leading-body-lg sm:text-base-custom">
+          <p className="text-body leading-body-lg sm:text-body-lg">
             {roman.summary}
           </p>
 
-          <div className="h-[240px] overflow-hidden rounded-2xl bg-surface-placeholder">
+          <div className="h-60 overflow-hidden rounded-2xl bg-surface-placeholder">
             <HeroImagePlaceholder />
           </div>
         </div>
@@ -65,17 +62,17 @@ export default async function RomanPage({ params }: RomanPageProps) {
           </h2>
         </div>
 
-        <div className="space-y-5 text-sm-custom leading-body-lg sm:text-base-custom">
+        <div className="stack-md text-body leading-body-lg sm:text-body-lg">
           {roman.story.map((paragraph, index) => (
             <p key={`${roman.slug}-story-${index}`}>{paragraph}</p>
           ))}
         </div>
 
-        <div className="rounded-2xl border border-border-subtle bg-white p-6">
+        <div className="rounded-2xl border border-border-subtle bg-surface p-6">
           <h3 className="text-h5 font-semibold leading-title">
             Informations complémentaires
           </h3>
-          <dl className="mt-4 space-y-3 text-sm3-custom">
+          <dl className="mt-4 space-y-3 text-body">
             <div className="flex items-center justify-between">
               <dt className="text-ink">Genre</dt>
               <dd className="font-medium text-ink">
@@ -128,17 +125,17 @@ export default async function RomanPage({ params }: RomanPageProps) {
           <br />
           touchera
         </h2>
-        <p className="mt-4 text-sm-custom leading-body-lg sm:text-base-custom">
+        <p className="mt-4 text-body leading-body-lg sm:text-body-lg">
           Chloé Simart crée des mondes où le handicap n&apos;est jamais une limite
           narrative, mais une richesse narrative.
         </p>
 
         {topRomans.length === 0 ? (
-          <div className="mt-10 rounded-2xl border border-border-subtle bg-white px-6 py-10 text-left">
+          <div className="mt-10 rounded-2xl border border-border-subtle bg-surface px-6 py-10 text-left">
             <h3 className="text-h5 font-semibold">
               Aucun autre roman disponible
             </h3>
-            <p className="mt-2 text-sm3-custom leading-body">
+            <p className="mt-2 text-body leading-body">
               Revenez bientôt pour découvrir de nouvelles lectures.
             </p>
           </div>
@@ -146,13 +143,13 @@ export default async function RomanPage({ params }: RomanPageProps) {
           <div className="mt-12 stack-lg text-left">
             {topRomans.map((item) => (
               <div key={item.id} className="stack-md">
-                <div className="h-[220px] overflow-hidden rounded-2xl bg-surface-placeholder">
+                <div className="h-56 overflow-hidden rounded-2xl bg-surface-placeholder">
                   <HeroImagePlaceholder />
                 </div>
                 <h3 className="text-2xl-custom font-semibold leading-subtitle">
                   {item.title}
                 </h3>
-                <p className="text-sm-custom leading-body-lg">
+                <p className="text-body leading-body-lg">
                   {item.shortDescription}
                 </p>
                 <Link href={`/romans/${item.slug}`}>
@@ -166,9 +163,9 @@ export default async function RomanPage({ params }: RomanPageProps) {
               Array.from({ length: 3 - topRomans.length }).map((_, index) => (
                 <div
                   key={`roman-placeholder-${index}`}
-                  className="stack-sm rounded-2xl border border-dashed border-border-soft p-6 text-center"
+                  className="stack-sm rounded-2xl border border-dashed border-border-subtle p-6 text-center"
                 >
-                  <p className="text-sm3-custom">
+                  <p className="text-body">
                     Un nouveau roman arrive bientôt.
                   </p>
                 </div>
@@ -181,49 +178,33 @@ export default async function RomanPage({ params }: RomanPageProps) {
         <h2 className="text-4xl-custom font-bold leading-tight tracking-title sm:text-5xl-custom">
           Avis de lecteurs
         </h2>
-        <p className="mt-4 text-sm-custom leading-body-lg sm:text-base-custom">
+        <p className="mt-4 text-body leading-body-lg sm:text-body-lg">
           Ce que disent ceux qui ont lu
         </p>
 
         {reviews.length === 0 ? (
-          <div className="mt-10 rounded-2xl border border-border-subtle bg-white px-6 py-10 text-left">
+          <div className="mt-10 rounded-2xl border border-border-subtle bg-surface px-6 py-10 text-left">
             <h3 className="text-h5 font-semibold">
               Aucun avis pour le moment
             </h3>
-            <p className="mt-2 text-sm3-custom leading-body">
+            <p className="mt-2 text-body leading-body">
               Soyez le premier à partager votre ressenti sur ce roman.
             </p>
-            <p className="mt-4 text-xs2-custom text-ink">
+            <p className="mt-4 text-body-sm text-ink">
               Un formulaire d&apos;avis pourra être ajouté ici prochainement.
             </p>
           </div>
         ) : (
           <div className="mt-12 stack-lg text-ink">
             {reviews.map((review) => (
-              <div key={review.id} className="stack-md">
-                <div className="text-base-custom font-semibold">Webflow</div>
-                <p className="text-xl-custom font-semibold leading-title">
-                  &laquo; {review.comment} &raquo;
-                </p>
-                <div className="mx-auto flex h-[64px] w-[64px] items-center justify-center rounded-full bg-surface-placeholder-strong text-icon-placeholder">
-                  <ImageIcon className="size-5" aria-hidden="true" />
-                </div>
-                <div className="space-y-1">
-                  <p className="text-md2-custom font-semibold">{review.name}</p>
-                  <p className="text-sm3-custom">{review.role}</p>
-                </div>
-                <div className="flex items-center justify-center gap-3 text-xs2-custom text-ink">
-                  <span>
-                    {new Date(review.date).toLocaleDateString("fr-FR")}
-                  </span>
-                  {review.rating && (
-                    <span className="inline-flex items-center gap-1">
-                      <Star className="size-4" aria-hidden="true" />
-                      {review.rating}/5
-                    </span>
-                  )}
-                </div>
-              </div>
+              <ReviewCard
+                key={review.id}
+                quote={review.comment}
+                name={review.name}
+                role={review.role}
+                date={new Date(review.date).toLocaleDateString("fr-FR")}
+                rating={review.rating ?? undefined}
+              />
             ))}
           </div>
         )}
