@@ -160,7 +160,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="space-y-8 border-t border-border-soft pt-8">
+        <div className="stack-xl border-t border-border-soft pt-8">
           <div className="flex flex-col gap-4 text-sm-custom leading-body text-ink lg:flex-row lg:items-center lg:justify-between">
             <p>© 2025 Chloé Simart. Tous droits réservés.</p>
 

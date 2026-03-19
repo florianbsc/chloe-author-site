@@ -18,7 +18,7 @@ export default function AboutHero() {
             </h1>
           </div>
 
-          <div className="flex-1 space-y-8 text-ink">
+          <div className="flex-1 stack-xl text-ink">
             <p className="text-base-custom leading-body lg:text-h5">
               Je suis une auteure française qui écrit des histoires où le
               handicap n&apos;est pas une limite mais une réalité vivante. Mes

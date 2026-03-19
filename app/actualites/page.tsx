@@ -59,7 +59,7 @@ export default function Actualite() {
         </div>
       </section>
 
-      <section className="section-wrap-md space-y-8 text-ink">
+      <section className="section-wrap-md stack-xl text-ink">
         <div className="stack-sm">
           <p className="eyebrow">
             Blog

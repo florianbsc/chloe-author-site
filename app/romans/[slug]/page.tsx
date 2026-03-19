@@ -58,7 +58,7 @@ export default async function RomanPage({ params }: RomanPageProps) {
         </div>
       </section>
 
-      <section className="section-wrap-sm space-y-8 text-ink">
+      <section className="section-wrap-sm stack-xl text-ink">
         <div className="stack-sm">
           <h2 className="text-3xl-custom font-bold leading-tight tracking-title sm:text-h1">
             L&apos;histoire qui vous attend

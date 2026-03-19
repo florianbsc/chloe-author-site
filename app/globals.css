@@ -369,6 +369,14 @@
   .stack-lg {
     @apply space-y-12;
   }
+
+  .stack-xs {
+    @apply space-y-2;
+  }
+
+  .stack-xl {
+    @apply space-y-8;
+  }
 }
 
 

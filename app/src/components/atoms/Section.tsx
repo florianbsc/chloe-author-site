@@ -14,7 +14,7 @@ export default function Section({
   return (
     <section className={`py-20 space-y-10 ${className}`}>
       {(title || subtitle) && (
-        <div className="space-y-2 max-w-xl">
+        <div className="stack-xs max-w-xl">
           {subtitle && (
             <p className="text-sm-custom text-neutral-500">{subtitle}</p>
           )}

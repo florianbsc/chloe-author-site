@@ -20,7 +20,7 @@ export default function NewsletterForm({
   };
 
   return (
-    <form onSubmit={handleSubmit} className={`space-y-2 max-w-md ${className}`}>
+    <form onSubmit={handleSubmit} className={`stack-xs max-w-md ${className}`}>
       <Input
         type="email"
         name="email"

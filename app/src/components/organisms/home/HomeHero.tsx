@@ -9,7 +9,7 @@ export default function HomeHero() {
     >
       <div className="flex w-full flex-col lg:min-h-[720px] lg:flex-row">
         <div className="w-full px-5 py-16 lg:flex lg:min-h-[720px] lg:flex-1 lg:items-center lg:py-0 lg:pl-16 lg:pr-20">
-          <div className="w-full max-w-[560px] stack-md lg:space-y-8">
+          <div className="w-full max-w-[560px] stack-md lg:stack-xl">
             <div className="space-y-5 text-ink lg:stack-md">
               <h1
                 id="home-hero-title"
