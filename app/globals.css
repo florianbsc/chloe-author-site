@@ -353,6 +353,10 @@
   .section-pad-lg {
     @apply py-16 lg:py-24;
   }
+
+  .eyebrow {
+    @apply text-sm2-custom font-semibold uppercase tracking-eyebrow text-ink;
+  }
 }
 
 

@@ -13,7 +13,7 @@ export default async function Book() {
     <div className="flex flex-col gap-16 pb-16">
       <section className="section-bleed bg-surface-mint">
         <div className="section-wrap-sm section-pad-md space-y-6 text-ink">
-          <p className="text-sm2-custom font-semibold uppercase tracking-eyebrow">
+          <p className="eyebrow">
             Romans
           </p>
           <h1 className="text-h2 font-bold leading-tight tracking-title sm:text-7xl-custom">
@@ -43,7 +43,7 @@ export default async function Book() {
 
       <section id="catalogue" className="section-wrap-lg space-y-10 text-ink">
         <div className="space-y-4">
-          <p className="text-sm2-custom font-semibold uppercase tracking-eyebrow">
+          <p className="eyebrow">
             Catalogue
           </p>
           <h2 className="text-3xl-custom font-bold leading-title sm:text-h1">
@@ -72,7 +72,7 @@ export default async function Book() {
       </section>
 
       <section className="section-wrap-sm text-center text-ink">
-        <p className="text-sm2-custom font-semibold uppercase tracking-eyebrow">
+        <p className="eyebrow">
           Essence
         </p>
         <h2 className="mt-4 text-4xl-custom font-bold leading-tight tracking-title sm:text-5xl-custom">

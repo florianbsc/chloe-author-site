@@ -160,7 +160,7 @@ export default function About() {
 
       <section className="section-bleed bg-surface-mint">
         <div className="section-wrap-sm section-pad-lg text-center">
-          <p className="text-sm2-custom font-semibold uppercase tracking-eyebrow text-ink">
+          <p className="eyebrow">
             Valeurs
           </p>
           <h2 className="mt-4 text-h2 font-bold leading-tight tracking-title text-ink sm:text-5xl-custom">
@@ -261,7 +261,7 @@ export default function About() {
       <section className="section-bleed bg-white">
         <div className="section-wrap-sm section-pad-lg">
           <div className="space-y-4 text-ink">
-            <p className="text-sm2-custom font-semibold uppercase tracking-eyebrow">
+            <p className="eyebrow">
               Auteure
             </p>
             <h2 className="text-h2 font-bold leading-tight tracking-title sm:text-6xl-custom">

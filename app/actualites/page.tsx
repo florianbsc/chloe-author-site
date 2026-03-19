@@ -38,7 +38,7 @@ export default function Actualite() {
   return (
     <div className="flex flex-col gap-16 pb-16 lg:gap-24">
       <section className="section-wrap-sm space-y-6 pt-10 text-ink lg:pt-16">
-        <p className="text-sm2-custom font-semibold uppercase tracking-eyebrow">
+        <p className="eyebrow">
           Actualités
         </p>
         <h1 className="text-h2 font-bold leading-tight tracking-title sm:text-6xl-custom">
@@ -61,7 +61,7 @@ export default function Actualite() {
 
       <section className="section-wrap-md space-y-8 text-ink">
         <div className="space-y-4">
-          <p className="text-sm2-custom font-semibold uppercase tracking-eyebrow">
+          <p className="eyebrow">
             Blog
           </p>
           <h2 className="text-3xl-custom font-bold leading-tight tracking-title sm:text-h1">

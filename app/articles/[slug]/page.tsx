@@ -116,7 +116,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
         </div>
 
         <div className="space-y-4">
-          <p className="text-sm2-custom font-semibold uppercase tracking-eyebrow">
+          <p className="eyebrow">
             Partager cet article
           </p>
           <div className="flex items-center gap-3">

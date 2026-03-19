@@ -35,7 +35,7 @@ export default function Article() {
     <div className="flex flex-col gap-16 pb-16">
       <section className="section-bleed bg-surface-mint">
         <div className="section-wrap-sm section-pad-md text-ink">
-          <p className="text-sm2-custom uppercase tracking-eyebrow">
+          <p className="eyebrow">
             Actualités <span className="mx-2">›</span> Articles
           </p>
 

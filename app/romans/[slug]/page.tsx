@@ -120,7 +120,7 @@ export default async function RomanPage({ params }: RomanPageProps) {
       </section>
 
       <section className="section-wrap-sm text-center text-ink">
-        <p className="text-sm2-custom font-semibold uppercase tracking-eyebrow">
+        <p className="eyebrow">
           Essence
         </p>
         <h2 className="mt-4 text-4xl-custom font-bold leading-tight tracking-title sm:text-5xl-custom">
