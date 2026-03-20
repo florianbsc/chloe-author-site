@@ -7,9 +7,9 @@ export default function HomeAuthorSection() {
         <div className="flex w-full flex-col gap-12 text-ink lg:flex-row lg:gap-20">
           <div className="flex flex-1 flex-col gap-4">
             <p className="text-body font-semibold leading-subtitle">Auteure</p>
-            <h2 className="text-h1 font-bold leading-tight tracking-title lg:text-display">
+            <h1 className="text-h1 font-bold leading-tight tracking-title lg:text-display">
               Une handi-auteure
-            </h2>
+            </h1>
           </div>
 
           <div className="flex flex-1 flex-col gap-8">

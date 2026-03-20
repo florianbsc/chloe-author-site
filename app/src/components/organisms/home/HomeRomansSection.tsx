@@ -42,9 +42,9 @@ export default function HomeRomansSection() {
           <p className="text-body font-semibold leading-subtitle">Romans</p>
 
           <div className="flex w-full flex-col items-center gap-6">
-            <h2 className="text-4xl-custom font-bold leading-title tracking-title lg:text-6xl-custom">
+            <h1 className="text-4xl-custom font-bold leading-title tracking-title lg:text-6xl-custom">
               Mes romans
-            </h2>
+            </h1>
             <p className="text-body leading-body lg:text-h5">
               Disponibles sur Amazon
             </p>

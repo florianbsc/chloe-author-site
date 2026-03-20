@@ -57,9 +57,9 @@ export default async function RomanPage({ params }: RomanPageProps) {
 
       <section className="section-wrap-sm stack-xl text-ink">
         <div className="stack-sm">
-          <h2 className="text-3xl-custom font-bold leading-tight tracking-title sm:text-h1">
+          <h1 className="text-3xl-custom font-bold leading-tight tracking-title sm:text-h1">
             L&apos;histoire qui vous attend
-          </h2>
+          </h1>
         </div>
 
         <div className="stack-md text-body leading-body-lg sm:text-body-lg">
@@ -116,15 +116,15 @@ export default async function RomanPage({ params }: RomanPageProps) {
         </div>
       </section>
 
-      <section className="section-wrap-sm text-center text-ink">
+      <section className="section-wrap-sm text-center text-ink bg-surface-mint">
         <p className="eyebrow">
           Essence
         </p>
-        <h2 className="mt-4 text-4xl-custom font-bold leading-tight tracking-title sm:text-5xl-custom">
+        <h1 className="mt-4 text-4xl-custom font-bold leading-tight tracking-title sm:text-5xl-custom">
           Pourquoi ce roman vous
           <br />
           touchera
-        </h2>
+        </h1>
         <p className="mt-4 text-body leading-body-lg sm:text-body-lg">
           Chloé Simart crée des mondes où le handicap n&apos;est jamais une limite
           narrative, mais une richesse narrative.
@@ -175,9 +175,9 @@ export default async function RomanPage({ params }: RomanPageProps) {
       </section>
 
       <section className="section-wrap-sm text-center text-ink">
-        <h2 className="text-4xl-custom font-bold leading-tight tracking-title sm:text-5xl-custom">
+        <h1 className="text-4xl-custom font-bold leading-tight tracking-title sm:text-5xl-custom">
           Avis de lecteurs
-        </h2>
+        </h1>
         <p className="mt-4 text-body leading-body-lg sm:text-body-lg">
           Ce que disent ceux qui ont lu
         </p>
@@ -190,9 +190,9 @@ export default async function RomanPage({ params }: RomanPageProps) {
             <p className="mt-2 text-body leading-body">
               Soyez le premier à partager votre ressenti sur ce roman.
             </p>
-            <p className="mt-4 text-body-sm text-ink">
+            {/* <p className="mt-4 text-body-sm text-ink">
               Un formulaire d&apos;avis pourra être ajouté ici prochainement.
-            </p>
+            </p> */}
           </div>
         ) : (
           <div className="mt-12 stack-lg text-ink">

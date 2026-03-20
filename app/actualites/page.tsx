@@ -42,7 +42,7 @@ export default function Actualite() {
         <p className="eyebrow">
           Actualités
         </p>
-        <h1 className="text-h2 font-bold leading-tight tracking-title sm:text-6xl-custom">
+        <h1 className="text-h1 font-bold leading-tight tracking-title sm:text-6xl-custom">
           Les dernières nouvelles
         </h1>
         <p className="text-body leading-body-lg sm:text-body-lg">
@@ -65,9 +65,9 @@ export default function Actualite() {
           <p className="eyebrow">
             Blog
           </p>
-          <h2 className="text-3xl-custom font-bold leading-tight tracking-title sm:text-h1">
+          <h1 className="text-3xl-custom font-bold leading-tight tracking-title sm:text-h1">
             Short heading goes here
-          </h2>
+          </h1>
           <p className="text-body leading-body-lg sm:text-body-lg">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </p>
@@ -132,11 +132,11 @@ export default function Actualite() {
       </section>
 
       <section className="section-wrap-sm text-center text-ink">
-        <h2 className="text-4xl-custom font-bold leading-tight tracking-title sm:text-5xl-custom">
+        <h1 className="text-4xl-custom font-bold leading-tight tracking-title sm:text-5xl-custom">
           Ne manquez rien
           <br />
           Restez informé(e)
-        </h2>
+        </h1>
         <p className="mt-4 text-body leading-body-lg sm:text-body-lg">
           Recevez les actualités et les dates de sortie de mes prochains romans
           directement dans votre boîte mail.

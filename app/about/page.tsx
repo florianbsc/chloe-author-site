@@ -51,7 +51,7 @@ const ABOUT_FEATURES = [
   {
     title: "Short heading here",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in leros.",
     icon: Box,
   },
 ];
@@ -103,25 +103,11 @@ export default function About() {
               ))}
 
               <div className="flex items-center gap-4 pt-2">
-                <Button variant="third" size="md">
-                  Lire
-                </Button>
-
-                <button
-                  type="button"
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border-medium text-ink"
-                  aria-label="Défiler vers le bas"
-                >
-                  <ArrowDown className="size-5" />
-                </button>
-
-                <button
-                  type="button"
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border-medium text-ink"
-                  aria-label="Suivant"
-                >
-                  <ArrowRight className="size-5" />
-                </button>
+                <Link href="/romans">
+                  <Button variant="third" size="md">
+                    Lire
+                  </Button>
+                </Link>
               </div>
             </div>
 
@@ -241,21 +227,7 @@ export default function About() {
               </Button>
             </Link>
 
-            <button
-              type="button"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border-medium text-ink"
-              aria-label="Défiler vers le bas"
-            >
-              <ArrowDown className="size-5" />
-            </button>
-
-            <button
-              type="button"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border-medium text-ink"
-              aria-label="Suivant"
-            >
-              <ArrowRight className="size-5" />
-            </button>
+            
           </div>
         </div>
       </section>
@@ -341,17 +313,19 @@ export default function About() {
           </div>
         </div>
       </section>
-      <section>
+      <section className="section-bleed bg-surface">
         <div>
           <h1>Prêt à découvrir mes histoires ?</h1>
           <p>Quatre roman vous attendent, chacun porteur d&apos;une verité differente. Venez les rencontrer sur Amazon.</p>
         </div>
-        <Link href="/romans">
-          <Button variant="primary">Lire</Button>
-        </Link>
-        <Link href="/contact">
-          <Button variant="third">Contact</Button>
-        </Link>
+        <div className="mt-12 flex items-center justify-center gap-4">
+          <Link href="/romans">
+            <Button variant="primary">Lire</Button>
+          </Link>
+          <Link href="/contact">
+            <Button variant="third">Contact</Button>
+          </Link>
+        </div>
       </section>
       
     </div>

@@ -46,9 +46,9 @@ export default async function Book() {
           <p className="eyebrow">
             Catalogue
           </p>
-          <h2 className="text-3xl-custom font-bold leading-title sm:text-h1">
+          <h1 className="text-3xl-custom font-bold leading-title sm:text-h1">
             Tous mes romans en un seul endroit
-          </h2>
+          </h1>
           <p className="text-body leading-body-lg sm:text-body-lg">
             Chaque roman que j&apos;écris porte en lui une part de vérité, une
             exploration de l&apos;âme humaine face aux défis qui la façonnent.
@@ -75,11 +75,11 @@ export default async function Book() {
         <p className="eyebrow">
           Essence
         </p>
-        <h2 className="mt-4 text-4xl-custom font-bold leading-tight tracking-title sm:text-5xl-custom">
+        <h1 className="mt-4 text-4xl-custom font-bold leading-tight tracking-title sm:text-5xl-custom">
           Ce qui rend mes romans
           <br />
           différents
-        </h2>
+        </h1>
         <p className="mt-4 text-body leading-body-lg sm:text-body-lg">
           Mes histoires refusent les clichés et les regards apitoyés. Elles
           célèbrent la complexité, la force et la beauté de ceux qui vivent
@@ -145,11 +145,11 @@ export default async function Book() {
       </section>
 
       <section className="section-wrap-sm text-center text-ink">
-        <h2 className="text-4xl-custom font-bold leading-tight tracking-title sm:text-5xl-custom">
+        <h1 className="text-4xl-custom font-bold leading-tight tracking-title sm:text-5xl-custom">
           Ce qu&apos;en disent
           <br />
           les lecteurs
-        </h2>
+        </h1>
         <p className="mt-4 text-body leading-body-lg sm:text-body-lg">
           Des voix qui résonnent avec authenticité
         </p>

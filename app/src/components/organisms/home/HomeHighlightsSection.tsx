@@ -46,7 +46,7 @@ const SECONDARY_FEATURES = [
   {
     title: "Short heading here",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in peros.",
     icon: Box,
   },
 ];
