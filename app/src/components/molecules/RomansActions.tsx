@@ -2,23 +2,35 @@ import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import Button from "@/app/src/components/atoms/Button";
 
-export default function RomansActions() {
+type RomansActionsProps = {
+  primaryLabel?: string;
+  primaryHref?: string;
+  secondaryLabel?: string;
+  secondaryHref?: string;
+};
+
+export default function RomansActions({
+  primaryLabel = "Voir",
+  primaryHref = "/romans",
+  secondaryLabel = "Tous",
+  secondaryHref = "/romans",
+}: RomansActionsProps) {
   return (
     <div className="flex items-center gap-6">
       <Button
-        href="/romans"
+        href={primaryHref}
         variant="third"
         size="sm"
         className="md:text-body-lg"
       >
-        Voir
+        {primaryLabel}
       </Button>
 
       <Link
-        href="/romans"
+        href={secondaryHref}
         className="inline-flex items-center gap-2 text-body-sm font-medium leading-body text-ink md:text-body-lg"
       >
-        Tous
+        {secondaryLabel}
         <ChevronRight aria-hidden="true" className="size-5" />
       </Link>
     </div>

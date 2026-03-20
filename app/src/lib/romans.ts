@@ -1,3 +1,6 @@
+import type { RecordModel } from "pocketbase";
+import { getFileUrl, pb, pbEnabled } from "@/app/src/lib/pb";
+
 export type Roman = {
   id: string;
   slug: string;
@@ -5,6 +8,7 @@ export type Roman = {
   shortDescription: string;
   summary: string;
   cover: string;
+  coverAlt?: string;
   bestsellerRank?: number;
   tags: string[];
   details: {
@@ -28,6 +32,34 @@ export type RomanReview = {
   rating?: number;
   comment: string;
   date: string;
+};
+
+type RomanRecord = RecordModel & {
+  slug?: string;
+  title?: string;
+  shortDescription?: string;
+  summary?: string;
+  cover?: string;
+  tags?: string[];
+  details?: Roman["details"];
+  story?: string[];
+  availability_label?: string;
+  availability_url?: string;
+  bestsellerRank?: number;
+  sales_rank?: number;
+  expand?: {
+    cover?: RecordModel;
+    tags?: Array<{ name?: string }>;
+  };
+};
+
+type ReviewRecord = RecordModel & {
+  roman?: string;
+  name?: string;
+  role?: string;
+  rating?: number;
+  comment?: string;
+  date?: string;
 };
 
 const ROMANS: Roman[] = [
@@ -176,29 +208,154 @@ const ROMAN_REVIEWS: RomanReview[] = [
   },
 ];
 
+function mapTags(record: RomanRecord) {
+  if (Array.isArray(record.tags) && record.tags.length > 0) {
+    return record.tags;
+  }
+  const expandedTags = record.expand?.tags ?? [];
+  return expandedTags
+    .map((tag) => tag.name)
+    .filter((tag): tag is string => Boolean(tag));
+}
+
+function mapRoman(record: RomanRecord): Roman {
+  const details = record.details ?? {
+    genre: "",
+    pages: 0,
+    year: new Date().getFullYear(),
+  };
+  const story = Array.isArray(record.story)
+    ? record.story
+    : record.story
+      ? [record.story as unknown as string]
+      : [];
+
+  const coverRecord = record.expand?.cover ?? record;
+  const coverFile = record.expand?.cover
+    ? (record.expand.cover as RecordModel & { file?: string }).file ?? ""
+    : record.cover ?? "";
+
+  return {
+    id: record.id,
+    slug: record.slug ?? record.id,
+    title: record.title ?? "",
+    shortDescription: record.shortDescription ?? "",
+    summary: record.summary ?? "",
+    cover: getFileUrl(coverRecord, coverFile) || record.cover || "",
+    coverAlt: record.title ?? "Couverture",
+    bestsellerRank: record.bestsellerRank ?? record.sales_rank,
+    tags: mapTags(record),
+    details,
+    story,
+    availability: {
+      label: record.availability_label ?? "Disponible",
+      url: record.availability_url ?? "#",
+    },
+  };
+}
+
+function mapReview(record: ReviewRecord): RomanReview {
+  return {
+    id: record.id,
+    romanId: record.roman ?? "",
+    name: record.name ?? "",
+    role: record.role ?? "",
+    rating: record.rating,
+    comment: record.comment ?? "",
+    date: record.date ?? new Date().toISOString(),
+  };
+}
+
 export async function getRomans(): Promise<Roman[]> {
-  return ROMANS;
+  if (!pbEnabled || !pb) {
+    return ROMANS;
+  }
+
+  try {
+    const records = await pb.collection("romans").getFullList<RomanRecord>({
+      sort: "bestsellerRank",
+      filter: 'status = "published"',
+      expand: "cover,tags",
+    });
+    return records.map(mapRoman);
+  } catch (error) {
+    try {
+      const records = await pb.collection("romans").getFullList<RomanRecord>({
+        sort: "bestsellerRank",
+        expand: "cover,tags",
+      });
+      return records.map(mapRoman);
+    } catch {
+      return ROMANS;
+    }
+  }
 }
 
 export async function getRomanBySlug(slug: string): Promise<Roman | null> {
-  return ROMANS.find((roman) => roman.slug === slug) ?? null;
+  if (!pbEnabled || !pb) {
+    return ROMANS.find((roman) => roman.slug === slug) ?? null;
+  }
+
+  try {
+    const record = await pb
+      .collection("romans")
+      .getFirstListItem<RomanRecord>(`slug = "${slug}"`, {
+        expand: "cover,tags",
+      });
+    return mapRoman(record);
+  } catch {
+    const fallback = ROMANS.find((roman) => roman.slug === slug) ?? null;
+    return fallback;
+  }
 }
 
 export async function getRomanSlugs(): Promise<string[]> {
-  return ROMANS.map((roman) => roman.slug);
+  if (!pbEnabled || !pb) {
+    return ROMANS.map((roman) => roman.slug);
+  }
+
+  try {
+    const records = await pb.collection("romans").getFullList<RomanRecord>({
+      fields: "slug",
+    });
+    return records.map((record) => record.slug ?? record.id);
+  } catch {
+    return ROMANS.map((roman) => roman.slug);
+  }
 }
 
 export async function getReviewsByRomanId(
   romanId: string,
 ): Promise<RomanReview[]> {
-  return ROMAN_REVIEWS.filter((review) => review.romanId === romanId);
+  if (!pbEnabled || !pb) {
+    return ROMAN_REVIEWS.filter((review) => review.romanId === romanId);
+  }
+
+  try {
+    const records = await pb.collection("reviews").getFullList<ReviewRecord>({
+      filter: `roman = "${romanId}" && status = "approved"`,
+      sort: "-date",
+    });
+    return records.map(mapReview);
+  } catch {
+    try {
+      const records = await pb.collection("reviews").getFullList<ReviewRecord>({
+        filter: `roman = "${romanId}"`,
+        sort: "-date",
+      });
+      return records.map(mapReview);
+    } catch {
+      return ROMAN_REVIEWS.filter((review) => review.romanId === romanId);
+    }
+  }
 }
 
 export async function getTopRomans(
   excludeId: string,
   limit = 3,
 ): Promise<Roman[]> {
-  const ranked = [...ROMANS].sort((a, b) => {
+  const romans = await getRomans();
+  const ranked = [...romans].sort((a, b) => {
     const aRank = a.bestsellerRank ?? Number.MAX_SAFE_INTEGER;
     const bRank = b.bestsellerRank ?? Number.MAX_SAFE_INTEGER;
     return aRank - bRank;

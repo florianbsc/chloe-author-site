@@ -4,6 +4,7 @@ import Input from "@/app/src/components/atoms/Input";
 import HeroImagePlaceholder from "@/app/src/components/atoms/HeroImagePlaceholder";
 import ReviewCard from "@/app/src/components/molecules/ReviewCard";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Facebook,
   Image as ImageIcon,
@@ -11,154 +12,268 @@ import {
   Linkedin,
   X,
 } from "lucide-react";
+import { getArticleBySlug } from "@/app/src/lib/articles";
+import { getTestimonials } from "@/app/src/lib/testimonials";
+import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 
 type ArticlePageProps = {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 };
 
-export default function ArticlePage({ params }: ArticlePageProps) {
+type ContentBlock = {
+  type: string;
+  value?: string;
+  data?: Record<string, unknown>;
+};
+
+function formatDate(value?: string) {
+  if (!value) {
+    return "";
+  }
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) {
+    return value;
+  }
+  return new Intl.DateTimeFormat("fr-FR", {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+  }).format(date);
+}
+
+function normalizeContent(content: string | ContentBlock[]) {
+  if (Array.isArray(content)) {
+    return content;
+  }
+  return content
+    .split("\n\n")
+    .map((paragraph) => paragraph.trim())
+    .filter(Boolean)
+    .map((paragraph) => ({ type: "paragraph", value: paragraph }));
+}
+
+function renderBlock(block: ContentBlock, index: number) {
+  switch (block.type) {
+    case "heading":
+      return (
+        <h3 key={`heading-${index}`} className="text-h5 font-semibold leading-title">
+          {block.value}
+        </h3>
+      );
+    case "quote":
+      return (
+        <blockquote
+          key={`quote-${index}`}
+          className="border-l border-border-medium pl-6 text-body-lg italic leading-body-lg text-ink"
+        >
+          {block.value}
+        </blockquote>
+      );
+    case "image": {
+      const src = block.data?.src as string | undefined;
+      const caption = block.data?.caption as string | undefined;
+      return (
+        <div key={`image-${index}`} className="stack-sm">
+          <div className="h-56 overflow-hidden rounded-2xl bg-surface-placeholder">
+            {src ? (
+              <Image
+                src={src}
+                alt={caption ?? "Image d'illustration"}
+                width={900}
+                height={560}
+                className="h-full w-full object-cover"
+              />
+            ) : (
+              <HeroImagePlaceholder />
+            )}
+          </div>
+          {caption && (
+            <p className="text-caption leading-body text-ink">{caption}</p>
+          )}
+        </div>
+      );
+    }
+    default:
+      return (
+        <p key={`paragraph-${index}`} className="text-body leading-body-lg">
+          {block.value}
+        </p>
+      );
+  }
+}
+
+export async function generateMetadata({ params }: ArticlePageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const article = await getArticleBySlug(slug.toLowerCase());
+  return {
+    title: article?.seoTitle ?? article?.title ?? "Article",
+    description: article?.seoDescription ?? article?.excerpt ?? "Article",
+  };
+}
+
+export default async function ArticlePage({ params }: ArticlePageProps) {
+  const { slug } = await params;
+  const article = await getArticleBySlug(slug.toLowerCase());
+  const testimonials = await getTestimonials("articles");
+
+  if (!article) {
+    notFound();
+  }
+
+  const contentBlocks = normalizeContent(article.content);
+
   return (
     <div className="section-wrap-sm section-pad-md text-ink">
       <section className="stack-md">
-        <h2 className="text-h3 font-semibold leading-title">
-          Introduction
-        </h2>
+        <p className="eyebrow">
+          Actualités <span className="mx-2">›</span> Articles
+        </p>
+        <h1 className="text-h2 font-bold leading-tight tracking-title sm:text-6xl-custom">
+          {article.title}
+        </h1>
 
-        <div className="stack-sm text-body leading-body-lg">
-          <p>
-            Mi tincidunt elit, id quisque ligula ac diam, amet. Vel etiam
-            suspendisse morbi eleifend faucibus eget vestibulum felis. Dictum
-            quis montes, sit sit. Tellus aliquam enim urna, etiam. Mauris
-            posuere vulputate arcu amet, vitae nisi, tellus tincidunt. At
-            feugiat sapien varius id.
-          </p>
-          <p>
-            Eget quis mi enim, leo lacinia pharetra, semper. Eget in volutpat
-            mollis at volutpat lectus velit, sed auctor. Porttitor fames arcu
-            quis fusce augue enim. Quis at habitant amet, at. Suscipit tristique
-            risus, at donec. In turpis vel et quam imperdiet. Ipsum molestie
-            aliquet sodales id est ac volutpat.
-          </p>
-        </div>
-
-        <div className="stack-sm">
-          <div className="h-56 overflow-hidden rounded-2xl bg-surface-placeholder">
-            <HeroImagePlaceholder />
+        <div className="mt-4 flex items-center gap-4">
+          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-surface-placeholder-strong text-icon-placeholder">
+            {article.author?.avatar ? (
+              <Image
+                src={article.author.avatar}
+                alt={article.author.name}
+                width={48}
+                height={48}
+                className="h-full w-full rounded-full object-cover"
+              />
+            ) : (
+              <ImageIcon className="size-5" aria-hidden="true" />
+            )}
           </div>
-          <p className="text-caption leading-body text-ink">
-            Image caption goes here
-          </p>
+
+          <div className="space-y-1">
+            <p className="text-body font-semibold">
+              {article.author?.name ?? "Chloé Simart"}
+            </p>
+            <p className="text-body-sm text-ink">
+              {formatDate(article.publishedAt)} <span className="mx-2">•</span>{" "}
+              {article.readTime ?? "4 min"}
+            </p>
+          </div>
         </div>
 
-        <div className="stack-sm text-body leading-body-lg">
-          <h3 className="text-h5 font-semibold leading-title">
-            Dolor enim eu tortor urna sed duis nulla. Aliquam vestibulum, nulla
-            odio nisl vitae. In aliquet pellentesque aenean hac vestibulum
-            turpis mi bibendum diam. Tempor integer aliquam in vitae malesuada
-            fringilla.
-          </h3>
-          <p>
-            Elit nisl in eleifend sed nisi. Pulvinar at orci, proin imperdiet
-            commodo consectetur varius risus. Sed condimentum enim dignissim
-            adipiscing faucibus consequat, urna. Viverra purus et erat auctor
-            aliquam. Risus, volutpat vulputate posuere purus sit congue
-            convallis aliquet. Arcu id augue ut feugiat donec porttitor neque.
-            Mauris, neque ultrices eu vestibulum, bibendum quam lorem id.
-            Dolor lacus, eget nunc lectus in tellus, pharetra, porttitor.
-          </p>
+        <div className="mt-6 flex items-center gap-3">
+          <button
+            type="button"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-soft text-ink"
+            aria-label="Copier le lien"
+          >
+            <Link2 className="size-4" />
+          </button>
+          <button
+            type="button"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-soft text-ink"
+            aria-label="Partager sur LinkedIn"
+          >
+            <Linkedin className="size-4" />
+          </button>
+          <button
+            type="button"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-soft text-ink"
+            aria-label="Partager sur X"
+          >
+            <X className="size-4" />
+          </button>
+          <button
+            type="button"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-soft text-ink"
+            aria-label="Partager sur Facebook"
+          >
+            <Facebook className="size-4" />
+          </button>
         </div>
 
-        <blockquote className="border-l border-border-medium pl-6 text-body-lg italic leading-body-lg text-ink">
-          &quot;Ipsum sit mattis nulla quam nulla. Gravida id gravida ac enim
-          mauris id. Non pellentesque congue eget consectetur turpis. Sapien,
-          dictum molestie sem tempor. Diam elit, orci, tincidunt aenean
-          tempus.&quot;
-        </blockquote>
-
-        <div className="stack-sm text-body leading-body-lg">
-          <p>
-            Tristique odio senectus nam posuere ornare leo metus, ultrices.
-            Blandit duis ultricies vulputate morbi feugiat cras placerat elit.
-            Aliquam tellus lorem sed ac. Montes, sed mattis pellentesque
-            suscipit accumsan. Cursus viverra aenean magna, risus elementum
-            faucibus molestie pellentesque. Arcu ultricies sed mauris
-            vestibulum.
-          </p>
+        <div className="mt-8 h-56 overflow-hidden rounded-2xl bg-surface-placeholder">
+          {article.cover ? (
+            <Image
+              src={article.cover}
+              alt={article.coverAlt ?? article.title}
+              width={900}
+              height={560}
+              className="h-full w-full object-cover"
+            />
+          ) : (
+            <HeroImagePlaceholder />
+          )}
         </div>
       </section>
 
       <section className="mt-12 stack-md">
-        <h2 className="text-h3 font-semibold leading-title">
-          Conclusion
-        </h2>
+        <h2 className="text-h3 font-semibold leading-title">Introduction</h2>
+        <div className="stack-md">
+          {contentBlocks.length === 0 ? (
+            <p className="text-body leading-body-lg">
+              Le contenu de cet article arrive bientôt.
+            </p>
+          ) : (
+            contentBlocks.map((block, index) => renderBlock(block, index))
+          )}
+        </div>
+      </section>
 
-        <div className="stack-sm text-body leading-body-lg">
-          <p>
-            Morbi sed imperdiet in ipsum, adipiscing elit dui lectus. Tellus id
-            scelerisque est ultricies ultricies. Duis est sit sed leo nisl,
-            blandit elit sagittis. Quisque tristique consequat quam sed. Nisl at
-            scelerisque amet nulla purus habitasse.
-          </p>
-          <p>
-            Nunc sed faucibus bibendum feugiat sed interdum. Ipsum egestas
-            condimentum mi massa. In tincidunt pharetra consectetur sed duis
-            facilisis metus. Etiam egestas in nec sed et. Quis lobortis at sit
-            dictum eget nibh tortor commodo cursus.
-          </p>
-          <p>
-            Odio felis sagittis, morbi feugiat tortor vitae feugiat fusce
-            aliquet. Nam elementum urna nisi aliquet erat dolor enim. Ornare id
-            morbi eget ipsum. Aliquam senectus neque ut id eget consectetur
-            diam. Donec posuere pharetra odio consequat scelerisque et, nunc
-            tortor. Nulla adipiscing erat a erat. Condimentum lorem posuere
-            gravida enim posuere cursus diam.
-          </p>
+      {article.conclusion && (
+        <section className="mt-12 stack-md">
+          <h2 className="text-h3 font-semibold leading-title">Conclusion</h2>
+          <div className="stack-sm text-body leading-body-lg">
+            {Array.isArray(article.conclusion)
+              ? article.conclusion.map((paragraph, index) => (
+                  <p key={`conclusion-${index}`}>{paragraph}</p>
+                ))
+              : (
+                  <p>{article.conclusion}</p>
+                )}
+          </div>
+        </section>
+      )}
+
+      <section className="mt-12 stack-md">
+        <p className="eyebrow">Partager cet article</p>
+        <div className="flex items-center gap-3">
+          <button
+            type="button"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-soft text-ink"
+            aria-label="Copier le lien"
+          >
+            <Link2 className="size-4" />
+          </button>
+          <button
+            type="button"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-soft text-ink"
+            aria-label="Partager sur LinkedIn"
+          >
+            <Linkedin className="size-4" />
+          </button>
+          <button
+            type="button"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-soft text-ink"
+            aria-label="Partager sur X"
+          >
+            <X className="size-4" />
+          </button>
+          <button
+            type="button"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-soft text-ink"
+            aria-label="Partager sur Facebook"
+          >
+            <Facebook className="size-4" />
+          </button>
         </div>
 
-        <div className="stack-sm">
-          <p className="eyebrow">
-            Partager cet article
-          </p>
-          <div className="flex items-center gap-3">
-            <button
-              type="button"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-soft text-ink"
-              aria-label="Copier le lien"
-            >
-              <Link2 className="size-4" />
-            </button>
-            <button
-              type="button"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-soft text-ink"
-              aria-label="Partager sur LinkedIn"
-            >
-              <Linkedin className="size-4" />
-            </button>
-            <button
-              type="button"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-soft text-ink"
-              aria-label="Partager sur X"
-            >
-              <X className="size-4" />
-            </button>
-            <button
-              type="button"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-soft text-ink"
-              aria-label="Partager sur Facebook"
-            >
-              <Facebook className="size-4" />
-            </button>
-          </div>
-
-          <div className="flex flex-wrap gap-2 pt-2">
-            {["Thriller", "Handicap", "Sortie", "Roman"].map((tag) => (
-              <Badge key={tag} variant="outline" size="sm">
-                {tag}
-              </Badge>
-            ))}
-          </div>
+        <div className="flex flex-wrap gap-2 pt-2">
+          {(article.tags ?? []).map((tag) => (
+            <Badge key={tag} variant="outline" size="sm">
+              {tag}
+            </Badge>
+          ))}
         </div>
 
         <div className="flex items-center gap-3 border-t border-border-subtle pt-6">
@@ -166,8 +281,12 @@ export default function ArticlePage({ params }: ArticlePageProps) {
             <ImageIcon className="size-4" aria-hidden="true" />
           </div>
           <div className="stack-xs">
-            <p className="text-body font-semibold">Chloé Simart</p>
-            <p className="text-body-sm text-ink">Auteure de romans</p>
+            <p className="text-body font-semibold">
+              {article.author?.name ?? "Chloé Simart"}
+            </p>
+            <p className="text-body-sm text-ink">
+              {article.author?.role ?? "Auteure de romans"}
+            </p>
           </div>
         </div>
       </section>
@@ -181,18 +300,24 @@ export default function ArticlePage({ params }: ArticlePageProps) {
         </p>
 
         <div className="mt-10 stack-lg text-ink">
-          <ReviewCard
-            logo="Webflow"
-            quote="Un roman qui m'a bouleversée du début à la fin."
-            name="Marie Dupont"
-            role="Lectrice passionnée"
-          />
-          <ReviewCard
-            logo="Webflow"
-            quote="Chloé écrit avec une sincérité rare et profonde."
-            name="Thomas Bernard"
-            role="Lecteur engagé"
-          />
+          {testimonials.length > 0 ? (
+            testimonials.map((review) => (
+              <ReviewCard
+                key={review.id}
+                logo={review.logo}
+                quote={review.quote}
+                name={review.name}
+                role={review.role}
+              />
+            ))
+          ) : (
+            <div className="rounded-2xl border border-border-subtle bg-surface p-6 text-left">
+              <h3 className="text-h5 font-semibold">Aucun avis pour le moment</h3>
+              <p className="mt-2 text-body leading-body">
+                Soyez le premier à partager votre ressenti.
+              </p>
+            </div>
+          )}
         </div>
       </section>
 

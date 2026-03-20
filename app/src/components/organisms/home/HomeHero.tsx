@@ -1,7 +1,24 @@
 import HeroImagePlaceholder from "@/app/src/components/atoms/HeroImagePlaceholder";
 import HeroActions from "@/app/src/components/molecules/HeroActions";
+import Image from "next/image";
 
-export default function HomeHero() {
+type HomeHeroProps = {
+  title?: string;
+  subtitle?: string;
+  primaryCta?: { label: string; href: string };
+  secondaryCta?: { label: string; href: string };
+  image?: string;
+  imageAlt?: string;
+};
+
+export default function HomeHero({
+  title = "Chloé Simart",
+  subtitle = "Une auteure pas comme les autres. Auteure de romans qui touchent l'âme.",
+  primaryCta,
+  secondaryCta,
+  image,
+  imageAlt,
+}: HomeHeroProps) {
   return (
     <section
       aria-labelledby="home-hero-title"
@@ -15,20 +32,34 @@ export default function HomeHero() {
                 id="home-hero-title"
                 className="text-h1 font-bold leading-tight tracking-title lg:text-display"
               >
-                Chloé Simart
+                {title}
               </h1>
               <p className="text-body-sm leading-body lg:text-h5">
-                Une auteure pas comme les autres. Auteure de romans qui touchent
-                l&apos;âme.
+                {subtitle}
               </p>
             </div>
 
-            <HeroActions />
+            <HeroActions
+              primaryLabel={primaryCta?.label}
+              primaryHref={primaryCta?.href}
+              secondaryLabel={secondaryCta?.label}
+              secondaryHref={secondaryCta?.href}
+            />
           </div>
         </div>
 
         <div className="hero-panel w-full lg:flex-1">
-          <HeroImagePlaceholder />
+          {image ? (
+            <Image
+              src={image}
+              alt={imageAlt ?? title}
+              width={960}
+              height={920}
+              className="h-full w-full object-cover"
+            />
+          ) : (
+            <HeroImagePlaceholder />
+          )}
         </div>
       </div>
     </section>

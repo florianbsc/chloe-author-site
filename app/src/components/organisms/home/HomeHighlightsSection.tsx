@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { ElementType } from "react";
 import {
   Box,
   ChevronRight,
@@ -51,7 +52,44 @@ const SECONDARY_FEATURES = [
   },
 ];
 
-export default function HomeHighlightsSection() {
+type HomeHighlightsSectionProps = {
+  primaryFeatures?: Array<Record<string, unknown>>;
+  secondaryFeatures?: Array<Record<string, unknown>>;
+  primaryCta?: { label: string; href: string };
+  secondaryCta?: { label: string; href: string };
+};
+
+const ICONS: Record<string, ElementType> = {
+  PartyPopper,
+  House,
+  Triangle,
+  Search,
+  Box,
+};
+
+export default function HomeHighlightsSection({
+  primaryFeatures,
+  secondaryFeatures,
+  primaryCta,
+  secondaryCta,
+}: HomeHighlightsSectionProps) {
+  const resolvedPrimary =
+    primaryFeatures && primaryFeatures.length > 0
+      ? primaryFeatures.map((feature) => ({
+          title: feature.title as string,
+          description: feature.description as string,
+          icon: ICONS[feature.icon as string] ?? Box,
+        }))
+      : PRIMARY_FEATURES;
+  const resolvedSecondary =
+    secondaryFeatures && secondaryFeatures.length > 0
+      ? secondaryFeatures.map((feature) => ({
+          title: feature.title as string,
+          description: feature.description as string,
+          icon: ICONS[feature.icon as string] ?? Box,
+        }))
+      : SECONDARY_FEATURES;
+
   return (
     <section className="section-bleed bg-surface-mint">
       <div className="section-wrap-xl py-16 lg:py-28">
@@ -65,7 +103,7 @@ export default function HomeHighlightsSection() {
           <div className="w-full stack-xl lg:flex-1">
             <div className="stack-md py-2">
               <div className="grid grid-cols-1 gap-x-6 gap-y-8 md:grid-cols-2">
-                {PRIMARY_FEATURES.map((feature) => (
+                {resolvedPrimary.map((feature) => (
                   <AboutFeatureItem
                     key={feature.title}
                     title={feature.title}
@@ -76,7 +114,7 @@ export default function HomeHighlightsSection() {
               </div>
 
               <div className="grid grid-cols-1 gap-x-6 gap-y-8 md:grid-cols-2">
-                {SECONDARY_FEATURES.map((feature, index) => (
+                {resolvedSecondary.map((feature, index) => (
                   <AboutFeatureItem
                     key={`${feature.title}-${index}`}
                     title={feature.title}
@@ -89,18 +127,18 @@ export default function HomeHighlightsSection() {
 
             <div className="flex items-center gap-6">
               <Button
-                href="/romans"
+                href={primaryCta?.href ?? "/romans"}
                 variant="third"
                 size="sm"
               >
-                Lire
+                {primaryCta?.label ?? "Lire"}
               </Button>
 
               <Link
-                href="/romans"
+                href={secondaryCta?.href ?? "/romans"}
                 className="inline-flex items-center gap-2 text-body-lg font-medium leading-body text-ink"
               >
-                Suite
+                {secondaryCta?.label ?? "Suite"}
                 <ChevronRight aria-hidden="true" className="size-5" />
               </Link>
             </div>

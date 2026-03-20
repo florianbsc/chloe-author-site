@@ -5,18 +5,40 @@ import Image from "next/image";
 import Link from "next/link";
 import { ChevronDown, Menu, X } from "lucide-react";
 import Button from "@/app/src/components/atoms/Button";
+import type { NavItem } from "@/app/src/lib/pb";
+import type { NavigationData } from "@/app/src/lib/navigation";
+import type { SiteSettings } from "@/app/src/lib/settings";
 
-const PRIMARY_LINKS = [
+const PRIMARY_LINKS: NavItem[] = [
   { href: "/about", label: "À propos" },
   { href: "/actualites", label: "Actualités" },
 ];
 
-const ROMAN_LINKS = [
+const ROMAN_LINKS: NavItem[] = [
   { href: "/romans", label: "Les secrets de Clara" },
   { href: "/romans", label: "Mon éternel combat" },
 ];
 
-export default function Header() {
+type HeaderProps = {
+  navigation?: NavigationData;
+  romanLinks?: NavItem[];
+  settings?: SiteSettings;
+};
+
+export default function Header({ navigation, romanLinks, settings }: HeaderProps) {
+  const primaryLinks = navigation?.primary?.length
+    ? navigation.primary
+    : PRIMARY_LINKS;
+  const romansLinks = romanLinks?.length
+    ? romanLinks
+    : navigation?.romans?.length
+      ? navigation.romans
+      : ROMAN_LINKS;
+  const logoSrc = settings?.logo ?? "/brand/logo-wide.svg";
+  const logoAlt = settings?.logoAlt ?? "Logo Chloé Simart";
+  const ctaLabel = settings?.headerCtaLabel ?? "Contactez-moi";
+  const ctaHref = settings?.headerCtaHref ?? "/about";
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isRomansMenuOpen, setIsRomansMenuOpen] = useState(false);
 
@@ -34,7 +56,7 @@ export default function Header() {
       <div className="mx-auto flex w-full items-center justify-between gap-6 px-5 py-3 md:px-8 lg:px-16">
         <div className="hidden min-h-px min-w-px flex-1 items-center lg:flex">
           <nav className="flex items-center gap-8 text-body-lg leading-body text-ink">
-            {PRIMARY_LINKS.map((link) => (
+            {primaryLinks.map((link) => (
               <Link key={link.href} href={link.href}>
                 {link.label}
               </Link>
@@ -67,7 +89,7 @@ export default function Header() {
                   className="absolute left-0 top-full mt-2 w-56 rounded-lg border border-border-subtle bg-surface-mint p-6"
                 >
                   <div className="flex flex-col gap-4 text-body-lg leading-body text-ink">
-                    {ROMAN_LINKS.map((roman) => (
+                    {romansLinks.map((roman) => (
                       <Link
                         key={roman.label}
                         href={roman.href}
@@ -86,8 +108,8 @@ export default function Header() {
 
         <Link href="/" className="shrink-0" onClick={closeAllMenus}>
           <Image
-            src="/brand/logo-wide.svg"
-            alt="Logo Chloé Simart"
+            src={logoSrc}
+            alt={logoAlt}
             width={84}
             height={36}
             className="h-9 w-20"
@@ -95,8 +117,8 @@ export default function Header() {
         </Link>
 
         <div className="hidden min-h-px min-w-px flex-1 items-center justify-end lg:flex">
-          <Button href="/about" variant="primary" size="sm">
-            Contactez-moi
+          <Button href={ctaHref} variant="primary" size="sm">
+            {ctaLabel}
           </Button>
         </div>
 
@@ -120,7 +142,7 @@ export default function Header() {
           className="border-t border-border-subtle bg-surface-mint px-5 py-4 md:px-8"
         >
           <nav className="flex flex-col gap-4 text-body-lg leading-body text-ink">
-            {PRIMARY_LINKS.map((link) => (
+            {primaryLinks.map((link) => (
               <Link key={link.href} href={link.href} onClick={closeMobileMenu}>
                 {link.label}
               </Link>
@@ -131,7 +153,7 @@ export default function Header() {
                 Mes romans
               </Link>
               <div className="pl-4">
-                {ROMAN_LINKS.map((roman) => (
+                {romansLinks.map((roman) => (
                   <Link
                     key={roman.label}
                     href={roman.href}
@@ -145,12 +167,12 @@ export default function Header() {
             </div>
 
             <Link
-              href="/about"
+              href={ctaHref}
               onClick={closeMobileMenu}
               className="mt-2 inline-flex w-full justify-center"
             >
               <Button variant="primary" size="sm" className="w-full">
-                Contactez-moi
+                {ctaLabel}
               </Button>
             </Link>
           </nav>

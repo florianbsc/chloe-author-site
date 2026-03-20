@@ -1,20 +1,23 @@
-import HomeHero from "@/app/src/components/organisms/home/HomeHero";
-import HomeRomansSection from "@/app/src/components/organisms/home/HomeRomansSection";
-import HomeAuthorSection from "@/app/src/components/organisms/home/HomeAuthorSection";
-import HomeHighlightsSection from "@/app/src/components/organisms/home/HomeHighlightsSection";
-import HomeQuoteSection from "@/app/src/components/organisms/home/HomeQuoteSection";
-import HomeNewsletterCtaSection from "@/app/src/components/organisms/home/HomeNewsletterCtaSection";
+import SectionRenderer from "@/app/src/components/organisms/sections/SectionRenderer";
+import { getPageBySlug } from "@/app/src/lib/pages";
+import { getRomans } from "@/app/src/lib/romans";
 
+export default async function Home() {
+  const [page, romans] = await Promise.all([
+    getPageBySlug("home"),
+    getRomans(),
+  ]);
 
-export default function Home() {
+  if (!page) {
+    return null;
+  }
+
   return (
-    <>
-      <HomeHero />
-      <HomeRomansSection />
-      <HomeAuthorSection />
-      <HomeHighlightsSection />
-      <HomeQuoteSection />
-      <HomeNewsletterCtaSection />
-    </>
+    <SectionRenderer
+      sections={page.sections}
+      context={{
+        romans,
+      }}
+    />
   );
 }

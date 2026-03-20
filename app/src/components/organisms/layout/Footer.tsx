@@ -2,6 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import Button from "@/app/src/components/atoms/Button";
 import Input from "@/app/src/components/atoms/Input";
+import type { NavigationData } from "@/app/src/lib/navigation";
+import type { SiteSettings } from "@/app/src/lib/settings";
 
 type NavItem = {
   label: string;
@@ -12,7 +14,7 @@ type NavItem = {
 type SocialItem = {
   label: string;
   href: string;
-  icon: string;
+  icon?: string;
 };
 
 const NAVIGATION_LINKS: NavItem[] = [
@@ -81,22 +83,51 @@ function FooterLinksColumn({
   );
 }
 
-export default function Footer() {
+type FooterProps = {
+  navigation?: NavigationData;
+  settings?: SiteSettings;
+};
+
+export default function Footer({ navigation, settings }: FooterProps) {
+  const navLinks = navigation?.footer?.length
+    ? navigation.footer
+    : NAVIGATION_LINKS;
+  const contactLinks = navigation?.contact?.length
+    ? navigation.contact
+    : CONTACT_LINKS;
+  const legalLinks = navigation?.legal?.length
+    ? navigation.legal
+    : LEGAL_LINKS;
+  const socialLinks: SocialItem[] = navigation?.social?.length
+    ? navigation.social
+    : SOCIAL_LINKS;
+  const logoSrc = settings?.logo ?? "/brand/logo-wide.svg";
+  const logoAlt = settings?.logoAlt ?? "Logo Chloé Simart";
+  const newsletterDescription =
+    settings?.footerNewsletterDescription ??
+    "Recevez les actualités et dates de sortie de mes romans.";
+  const newsletterNote =
+    settings?.footerNewsletterNote ??
+    "En vous abonnant, vous acceptez notre politique de confidentialité et consentez à recevoir nos communications.";
+  const copyright =
+    settings?.copyright ??
+    "© 2025 Chloé Simart. Tous droits réservés.";
+
   return (
     <footer className="bg-surface-ash py-16 lg:py-20">
       <div className="section-wrap-xl space-y-16 lg:space-y-20">
         <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:gap-32">
           <div className="w-full max-w-lg stack-md">
             <Image
-              src="/brand/logo-wide.svg"
-              alt="Logo Chloé Simart"
+              src={logoSrc}
+              alt={logoAlt}
               width={84}
               height={36}
               className="h-9 w-20"
             />
 
             <p className="text-body-lg leading-body text-ink">
-              Recevez les actualités et dates de sortie de mes romans.
+              {newsletterDescription}
             </p>
 
             <div className="space-y-3">
@@ -122,35 +153,36 @@ export default function Footer() {
               </form>
 
               <p className="text-caption leading-body text-ink">
-                En vous abonnant, vous acceptez notre politique de confidentialité
-                et consentez à recevoir nos communications.
+                {newsletterNote}
               </p>
             </div>
           </div>
 
           <div className="grid w-full grid-cols-1 gap-10 md:grid-cols-3">
-            <FooterLinksColumn title="Navigation" links={NAVIGATION_LINKS} />
-            <FooterLinksColumn title="Contact" links={CONTACT_LINKS} />
+            <FooterLinksColumn title="Navigation" links={navLinks} />
+            <FooterLinksColumn title="Contact" links={contactLinks} />
 
             <div className="min-w-0 flex-1 stack-sm">
               <h3 className="text-body-lg font-semibold leading-body text-ink">
                 Suivez-moi
               </h3>
               <ul>
-                {SOCIAL_LINKS.map((social) => (
+                {socialLinks.map((social) => (
                   <li key={social.label} className="py-2">
                     <a
                       href={social.href}
                       className="inline-flex items-center gap-3 text-body leading-body text-ink"
                     >
-                      <Image
-                        src={social.icon}
-                        alt=""
-                        width={24}
-                        height={24}
-                        aria-hidden="true"
-                        className="size-6"
-                      />
+                      {social.icon && (
+                        <Image
+                          src={social.icon}
+                          alt=""
+                          width={24}
+                          height={24}
+                          aria-hidden="true"
+                          className="size-6"
+                        />
+                      )}
                       {social.label}
                     </a>
                   </li>
@@ -162,10 +194,10 @@ export default function Footer() {
 
         <div className="stack-xl border-t border-border-subtle pt-8">
           <div className="flex flex-col gap-4 text-body leading-body text-ink lg:flex-row lg:items-center lg:justify-between">
-            <p>© 2025 Chloé Simart. Tous droits réservés.</p>
+            <p>{copyright}</p>
 
             <div className="flex flex-wrap items-center gap-6">
-              {LEGAL_LINKS.map((link) => (
+              {legalLinks.map((link) => (
                 <Link
                   key={link.label}
                   href={link.href}

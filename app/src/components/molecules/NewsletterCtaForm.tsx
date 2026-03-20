@@ -1,20 +1,30 @@
 import Button from "@/app/src/components/atoms/Button";
 import Input from "@/app/src/components/atoms/Input";
 
-export default function NewsletterCtaForm() {
+type NewsletterCtaFormProps = {
+  buttonLabel?: string;
+  placeholder?: string;
+  note?: string;
+};
+
+export default function NewsletterCtaForm({
+  buttonLabel = "S'abonner",
+  placeholder = "Votre email",
+  note = "En vous abonnant, vous acceptez notre politique de confidentialité.",
+}: NewsletterCtaFormProps) {
   return (
     <div className="w-full max-w-lg stack-sm">
       <form className="flex w-full items-start gap-4">
         <div className="flex min-h-px min-w-px flex-1 items-center py-2">
           <label htmlFor="newsletter-email" className="sr-only">
-            Votre email
+            {placeholder}
           </label>
           <Input
             id="newsletter-email"
             name="email"
             type="email"
             required
-            placeholder="Votre email"
+            placeholder={placeholder}
             variant="underline"
             size="md"
           />
@@ -25,12 +35,12 @@ export default function NewsletterCtaForm() {
           variant="primary"
           size="sm"
         >
-          S&apos;abonner
+          {buttonLabel}
         </Button>
       </form>
 
       <p className="w-full text-center text-caption leading-body text-ink">
-        En vous abonnant, vous acceptez notre politique de confidentialité.
+        {note}
       </p>
     </div>
   );

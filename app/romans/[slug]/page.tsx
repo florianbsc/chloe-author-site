@@ -9,6 +9,8 @@ import {
 } from "@/app/src/lib/romans";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import Image from "next/image";
+import type { Metadata } from "next";
 
 type RomanPageProps = {
   params: Promise<{
@@ -17,6 +19,17 @@ type RomanPageProps = {
 };
 
 export const dynamic = "force-dynamic";
+
+export async function generateMetadata({
+  params,
+}: RomanPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const roman = await getRomanBySlug(slug.toLowerCase());
+  return {
+    title: roman?.title ?? "Roman",
+    description: roman?.summary ?? "Découvrez ce roman.",
+  };
+}
 
 export default async function RomanPage({ params }: RomanPageProps) {
   const { slug } = await params;
@@ -50,7 +63,17 @@ export default async function RomanPage({ params }: RomanPageProps) {
           </p>
 
           <div className="h-60 overflow-hidden rounded-2xl bg-surface-placeholder">
-            <HeroImagePlaceholder />
+            {roman.cover ? (
+              <Image
+                src={roman.cover}
+                alt={roman.coverAlt ?? roman.title}
+                width={900}
+                height={540}
+                className="h-full w-full object-cover"
+              />
+            ) : (
+              <HeroImagePlaceholder />
+            )}
           </div>
         </div>
       </section>
@@ -63,9 +86,13 @@ export default async function RomanPage({ params }: RomanPageProps) {
         </div>
 
         <div className="stack-md text-body leading-body-lg sm:text-body-lg">
-          {roman.story.map((paragraph, index) => (
-            <p key={`${roman.slug}-story-${index}`}>{paragraph}</p>
-          ))}
+          {roman.story.length === 0 ? (
+            <p>Le résumé complet de ce roman arrive bientôt.</p>
+          ) : (
+            roman.story.map((paragraph, index) => (
+              <p key={`${roman.slug}-story-${index}`}>{paragraph}</p>
+            ))
+          )}
         </div>
 
         <div className="rounded-2xl border border-border-subtle bg-surface p-6">
@@ -144,7 +171,17 @@ export default async function RomanPage({ params }: RomanPageProps) {
             {topRomans.map((item) => (
               <div key={item.id} className="stack-md">
                 <div className="h-56 overflow-hidden rounded-2xl bg-surface-placeholder">
-                  <HeroImagePlaceholder />
+                  {item.cover ? (
+                    <Image
+                      src={item.cover}
+                      alt={item.coverAlt ?? item.title}
+                      width={800}
+                      height={520}
+                      className="h-full w-full object-cover"
+                    />
+                  ) : (
+                    <HeroImagePlaceholder />
+                  )}
                 </div>
                 <h3 className="text-2xl-custom font-semibold leading-subtitle">
                   {item.title}

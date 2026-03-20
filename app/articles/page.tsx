@@ -1,36 +1,50 @@
-import React from "react"
-import Link from "next/link"
-import HeroImagePlaceholder from "@/app/src/components/atoms/HeroImagePlaceholder"
-import { Facebook, Image as ImageIcon, Link2, Linkedin, X } from "lucide-react"
+import Link from "next/link";
+import Image from "next/image";
+import HeroImagePlaceholder from "@/app/src/components/atoms/HeroImagePlaceholder";
+import { Facebook, Image as ImageIcon, Link2, Linkedin, X } from "lucide-react";
+import { getArticles } from "@/app/src/lib/articles";
+import { getPageBySlug } from "@/app/src/lib/pages";
 
-const ARTICLES = [
-  {
-    slug: "la-loge-des-silences",
-    title: "La Loge des Silences sort enfin au monde",
-    excerpt:
-      "Un thriller qui révèle les secrets qu'on n'ose pas prononcer. Découvrez les coulisses de cette sortie attendue.",
-    date: "29 octobre 2024",
-    readTime: "4 min",
-  },
-  {
-    slug: "ecrire-le-handicap",
-    title: "Écrire le handicap autrement",
-    excerpt:
-      "Pourquoi la représentation authentique change la manière dont on lit, ressent et se reconnaît dans une histoire.",
-    date: "12 septembre 2024",
-    readTime: "6 min",
-  },
-  {
-    slug: "romans-et-resilience",
-    title: "Romans et résilience",
-    excerpt:
-      "Quand l'écriture devient un acte de guérison et de transmission, au-delà des tabous.",
-    date: "01 août 2024",
-    readTime: "5 min",
-  },
-]
+function formatDate(value?: string) {
+  if (!value) {
+    return "";
+  }
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) {
+    return value;
+  }
+  return new Intl.DateTimeFormat("fr-FR", {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+  }).format(date);
+}
 
-export default function Article() {
+export default async function ArticlesPage() {
+  const [articles, page] = await Promise.all([
+    getArticles(),
+    getPageBySlug("articles"),
+  ]);
+  const featured = articles[0];
+  const otherArticles = articles.slice(1);
+  const heroSection = page?.sections.find((section) => section.type === "articles-hero")?.data ?? {};
+
+  if (!featured) {
+    return (
+      <div className="section-wrap-sm section-pad-md text-ink">
+        <h1 className="text-h2 font-bold leading-tight tracking-title">
+          Aucun article disponible
+        </h1>
+        <p className="mt-4 text-body leading-body-lg">
+          Revenez bientôt pour découvrir les dernières actualités.
+        </p>
+      </div>
+    );
+  }
+
+  const authorName = featured.author?.name ?? "Chloé Simart";
+  const authorRole = featured.author?.role ?? "Autrice";
+
   return (
     <div className="flex flex-col gap-16 pb-16">
       <section className="section-bleed bg-surface-mint">
@@ -40,19 +54,29 @@ export default function Article() {
           </p>
 
           <h1 className="mt-4 text-h2 font-bold leading-tight tracking-title sm:text-6xl-custom">
-            La Loge des Silences sort enfin au monde
+            {(heroSection.title as string) ?? featured.title}
           </h1>
 
           <div className="mt-6 flex items-center gap-4">
             <div className="flex h-12 w-12 items-center justify-center rounded-full bg-surface-placeholder-strong text-icon-placeholder">
-              <span className="sr-only">Photo de l&aops;autrice</span>
-              <ImageIcon className="size-5" aria-hidden="true" />
+              {featured.author?.avatar ? (
+                <Image
+                  src={featured.author.avatar}
+                  alt={authorName}
+                  width={48}
+                  height={48}
+                  className="h-full w-full rounded-full object-cover"
+                />
+              ) : (
+                <ImageIcon className="size-5" aria-hidden="true" />
+              )}
             </div>
 
             <div className="space-y-1">
-              <p className="text-body font-semibold">Chloé Simart</p>
+              <p className="text-body font-semibold">{authorName}</p>
               <p className="text-body-sm text-ink">
-                29 octobre 2024 <span className="mx-2">•</span> 4 min
+                {formatDate(featured.publishedAt)} <span className="mx-2">•</span>{" "}
+                {featured.readTime ?? "4 min"}
               </p>
             </div>
           </div>
@@ -89,7 +113,26 @@ export default function Article() {
           </div>
 
           <div className="mt-8 h-56 overflow-hidden rounded-2xl bg-surface-placeholder">
-            <HeroImagePlaceholder />
+            {featured.cover ? (
+              <Image
+                src={featured.cover}
+                alt={featured.coverAlt ?? featured.title}
+                width={900}
+                height={540}
+                className="h-full w-full object-cover"
+              />
+            ) : (
+              <HeroImagePlaceholder />
+            )}
+          </div>
+
+          <div className="mt-6">
+            <Link
+              href={`/articles/${featured.slug}`}
+              className="text-body font-semibold text-ink underline"
+            >
+              Lire l&apos;article
+            </Link>
           </div>
         </div>
       </section>
@@ -99,26 +142,36 @@ export default function Article() {
           Articles récents
         </h2>
         <div className="stack-sm">
-          {ARTICLES.map((article) => (
-            <Link
-              key={article.slug}
-              href={`/articles/${article.slug}`}
-              className="block rounded-2xl border border-border-subtle bg-surface p-5 transition hover:shadow-sm"
-            >
-              <div className="flex items-center justify-between text-body-sm text-ink">
-                <span>{article.date}</span>
-                <span>{article.readTime}</span>
-              </div>
-              <h3 className="mt-3 text-h5 font-semibold leading-title">
-                {article.title}
-              </h3>
-              <p className="mt-2 text-body leading-body">
-                {article.excerpt}
-              </p>
-            </Link>
-          ))}
+          {otherArticles.length === 0 ? (
+            <div className="rounded-2xl border border-border-subtle bg-surface p-5 text-body leading-body">
+              Aucun autre article disponible pour le moment.
+            </div>
+          ) : (
+            otherArticles.map((article) => (
+              <Link
+                key={article.slug}
+                href={`/articles/${article.slug}`}
+                className="block rounded-2xl border border-border-subtle bg-surface p-5 transition hover:shadow-sm"
+              >
+                <div className="flex items-center justify-between text-body-sm text-ink">
+                  <span>{formatDate(article.publishedAt)}</span>
+                  <span>{article.readTime ?? "4 min"}</span>
+                </div>
+                <h3 className="mt-3 text-h5 font-semibold leading-title">
+                  {article.title}
+                </h3>
+                <p className="mt-2 text-body leading-body">
+                  {article.excerpt}
+                </p>
+              </Link>
+            ))
+          )}
+        </div>
+
+        <div className="mt-8 text-body-sm text-ink">
+          <p>{authorRole}</p>
         </div>
       </section>
     </div>
-  )
+  );
 }

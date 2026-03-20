@@ -1,4 +1,5 @@
 import Image from "next/image";
+import HeroImagePlaceholder from "@/app/src/components/atoms/HeroImagePlaceholder";
 
 type Size = "small" | "medium" | "large";
 
@@ -46,15 +47,25 @@ export default function BookCard({
   const config = sizeConfig[size];
   const isSmall = size === "small";
 
+  const imageNode = image ? (
+    <Image
+      src={image}
+      alt={title}
+      width={config.width}
+      height={config.height}
+      className={`object-cover ${config.imageClass}`}
+    />
+  ) : (
+    <div className="flex h-full w-full items-center justify-center rounded-lg bg-surface-placeholder">
+      <HeroImagePlaceholder />
+    </div>
+  );
+
   const content = isSmall ? (
     <div className={`flex items-start gap-4 ${className}`}>
-      <Image
-        src={image}
-        alt={title}
-        width={config.width}
-        height={config.height}
-        className={`object-cover ${config.imageClass}`}
-      />
+      <div className="overflow-hidden rounded-lg">
+        {imageNode}
+      </div>
       <div>
         <h2 className={config.titleClass}>{title}</h2>
         <p className={`${config.textSize} text-muted`}>{description}</p>
@@ -62,13 +73,19 @@ export default function BookCard({
     </div>
   ) : (
       <div className={`stack-sm ${className}`}>
-        <Image
-          src={image}
-          alt={title}
-          width={config.width}
-          height={config.height}
-          className={`rounded-lg object-cover w-full`}
-        />
+        <div className="overflow-hidden rounded-lg">
+          {image ? (
+            <Image
+              src={image}
+              alt={title}
+              width={config.width}
+              height={config.height}
+              className="h-full w-full object-cover"
+            />
+          ) : (
+            <HeroImagePlaceholder />
+          )}
+        </div>
         <div>
           <h3 className={config.titleClass}>{title}</h3>
           <p className={`${config.textSize} text-muted`}>{description}</p>
