@@ -2,6 +2,7 @@ import SectionRenderer from "@/app/src/components/organisms/sections/SectionRend
 import { getPageBySlug } from "@/app/src/lib/pages";
 import { getAuthors } from "@/app/src/lib/authors";
 import { getTestimonials } from "@/app/src/lib/testimonials";
+import { notFound } from "next/navigation";
 
 export default async function About() {
   const [page, authors, testimonials] = await Promise.all([
@@ -11,7 +12,7 @@ export default async function About() {
   ]);
 
   if (!page) {
-    return null;
+    notFound();
   }
 
   return (

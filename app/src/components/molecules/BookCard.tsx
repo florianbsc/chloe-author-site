@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import HeroImagePlaceholder from "@/app/src/components/atoms/HeroImagePlaceholder";
 
 type Size = "small" | "medium" | "large";
@@ -94,10 +95,24 @@ export default function BookCard({
   );
 
   if (href) {
+    const isExternal = href.startsWith("http://") || href.startsWith("https://");
+    if (isExternal) {
+      return (
+        <a
+          href={href}
+          target="_blank"
+          rel="noreferrer"
+          className="block transition-opacity hover:opacity-80"
+        >
+          {content}
+        </a>
+      );
+    }
+
     return (
-      <a href={href} className="block hover:opacity-80 transition-opacity">
+      <Link href={href} className="block transition-opacity hover:opacity-80">
         {content}
-      </a>
+      </Link>
     );
   }
 

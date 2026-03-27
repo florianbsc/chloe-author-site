@@ -1,5 +1,5 @@
 import type { RecordModel } from "pocketbase";
-import { pb, pbEnabled } from "@/app/src/lib/pb";
+import { andFilters, eqFilter, logPbError, pb, pbEnabled } from "@/app/src/lib/pb";
 
 export type Testimonial = {
   id: string;
@@ -16,6 +16,8 @@ type TestimonialRecord = RecordModel & {
   role?: string;
   logo?: string;
   context?: string;
+  status?: string;
+  order?: number;
 };
 
 const TESTIMONIALS: Testimonial[] = [
@@ -102,13 +104,18 @@ export async function getTestimonials(context?: string): Promise<Testimonial[]> 
   }
 
   try {
-    const filter = context ? `context = "${context}"` : undefined;
-    const records = await pb.collection("testimonials").getFullList<TestimonialRecord>({
-      sort: "-created",
+    const filter = andFilters([
+      context ? eqFilter("context", context) : undefined,
+      'status = "published"',
+    ]);
+    const result = await pb.collection("testimonials").getList<TestimonialRecord>(1, 100, {
+      sort: "order,-created",
       filter,
+      fields: "id,quote,name,role,logo,context,status,order",
     });
-    return records.map(mapTestimonial);
-  } catch {
+    return result.items.map(mapTestimonial);
+  } catch (error) {
+    logPbError("getTestimonials", error, { context });
     return context
       ? TESTIMONIALS.filter((item) => item.context === context)
       : TESTIMONIALS;

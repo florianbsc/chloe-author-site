@@ -1,5 +1,5 @@
 import type { RecordModel } from "pocketbase";
-import { pb, pbEnabled } from "@/app/src/lib/pb";
+import { eqFilter, logPbError, pb, pbEnabled } from "@/app/src/lib/pb";
 
 export type PageSection = {
   id: string;
@@ -32,6 +32,7 @@ type PageRecord = RecordModel & {
 type PageSectionRecord = RecordModel & {
   type?: string;
   data?: Record<string, unknown>;
+  content?: Record<string, unknown>;
   order?: number;
 };
 
@@ -410,7 +411,7 @@ function mapSection(record: PageSectionRecord): PageSection {
     id: record.id,
     type: record.type ?? "",
     order: record.order,
-    data: record.data ?? {},
+    data: record.data ?? record.content ?? {},
   };
 }
 
@@ -440,11 +441,26 @@ export async function getPageBySlug(slug: string): Promise<PageData | null> {
   try {
     const record = await pb
       .collection("pages")
-      .getFirstListItem<PageRecord>(`slug = "${slug}"`, {
+      .getFirstListItem<PageRecord>(eqFilter("slug", slug), {
         expand: "sections",
+        fields: [
+          "id",
+          "slug",
+          "title",
+          "seo_title",
+          "seo_description",
+          "sections",
+          "content",
+          "expand.sections.id",
+          "expand.sections.type",
+          "expand.sections.order",
+          "expand.sections.data",
+          "expand.sections.content",
+        ].join(","),
       });
     return mapPage(record);
-  } catch {
+  } catch (error) {
+    logPbError("getPageBySlug", error, { slug });
     return STATIC_PAGES[slug] ?? null;
   }
 }

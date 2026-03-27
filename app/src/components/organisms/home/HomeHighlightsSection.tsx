@@ -1,5 +1,4 @@
 import Link from "next/link";
-import type { ElementType } from "react";
 import {
   Box,
   ChevronRight,
@@ -8,6 +7,7 @@ import {
   Search,
   Triangle,
 } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import Button from "@/app/src/components/atoms/Button";
 import HeroImagePlaceholder from "@/app/src/components/atoms/HeroImagePlaceholder";
 import AboutFeatureItem from "@/app/src/components/molecules/AboutFeatureItem";
@@ -59,7 +59,7 @@ type HomeHighlightsSectionProps = {
   secondaryCta?: { label: string; href: string };
 };
 
-const ICONS: Record<string, ElementType> = {
+const ICONS: Record<string, LucideIcon> = {
   PartyPopper,
   House,
   Triangle,

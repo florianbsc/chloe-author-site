@@ -38,6 +38,7 @@ import Button from "@/app/src/components/atoms/Button";
 import Badge from "@/app/src/components/atoms/Badge";
 import Input from "@/app/src/components/atoms/Input";
 import ReviewCard from "@/app/src/components/molecules/ReviewCard";
+import { subscribeNewsletterAction } from "@/app/src/actions/newsletter";
 
 const ICONS: Record<string, ElementType> = {
   Box,
@@ -185,7 +186,7 @@ export default function SectionRenderer({ sections, context }: SectionRendererPr
                           </div>
                         );
                       })}
-                      {data.cta && (
+                      {Boolean(data.cta) && (
                         <div className="flex items-center gap-4 pt-2">
                           <Link href={(data.cta as { href: string }).href}>
                             <Button variant="third" size="md">
@@ -211,12 +212,12 @@ export default function SectionRenderer({ sections, context }: SectionRendererPr
             return (
               <section key={section.id} className="section-wrap-sm section-pad-md text-ink">
                 <div className="stack-md">
-                  {data.eyebrow && <p className="eyebrow">{data.eyebrow as string}</p>}
+                  {Boolean(data.eyebrow) && <p className="eyebrow">{data.eyebrow as string}</p>}
                   <h2 className="text-h2 font-bold leading-tight tracking-title">
                     {data.title as string}
                   </h2>
                   <p className="text-body leading-body-lg">{data.description as string}</p>
-                  {data.cta && (
+                  {Boolean(data.cta) && (
                     <Link href={(data.cta as { href: string }).href}>
                       <Button variant="third" size="md">
                         {(data.cta as { label: string }).label}
@@ -245,7 +246,7 @@ export default function SectionRenderer({ sections, context }: SectionRendererPr
             return (
               <section key={section.id} className="section-bleed bg-surface-mint">
                 <div className="section-wrap-sm section-pad-lg text-center">
-                  {data.eyebrow && <p className="eyebrow">{data.eyebrow as string}</p>}
+                  {Boolean(data.eyebrow) && <p className="eyebrow">{data.eyebrow as string}</p>}
                   <h2 className="mt-4 text-h2 font-bold leading-tight tracking-title text-ink sm:text-5xl-custom">
                     {data.title as string}
                   </h2>
@@ -279,7 +280,7 @@ export default function SectionRenderer({ sections, context }: SectionRendererPr
                     ))}
                   </div>
 
-                  {data.cta && (
+                  {Boolean(data.cta) && (
                     <div className="mt-12 flex items-center justify-center gap-4">
                       <Link href={(data.cta as { href: string }).href}>
                         <Button variant="third" size="md">
@@ -298,14 +299,14 @@ export default function SectionRenderer({ sections, context }: SectionRendererPr
               <section key={section.id} className="section-bleed bg-surface">
                 <div className="section-wrap-sm section-pad-lg">
                   <div className="stack-sm text-ink">
-                    {data.eyebrow && <p className="eyebrow">{data.eyebrow as string}</p>}
+                    {Boolean(data.eyebrow) && <p className="eyebrow">{data.eyebrow as string}</p>}
                     <h2 className="text-h2 font-bold leading-tight tracking-title sm:text-6xl-custom">
                       {data.title as string}
                     </h2>
                     <p className="text-body leading-body-lg sm:text-body-lg">
                       {data.description as string}
                     </p>
-                    {data.cta && (
+                    {Boolean(data.cta) && (
                       <Link href={(data.cta as { href: string }).href}>
                         <Button variant="third" size="md" className="mt-4">
                           {(data.cta as { label: string }).label}
@@ -411,14 +412,14 @@ export default function SectionRenderer({ sections, context }: SectionRendererPr
                     {data.description as string}
                   </p>
                   <div className="mt-10 flex items-center justify-center gap-4">
-                    {data.primaryCta && (
+                    {Boolean(data.primaryCta) && (
                       <Link href={(data.primaryCta as { href: string }).href}>
                         <Button variant="primary">
                           {(data.primaryCta as { label: string }).label}
                         </Button>
                       </Link>
                     )}
-                    {data.secondaryCta && (
+                    {Boolean(data.secondaryCta) && (
                       <Link href={(data.secondaryCta as { href: string }).href}>
                         <Button variant="third">
                           {(data.secondaryCta as { label: string }).label}
@@ -433,7 +434,7 @@ export default function SectionRenderer({ sections, context }: SectionRendererPr
           case "actualites-hero": {
             return (
               <section key={section.id} className="section-wrap-sm stack-md pt-10 text-ink lg:pt-16">
-                {data.eyebrow && <p className="eyebrow">{data.eyebrow as string}</p>}
+                {Boolean(data.eyebrow) && <p className="eyebrow">{data.eyebrow as string}</p>}
                 <h1 className="text-h1 font-bold leading-tight tracking-title sm:text-6xl-custom">
                   {data.title as string}
                 </h1>
@@ -441,14 +442,14 @@ export default function SectionRenderer({ sections, context }: SectionRendererPr
                   {data.description as string}
                 </p>
                 <div className="flex flex-wrap gap-3">
-                  {data.primaryCta && (
+                  {Boolean(data.primaryCta) && (
                     <Link href={(data.primaryCta as { href: string }).href}>
                       <Button variant="primary" size="md">
                         {(data.primaryCta as { label: string }).label}
                       </Button>
                     </Link>
                   )}
-                  {data.secondaryCta && (
+                  {Boolean(data.secondaryCta) && (
                     <Link href={(data.secondaryCta as { href: string }).href}>
                       <Button variant="secondary" size="md">
                         {(data.secondaryCta as { label: string }).label}
@@ -475,7 +476,7 @@ export default function SectionRenderer({ sections, context }: SectionRendererPr
             return (
               <section key={section.id} className="section-wrap-md stack-xl text-ink">
                 <div className="stack-sm">
-                  {data.eyebrow && <p className="eyebrow">{data.eyebrow as string}</p>}
+                  {Boolean(data.eyebrow) && <p className="eyebrow">{data.eyebrow as string}</p>}
                   <h1 className="text-3xl-custom font-bold leading-tight tracking-title sm:text-h1">
                     {data.title as string}
                   </h1>
@@ -577,7 +578,8 @@ export default function SectionRenderer({ sections, context }: SectionRendererPr
                   {data.description as string}
                 </p>
 
-                <form className="mt-8 stack-sm">
+                <form action={subscribeNewsletterAction} className="mt-8 stack-sm">
+                  <input type="text" name="company" tabIndex={-1} autoComplete="off" className="hidden" />
                   <div className="py-2">
                     <label htmlFor="newsletter-email" className="sr-only">
                       {(data.form as { placeholder?: string })?.placeholder ?? "Votre email"}

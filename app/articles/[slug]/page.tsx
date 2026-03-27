@@ -16,6 +16,7 @@ import { getArticleBySlug } from "@/app/src/lib/articles";
 import { getTestimonials } from "@/app/src/lib/testimonials";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { subscribeNewsletterAction } from "@/app/src/actions/newsletter";
 
 type ArticlePageProps = {
   params: Promise<{
@@ -358,7 +359,8 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           boîte.
         </p>
 
-        <form className="mt-8 stack-sm">
+        <form action={subscribeNewsletterAction} className="mt-8 stack-sm">
+          <input type="text" name="company" tabIndex={-1} autoComplete="off" className="hidden" />
           <div className="py-2 text-left">
             <label htmlFor="article-newsletter-email" className="sr-only">
               Votre email

@@ -1,5 +1,5 @@
 import type { RecordModel } from "pocketbase";
-import { getFileUrl, pb, pbEnabled } from "@/app/src/lib/pb";
+import { eqFilter, getFileUrl, logPbError, pb, pbEnabled } from "@/app/src/lib/pb";
 
 export type ArticleAuthor = {
   name: string;
@@ -31,13 +31,13 @@ type ArticleRecord = RecordModel & {
   excerpt?: string;
   content?: string | Array<{ type: string; value?: string; data?: Record<string, unknown> }>;
   conclusion?: string | string[];
-  cover?: string;
   read_time?: string;
+  seo_title?: string;
+  seo_description?: string;
+  cover?: string;
   category?: string;
   tags?: string[];
   published_at?: string;
-  seo_title?: string;
-  seo_description?: string;
   expand?: {
     cover?: RecordModel;
     author?: RecordModel;
@@ -135,22 +135,37 @@ export async function getArticles(): Promise<Article[]> {
   }
 
   try {
-    const records = await pb.collection("articles").getFullList<ArticleRecord>({
+    const result = await pb.collection("articles").getList<ArticleRecord>(1, 100, {
       sort: "-published_at",
       filter: 'status = "published"',
       expand: "cover,author,tags,category",
+      fields: [
+        "id",
+        "slug",
+        "title",
+        "excerpt",
+        "content",
+        "conclusion",
+        "cover",
+        "read_time",
+        "category",
+        "tags",
+        "published_at",
+        "seo_title",
+        "seo_description",
+        "author",
+        "expand.cover.file",
+        "expand.author.name",
+        "expand.author.role",
+        "expand.author.avatar",
+        "expand.tags.name",
+        "expand.category.name",
+      ].join(","),
     });
-    return records.map(mapArticle);
-  } catch {
-    try {
-      const records = await pb.collection("articles").getFullList<ArticleRecord>({
-        sort: "-published_at",
-        expand: "cover,author,tags,category",
-      });
-      return records.map(mapArticle);
-    } catch {
-      return ARTICLES;
-    }
+    return result.items.map(mapArticle);
+  } catch (error) {
+    logPbError("getArticles", error);
+    return ARTICLES;
   }
 }
 
@@ -162,11 +177,12 @@ export async function getArticleBySlug(slug: string): Promise<Article | null> {
   try {
     const record = await pb
       .collection("articles")
-      .getFirstListItem<ArticleRecord>(`slug = "${slug}"`, {
+      .getFirstListItem<ArticleRecord>(eqFilter("slug", slug), {
         expand: "cover,author,tags,category",
       });
     return mapArticle(record);
-  } catch {
+  } catch (error) {
+    logPbError("getArticleBySlug", error, { slug });
     return ARTICLES.find((article) => article.slug === slug) ?? null;
   }
 }
@@ -177,11 +193,12 @@ export async function getArticleSlugs(): Promise<string[]> {
   }
 
   try {
-    const records = await pb.collection("articles").getFullList<ArticleRecord>({
+    const result = await pb.collection("articles").getList<ArticleRecord>(1, 200, {
       fields: "slug",
     });
-    return records.map((record) => record.slug ?? record.id);
-  } catch {
+    return result.items.map((record) => record.slug ?? record.id);
+  } catch (error) {
+    logPbError("getArticleSlugs", error);
     return ARTICLES.map((article) => article.slug);
   }
 }

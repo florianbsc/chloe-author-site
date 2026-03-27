@@ -4,6 +4,7 @@ import Button from "@/app/src/components/atoms/Button";
 import Input from "@/app/src/components/atoms/Input";
 import type { NavigationData } from "@/app/src/lib/navigation";
 import type { SiteSettings } from "@/app/src/lib/settings";
+import { subscribeNewsletterAction } from "@/app/src/actions/newsletter";
 
 type NavItem = {
   label: string;
@@ -131,7 +132,11 @@ export default function Footer({ navigation, settings }: FooterProps) {
             </p>
 
             <div className="space-y-3">
-              <form className="flex w-full flex-col gap-4 sm:flex-row sm:items-start">
+              <form
+                action={subscribeNewsletterAction}
+                className="flex w-full flex-col gap-4 sm:flex-row sm:items-start"
+              >
+                <input type="text" name="company" tabIndex={-1} autoComplete="off" className="hidden" />
                 <div className="flex min-h-px min-w-px flex-1 items-center py-2">
                   <label htmlFor="footer-newsletter-email" className="sr-only">
                     Votre email

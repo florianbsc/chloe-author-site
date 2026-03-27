@@ -1,5 +1,5 @@
 import type { RecordModel } from "pocketbase";
-import { getFileUrl, pb, pbEnabled } from "@/app/src/lib/pb";
+import { getFileUrl, logPbError, pb, pbEnabled } from "@/app/src/lib/pb";
 
 export type SiteSettings = {
   brandName?: string;
@@ -14,8 +14,13 @@ export type SiteSettings = {
 };
 
 type SettingsRecord = RecordModel & {
+  status?: string;
+  site_name?: string;
+  default_seo_title?: string;
+  default_seo_description?: string;
   brand_name?: string;
   logo?: string;
+  favicon?: string;
   logo_alt?: string;
   header_cta_label?: string;
   header_cta_href?: string;
@@ -23,6 +28,9 @@ type SettingsRecord = RecordModel & {
   footer_newsletter_description?: string;
   footer_newsletter_note?: string;
   copyright?: string;
+  expand?: {
+    logo?: RecordModel;
+  };
 };
 
 const FALLBACK_SETTINGS: SiteSettings = {
@@ -39,9 +47,14 @@ const FALLBACK_SETTINGS: SiteSettings = {
 };
 
 function mapSettings(record: SettingsRecord): SiteSettings {
+  const logoRecord = record.expand?.logo ?? record;
+  const logoFile = record.expand?.logo
+    ? (record.expand.logo as RecordModel & { file?: string }).file ?? ""
+    : record.logo ?? "";
+
   return {
-    brandName: record.brand_name,
-    logo: getFileUrl(record, record.logo ?? "") || record.logo,
+    brandName: record.brand_name ?? record.site_name,
+    logo: getFileUrl(logoRecord, logoFile) || record.logo,
     logoAlt: record.logo_alt,
     headerCtaLabel: record.header_cta_label,
     headerCtaHref: record.header_cta_href,
@@ -58,9 +71,35 @@ export async function getSiteSettings(): Promise<SiteSettings> {
   }
 
   try {
-    const record = await pb.collection("site_settings").getFirstListItem<SettingsRecord>("id != ''");
+    const result = await pb.collection("site_settings").getList<SettingsRecord>(1, 1, {
+      sort: "order",
+      filter: 'status = "published"',
+      expand: "logo",
+      fields: [
+        "id",
+        "status",
+        "site_name",
+        "brand_name",
+        "logo",
+        "logo_alt",
+        "header_cta_label",
+        "header_cta_href",
+        "footer_newsletter_title",
+        "footer_newsletter_description",
+        "footer_newsletter_note",
+        "copyright",
+        "expand.logo.file",
+      ].join(","),
+    });
+
+    const record = result.items[0];
+    if (!record) {
+      return FALLBACK_SETTINGS;
+    }
+
     return { ...FALLBACK_SETTINGS, ...mapSettings(record) };
-  } catch {
+  } catch (error) {
+    logPbError("getSiteSettings", error);
     return FALLBACK_SETTINGS;
   }
 }

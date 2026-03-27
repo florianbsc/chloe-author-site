@@ -1,5 +1,12 @@
 import type { RecordModel } from "pocketbase";
-import { getFileUrl, pb, pbEnabled } from "@/app/src/lib/pb";
+import {
+  andFilters,
+  eqFilter,
+  getFileUrl,
+  logPbError,
+  pb,
+  pbEnabled,
+} from "@/app/src/lib/pb";
 
 export type Roman = {
   id: string;
@@ -37,16 +44,20 @@ export type RomanReview = {
 type RomanRecord = RecordModel & {
   slug?: string;
   title?: string;
+  short_description?: string;
   shortDescription?: string;
   summary?: string;
   cover?: string;
-  tags?: string[];
   details?: Roman["details"];
   story?: string[];
+  full_description?: string;
   availability_label?: string;
   availability_url?: string;
+  bestseller_rank?: number;
   bestsellerRank?: number;
   sales_rank?: number;
+  amazon_url?: string;
+  tags?: string[];
   expand?: {
     cover?: RecordModel;
     tags?: Array<{ name?: string }>;
@@ -59,6 +70,7 @@ type ReviewRecord = RecordModel & {
   role?: string;
   rating?: number;
   comment?: string;
+  published_at?: string;
   date?: string;
 };
 
@@ -209,13 +221,18 @@ const ROMAN_REVIEWS: RomanReview[] = [
 ];
 
 function mapTags(record: RomanRecord) {
+  const expandedTags = record.expand?.tags ?? [];
+  const byExpand = expandedTags
+    .map((tag) => tag.name)
+    .filter((tag): tag is string => Boolean(tag));
+  if (byExpand.length > 0) {
+    return byExpand;
+  }
+
   if (Array.isArray(record.tags) && record.tags.length > 0) {
     return record.tags;
   }
-  const expandedTags = record.expand?.tags ?? [];
-  return expandedTags
-    .map((tag) => tag.name)
-    .filter((tag): tag is string => Boolean(tag));
+  return [];
 }
 
 function mapRoman(record: RomanRecord): Roman {
@@ -228,6 +245,8 @@ function mapRoman(record: RomanRecord): Roman {
     ? record.story
     : record.story
       ? [record.story as unknown as string]
+      : record.full_description
+        ? [record.full_description]
       : [];
 
   const coverRecord = record.expand?.cover ?? record;
@@ -239,17 +258,17 @@ function mapRoman(record: RomanRecord): Roman {
     id: record.id,
     slug: record.slug ?? record.id,
     title: record.title ?? "",
-    shortDescription: record.shortDescription ?? "",
+    shortDescription: record.short_description ?? record.shortDescription ?? "",
     summary: record.summary ?? "",
     cover: getFileUrl(coverRecord, coverFile) || record.cover || "",
     coverAlt: record.title ?? "Couverture",
-    bestsellerRank: record.bestsellerRank ?? record.sales_rank,
+    bestsellerRank: record.bestseller_rank ?? record.bestsellerRank ?? record.sales_rank,
     tags: mapTags(record),
     details,
     story,
     availability: {
       label: record.availability_label ?? "Disponible",
-      url: record.availability_url ?? "#",
+      url: record.availability_url ?? record.amazon_url ?? "#",
     },
   };
 }
@@ -262,7 +281,7 @@ function mapReview(record: ReviewRecord): RomanReview {
     role: record.role ?? "",
     rating: record.rating,
     comment: record.comment ?? "",
-    date: record.date ?? new Date().toISOString(),
+    date: record.published_at ?? record.date ?? new Date().toISOString(),
   };
 }
 
@@ -272,22 +291,36 @@ export async function getRomans(): Promise<Roman[]> {
   }
 
   try {
-    const records = await pb.collection("romans").getFullList<RomanRecord>({
-      sort: "bestsellerRank",
+    const result = await pb.collection("romans").getList<RomanRecord>(1, 100, {
+      sort: "bestseller_rank,sales_rank",
       filter: 'status = "published"',
       expand: "cover,tags",
+      fields: [
+        "id",
+        "slug",
+        "title",
+        "short_description",
+        "shortDescription",
+        "summary",
+        "cover",
+        "tags",
+        "details",
+        "story",
+        "full_description",
+        "availability_label",
+        "availability_url",
+        "amazon_url",
+        "bestseller_rank",
+        "bestsellerRank",
+        "sales_rank",
+        "expand.cover.file",
+        "expand.tags.name",
+      ].join(","),
     });
-    return records.map(mapRoman);
+    return result.items.map(mapRoman);
   } catch (error) {
-    try {
-      const records = await pb.collection("romans").getFullList<RomanRecord>({
-        sort: "bestsellerRank",
-        expand: "cover,tags",
-      });
-      return records.map(mapRoman);
-    } catch {
-      return ROMANS;
-    }
+    logPbError("getRomans", error);
+    return ROMANS;
   }
 }
 
@@ -299,11 +332,12 @@ export async function getRomanBySlug(slug: string): Promise<Roman | null> {
   try {
     const record = await pb
       .collection("romans")
-      .getFirstListItem<RomanRecord>(`slug = "${slug}"`, {
+      .getFirstListItem<RomanRecord>(eqFilter("slug", slug), {
         expand: "cover,tags",
       });
     return mapRoman(record);
-  } catch {
+  } catch (error) {
+    logPbError("getRomanBySlug", error, { slug });
     const fallback = ROMANS.find((roman) => roman.slug === slug) ?? null;
     return fallback;
   }
@@ -315,11 +349,12 @@ export async function getRomanSlugs(): Promise<string[]> {
   }
 
   try {
-    const records = await pb.collection("romans").getFullList<RomanRecord>({
+    const result = await pb.collection("romans").getList<RomanRecord>(1, 200, {
       fields: "slug",
     });
-    return records.map((record) => record.slug ?? record.id);
-  } catch {
+    return result.items.map((record) => record.slug ?? record.id);
+  } catch (error) {
+    logPbError("getRomanSlugs", error);
     return ROMANS.map((roman) => roman.slug);
   }
 }
@@ -332,21 +367,18 @@ export async function getReviewsByRomanId(
   }
 
   try {
-    const records = await pb.collection("reviews").getFullList<ReviewRecord>({
-      filter: `roman = "${romanId}" && status = "approved"`,
-      sort: "-date",
+    const result = await pb.collection("reviews").getList<ReviewRecord>(1, 100, {
+      filter: andFilters([
+        eqFilter("roman", romanId),
+        'status = "approved"',
+      ]),
+      sort: "-published_at",
+      fields: "id,roman,name,role,rating,comment,published_at,date",
     });
-    return records.map(mapReview);
-  } catch {
-    try {
-      const records = await pb.collection("reviews").getFullList<ReviewRecord>({
-        filter: `roman = "${romanId}"`,
-        sort: "-date",
-      });
-      return records.map(mapReview);
-    } catch {
-      return ROMAN_REVIEWS.filter((review) => review.romanId === romanId);
-    }
+    return result.items.map(mapReview);
+  } catch (error) {
+    logPbError("getReviewsByRomanId", error, { romanId });
+    return ROMAN_REVIEWS.filter((review) => review.romanId === romanId);
   }
 }
 

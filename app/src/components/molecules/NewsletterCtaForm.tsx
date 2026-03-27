@@ -1,5 +1,6 @@
 import Button from "@/app/src/components/atoms/Button";
 import Input from "@/app/src/components/atoms/Input";
+import { subscribeNewsletterAction } from "@/app/src/actions/newsletter";
 
 type NewsletterCtaFormProps = {
   buttonLabel?: string;
@@ -14,7 +15,8 @@ export default function NewsletterCtaForm({
 }: NewsletterCtaFormProps) {
   return (
     <div className="w-full max-w-lg stack-sm">
-      <form className="flex w-full items-start gap-4">
+      <form action={subscribeNewsletterAction} className="flex w-full items-start gap-4">
+        <input type="text" name="company" tabIndex={-1} autoComplete="off" className="hidden" />
         <div className="flex min-h-px min-w-px flex-1 items-center py-2">
           <label htmlFor="newsletter-email" className="sr-only">
             {placeholder}

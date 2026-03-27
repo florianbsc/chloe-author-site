@@ -67,7 +67,7 @@ export default function Header({ navigation, romanLinks, settings }: HeaderProps
               onMouseEnter={() => setIsRomansMenuOpen(true)}
               onMouseLeave={() => setIsRomansMenuOpen(false)}
             >
-              <button
+              {/* <button
                 type="button"
                 className="inline-flex items-center gap-1"
                 aria-haspopup="menu"
@@ -81,7 +81,7 @@ export default function Header({ navigation, romanLinks, settings }: HeaderProps
                     isRomansMenuOpen ? "rotate-180" : ""
                   }`}
                 />
-              </button>
+              </button> */}
 
               {isRomansMenuOpen && (
                 <div
@@ -148,7 +148,7 @@ export default function Header({ navigation, romanLinks, settings }: HeaderProps
               </Link>
             ))}
 
-            <div className="space-y-3">
+            {/* <div className="space-y-3">
               <Link href="/romans" onClick={closeMobileMenu}>
                 Mes romans
               </Link>
@@ -164,7 +164,7 @@ export default function Header({ navigation, romanLinks, settings }: HeaderProps
                   </Link>
                 ))}
               </div>
-            </div>
+            </div> */}
 
             <Link
               href={ctaHref}

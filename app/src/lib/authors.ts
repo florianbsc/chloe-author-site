@@ -1,5 +1,5 @@
 import type { RecordModel } from "pocketbase";
-import { getFileUrl, pb, pbEnabled } from "@/app/src/lib/pb";
+import { getFileUrl, logPbError, pb, pbEnabled } from "@/app/src/lib/pb";
 
 export type Author = {
   id: string;
@@ -13,6 +13,8 @@ export type Author = {
 
 type AuthorRecord = RecordModel & {
   name?: string;
+  status?: string;
+  order?: number;
   role?: string;
   quote?: string;
   bio?: string;
@@ -62,19 +64,14 @@ export async function getAuthors(): Promise<Author[]> {
   }
 
   try {
-    const records = await pb.collection("authors").getFullList<AuthorRecord>({
+    const result = await pb.collection("authors").getList<AuthorRecord>(1, 100, {
       sort: "order",
       filter: 'status = "published"',
+      fields: "id,name,role,quote,bio,avatar,socials,status,order",
     });
-    return records.map(mapAuthor);
-  } catch {
-    try {
-      const records = await pb.collection("authors").getFullList<AuthorRecord>({
-        sort: "order",
-      });
-      return records.map(mapAuthor);
-    } catch {
-      return AUTHORS;
-    }
+    return result.items.map(mapAuthor);
+  } catch (error) {
+    logPbError("getAuthors", error);
+    return AUTHORS;
   }
 }

@@ -1,6 +1,6 @@
 import { cn } from "@/app/src/lib/utils";
 
-type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
+type InputProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, "size"> & {
   size?: "sm" | "md" | "lg";
   variant?: "default" | "underline";
 };

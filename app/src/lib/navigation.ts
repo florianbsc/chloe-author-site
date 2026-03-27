@@ -1,5 +1,11 @@
 import type { RecordModel } from "pocketbase";
-import { getFileUrl, pb, pbEnabled, type NavItem } from "@/app/src/lib/pb";
+import {
+  getFileUrl,
+  logPbError,
+  pb,
+  pbEnabled,
+  type NavItem,
+} from "@/app/src/lib/pb";
 import { navConfig } from "@/app/src/config/navigation";
 
 export type SocialItem = {
@@ -18,6 +24,18 @@ export type NavigationData = {
 };
 
 type NavigationRecord = RecordModel & {
+  name?: string;
+  items?: NavigationItemRecord[];
+  label?: string;
+  href?: string;
+  group?: string;
+  external?: boolean;
+  order?: number;
+  icon?: string;
+  status?: string;
+};
+
+type NavigationItemRecord = {
   label?: string;
   href?: string;
   group?: string;
@@ -35,7 +53,12 @@ const FALLBACK_NAVIGATION: NavigationData = {
     { href: "/romans", label: "Les secrets de Clara" },
     { href: "/romans", label: "Mon éternel combat" },
   ],
-  footer: navConfig.footer.flatMap((group) => group.links),
+  footer: navConfig.footer.flatMap((group) =>
+    group.links.map((link) => ({
+      label: link.label,
+      href: link.href,
+    })),
+  ),
   contact: [
     { label: "Email", href: "/contact" },
     { label: "Téléphone", href: "/contact" },
@@ -108,30 +131,60 @@ function groupNavItems(records: NavigationRecord[]): NavigationData {
   return grouped;
 }
 
+function normalizeRecords(records: NavigationRecord[]) {
+  const flattened: NavigationRecord[] = [];
+  for (const record of records) {
+    if (Array.isArray(record.items) && record.items.length > 0) {
+      flattened.push(
+        ...record.items.map((item) => ({
+          ...record,
+          label: item.label,
+          href: item.href,
+          group: item.group,
+          external: item.external,
+          order: item.order,
+          icon: item.icon,
+        })),
+      );
+      continue;
+    }
+
+    flattened.push(record);
+  }
+  return flattened;
+}
+
 export async function getNavigation(): Promise<NavigationData> {
   if (!pbEnabled || !pb) {
     return FALLBACK_NAVIGATION;
   }
 
   try {
-    const records = await pb.collection("navigation").getFullList<NavigationRecord>({
+    const result = await pb.collection("navigation").getList<NavigationRecord>(1, 200, {
       sort: "order",
       filter: 'status = "published"',
+      fields: "id,name,items,label,href,group,external,order,icon,status",
     });
+    const records = normalizeRecords(result.items);
 
     if (!records.length) {
       return FALLBACK_NAVIGATION;
     }
 
     return groupNavItems(records);
-  } catch {
+  } catch (error) {
+    logPbError("getNavigation", error);
+
     try {
-      const records = await pb.collection("navigation").getFullList<NavigationRecord>({
+      const result = await pb.collection("navigation").getList<NavigationRecord>(1, 200, {
         sort: "order",
+        fields: "id,name,items,label,href,group,external,order,icon,status",
       });
+      const records = normalizeRecords(result.items);
 
       return records.length ? groupNavItems(records) : FALLBACK_NAVIGATION;
-    } catch {
+    } catch (fallbackError) {
+      logPbError("getNavigation:fallback", fallbackError);
       return FALLBACK_NAVIGATION;
     }
   }

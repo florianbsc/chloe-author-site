@@ -1,4 +1,3 @@
-import type { ElementType } from "react";
 import {
   BookOpen,
   Compass,
@@ -6,6 +5,7 @@ import {
   Video,
   ConciergeBell,
 } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import RomansActions from "@/app/src/components/molecules/RomansActions";
 import RomansFeatureCard from "@/app/src/components/molecules/RomansFeatureCard";
 import type { Roman } from "@/app/src/lib/romans";
@@ -47,7 +47,7 @@ type HomeRomansSectionProps = {
   items?: Array<Record<string, unknown>>;
 };
 
-const ICONS: Record<string, ElementType> = {
+const ICONS: Record<string, LucideIcon> = {
   Compass,
   House,
   Video,

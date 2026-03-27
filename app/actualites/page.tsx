@@ -1,6 +1,7 @@
 import SectionRenderer from "@/app/src/components/organisms/sections/SectionRenderer";
 import { getPageBySlug } from "@/app/src/lib/pages";
 import { getArticles } from "@/app/src/lib/articles";
+import { notFound } from "next/navigation";
 
 export default async function Actualite() {
   const [page, articles] = await Promise.all([
@@ -9,7 +10,7 @@ export default async function Actualite() {
   ]);
 
   if (!page) {
-    return null;
+    notFound();
   }
 
   return (
