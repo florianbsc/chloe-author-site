@@ -112,7 +112,7 @@ export default function Header({ navigation, romanLinks, settings }: HeaderProps
             alt={logoAlt}
             width={84}
             height={36}
-            className="h-9 w-20"
+            className="h-auto w-20"
           />
         </Link>
 

@@ -9,7 +9,7 @@ type NavbarProps = {
 };
 
 const links = [
-  { href: "/about", label: "À propos" },
+  { href: "/about", label: "À Propos" },
   { href: "/actualites", label: "Actualités" },
   { href: "/romans", label: "Mes Romans" },
 ];
