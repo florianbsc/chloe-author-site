@@ -1,5 +1,5 @@
 import type { RecordModel } from "pocketbase";
-import { eqFilter, logPbError, pb, pbEnabled } from "@/app/src/lib/pb";
+import { eqFilter, getFileUrl, logPbError, pb, pbEnabled } from "@/app/src/lib/pb";
 
 export type PageSection = {
   id: string;
@@ -34,6 +34,55 @@ type PageSectionRecord = RecordModel & {
   data?: Record<string, unknown>;
   content?: Record<string, unknown>;
   order?: number;
+  image?: string;
+  items?: string[];
+  expand?: {
+    image?: MediaRecord;
+    items?: SectionItemRecord[];
+  };
+};
+
+type MediaRecord = RecordModel & {
+  file?: string;
+};
+
+type RelatedTestimonialRecord = RecordModel & {
+  name?: string;
+  role?: string;
+  quote?: string;
+  avatar?: string;
+  location?: string;
+  title?: string;
+  subtitle?: string;
+};
+
+type RelatedAuthorRecord = RecordModel & {
+  name?: string;
+  role?: string;
+  quote?: string;
+  avatar?: string;
+  socials?: Array<{ label: string; href: string }>;
+};
+
+type SectionItemRecord = RecordModel & {
+  kind?: string;
+  title?: string;
+  subtitle?: string;
+  description?: string;
+  quote?: string;
+  value?: string;
+  label?: string;
+  icon?: string;
+  image?: string;
+  cta_label?: string;
+  cta_href?: string;
+  payload?: Record<string, unknown>;
+  order?: number;
+  expand?: {
+    image?: MediaRecord;
+    testimonial?: RelatedTestimonialRecord;
+    author?: RelatedAuthorRecord;
+  };
 };
 
 const HOME_PAGE: PageData = {
@@ -406,12 +455,109 @@ const STATIC_PAGES: Record<string, PageData> = {
   articles: ARTICLES_PAGE,
 };
 
-function mapSection(record: PageSectionRecord): PageSection {
+const DYNAMIC_ONLY_PAGE_SLUGS = new Set(["home", "about"]);
+
+function mapSectionItem(record: SectionItemRecord): Record<string, unknown> {
+  const testimonial = record.expand?.testimonial;
+  const author = record.expand?.author;
+  const imageRecord = record.expand?.image;
+  const imageFile = imageRecord?.file ?? record.image ?? "";
+  const image = getFileUrl(imageRecord ?? null, imageFile) || record.image || undefined;
+
+  const avatarRecord = testimonial;
+  const avatarFile = testimonial?.avatar ?? "";
+  const avatar =
+    getFileUrl(avatarRecord ?? null, avatarFile) ||
+    testimonial?.avatar ||
+    author?.avatar ||
+    undefined;
+
   return {
     id: record.id,
-    type: record.type ?? "",
+    kind: record.kind ?? "custom",
+    order: record.order ?? 0,
+    title: record.title ?? testimonial?.title ?? author?.name ?? "",
+    subtitle: record.subtitle ?? testimonial?.subtitle ?? author?.role ?? "",
+    description: record.description ?? author?.quote ?? "",
+    quote: record.quote ?? testimonial?.quote ?? "",
+    value: record.value ?? "",
+    label: record.label ?? "",
+    icon: record.icon ?? "",
+    image,
+    avatar,
+    name: testimonial?.name ?? author?.name ?? "",
+    role: testimonial?.role ?? author?.role ?? "",
+    location: testimonial?.location ?? "",
+    socials: author?.socials ?? [],
+    cta:
+      record.cta_label && record.cta_href
+        ? { label: record.cta_label, href: record.cta_href }
+        : undefined,
+    payload: record.payload ?? {},
+  };
+}
+
+function normalizeSectionData(
+  type: string,
+  source: Record<string, unknown>,
+  items: Record<string, unknown>[],
+) {
+  const data: Record<string, unknown> = { ...source };
+  if (items.length === 0) {
+    return data;
+  }
+
+  if (!Array.isArray(data.items)) {
+    data.items = items;
+  }
+
+  if (type === "about-stats" && !Array.isArray(data.stats)) {
+    data.stats = items.map((item) => ({
+      value: (item.value as string) || (item.title as string) || "",
+      label: (item.label as string) || (item.description as string) || "",
+    }));
+  }
+
+  if (type === "home-highlights") {
+    if (!Array.isArray(data.primaryFeatures)) {
+      data.primaryFeatures = items.slice(0, 4).map((item) => ({
+        title: item.title as string,
+        description: item.description as string,
+        icon: item.icon as string,
+      }));
+    }
+    if (!Array.isArray(data.secondaryFeatures)) {
+      data.secondaryFeatures = items.slice(4).map((item) => ({
+        title: item.title as string,
+        description: item.description as string,
+        icon: item.icon as string,
+      }));
+    }
+  }
+
+  return data;
+}
+
+function mapSection(record: PageSectionRecord): PageSection {
+  const sectionType = record.type ?? "";
+  const imageRecord = record.expand?.image;
+  const imageFile = imageRecord?.file ?? record.image ?? "";
+  const image = getFileUrl(imageRecord ?? null, imageFile) || record.image || undefined;
+  const items = (record.expand?.items ?? [])
+    .map(mapSectionItem)
+    .sort((a, b) => ((a.order as number) ?? 0) - ((b.order as number) ?? 0));
+  const sourceData = (record.data ?? record.content ?? {}) as Record<string, unknown>;
+  const data = normalizeSectionData(sectionType, sourceData, items);
+
+  if (image && !data.image) {
+    data.image = image;
+  }
+
+  return {
+    id: record.id,
+    type: sectionType,
     order: record.order,
-    data: record.data ?? record.content ?? {},
+    data,
   };
 }
 
@@ -435,14 +581,21 @@ function mapPage(record: PageRecord): PageData {
 
 export async function getPageBySlug(slug: string): Promise<PageData | null> {
   if (!pbEnabled || !pb) {
-    return STATIC_PAGES[slug] ?? null;
+    return DYNAMIC_ONLY_PAGE_SLUGS.has(slug) ? null : (STATIC_PAGES[slug] ?? null);
   }
 
   try {
     const record = await pb
       .collection("pages")
       .getFirstListItem<PageRecord>(eqFilter("slug", slug), {
-        expand: "sections",
+        expand: [
+          "sections",
+          "sections.image",
+          "sections.items",
+          "sections.items.image",
+          "sections.items.testimonial",
+          "sections.items.author",
+        ].join(","),
         fields: [
           "id",
           "slug",
@@ -456,16 +609,54 @@ export async function getPageBySlug(slug: string): Promise<PageData | null> {
           "expand.sections.order",
           "expand.sections.data",
           "expand.sections.content",
+          "expand.sections.image",
+          "expand.sections.expand.image.file",
+          "expand.sections.items",
+          "expand.sections.expand.items.id",
+          "expand.sections.expand.items.kind",
+          "expand.sections.expand.items.title",
+          "expand.sections.expand.items.subtitle",
+          "expand.sections.expand.items.description",
+          "expand.sections.expand.items.quote",
+          "expand.sections.expand.items.value",
+          "expand.sections.expand.items.label",
+          "expand.sections.expand.items.icon",
+          "expand.sections.expand.items.image",
+          "expand.sections.expand.items.order",
+          "expand.sections.expand.items.cta_label",
+          "expand.sections.expand.items.cta_href",
+          "expand.sections.expand.items.payload",
+          "expand.sections.expand.items.expand.image.file",
+          "expand.sections.expand.items.expand.testimonial.name",
+          "expand.sections.expand.items.expand.testimonial.role",
+          "expand.sections.expand.items.expand.testimonial.quote",
+          "expand.sections.expand.items.expand.testimonial.avatar",
+          "expand.sections.expand.items.expand.testimonial.location",
+          "expand.sections.expand.items.expand.testimonial.title",
+          "expand.sections.expand.items.expand.testimonial.subtitle",
+          "expand.sections.expand.items.expand.author.name",
+          "expand.sections.expand.items.expand.author.role",
+          "expand.sections.expand.items.expand.author.quote",
+          "expand.sections.expand.items.expand.author.avatar",
+          "expand.sections.expand.items.expand.author.socials",
         ].join(","),
       });
     return mapPage(record);
   } catch (error) {
     logPbError("getPageBySlug", error, { slug });
-    return STATIC_PAGES[slug] ?? null;
+    return DYNAMIC_ONLY_PAGE_SLUGS.has(slug) ? null : (STATIC_PAGES[slug] ?? null);
   }
 }
 
 export async function getPageSections(slug: string): Promise<PageSection[]> {
   const page = await getPageBySlug(slug);
   return page?.sections ?? [];
+}
+
+export async function getPage(slug: string): Promise<PageData | null> {
+  return getPageBySlug(slug);
+}
+
+export async function getSections(slug: string): Promise<PageSection[]> {
+  return getPageSections(slug);
 }

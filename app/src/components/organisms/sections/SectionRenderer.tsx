@@ -124,11 +124,27 @@ export default function SectionRenderer({ sections, context }: SectionRendererPr
             );
           }
           case "home-highlights": {
+            const relationItems = (data.items as Array<Record<string, unknown>>) ?? [];
+            const primaryFeatures = Array.isArray(data.primaryFeatures)
+              ? (data.primaryFeatures as Array<Record<string, unknown>>)
+              : relationItems.slice(0, 4).map((item) => ({
+                  title: item.title as string,
+                  description: item.description as string,
+                  icon: item.icon as string,
+                }));
+            const secondaryFeatures = Array.isArray(data.secondaryFeatures)
+              ? (data.secondaryFeatures as Array<Record<string, unknown>>)
+              : relationItems.slice(4).map((item) => ({
+                  title: item.title as string,
+                  description: item.description as string,
+                  icon: item.icon as string,
+                }));
+
             return (
               <HomeHighlightsSection
                 key={section.id}
-                primaryFeatures={data.primaryFeatures as Array<Record<string, unknown>>}
-                secondaryFeatures={data.secondaryFeatures as Array<Record<string, unknown>>}
+                primaryFeatures={primaryFeatures}
+                secondaryFeatures={secondaryFeatures}
                 primaryCta={data.primaryCta as { label: string; href: string }}
                 secondaryCta={data.secondaryCta as { label: string; href: string }}
               />
@@ -208,7 +224,13 @@ export default function SectionRenderer({ sections, context }: SectionRendererPr
             );
           }
           case "about-stats": {
-            const stats = (data.stats as Array<Record<string, unknown>>) ?? [];
+            const relationItems = (data.items as Array<Record<string, unknown>>) ?? [];
+            const stats = Array.isArray(data.stats)
+              ? (data.stats as Array<Record<string, unknown>>)
+              : relationItems.map((item) => ({
+                  value: (item.value as string) || (item.title as string) || "",
+                  label: (item.label as string) || (item.description as string) || "",
+                }));
             return (
               <section key={section.id} className="section-wrap-sm section-pad-md text-ink">
                 <div className="stack-md">
@@ -294,7 +316,18 @@ export default function SectionRenderer({ sections, context }: SectionRendererPr
             );
           }
           case "about-authors": {
-            const authors = context?.authors ?? [];
+            const sectionItems = (data.items as Array<Record<string, unknown>>) ?? [];
+            const sectionAuthors = sectionItems
+              .map((item) => ({
+                id: (item.id as string) || (item.name as string) || (item.title as string) || "",
+                name: (item.name as string) || (item.title as string) || "",
+                role: (item.role as string) || (item.subtitle as string) || "",
+                quote: (item.quote as string) || (item.description as string) || "",
+                avatar: item.avatar as string | undefined,
+                socials: (item.socials as Array<{ label: string; href: string }> | undefined) ?? [],
+              }))
+              .filter((author) => author.name);
+            const authors = sectionAuthors.length > 0 ? sectionAuthors : (context?.authors ?? []);
             return (
               <section key={section.id} className="section-bleed bg-surface">
                 <div className="section-wrap-sm section-pad-lg">
@@ -320,7 +353,17 @@ export default function SectionRenderer({ sections, context }: SectionRendererPr
                       authors.map((author) => (
                         <div key={author.id} className="stack-sm">
                           <div className="flex h-24 w-24 items-center justify-center rounded-full bg-surface-placeholder text-icon-placeholder">
-                            <Globe className="size-8" aria-hidden="true" />
+                            {author.avatar ? (
+                              <Image
+                                src={author.avatar}
+                                alt={author.name}
+                                width={96}
+                                height={96}
+                                className="h-full w-full rounded-full object-cover"
+                              />
+                            ) : (
+                              <Globe className="size-8" aria-hidden="true" />
+                            )}
                           </div>
 
                           <div className="stack-sm">
@@ -366,7 +409,22 @@ export default function SectionRenderer({ sections, context }: SectionRendererPr
             );
           }
           case "about-reviews": {
-            const testimonials = context?.testimonials ?? [];
+            const sectionItems = (data.items as Array<Record<string, unknown>>) ?? [];
+            const sectionTestimonials = sectionItems
+              .map((item) => ({
+                id: (item.id as string) || (item.name as string) || "",
+                logo: item.avatar as string | undefined,
+                quote: (item.quote as string) || (item.description as string) || "",
+                name: (item.name as string) || (item.title as string) || "",
+                role:
+                  (item.role as string) ||
+                  (item.subtitle as string) ||
+                  (item.location as string) ||
+                  "",
+              }))
+              .filter((item) => item.id && item.quote);
+            const testimonials =
+              sectionTestimonials.length > 0 ? sectionTestimonials : (context?.testimonials ?? []);
             return (
               <section key={section.id} className="section-bleed bg-surface-mint">
                 <div className="section-wrap-sm section-pad-lg text-center">
