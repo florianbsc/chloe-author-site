@@ -1,197 +1,174 @@
-import Button from "@/app/src/components/atoms/Button";
-import Badge from "@/app/src/components/atoms/Badge";
-import Input from "@/app/src/components/atoms/Input";
-import HeroImagePlaceholder from "@/app/src/components/atoms/HeroImagePlaceholder";
-import ReviewCard from "@/app/src/components/molecules/ReviewCard";
 import Link from "next/link";
-import {
-  Facebook,
-  Image as ImageIcon,
-  Link2,
-  Linkedin,
-  X,
-} from "lucide-react";
+import { notFound } from "next/navigation";
+import { Facebook, Image as ImageIcon, Link2, Linkedin, X } from "lucide-react";
+
+import Badge from "@/app/src/components/atoms/Badge";
+import Button from "@/app/src/components/atoms/Button";
+import HeroImagePlaceholder from "@/app/src/components/atoms/HeroImagePlaceholder";
+import Input from "@/app/src/components/atoms/Input";
+import ReviewCard from "@/app/src/components/molecules/ReviewCard";
+import { getArticleBySlug, getArticles, getRomans } from "@/app/src/lib/pocketbase";
 
 type ArticlePageProps = {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 };
 
-export default function ArticlePage({ params }: ArticlePageProps) {
+function formatDate(date?: string): string {
+  if (!date) {
+    return "Date a venir";
+  }
+
+  return new Date(date).toLocaleDateString("fr-FR", {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+  });
+}
+
+function toTagLabel(raw: string): string {
+  const value = raw.replace(/^cat-/, "").replace(/-/g, " ").trim();
+  if (!value) {
+    return "Article";
+  }
+
+  return value.charAt(0).toUpperCase() + value.slice(1);
+}
+
+export default async function ArticlePage({ params }: ArticlePageProps) {
+  const { slug } = await params;
+  const article = await getArticleBySlug(slug.toLowerCase());
+
+  if (!article) {
+    notFound();
+  }
+
+  const [articles, romans] = await Promise.all([getArticles(), getRomans()]);
+  const relatedArticles = articles.filter((item) => item.id !== article.id).slice(0, 2);
+  const highlightedRoman = romans[0];
+  const paragraphs = article.content
+    .split(/\n{2,}/)
+    .map((line) => line.trim())
+    .filter(Boolean);
+
   return (
     <div className="section-wrap-sm section-pad-md text-ink">
       <section className="stack-md">
-        <h2 className="text-h3 font-semibold leading-title">
-          Introduction
-        </h2>
+        <p className="eyebrow">
+          Actualites <span className="mx-2">›</span> {article.title}
+        </p>
 
-        <div className="stack-sm text-body leading-body-lg">
-          <p>
-            Mi tincidunt elit, id quisque ligula ac diam, amet. Vel etiam
-            suspendisse morbi eleifend faucibus eget vestibulum felis. Dictum
-            quis montes, sit sit. Tellus aliquam enim urna, etiam. Mauris
-            posuere vulputate arcu amet, vitae nisi, tellus tincidunt. At
-            feugiat sapien varius id.
-          </p>
-          <p>
-            Eget quis mi enim, leo lacinia pharetra, semper. Eget in volutpat
-            mollis at volutpat lectus velit, sed auctor. Porttitor fames arcu
-            quis fusce augue enim. Quis at habitant amet, at. Suscipit tristique
-            risus, at donec. In turpis vel et quam imperdiet. Ipsum molestie
-            aliquet sodales id est ac volutpat.
-          </p>
-        </div>
+        <h1 className="text-h2 font-bold leading-tight tracking-title sm:text-6xl-custom">
+          {article.title}
+        </h1>
 
-        <div className="stack-sm">
-          <div className="h-56 overflow-hidden rounded-2xl bg-surface-placeholder">
-            <HeroImagePlaceholder />
+        <div className="flex items-center gap-4">
+          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-surface-placeholder-strong text-icon-placeholder">
+            <ImageIcon className="size-5" aria-hidden="true" />
           </div>
-          <p className="text-caption leading-body text-ink">
-            Image caption goes here
-          </p>
+          <div className="space-y-1">
+            <p className="text-body font-semibold">{article.writtenBy?.name ?? "Chloe Simart"}</p>
+            <p className="text-body-sm text-ink">{formatDate(article.publishedAt)}</p>
+          </div>
         </div>
 
-        <div className="stack-sm text-body leading-body-lg">
-          <h3 className="text-h5 font-semibold leading-title">
-            Dolor enim eu tortor urna sed duis nulla. Aliquam vestibulum, nulla
-            odio nisl vitae. In aliquet pellentesque aenean hac vestibulum
-            turpis mi bibendum diam. Tempor integer aliquam in vitae malesuada
-            fringilla.
-          </h3>
-          <p>
-            Elit nisl in eleifend sed nisi. Pulvinar at orci, proin imperdiet
-            commodo consectetur varius risus. Sed condimentum enim dignissim
-            adipiscing faucibus consequat, urna. Viverra purus et erat auctor
-            aliquam. Risus, volutpat vulputate posuere purus sit congue
-            convallis aliquet. Arcu id augue ut feugiat donec porttitor neque.
-            Mauris, neque ultrices eu vestibulum, bibendum quam lorem id.
-            Dolor lacus, eget nunc lectus in tellus, pharetra, porttitor.
-          </p>
+        <div className="flex items-center gap-3">
+          <button
+            type="button"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-soft text-ink"
+            aria-label="Copier le lien"
+          >
+            <Link2 className="size-4" />
+          </button>
+          <button
+            type="button"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-soft text-ink"
+            aria-label="Partager sur LinkedIn"
+          >
+            <Linkedin className="size-4" />
+          </button>
+          <button
+            type="button"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-soft text-ink"
+            aria-label="Partager sur X"
+          >
+            <X className="size-4" />
+          </button>
+          <button
+            type="button"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-soft text-ink"
+            aria-label="Partager sur Facebook"
+          >
+            <Facebook className="size-4" />
+          </button>
         </div>
 
-        <blockquote className="border-l border-border-medium pl-6 text-body-lg italic leading-body-lg text-ink">
-          &quot;Ipsum sit mattis nulla quam nulla. Gravida id gravida ac enim
-          mauris id. Non pellentesque congue eget consectetur turpis. Sapien,
-          dictum molestie sem tempor. Diam elit, orci, tincidunt aenean
-          tempus.&quot;
-        </blockquote>
-
-        <div className="stack-sm text-body leading-body-lg">
-          <p>
-            Tristique odio senectus nam posuere ornare leo metus, ultrices.
-            Blandit duis ultricies vulputate morbi feugiat cras placerat elit.
-            Aliquam tellus lorem sed ac. Montes, sed mattis pellentesque
-            suscipit accumsan. Cursus viverra aenean magna, risus elementum
-            faucibus molestie pellentesque. Arcu ultricies sed mauris
-            vestibulum.
-          </p>
+        <div className="h-56 overflow-hidden rounded-2xl bg-surface-placeholder">
+          <HeroImagePlaceholder />
         </div>
       </section>
 
-      <section className="mt-12 stack-md">
-        <h2 className="text-h3 font-semibold leading-title">
-          Conclusion
-        </h2>
+      <section className="mt-12 stack-md text-body leading-body-lg">
+        <h2 className="text-h3 font-semibold leading-title">Introduction</h2>
+        {paragraphs.map((paragraph, index) => (
+          <p key={`${article.id}-paragraph-${index}`}>{paragraph}</p>
+        ))}
+      </section>
 
-        <div className="stack-sm text-body leading-body-lg">
-          <p>
-            Morbi sed imperdiet in ipsum, adipiscing elit dui lectus. Tellus id
-            scelerisque est ultricies ultricies. Duis est sit sed leo nisl,
-            blandit elit sagittis. Quisque tristique consequat quam sed. Nisl at
-            scelerisque amet nulla purus habitasse.
-          </p>
-          <p>
-            Nunc sed faucibus bibendum feugiat sed interdum. Ipsum egestas
-            condimentum mi massa. In tincidunt pharetra consectetur sed duis
-            facilisis metus. Etiam egestas in nec sed et. Quis lobortis at sit
-            dictum eget nibh tortor commodo cursus.
-          </p>
-          <p>
-            Odio felis sagittis, morbi feugiat tortor vitae feugiat fusce
-            aliquet. Nam elementum urna nisi aliquet erat dolor enim. Ornare id
-            morbi eget ipsum. Aliquam senectus neque ut id eget consectetur
-            diam. Donec posuere pharetra odio consequat scelerisque et, nunc
-            tortor. Nulla adipiscing erat a erat. Condimentum lorem posuere
-            gravida enim posuere cursus diam.
-          </p>
-        </div>
-
-        <div className="stack-sm">
-          <p className="eyebrow">
-            Partager cet article
-          </p>
-          <div className="flex items-center gap-3">
-            <button
-              type="button"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-soft text-ink"
-              aria-label="Copier le lien"
-            >
-              <Link2 className="size-4" />
-            </button>
-            <button
-              type="button"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-soft text-ink"
-              aria-label="Partager sur LinkedIn"
-            >
-              <Linkedin className="size-4" />
-            </button>
-            <button
-              type="button"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-soft text-ink"
-              aria-label="Partager sur X"
-            >
-              <X className="size-4" />
-            </button>
-            <button
-              type="button"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-soft text-ink"
-              aria-label="Partager sur Facebook"
-            >
-              <Facebook className="size-4" />
-            </button>
-          </div>
-
-          <div className="flex flex-wrap gap-2 pt-2">
-            {["Thriller", "Handicap", "Sortie", "Roman"].map((tag) => (
-              <Badge key={tag} variant="outline" size="sm">
-                {tag}
-              </Badge>
-            ))}
-          </div>
-        </div>
-
-        <div className="flex items-center gap-3 border-t border-border-subtle pt-6">
-          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-surface-placeholder-strong text-icon-placeholder">
-            <ImageIcon className="size-4" aria-hidden="true" />
-          </div>
-          <div className="stack-xs">
-            <p className="text-body font-semibold">Chloé Simart</p>
-            <p className="text-body-sm text-ink">Auteure de romans</p>
-          </div>
+      <section className="mt-12 stack-sm">
+        <p className="eyebrow">Tags</p>
+        <div className="flex flex-wrap gap-2">
+          {(article.categoryIds.length > 0 ? article.categoryIds : ["article"]).map((tag) => (
+            <Badge key={tag} variant="outline" size="sm">
+              {toTagLabel(tag)}
+            </Badge>
+          ))}
         </div>
       </section>
 
       <section className="mt-16 stack-md text-center">
-        <h2 className="text-4xl-custom font-bold leading-tight tracking-title">
+        <h2 className="text-4xl-custom font-bold leading-tight tracking-title">Articles lies</h2>
+        {relatedArticles.length === 0 ? (
+          <div className="rounded-2xl border border-border-subtle bg-surface p-6 text-left">
+            <h3 className="text-h5 font-semibold">Aucun article complementaire</h3>
+            <p className="mt-2 text-body">De nouveaux contenus seront publies prochainement.</p>
+          </div>
+        ) : (
+          <div className="stack-sm text-left">
+            {relatedArticles.map((item) => (
+              <Link
+                key={item.id}
+                href={`/articles/${item.slug}`}
+                className="block rounded-2xl border border-border-subtle bg-surface p-5 transition hover:shadow-sm"
+              >
+                <p className="text-body-sm text-ink">{formatDate(item.publishedAt)}</p>
+                <h3 className="mt-2 text-h5 font-semibold leading-title">{item.title}</h3>
+                <p className="mt-2 text-body leading-body">{item.excerpt}</p>
+              </Link>
+            ))}
+          </div>
+        )}
+      </section>
+
+      <section className="mt-16 stack-md text-center text-ink">
+        <h2 className="text-4xl-custom font-bold leading-tight tracking-title sm:text-5xl-custom">
           Avis de lecteurs
         </h2>
-        <p className="text-body leading-body-lg text-ink">
-          Ce que les lecteurs en pensent
-        </p>
+        <p className="text-body leading-body-lg">Ce que les lecteurs en pensent</p>
 
         <div className="mt-10 stack-lg text-ink">
           <ReviewCard
             logo="Webflow"
-            quote="Un roman qui m'a bouleversée du début à la fin."
+            quote="Une ecriture juste et profonde qui reste longtemps en memoire."
             name="Marie Dupont"
-            role="Lectrice passionnée"
+            role="Lectrice passionnee"
           />
           <ReviewCard
             logo="Webflow"
-            quote="Chloé écrit avec une sincérité rare et profonde."
+            quote="Chaque article donne envie de lire encore plus de romans."
             name="Thomas Bernard"
-            role="Lecteur engagé"
+            role="Lecteur engage"
           />
         </div>
       </section>
@@ -203,8 +180,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
           Explorez mes univers
         </h2>
         <p className="mt-4 text-body leading-body-lg sm:text-body-lg">
-          Découvrez mes autres romans et plongez dans des histoires qui
-          transforment.
+          Decouvrez mes autres romans et plongez dans des histoires qui transforment.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <Link href="/romans">
@@ -214,23 +190,19 @@ export default function ArticlePage({ params }: ArticlePageProps) {
           </Link>
           <Link href="#newsletter">
             <Button variant="secondary" size="md">
-              S&apos;abonner
+              S abonner
             </Button>
           </Link>
         </div>
       </section>
 
-      <section
-        id="newsletter"
-        className="mt-16 text-center text-ink"
-      >
+      <section id="newsletter" className="mt-16 text-center text-ink">
         <h2 className="text-4xl-custom font-bold leading-tight tracking-title sm:text-5xl-custom">
-          Restez connecté
-          <br />À l&apos;actualité
+          Restez connecte
+          <br />A l actualite
         </h2>
         <p className="mt-4 text-body leading-body-lg sm:text-body-lg">
-          Recevez les dates de sortie et les nouvelles directement dans votre
-          boîte.
+          Recevez les dates de sortie et les nouvelles directement dans votre boite.
         </p>
 
         <form className="mt-8 stack-sm">
@@ -249,15 +221,25 @@ export default function ArticlePage({ params }: ArticlePageProps) {
             />
           </div>
           <Button type="submit" variant="primary" size="md" className="w-full">
-            S&apos;abonner
+            S abonner
           </Button>
         </form>
-
-        <p className="mt-4 text-caption leading-body text-ink">
-          Nous respectons votre vie privée. Désinscription possible à tout
-          moment.
-        </p>
       </section>
+
+      {highlightedRoman && (
+        <section className="mt-16 rounded-2xl border border-border-subtle bg-surface p-6 text-ink">
+          <p className="eyebrow">Roman a la une</p>
+          <h3 className="mt-2 text-h4 font-semibold">{highlightedRoman.title}</h3>
+          <p className="mt-3 text-body leading-body">
+            {highlightedRoman.fullDescription.split(/\n{2,}/)[0]}
+          </p>
+          <Link href={`/romans/${highlightedRoman.slug}`} className="mt-4 inline-flex">
+            <Button variant="secondary" size="md">
+              Voir le roman
+            </Button>
+          </Link>
+        </section>
+      )}
     </div>
   );
 }
